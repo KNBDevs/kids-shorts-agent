@@ -1,0 +1,292 @@
+{
+  "hola_bolita_0": {
+    "hash": "75b5dab4dbbf",
+    "dur": 2.1,
+    "text": "¡Hola, hola, hola!"
+  },
+  "hola_bolita_1": {
+    "hash": "a18e34e101b0",
+    "dur": 1.77,
+    "text": "¡Soy Bolita!"
+  },
+  "hola_bolita_2": {
+    "hash": "cab6d6ce80cc",
+    "dur": 2.08,
+    "text": "¡Soy muy valiente! ¡Yo primero, yo primero!"
+  },
+  "hola_bolita_3": {
+    "hash": "f7280abed135",
+    "dur": 2.57,
+    "text": "Bueno... mejor todos juntos. ¿Te vienes?"
+  },
+  "hola_bolita_4": {
+    "hash": "0885484b0cd8",
+    "dur": 0.89,
+    "text": "¡Hasta la próxima!"
+  },
+  "intro_bolita": {
+    "hash": "11072645e424",
+    "dur": 2.5,
+    "text": "¡Soy Bolita! ¡Yo primero!"
+  },
+  "intro_hook_bolita": {
+    "hash": "896af54f5324",
+    "dur": 0.84,
+    "text": "¡Hola!"
+  },
+  "intro_group_bolita": {
+    "hash": "6fb1de988bc0",
+    "dur": 1.01,
+    "text": "¡Somos Pimoruki!"
+  },
+  "hola_bopi_0": {
+    "hash": "8505063a417e",
+    "dur": 0.75,
+    "text": "Hola. ¡Bip, bop!"
+  },
+  "hola_bopi_1": {
+    "hash": "4b64d3cf8843",
+    "dur": 3.0,
+    "text": "Soy Bopi, el robot."
+  },
+  "hola_bopi_2": {
+    "hash": "901957745eb5",
+    "dur": 2.27,
+    "text": "Me gusta tenerlo todo ordenado. ¡Uno, dos y tres!"
+  },
+  "hola_bopi_3": {
+    "hash": "e3cf756bfa76",
+    "dur": 2.33,
+    "text": "¿Me ayudas a contar? Uno, dos, tres... ¡Perfecto!"
+  },
+  "hola_bopi_4": {
+    "hash": "1582a762691e",
+    "dur": 1.16,
+    "text": "Bopi se despide. ¡Bip!"
+  },
+  "intro_bopi": {
+    "hash": "966250e5514e",
+    "dur": 1.62,
+    "text": "Soy Bopi. ¡Todo en orden! ¡Bip!"
+  },
+  "hola_gruno_0": {
+    "hash": "1e695cf865f0",
+    "dur": 1.3,
+    "text": "Je, je, je..."
+  },
+  "hola_gruno_1": {
+    "hash": "88c98485bda2",
+    "dur": 2.16,
+    "text": "¡Soy el Doctor Gruño!"
+  },
+  "hola_gruno_2": {
+    "hash": "eb67ef613747",
+    "dur": 3.23,
+    "text": "¡El inventor más genial del mundo mundial!"
+  },
+  "hola_gruno_3": {
+    "hash": "8365a978963f",
+    "dur": 1.84,
+    "text": "Mirad mi nuevo invento... ¡Ay! ¡Ups!"
+  },
+  "hola_gruno_4": {
+    "hash": "79b95ad029a9",
+    "dur": 2.08,
+    "text": "¡Ya veréis, Pimoruki! ¡Ya veréis!"
+  },
+  "intro_gruno": {
+    "hash": "48fac4f1f6b8",
+    "dur": 2.0,
+    "text": "Je, je... ¡Ya veréis, Pimoruki!"
+  },
+  "hola_luma_0": {
+    "hash": "1a0d30494c1d",
+    "dur": 0.88,
+    "text": "¡Holiii!"
+  },
+  "hola_luma_1": {
+    "hash": "a9bec17ad928",
+    "dur": 2.82,
+    "text": "¡Soy Luma, encantada!"
+  },
+  "hola_luma_2": {
+    "hash": "2563ff0e1cac",
+    "dur": 2.46,
+    "text": "Cuando sonrío... ¡brillo muchísimo! ¿Lo ves?"
+  },
+  "hola_luma_3": {
+    "hash": "e38ab99a0ba9",
+    "dur": 2.4,
+    "text": "¿Me enseñas tu sonrisa? ¡Oooh, qué bonita!"
+  },
+  "hola_luma_4": {
+    "hash": "5bddf6c9f448",
+    "dur": 1.06,
+    "text": "¡Chao, chao!"
+  },
+  "intro_luma": {
+    "hash": "3beb9f9604b9",
+    "dur": 3.17,
+    "text": "¡Soy Luma! ¡Sonreíd conmigo!"
+  },
+  "intro_hook_luma": {
+    "hash": "439db7d48ece",
+    "dur": 1.33,
+    "text": "¡Hola!"
+  },
+  "intro_group_luma": {
+    "hash": "c35c60f0359c",
+    "dur": 1.36,
+    "text": "¡Somos Pimoruki!"
+  },
+  "intro_sub_luma": {
+    "hash": "366a7a9249fc",
+    "dur": 0.8,
+    "text": "¡Suscríbete!"
+  },
+  "hola_moki_0": {
+    "hash": "586f7736ee5a",
+    "dur": 0.37,
+    "text": "Hola..."
+  },
+  "hola_moki_1": {
+    "hash": "afe90a0165d7",
+    "dur": 3.0,
+    "text": "Soy Moki... una nube."
+  },
+  "hola_moki_2": {
+    "hash": "c4ddf6609254",
+    "dur": 1.93,
+    "text": "Me encanta flotar... y soñar despierto."
+  },
+  "hola_moki_3": {
+    "hash": "412b35d4c378",
+    "dur": 2.87,
+    "text": "¿Y tú qué sueñas? Yo... con estrellas."
+  },
+  "hola_moki_4": {
+    "hash": "ac1a9556fca0",
+    "dur": 1.03,
+    "text": "Dulces sueños..."
+  },
+  "intro_moki": {
+    "hash": "590dd4f8d2e1",
+    "dur": 2.42,
+    "text": "Soy Moki... me encanta soñar."
+  },
+  "hola_pimo_0": {
+    "hash": "a753179cdd9b",
+    "dur": 1.59,
+    "text": "¡Holaaa!"
+  },
+  "hola_pimo_1": {
+    "hash": "0811c30dd07d",
+    "dur": 2.04,
+    "text": "¡Soy Pimo! ¡Encantado!"
+  },
+  "hola_pimo_2": {
+    "hash": "5e9fd189f735",
+    "dur": 5.18,
+    "text": "¿Sabes qué me encanta? ¡Preguntar! ¿Por qué? ¿Y por qué?"
+  },
+  "hola_pimo_3": {
+    "hash": "6bc561f63b5a",
+    "dur": 4.62,
+    "text": "Y tú, ¿qué te gustaría descubrir hoy?"
+  },
+  "hola_pimo_4": {
+    "hash": "cdb8d9a1e2b6",
+    "dur": 2.66,
+    "text": "¡Hasta prontito!"
+  },
+  "intro_pimo": {
+    "hash": "f20fadbecfbf",
+    "dur": 2.5,
+    "text": "¡Hola! ¡Soy Pimo, el más preguntón!"
+  },
+  "intro_hook_pimo": {
+    "hash": "e44ced86f5d0",
+    "dur": 1.0,
+    "text": "¡Hola!"
+  },
+  "intro_group_pimo": {
+    "hash": "259b45fea12a",
+    "dur": 0.91,
+    "text": "¡Somos Pimoruki!"
+  },
+  "intro_sub_pimo": {
+    "hash": "b79d16ad9bb3",
+    "dur": 1.17,
+    "text": "¡Suscríbete!"
+  },
+  "hola_ruki_0": {
+    "hash": "f0265440ddce",
+    "dur": 1.41,
+    "text": "Hola, hola..."
+  },
+  "hola_ruki_1": {
+    "hash": "af9c6fe0915f",
+    "dur": 0.67,
+    "text": "Yo soy Ruki."
+  },
+  "hola_ruki_2": {
+    "hash": "578335083974",
+    "dur": 3.15,
+    "text": "Cuando me enfado... respiro hondo. Mmm... ¡y ya está!"
+  },
+  "hola_ruki_3": {
+    "hash": "9ba872ccdbe6",
+    "dur": 2.37,
+    "text": "¿Lo probamos juntos? Coge aire... y suéltalo."
+  },
+  "hola_ruki_4": {
+    "hash": "9aea1aa21e1c",
+    "dur": 1.68,
+    "text": "Hasta pronto, amigo."
+  },
+  "intro_ruki": {
+    "hash": "74fbc40c0a5f",
+    "dur": 2.5,
+    "text": "Yo soy Ruki. Tranquilos... respirad."
+  },
+  "hola_tuki_0": {
+    "hash": "48dc72cf9717",
+    "dur": 0.92,
+    "text": "¡Eh, hola!"
+  },
+  "hola_tuki_1": {
+    "hash": "918507c3634c",
+    "dur": 0.58,
+    "text": "¡Soy Tuki!"
+  },
+  "hola_tuki_2": {
+    "hash": "affd1b7c3bae",
+    "dur": 2.79,
+    "text": "¡A mí me encanta saltar, girar y bailar! ¡Yujuuu!"
+  },
+  "hola_tuki_3": {
+    "hash": "a497ca99cca2",
+    "dur": 2.36,
+    "text": "¿Saltas conmigo? ¡Una, dos y tres!"
+  },
+  "hola_tuki_4": {
+    "hash": "edad794debb0",
+    "dur": 2.33,
+    "text": "¡Hasta luego!"
+  },
+  "intro_tuki": {
+    "hash": "6a54f1b9daac",
+    "dur": 1.89,
+    "text": "¡Soy Tuki! ¡A bailar!"
+  },
+  "intro_hook_tuki": {
+    "hash": "826a0f642bcf",
+    "dur": 1.09,
+    "text": "¡Hola!"
+  },
+  "intro_group_tuki": {
+    "hash": "e56c2a707225",
+    "dur": 1.4,
+    "text": "¡Somos Pimoruki!"
+  }
+}
