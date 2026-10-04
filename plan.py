@@ -14,17 +14,17 @@ def load_history():
 
 def gemini(prompt, key):
     body = json.dumps({'contents': [{'parts': [{'text': prompt}]}], 'generationConfig': {'responseMimeType': 'application/json', 'temperature': 1.0}}).encode()
-    for model in ('gemini-flash-latest', 'gemini-2.5-flash', 'gemini-2.0-flash'):
+    for model in ('gemini-flash-latest', 'gemini-flash-lite-latest', 'gemini-pro-latest'):
         url = f'https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent'
         req = urllib.request.Request(url, body, {'Content-Type': 'application/json', 'x-goog-api-key': key})
-        for attempt in range(2):
+        for attempt in range(4):
             try:
                 with urllib.request.urlopen(req, timeout=60) as r:
                     data = json.load(r)
                 return json.loads(data['candidates'][0]['content']['parts'][0]['text'])
             except Exception as e:
                 print(f'[plan] {model} attempt {attempt}: {e}', file=sys.stderr)
-                time.sleep(3)
+                time.sleep(5 * 2 ** attempt)
     return None
 
 def fallback_copy(words):
