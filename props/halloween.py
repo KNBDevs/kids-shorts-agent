@@ -473,15 +473,20 @@ def door(name, loc=(0, 0, 0), h=1.5, parent=None, rgb=(0.4, 0.25, 0.42)):
     return {'root': g, 'hinge': hinge}
 
 
-def marigold(name, loc=(0, 0, 0), r=0.05, parent=None, rot=(0, 0, 0)):
+def marigold(name, loc=(0, 0, 0), r=0.05, parent=None, rot=(0, 0, 0), n=110):
     g = C.empty(name, parent, loc, rot)
-    pet = [_m('cempa_a', (1.0, 0.45, 0.02), rough=0.6), _m('cempa_b', (1.0, 0.58, 0.05), rough=0.6)]
-    C.sphere(name + '.core', (0, 0, 0.25 * r), (0.5 * r, 0.5 * r, 0.35 * r), pet[0], g, 16)
-    for ring, (rr, z, n) in enumerate(((0.85, 0.05, 14), (0.65, 0.3, 11), (0.4, 0.5, 8))):
-        for k in range(n):
-            a = 2 * math.pi * (k + 0.5 * ring) / n
-            C.sphere(f'{name}.p{ring}_{k}', (rr * r * math.cos(a), rr * r * math.sin(a), z * r), (0.28 * r, 0.2 * r, 0.22 * r), pet[(k + ring) % 2], g, 10,
-                     rot=(0, math.radians(-20), a))
+    pet = [_m('cempa_a', (1.0, 0.42, 0.02), rough=0.6), _m('cempa_b', (1.0, 0.56, 0.05), rough=0.6), _m('cempa_c', (0.9, 0.3, 0.02), rough=0.6)]
+    C.sphere(name + '.core', (0, 0, 0.35 * r), (0.55 * r, 0.55 * r, 0.42 * r), pet[2], g, 16)
+    ga = math.pi * (3 - math.sqrt(5))
+    for k in range(n):
+        zf = 1 - (k + 0.5) / n * 1.15
+        rad = math.sqrt(max(0.0, 1 - zf * zf))
+        a = ga * k
+        nrm = Vector((rad * math.cos(a), rad * math.sin(a), zf)).normalized()
+        p = Vector((0, 0, 0.35 * r)) + nrm * Vector((0.85 * r, 0.85 * r, 0.7 * r)).length * 0.62
+        o = C.sphere(f'{name}.p{k}', tuple(p), (0.24 * r, 0.05 * r, 0.17 * r), pet[k % 3 if k % 3 < 2 else (k // 3) % 2], g, 8)
+        C._orient(o, nrm)
+        o.rotation_mode = 'QUATERNION'
     return g
 
 
@@ -545,16 +550,15 @@ def photo_frame(name, loc=(0, 0, 0), h=0.24, parent=None, rot=(0, 0, 0)):
     w = h * 0.8
     fr = _m('frame_wood', (0.55, 0.36, 0.2), rough=0.5, coat=0.3)
     C.rounded_box(name + '.frame', (0, 0, h / 2), (w, 0.03, h), 0.012, fr, g)
-    C.rounded_box(name + '.bg', (0, -0.016, h / 2), (w * 0.8, 0.004, h * 0.82), 0.002, _m('photo_bg', (0.75, 0.85, 0.9), rough=0.8), g)
+    C.rounded_box(name + '.bg', (0, -0.016, h / 2), (w * 0.8, 0.004, h * 0.82), 0.002, _m('photo_bg', (0.55, 0.68, 0.78), rough=0.8), g)
     C.tube(name + '.stand', [(0, 0.015, h * 0.5), (0, 0.09, 0.0)], 0.008, fr, g)
     f = C.empty(name + '.pic', g, (0, -0.02, h * 0.5))
     skin = _m('portrait_skin', (0.85, 0.65, 0.5), rough=0.8)
-    hair = _m('portrait_hair', (0.86, 0.86, 0.88), rough=0.8)
+    hair = _m('portrait_hair', (0.72, 0.72, 0.76), rough=0.8)
     shirt = _m('portrait_shirt', (0.35, 0.5, 0.42), rough=0.8)
     ink = _m('portrait_ink', (0.2, 0.15, 0.15), rough=0.6)
     _flat(name + '.shirt', [(-0.3 * w, -0.4 * h), (0.3 * w, -0.4 * h), (0.24 * w, -0.2 * h), (-0.24 * w, -0.2 * h)][::-1], 0.002, shirt, f)
     _flat(name + '.hair', _circle(0.2 * h, 28, 0, 0.06 * h, 0.95), 0.002, hair, f, loc=(0, 0.001, 0))
-    _flat(name + '.bun', _circle(0.08 * h, 18, 0, 0.27 * h), 0.002, hair, f, loc=(0, 0.001, 0))
     _flat(name + '.face', _circle(0.16 * h, 28, 0, 0.01 * h, 0.88), 0.002, skin, f, loc=(0, -0.002, 0))
     for sx in (-1, 1):
         _ring(f'{name}.glass{sx}', C.empty(f'{name}.gl{sx}', f, (sx * 0.06 * h, -0.004, 0.04 * h), (math.radians(90), 0, 0)), 0, 0.04 * h, 0.035 * h, 0.004 * h, ink)
