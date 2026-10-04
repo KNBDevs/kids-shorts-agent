@@ -15,6 +15,7 @@ def out(k, v):
 SCHED = os.path.join(HERE, "state", "schedule.json")
 MAD = ZoneInfo("Europe/Madrid")
 HORIZON_DAYS = 7
+FLOOR = datetime(2026, 10, 7, 0, 0, tzinfo=MAD)
 
 
 def slots_after(t):
@@ -30,7 +31,7 @@ def slots_after(t):
 
 def next_slot(sched, now):
     last = max([datetime.fromisoformat(v) for v in sched.values()], default=now)
-    return slots_after(max(last, now + timedelta(hours=2)))
+    return slots_after(max(last, now + timedelta(hours=2), now))
 
 
 def voices_ready(item):
@@ -66,8 +67,13 @@ def main():
     spec['episode'] = nxt['id']
     if nxt.get('immediate'):
         when = now + timedelta(minutes=2)
+    elif nxt.get('publish_local'):
+        when = datetime.fromisoformat(nxt['publish_local']).replace(tzinfo=MAD)
+        if when < now + timedelta(minutes=30):
+            when = now + timedelta(minutes=30)
+        sched[nxt['id']] = when.isoformat()
     else:
-        when = next_slot(sched, now)
+        when = next_slot(sched, max(now, FLOOR))
         if when > now + timedelta(days=HORIZON_DAYS):
             out('skip', 'true')
             os.remove(p)
@@ -79,5 +85,7 @@ def main():
     json.dump(spec, open(p, 'w'), ensure_ascii=False, indent=1)
     out('skip', 'false')
     out('episode', nxt['id'])
+    nxt2 = next((e for e in q if e['status'] == 'approved' and e['id'] not in done and e['id'] != nxt['id'] and e['template'] in READY and voices_ready(e)), None)
+    out('chain', 'true' if nxt2 and (nxt2.get('publish_local') or nxt2.get('immediate')) else 'false')
 if __name__ == '__main__':
     main()

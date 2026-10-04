@@ -14,49 +14,57 @@
   "id": "hola_pimo",
   "template": "hola",
   "char": "pimo",
-  "status": "approved"
+  "status": "approved",
+  "publish_local": "2026-10-06T14:00"
  },
  {
   "id": "hola_ruki",
   "template": "hola",
   "char": "ruki",
-  "status": "approved"
+  "status": "approved",
+  "publish_local": "2026-10-06T14:05"
  },
  {
   "id": "hola_luma",
   "template": "hola",
   "char": "luma",
-  "status": "approved"
+  "status": "approved",
+  "publish_local": "2026-10-06T14:10"
  },
  {
   "id": "hola_tuki",
   "template": "hola",
   "char": "tuki",
-  "status": "approved"
+  "status": "approved",
+  "publish_local": "2026-10-06T14:15"
  },
  {
   "id": "hola_moki",
   "template": "hola",
   "char": "moki",
-  "status": "approved"
+  "status": "approved",
+  "publish_local": "2026-10-06T14:20"
  },
  {
   "id": "hola_bopi",
   "template": "hola",
   "char": "bopi",
-  "status": "approved"
+  "status": "approved",
+  "publish_local": "2026-10-06T14:25"
  },
  {
   "id": "hola_bolita",
   "template": "hola",
   "char": "bolita",
-  "status": "approved"
+  "status": "approved",
+  "publish_local": "2026-10-06T14:30"
  },
  {
   "id": "hola_gruno",
   "template": "hola",
   "char": "gruno",
-  "status": "approved"
+  "status": "approved",
+  "publish_local": "2026-10-06T14:35"
  },
  {
   "id": "bopi_rueda_cuadrada",

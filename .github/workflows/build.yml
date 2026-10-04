@@ -43,6 +43,7 @@ jobs:
     timeout-minutes: 10
     outputs:
       skip: ${{ steps.plan.outputs.skip }}
+      chain: ${{ steps.plan.outputs.chain }}
     permissions:
       contents: write
     steps:
@@ -142,10 +143,11 @@ jobs:
           retention-days: 2
 
   compose:
-    needs: [render, audio]
+    needs: [plan, render, audio]
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      actions: write
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
@@ -207,3 +209,8 @@ jobs:
           PA=$(jq -r '.publishAt // empty' spec.json)
           if [ -n "$PA" ]; then jq --arg e "$EP" --arg t "$PA" '. + {($e): $t}' state/schedule.json > s.tmp && mv s.tmp state/schedule.json; fi
           git add state/published.json state/schedule.json && git commit -qm "update state" && git push -q || true
+      - name: Chain
+        if: ${{ (github.event_name == 'schedule' || inputs.deliver) && needs.plan.outputs.chain == 'true' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run build.yml -R "${{ github.repository }}" -f template=queue -f deliver=true
