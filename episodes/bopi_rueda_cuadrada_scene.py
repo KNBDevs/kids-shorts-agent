@@ -5,7 +5,7 @@ from props.basic import cart, wheel, apple, shake_cup, disc
 EID = 'bopi_rueda_cuadrada'
 T.hide_stage()
 G = GROUND
-C.rounded_box('path', (0, -1.25, -0.0), (18, 2.7, 0.04), 0.015, C.mat('path', (0.78, 0.6, 0.42), rough=0.8), None)
+C.rounded_box('path', (0, -4.0, -0.0), (18, 8.2, 0.04), 0.015, C.mat('path', (0.6, 0.42, 0.27), rough=0.85), None)
 W0 = (-8.4, 1.3, -1.1, 0.95, 42)
 CAM = [(0, -2.0) + W0, (74, -1.45) + W0, (84, -1.0) + W0, (222, -1.0) + W0, (300, -0.45) + W0, (330, -0.3) + W0,
        (436, -0.3) + W0, (452, 0.4, -7.4, 1.25, -1.6, 1.0, 42), (510, 0.4, -7.4, 1.25, -1.6, 1.0, 42),
@@ -122,10 +122,17 @@ for s in 'LR':
 
 R0 = Vector((0.15, -0.3, G))
 RF = Vector((0.85, -2.0, G))
-RB = Vector((0.05, -0.3, G))
+RB = Vector((-0.9, -0.2, G))
 RE = Vector((0.85, -0.3, G))
-T.place(ruki, 0, R0)
-T.turn(ruki, 0, -30)
+RS = Vector((1.5, -0.3, G))
+T.place(ruki, 0, RS)
+T.place(ruki, 58, RS)
+T.turn(ruki, 0, -60)
+for k, f in enumerate(range(58, 82, 6)):
+    p = RS.lerp(R0, (k + 1) / 4)
+    T.place(ruki, f + 3, p + Vector((0, 0, 0.07)))
+    T.place(ruki, f + 6, p)
+T.turn(ruki, 80, -30)
 T.arm(ruki, 'L', 86, 0, None)
 T.arm(ruki, 'L', 92, fwd=-25, out=80)
 T.arm(ruki, 'L', 124, fwd=-25, out=80)
@@ -158,7 +165,7 @@ T.arm(ruki, 'R', 458, fwd=-35, out=55)
 T.arm(ruki, 'R', 500, fwd=-35, out=55)
 T.rest_arm(ruki, 'R', 508)
 T.place(ruki, 512, RF)
-hop_to(ruki, 514, RF, RB, 22, apex=0.9)
+hop_to(ruki, 514, RF, RB, 24, apex=1.1)
 T.turn(ruki, 536, -10)
 T.turn(ruki, 560, 30)
 T.place(ruki, 640, RB)
@@ -237,7 +244,7 @@ T.blinks(bopi, (60, 170, 260, 400, 520, 660, 790))
 T.blinks(ruki, (40, 150, 240, 330, 480, 600, 720))
 T.blinks(gruno, (700, 785, 805))
 tx = cam_x(640)
-h = word3d('¡EL CÍRCULO RUEDA!', (1.0, 0.65, 0.05), (cam_x(596), -1.6, 2.55), 596, 690, size=0.9, max_w=2.5)
-for f in range(590, 694, 4):
-    K(h, 'location', f, (cam_x(f), -1.6, 2.55))
-confetti(596, (cam_x(600), -1.6, 2.3), 24, 2.0)
+h = word3d('¡EL CÍRCULO RUEDA!', (1.0, 0.65, 0.05), (0, 0, 0), 596, 690, size=0.9, max_w=2.5)
+h.parent = cam
+h.location = (0, 1.25, -7.0)
+h.rotation_euler = (0, 0, 0)
