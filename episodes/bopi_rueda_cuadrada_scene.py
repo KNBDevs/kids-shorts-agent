@@ -6,11 +6,16 @@ EID = 'bopi_rueda_cuadrada'
 T.hide_stage()
 G = GROUND
 C.rounded_box('path', (0, -4.0, -0.0), (18, 8.2, 0.04), 0.015, C.mat('path', (0.6, 0.42, 0.27), rough=0.85), None)
-W0 = (-8.4, 1.3, -1.1, 0.95, 42)
-CAM = [(0, -2.0) + W0, (74, -1.45) + W0, (84, -1.0) + W0, (222, -1.0) + W0, (300, -0.45) + W0, (330, -0.3) + W0,
-       (436, -0.3) + W0, (452, 0.4, -7.4, 1.25, -1.6, 1.0, 42), (510, 0.4, -7.4, 1.25, -1.6, 1.0, 42),
-       (530, -0.2) + W0, (546, -0.2) + W0, (630, 0.85) + W0, (680, 2.25) + W0, (736, 2.25) + W0,
-       (754, 2.85, -6.4, 1.25, -1.2, 1.05, 45), (TOTAL - 1, 2.85, -6.4, 1.25, -1.2, 1.05, 45)]
+W0 = (-8.0, 1.2, -1.1, 0.95, 42)
+CAM = [(0, -2.4) + W0, (74, -1.45) + W0, (84, -1.25) + W0, (222, -1.25) + W0, (300, 0.0) + W0, (330, 0.2) + W0,
+       (436, 0.2) + W0, (452, 0.75, -7.4, 1.2, -1.8, 1.05, 42), (510, 0.75, -7.4, 1.2, -1.8, 1.05, 42),
+       (530, -0.35) + W0, (546, -0.35) + W0, (630, 1.25) + W0, (680, 2.85) + W0, (736, 2.85) + W0,
+       (754, 3.25, -6.4, 1.2, -1.25, 1.1, 40), (TOTAL - 1, 3.25, -6.4, 1.2, -1.25, 1.1, 40)]
+for nm, off in (('A', -0.4), ('B', -0.2), ('C', -0.4)):
+    f0, f1 = SEGS[nm][:2]
+    for f in list(range(f0 + 8, f1, 10)):
+        CAM.append((f, seg_at(nm, f)[0] + off) + W0)
+CAM = sorted(CAM)
 for f, cx, cy, cz, ty, tz, lens in CAM:
     camkey(f, ((cx, cy, cz), (cx, ty, tz), lens))
 
@@ -39,12 +44,12 @@ for w in W[0]:
     T.pop_in(w, 436)
 ap = apple('apple', cA, (0.12, 0.02, 0.305))
 
-bopi = make('bopi', 1.55)
-ruki = make('ruki', 1.55)
-gruno = make('gruno', 1.65)
+bopi = make('bopi', 1.85)
+ruki = make('ruki', 1.85)
+gruno = make('gruno', 1.85)
 
 
-def drive(root, wheels, name, follower=None, fx=-0.85, fy=0.0, hop=0.0, item=None, ws=1):
+def drive(root, wheels, name, follower=None, fx=-0.95, fy=0.0, hop=0.0, item=None, ws=1):
     f0, f1, n, x0, d, sgn = SEGS[name]
     prev = 0
     for f in range(f0, f1 + 1):
@@ -70,7 +75,7 @@ K(ap, 'location', 0, tuple(ap.location))
 K(ap, 'rotation_euler', 0, (0, 0, 0))
 x, z, _, _ = seg_at('A', 0)
 K(cA, 'location', 0, (x, LANE, G + z))
-T.place(bopi, 0, (x - 0.85, LANE, G))
+T.place(bopi, 0, (x - 0.95, LANE, G))
 T.turn(bopi, 0, 55)
 for s in 'LR':
     T.arm(bopi, s, 0, fwd=-70, out=12)
@@ -84,7 +89,7 @@ xa, za, _, _ = seg_at('A', 74)
 xb, zb, _, _ = seg_at('B', 222)
 K(cA, 'location', 196, (xa, LANE, G + za))
 K(cA, 'location', 206, (xb, LANE, G + zb))
-bx = xa - 0.85
+bx = xa - 0.95
 for k, f in enumerate((180, 186, 192)):
     T.place(bopi, f, (bx, LANE, G))
     T.place(bopi, f + 3, (bx, LANE, G + 0.3))
@@ -107,7 +112,7 @@ for s in 'LR':
 xc, zc, _, _ = seg_at('C', 546)
 K(cA, 'location', 428, (xc, LANE, seg_at('B', 300)[1] + G))
 K(cA, 'location', 438, (xc, LANE, G + zc))
-T.place(bopi, 530, (xc - 0.85, LANE, G))
+T.place(bopi, 530, (xc - 0.95, LANE, G))
 T.turn(bopi, 532, 15)
 T.turn(bopi, 542, 55)
 for s in 'LR':
@@ -120,11 +125,11 @@ for s in 'LR':
     T.arm(bopi, s, 630, fwd=-70, out=12)
     T.rest_arm(bopi, s, 640)
 
-R0 = Vector((0.15, -0.3, G))
-RF = Vector((0.85, -2.0, G))
-RB = Vector((-0.9, -0.2, G))
-RE = Vector((0.85, -0.3, G))
-RS = Vector((1.5, -0.3, G))
+R0 = Vector((-0.5, 0.0, G))
+RF = Vector((1.05, -2.1, G))
+RB = Vector((-1.3, 0.2, G))
+RE = Vector((0.2, 0.0, G))
+RS = Vector((1.1, 0.0, G))
 T.place(ruki, 0, RS)
 T.place(ruki, 58, RS)
 T.turn(ruki, 0, -60)
@@ -139,19 +144,19 @@ T.arm(ruki, 'L', 124, fwd=-25, out=80)
 T.rest_arm(ruki, 'L', 132)
 T.place(ruki, 318, R0)
 T.turn(ruki, 318, -30)
-hop_to(ruki, 322, R0, RF, 20, apex=0.8)
+hop_to(ruki, 322, R0, RF, 20, apex=1.1)
 T.turn(ruki, 342, -35)
 dk = disc('dk', 0.25, 0.08, col[0], None)
 C.sphere('dk.hub', (0, -0.05, 0), (0.06, 0.02, 0.06), hub, dk, 20)
-D0 = 0.45
+D0 = 0.65
 T.pop_in(dk, 360)
-K(dk, 'location', 0, (D0, -2.3, G + 0.25))
-K(dk, 'location', 378, (D0, -2.3, G + 0.25))
+K(dk, 'location', 0, (D0, -2.4, G + 0.25))
+K(dk, 'location', 378, (D0, -2.4, G + 0.25))
 K(dk, 'rotation_euler', 378, (0, 0, 0))
 for f in range(378, 421, 2):
     u = ease((f - 378) / 42)
     dd = 0.95 * u
-    K(dk, 'location', f, (D0 - dd, -2.3, G + 0.25))
+    K(dk, 'location', f, (D0 - dd, -2.4, G + 0.25))
     K(dk, 'rotation_euler', f, (0, -dd / 0.25, 0))
 T.pop_out(dk, 428, 1.0, 8)
 T.arm(ruki, 'L', 368, 0, None)
@@ -168,11 +173,6 @@ T.place(ruki, 512, RF)
 hop_to(ruki, 514, RF, RB, 24, apex=1.1)
 T.turn(ruki, 536, -10)
 T.turn(ruki, 560, 30)
-T.place(ruki, 640, RB)
-for k, f in enumerate(range(640, 664, 6)):
-    p = RB.lerp(RE, (k + 1) / 4)
-    T.place(ruki, f + 3, p + Vector((0, 0, 0.06)))
-    T.place(ruki, f + 6, p)
 T.turn(ruki, 664, 30)
 
 gA, _ = cart('cartG', (0.45, 0.65, 0.04), None)
@@ -182,16 +182,16 @@ gA.rotation_euler = (0, 0, math.radians(180))
 cup, pink = shake_cup('cup', gA, (-0.22, 0.0, 0.305))
 x, z, _, _ = seg_at('G1', 0)
 K(gA, 'location', 0, (x, LANE, G + z))
-T.place(gruno, 0, (x + 0.8, LANE + 0.1, G))
+T.place(gruno, 0, (x + 0.92, LANE + 0.1, G))
 T.turn(gruno, 0, -60)
-drive(gA, GW, 'G1', gruno, fx=0.8, fy=0.1, hop=0.06, item=cup, ws=-1)
+drive(gA, GW, 'G1', gruno, fx=0.92, fy=0.1, hop=0.06, item=cup, ws=-1)
 for w in GW:
     K(w, 'rotation_euler', 676, w.rotation_euler)
 T.turn(gruno, 676, -60)
 T.turn(gruno, 684, -20)
 T.turn(gruno, 722, -20)
 T.turn(gruno, 728, -55)
-drive(gA, GW, 'G2', gruno, fx=0.8, fy=0.1, ws=-1)
+drive(gA, GW, 'G2', gruno, fx=0.92, fy=0.1, ws=-1)
 T.turn(gruno, 746, -55)
 sc.frame_set(746)
 bpy.context.view_layer.update()
