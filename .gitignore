@@ -1,0 +1,6 @@
+frames/
+*.wav
+*.onnx*
+*.mp4
+MODEL_CARD
+LilitaOne.ttf
