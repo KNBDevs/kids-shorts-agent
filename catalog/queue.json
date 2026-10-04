@@ -1,5 +1,10 @@
 [
  {
+  "id": "intro_v2",
+  "template": "intro",
+  "status": "approved"
+ },
+ {
   "id": "intro",
   "template": "intro",
   "status": "approved"
@@ -8,49 +13,49 @@
   "id": "hola_pimo",
   "template": "hola",
   "char": "pimo",
-  "status": "hold"
+  "status": "approved"
  },
  {
   "id": "hola_ruki",
   "template": "hola",
   "char": "ruki",
-  "status": "hold"
+  "status": "approved"
  },
  {
   "id": "hola_luma",
   "template": "hola",
   "char": "luma",
-  "status": "hold"
+  "status": "approved"
  },
  {
   "id": "hola_tuki",
   "template": "hola",
   "char": "tuki",
-  "status": "hold"
+  "status": "approved"
  },
  {
   "id": "hola_moki",
   "template": "hola",
   "char": "moki",
-  "status": "hold"
+  "status": "approved"
  },
  {
   "id": "hola_bopi",
   "template": "hola",
   "char": "bopi",
-  "status": "hold"
+  "status": "approved"
  },
  {
   "id": "hola_bolita",
   "template": "hola",
   "char": "bolita",
-  "status": "hold"
+  "status": "approved"
  },
  {
   "id": "hola_gruno",
   "template": "hola",
   "char": "gruno",
-  "status": "hold"
+  "status": "approved"
  },
  {
   "id": "bopi_rueda_cuadrada",

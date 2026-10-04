@@ -1,5 +1,7 @@
 name: voices
 on:
+  schedule:
+    - cron: "17 7 * * *"
   workflow_dispatch:
     inputs:
       chars:
@@ -7,6 +9,7 @@ on:
         default: "pimo,ruki,luma,tuki,moki,bopi,bolita,gruno"
 permissions:
   contents: write
+  actions: write
 concurrency:
   group: voices
   cancel-in-progress: false
@@ -23,8 +26,17 @@ jobs:
       - run: pip install -q numpy scipy faster-whisper
       - env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: python voices/gemini_bake.py "${{ inputs.chars }}"
+        run: python voices/gemini_bake.py "${{ inputs.chars || 'pimo,ruki,luma,tuki,moki,bopi,bolita,gruno' }}"
       - if: always()
         run: |
           git config user.name "bot"; git config user.email "bot@users.noreply.github.com"
           git add assets/vo && git commit -qm "update assets" && git pull -q --rebase && git push -q || true
+      - name: Publish pending intro
+        env:
+          GH_TOKEN: ${{ github.token }}
+          R: ${{ github.repository }}
+        run: |
+          git pull -q --rebase || true
+          if [ "$(cat _missing.txt 2>/dev/null)" = "0" ] && ! jq -e 'index("intro_v2")' state/published.json >/dev/null; then
+            gh workflow run build.yml -R "$R" -f template=queue -f deliver=true
+          fi

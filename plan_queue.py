@@ -10,10 +10,21 @@ def out(k, v):
         open(p, 'a').write(f'{k}={v}\n')
     print(f'{k}={v}')
 
+def voices_ready(item):
+    sys.path[:0] = [HERE, os.path.join(HERE, "voices")]
+    from cast import lines
+    from gvoices import digest
+    mp = os.path.join(HERE, "assets", "vo", "manifest.json")
+    man = json.load(open(mp)) if os.path.exists(mp) else {}
+    pre = "intro_" if item["template"] == "intro" else f"hola_{item.get('char')}_"
+    need = {k: e for k, e in lines().items() if k.startswith(pre)}
+    return all(man.get(k, {}).get("hash") == digest(e["char"], e["text"]) for k, e in need.items())
+
+
 def main():
     q = json.load(open(QUEUE))
     done = set(json.load(open(PUB))) if os.path.exists(PUB) else set()
-    nxt = next((e for e in q if e['status'] == 'approved' and e['id'] not in done and (e['template'] in READY)), None)
+    nxt = next((e for e in q if e['status'] == 'approved' and e['id'] not in done and e['template'] in READY and voices_ready(e)), None)
     if not nxt:
         out('skip', 'true')
         return

@@ -5,36 +5,30 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 sys.path[:0] = [ROOT, HERE]
 from cast import lines
-KEY = os.environ["GEMINI_API_KEY"]
+KEY = os.environ.get("GEMINI_API_KEY", "")
 MODEL = os.environ.get("TTS_MODEL", "gemini-2.5-flash-preview-tts")
 B = "https://generativelanguage.googleapis.com/v1beta"
 OUT = os.path.join(ROOT, "assets", "vo")
 TMP = os.path.join(ROOT, "_bake")
 os.makedirs(OUT, exist_ok=True); os.makedirs(TMP, exist_ok=True)
-ACC = "con acento castellano de España (nada latinoamericano), dicción clara y natural, para un dibujo animado infantil"
-VOICES = {
-    "pimo": ("Puck", "Voz de niño pequeño, curioso y alegre, " + ACC),
-    "ruki": ("Umbriel", "Voz de niño tranquilo y sereno, habla pausado y amable, " + ACC),
-    "luma": ("Leda", "Voz de niña pequeña muy alegre y risueña, cálida y expresiva, " + ACC),
-    "tuki": ("Fenrir", "Voz de niño travieso y lleno de energía, rápido y juguetón, " + ACC),
-    "moki": ("Enceladus", "Voz de niño soñador, suave, dulce y algo soñolienta, " + ACC),
-    "bopi": ("Iapetus", "Voz de robot pequeño y simpático, precisa, ordenada y algo entrecortada, " + ACC),
-    "bolita": ("Zephyr", "Voz de niña valiente, impulsiva y entusiasta, muy enérgica, " + ACC),
-    "gruno": ("Algenib", "Voz de villano cómico de dibujos animados, presumido, teatral y pícaro, nunca aterrador, " + ACC),
-}
-VERSION = "g1"
+from gvoices import ACC, VOICES, VERSION, digest
 
 
-def digest(cid, text):
-    import hashlib
-    return hashlib.sha1((VERSION + cid + VOICES[cid][0] + VOICES[cid][1] + text).encode()).hexdigest()[:12]
+BUDGET = [int(os.environ.get("MAX_REQ", "12"))]
 
 
-def tts(prompt, voice):
+def tts(prompt, voice, speakers=None):
+    if BUDGET[0] <= 0:
+        raise RuntimeError("budget")
+    if speakers:
+        sc = {"multiSpeakerVoiceConfig": {"speakerVoiceConfigs": [
+            {"speaker": n, "voiceConfig": {"prebuiltVoiceConfig": {"voiceName": v}}} for n, v in speakers]}}
+    else:
+        sc = {"voiceConfig": {"prebuiltVoiceConfig": {"voiceName": voice}}}
     body = {"contents": [{"parts": [{"text": prompt}]}],
-            "generationConfig": {"responseModalities": ["AUDIO"],
-                                 "speechConfig": {"voiceConfig": {"prebuiltVoiceConfig": {"voiceName": voice}}}}}
-    for attempt in range(6):
+            "generationConfig": {"responseModalities": ["AUDIO"], "speechConfig": sc}}
+    for attempt in range(3):
+        BUDGET[0] -= 1
         r = urllib.request.Request(f"{B}/models/{MODEL}:generateContent", data=json.dumps(body).encode(),
                                    headers={"x-goog-api-key": KEY, "Content-Type": "application/json"})
         try:
@@ -44,7 +38,9 @@ def tts(prompt, voice):
             return np.frombuffer(pcm, dtype=np.int16).astype(np.float64) / 32768, 24000
         except urllib.error.HTTPError as e:
             print("http", e.code, e.read()[:300], flush=True)
-            time.sleep(30 * (attempt + 1))
+            if e.code == 429 and attempt >= 1:
+                raise RuntimeError("quota")
+            time.sleep(40 * (attempt + 1))
         except Exception as e:
             print("err", e, flush=True)
             time.sleep(20)
@@ -102,42 +98,89 @@ def finish(seg, sr, key, e, asr):
             "heard": heard.strip(), "engine": "gemini", "voice": VOICES[e["char"]][0]}
 
 
+PAIRS = [("pimo", "luma"), ("ruki", "moki"), ("tuki", "bolita"), ("bopi", "gruno")]
+NAMES = {"pimo": "Pimo", "luma": "Luma", "ruki": "Ruki", "moki": "Moki", "tuki": "Tuki", "bolita": "Bolita", "bopi": "Bopi", "gruno": "Gruno"}
+
+
+def pending(man, allL, cid):
+    todo = [(k, e) for k, e in allL.items() if e["char"] == cid and man.get(k, {}).get("hash") != digest(cid, e["text"])]
+    uniq = []
+    for k, e in todo:
+        if e["text"] not in [u[1]["text"] for u in uniq]:
+            uniq.append((k, e))
+    return todo, uniq
+
+
+def store(man, todo, results):
+    for k, e in todo:
+        if e["text"] not in results:
+            continue
+        src_k, res = results[e["text"]]
+        if src_k != k:
+            subprocess.run(["cp", os.path.join(OUT, f"{src_k}.wav"), os.path.join(OUT, f"{k}.wav")], check=True)
+        man[k] = dict(res)
+
+
+def run_group(cids, man, allL, asr):
+    jobs = {c: pending(man, allL, c) for c in cids}
+    seq = [(c, k, e) for c in cids for k, e in jobs[c][1]]
+    if not seq:
+        return
+    if len(cids) == 2:
+        order = []
+        a, b = [[x for x in seq if x[0] == c] for c in cids]
+        while a or b:
+            if a: order.append(a.pop(0))
+            if b: order.append(b.pop(0))
+        seq = order
+        styles = " ".join(f"{NAMES[c]}: {VOICES[c][1]}." for c in cids)
+        script = "\n".join(f"{NAMES[c]}: {e['text']}" for c, k, e in seq)
+        prompt = (f"Lee este guion de un dibujo animado infantil. {styles} Cada frase con naturalidad y emoción, "
+                  f"y una pausa de dos segundos entre frase y frase.\n\n{script}")
+        x, sr = tts(prompt, None, [(NAMES[c], VOICES[c][0]) for c in cids])
+    else:
+        c = cids[0]
+        script = "\n".join(f"{e['text']}" for _, k, e in seq)
+        prompt = (f"{VOICES[c][1]}. Lee las siguientes frases en orden, con naturalidad y emoción, "
+                  f"haciendo una pausa de dos segundos entre cada frase.\n\n{script}")
+        x, sr = tts(prompt, VOICES[c][0])
+    parts = split(x, sr, len(seq))
+    if parts is None:
+        print("split failed", cids, flush=True)
+        return False
+    results = {c: {} for c in cids}
+    for (c, k, e), seg in zip(seq, parts):
+        res = finish(seg, sr, k, e, asr)
+        results[c][e["text"]] = (k, res)
+        print(c, k, res["dur"], res["asr"], "|", e["text"], "|", res["heard"], flush=True)
+    for c in cids:
+        store(man, jobs[c][0], results[c])
+    return True
+
+
 def main(chars):
     from faster_whisper import WhisperModel
     asr = WhisperModel("small", device="cpu", compute_type="int8")
     mp = os.path.join(OUT, "manifest.json")
     man = json.load(open(mp)) if os.path.exists(mp) else {}
     allL = lines()
-    for cid in chars:
-        voice, style = VOICES[cid]
-        todo = [(k, e) for k, e in allL.items() if e["char"] == cid and man.get(k, {}).get("hash") != digest(cid, e["text"])]
-        uniq = []
-        for k, e in todo:
-            if e["text"] not in [u[1]["text"] for u in uniq]:
-                uniq.append((k, e))
-        if not uniq:
-            continue
-        script = "\n".join(f"{i + 1}. {e['text']}" for i, (k, e) in enumerate(uniq))
-        prompt = (f"{style}. Lee las siguientes frases en orden, con naturalidad y emoción, "
-                  f"haciendo una pausa de dos segundos entre cada frase. No leas los números.\n\n{script}")
-        x, sr = tts(prompt, voice)
-        parts = split(x, sr, len(uniq))
-        results = {}
-        for i, (k, e) in enumerate(uniq):
-            seg = parts[i] if parts else None
-            res = finish(seg, sr, k, e, asr) if seg is not None else None
-            if res is None or res["asr"] < 0.7:
-                print("retry single", k, res and res["heard"], flush=True)
-                y, sr1 = tts(f"{style}. Di con naturalidad y emoción: {e['text']}", voice)
-                res = finish(y, sr1, k, e, asr)
-            results[e["text"]] = (k, res)
-            print(cid, k, res["dur"], res["asr"], "|", e["text"], "|", res["heard"], flush=True)
-        for k, e in todo:
-            src_k, res = results[e["text"]]
-            if src_k != k:
-                subprocess.run(["cp", os.path.join(OUT, f"{src_k}.wav"), os.path.join(OUT, f"{k}.wav")], check=True)
-            man[k] = dict(res)
-        json.dump(man, open(mp, "w"), ensure_ascii=False, indent=1)
+    groups = [p for p in PAIRS if p[0] in chars and p[1] in chars]
+    done = {c for p in groups for c in p}
+    groups += [(c,) for c in chars if c not in done]
+    try:
+        for g in groups:
+            ok = run_group(list(g), man, allL, asr)
+            json.dump(man, open(mp, "w"), ensure_ascii=False, indent=1)
+            if ok is False and len(g) == 2:
+                for c in g:
+                    run_group([c], man, allL, asr)
+                    json.dump(man, open(mp, "w"), ensure_ascii=False, indent=1)
+    except RuntimeError as e:
+        print("stopped:", e, flush=True)
+    json.dump(man, open(mp, "w"), ensure_ascii=False, indent=1)
+    missing = [k for k, e in allL.items() if man.get(k, {}).get("hash") != digest(e["char"], e["text"])]
+    print("missing", len(missing), missing, flush=True)
+    open(os.path.join(ROOT, "_missing.txt"), "w").write(str(len(missing)))
 
 
 if __name__ == "__main__":
