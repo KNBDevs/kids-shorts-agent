@@ -155,3 +155,268 @@ def fold_wings(b, f, amt=1.0):
         sx = -1 if k == 0 else 1
         C.key(w, 'rotation_euler', f, (0, math.radians(sx * 72 * amt), 0))
         C.key(w, 'scale', f, (1 - 0.55 * amt, 1, 1))
+
+
+def _m(name, rgb, rough=0.5, emit=0.0, coat=0.2, sss=0.0):
+    k = 'hw_' + name
+    return bpy.data.materials.get(k) or C.mat(k, rgb, rough=rough, emit=emit, coat=coat, sss=sss)
+
+
+def _flat(name, pts2d, depth, mat, parent, loc=(0, 0, 0), rot=(0, 0, 0)):
+    bm = bmesh.new()
+    vs = [bm.verts.new((x, 0.0, z)) for x, z in pts2d]
+    f = bm.faces.new(vs)
+    ext = bmesh.ops.extrude_face_region(bm, geom=[f])
+    for v in [e for e in ext['geom'] if isinstance(e, bmesh.types.BMVert)]:
+        v.co.y += depth
+    for v in bm.verts:
+        v.co.y -= depth / 2
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
+    o = C.mesh_obj(name, bm, mat, parent, smooth=False)
+    b = o.modifiers.new('bev', 'BEVEL')
+    b.width = min(0.006, depth * 0.3)
+    b.segments = 2
+    b.limit_method = 'ANGLE'
+    o.location = loc
+    o.rotation_euler = rot
+    return o
+
+
+def _circle(r, n=24, cx=0.0, cz=0.0, sx=1.0):
+    return [(cx + sx * r * math.cos(-2 * math.pi * k / n), cz + r * math.sin(-2 * math.pi * k / n)) for k in range(n)]
+
+
+def pumpkin(name, loc=(0, 0, 0), h=0.4, face=False, parent=None, rgb=(0.82, 0.36, 0.08)):
+    g = C.empty(name, parent, loc)
+    body = _m('pumpkin_%d%d%d' % tuple(int(c * 9) for c in rgb), rgb, rough=0.45, coat=0.3)
+    stem = _m('stem', (0.28, 0.33, 0.14), rough=0.7)
+    r = h * 0.62
+    for k in range(8):
+        a = 2 * math.pi * k / 8
+        C.sphere(f'{name}.rib{k}', (0.42 * r * math.cos(a), 0.42 * r * math.sin(a), 0.42 * h), (0.6 * r, 0.6 * r, 0.42 * h), body, g, 24)
+    C.tube(name + '.stem', [(0, 0, 0.78 * h), (0.02 * h, 0, 0.95 * h), (0.09 * h, 0, 1.04 * h)], 0.055 * h, stem, g)
+    if face:
+        glow = _m('glow', (1.0, 0.62, 0.2), rough=0.4, emit=3.0, coat=0.0)
+        fy = -0.98 * r
+        f = C.empty(name + '.face', g, (0, fy, 0.45 * h))
+        for sx in (-1, 1):
+            _flat(f'{name}.eye{sx}', _circle(0.075 * h, 16, sx * 0.17 * h, 0.08 * h), 0.03 * h, glow, f)
+        sm = [(-0.2 * h + 0.4 * h * k / 12, -0.08 * h - 0.09 * h * math.sin(math.pi * k / 12)) for k in range(13)]
+        sm += [(0.2 * h - 0.4 * h * k / 12, -0.08 * h - 0.04 * h * math.sin(math.pi * k / 12)) for k in range(1, 12)]
+        _flat(name + '.smile', sm[::-1], 0.03 * h, glow, f)
+        bpy.ops.object.light_add(type='POINT', location=(0, 0, 0.45 * h))
+        L = bpy.context.object
+        L.data.energy = 6 * h
+        L.data.color = (1.0, 0.6, 0.25)
+        L.data.shadow_soft_size = 0.05
+        L.parent = g
+        L.location = (0, -0.3 * r, 0.45 * h)
+    return g
+
+
+def turnip_lantern(name, loc=(0, 0, 0), h=0.24, parent=None):
+    g = C.empty(name, parent, loc)
+    cream = _m('turnip', (0.9, 0.86, 0.76), rough=0.6, sss=0.1)
+    violet = _m('turnip_top', (0.48, 0.24, 0.5), rough=0.5)
+    leaf = _m('turnip_leaf', (0.3, 0.42, 0.25), rough=0.6)
+    prof = [(0.0, 0.0), (0.03 * h, 0.12 * h), (0.25 * h, 0.4 * h), (0.5 * h, 0.46 * h), (0.75 * h, 0.38 * h), (0.9 * h, 0.2 * h), (0.95 * h, 0.0)]
+    C.lathe(name + '.body', prof, cream, g, segs=40)
+    C.lathe(name + '.top', [(0.55 * h, 0.0), (0.56 * h, 0.462 * h), (0.75 * h, 0.39 * h), (0.9 * h, 0.21 * h), (0.965 * h, 0.0)], violet, g, segs=40)
+    C.tube(name + '.root', [(0, 0, 0.02 * h), (0.02 * h, 0, -0.08 * h)], 0.02 * h, cream, g)
+    for k, a in enumerate((-25, 5, 30)):
+        C.tube(f'{name}.leaf{k}', [(0, 0, 0.93 * h), (math.sin(math.radians(a)) * 0.15 * h, 0, 1.2 * h)], 0.025 * h, leaf, g)
+    glow = _m('glow', (1.0, 0.62, 0.2), rough=0.4, emit=3.0, coat=0.0)
+    f = C.empty(name + '.face', g, (0, -0.44 * h, 0.42 * h))
+    for sx in (-1, 1):
+        _flat(f'{name}.eye{sx}', _circle(0.055 * h, 14, sx * 0.13 * h, 0.07 * h), 0.03 * h, glow, f)
+    sm = [(-0.14 * h + 0.28 * h * k / 10, -0.06 * h - 0.06 * h * math.sin(math.pi * k / 10)) for k in range(11)]
+    sm += [(0.14 * h - 0.28 * h * k / 10, -0.06 * h - 0.025 * h * math.sin(math.pi * k / 10)) for k in range(1, 10)]
+    _flat(name + '.smile', sm[::-1], 0.03 * h, glow, f)
+    return g
+
+
+def led_light(name, loc=(0, 0, 0), h=0.1, parent=None):
+    g = C.empty(name, parent, loc)
+    base = _m('led_base', (0.92, 0.9, 0.85), rough=0.4)
+    C.lathe(name + '.base', [(0.0, 0.0), (0.0, 0.32 * h), (0.6 * h, 0.3 * h), (0.62 * h, 0.0)], base, g, segs=32)
+    flame = _m('led_glow', (1.0, 0.72, 0.3), rough=0.3, emit=4.0, coat=0.0)
+    C.lathe(name + '.drop', [(0.6 * h, 0.0), (0.65 * h, 0.1 * h), (0.78 * h, 0.13 * h), (0.92 * h, 0.08 * h), (1.0 * h, 0.0)], flame, g, segs=24)
+    return g
+
+
+def led_candle(name, loc=(0, 0, 0), h=0.22, parent=None, rgb=(0.92, 0.88, 0.8)):
+    g = C.empty(name, parent, loc)
+    wax = _m('candle_' + '%d%d%d' % tuple(int(c * 9) for c in rgb), rgb, rough=0.5, sss=0.1)
+    C.lathe(name + '.wax', [(0.0, 0.0), (0.0, 0.2 * h), (0.75 * h, 0.2 * h), (0.78 * h, 0.15 * h), (0.79 * h, 0.0)], wax, g, segs=32)
+    flame = _m('led_glow', (1.0, 0.72, 0.3), rough=0.3, emit=4.0, coat=0.0)
+    C.lathe(name + '.drop', [(0.79 * h, 0.0), (0.82 * h, 0.05 * h), (0.9 * h, 0.065 * h), (0.98 * h, 0.035 * h), (1.04 * h, 0.0)], flame, g, segs=20)
+    return g
+
+
+def web(name, loc=(0, 0, 0), r=0.35, spokes=8, rings=5, corner=False, parent=None, rot=(0, 0, 0)):
+    g = C.empty(name, parent, loc, rot)
+    silk = _m('silk', (0.78, 0.8, 0.83), rough=0.5, emit=0.15, coat=0.0)
+    a0, a1 = (0.0, math.pi / 2) if corner else (0.0, 2 * math.pi)
+    n = spokes if not corner else max(spokes // 2, 3)
+    angs = [a0 + (a1 - a0) * k / (n - (1 if corner else 0)) for k in range(n)]
+    parts = []
+    for k, a in enumerate(angs):
+        parts.append(C.tube(f'{name}.spoke{k}', [(0, 0, 0), (r * math.cos(a), 0, -r * math.sin(a))], 0.004, silk, g))
+    for j in range(1, rings + 1):
+        rr = r * j / (rings + 0.4)
+        pts = []
+        seq = angs + ([] if corner else [angs[0]])
+        for k, a in enumerate(seq):
+            pts.append((rr * math.cos(a), 0, -rr * math.sin(a)))
+            if k + 1 < len(seq):
+                b = seq[k + 1] if k + 1 < len(seq) else angs[0]
+                m_ = (a + (b if b > a else b + 2 * math.pi)) / 2
+                pts.append((rr * 0.93 * math.cos(m_), 0, -rr * 0.93 * math.sin(m_)))
+        parts.append(C.tube(f'{name}.ring{j}', pts, 0.003, silk, g))
+    return g, parts
+
+
+def reveal(parts, f0, f1):
+    n = len(parts)
+    for k, o in enumerate(parts):
+        a = f0 + (f1 - f0) * k / n
+        b = a + (f1 - f0) / n * 1.5
+        o.data.bevel_factor_mapping_end = 'SPLINE'
+        o.data.bevel_factor_end = 0.0
+        o.data.keyframe_insert('bevel_factor_end', frame=0)
+        o.data.keyframe_insert('bevel_factor_end', frame=int(a))
+        o.data.bevel_factor_end = 1.0
+        o.data.keyframe_insert('bevel_factor_end', frame=int(b) + 1)
+
+
+def autumn_leaf(name, loc=(0, 0, 0), size=0.12, rgb=(0.75, 0.38, 0.12), parent=None, rot=(0, 0, 0)):
+    g = C.empty(name, parent, loc, rot)
+    mt = _m('leaf_%d%d%d' % tuple(int(c * 9) for c in rgb), rgb, rough=0.6)
+    pts = []
+    for k in range(25):
+        t = k / 24
+        a = math.pi * t
+        w = size * 0.42 * math.sin(a) * (1 + 0.25 * math.sin(5 * a))
+        pts.append((w, -size + 2 * size * t))
+    pts += [(-x, z) for x, z in pts[-2:0:-1]]
+    _flat(name + '.m', pts, size * 0.04, mt, g)
+    C.tube(name + '.vein', [(0, -size * 0.022, -size * 1.15), (0, -size * 0.022, size * 0.8)], size * 0.02, _m('leaf_vein', (0.45, 0.25, 0.1)), g)
+    return g
+
+
+def bunting(name, a, b, n=7, sag=0.18, parent=None, cols=None):
+    a, b = Vector(a), Vector(b)
+    g = C.empty(name, parent)
+    cord = _m('cord', (0.9, 0.86, 0.78), rough=0.6)
+    pts = [tuple(a.lerp(b, k / 20) - Vector((0, 0, sag * 4 * (k / 20) * (1 - k / 20)))) for k in range(21)]
+    C.tube(name + '.cord', pts, 0.008, cord, g)
+    cols = cols or [(0.2, 0.12, 0.25), (0.82, 0.36, 0.08), (0.25, 0.36, 0.27), (0.95, 0.6, 0.18)]
+    for k in range(n):
+        u = (k + 0.5) / n
+        p = a.lerp(b, u) - Vector((0, 0, sag * 4 * u * (1 - u)))
+        mt = _m('flag%d' % (k % len(cols)), cols[k % len(cols)], rough=0.6)
+        _flat(f'{name}.flag{k}', [(-0.08, 0.0), (0.08, 0.0), (0.0, -0.16)], 0.006, mt, g, loc=tuple(p))
+    return g
+
+
+def paper_bat(name, loc=(0, 0, 0), s=0.18, parent=None, string=0.3):
+    g = C.empty(name, parent, loc)
+    paper = _m('paper_bat', (0.16, 0.13, 0.2), rough=0.8)
+    pts = [(0.0, 0.18), (0.12, 0.25), (0.32, 0.3), (0.5, 0.18), (0.42, 0.12), (0.36, 0.0), (0.26, 0.06), (0.18, -0.04), (0.08, 0.04), (0.0, -0.12)]
+    full = [(x * s, z * s) for x, z in pts] + [(-x * s, z * s) for x, z in pts[-2:0:-1]]
+    _flat(name + '.m', full[::-1], 0.01 * s, paper, g)
+    for sx in (-1, 1):
+        C.sphere(f'{name}.ear{sx}', (sx * 0.06 * s, 0, 0.24 * s), (0.04 * s, 0.01 * s, 0.07 * s), paper, g, 8)
+    C.tube(name + '.str', [(0, 0, 0.2 * s), (0, 0, string)], 0.002, _m('cord', (0.9, 0.86, 0.78)), g)
+    return g
+
+
+def wrapped_treat(name, loc=(0, 0, 0), s=0.07, rgb=(0.95, 0.6, 0.18), parent=None, rot=(0, 0, 0)):
+    g = C.empty(name, parent, loc, rot)
+    mt = _m('treat_%d%d%d' % tuple(int(c * 9) for c in rgb), rgb, rough=0.25, coat=0.6)
+    C.sphere(name + '.m', (0, 0, 0), (0.5 * s, 0.32 * s, 0.32 * s), mt, g, 20)
+    for sx in (-1, 1):
+        C.lathe(f'{name}.end{sx}', [(0.0, 0.0), (0.02 * s, 0.12 * s), (0.25 * s, 0.25 * s), (0.27 * s, 0.0)], mt, C.empty(f'{name}.e{sx}', g, (sx * 0.42 * s, 0, 0), (0, math.radians(sx * 90), 0)), segs=12)
+    return g
+
+
+def treat_basket(name, loc=(0, 0, 0), h=0.2, parent=None, rgb=(0.82, 0.36, 0.08)):
+    g = C.empty(name, parent, loc)
+    mt = _m('basket', rgb, rough=0.45, coat=0.3)
+    C.lathe(name + '.pail', [(0.0, 0.0), (0.0, 0.42 * h), (0.15 * h, 0.5 * h), (0.75 * h, 0.55 * h), (0.8 * h, 0.56 * h), (0.8 * h, 0.5 * h), (0.15 * h, 0.44 * h), (0.06 * h, 0.0)], mt, g, segs=40)
+    pts = [(0.55 * h * math.cos(math.pi * k / 16), 0, 0.78 * h + 0.45 * h * math.sin(math.pi * k / 16)) for k in range(17)]
+    C.tube(name + '.handle', pts, 0.025 * h, _m('cord', (0.9, 0.86, 0.78)), g)
+    return g
+
+
+def card(name, text, font, loc=(0, 0, 0), w=0.32, h=0.2, bg=(0.91, 0.87, 0.81), ink=(0.15, 0.2, 0.26), parent=None, rot=(0, 0, 0)):
+    g = C.empty(name, parent, loc, rot)
+    C.rounded_box(name + '.board', (0, 0, 0), (w, 0.02, h), 0.01, _m('card_%d%d%d' % tuple(int(c * 9) for c in bg), bg, rough=0.6), g)
+    cu = bpy.data.curves.new(name + '.t', 'FONT')
+    cu.body = text
+    cu.font = font
+    cu.align_x = 'CENTER'
+    cu.align_y = 'CENTER'
+    cu.size = h * 0.55
+    cu.extrude = 0.004
+    o = bpy.data.objects.new(name + '.text', cu)
+    bpy.context.scene.collection.objects.link(o)
+    o.data.materials.append(_m('ink_%d%d%d' % tuple(int(c * 9) for c in ink), ink, rough=0.5))
+    o.parent = g
+    o.location = (0, -0.014, 0)
+    o.rotation_euler = (math.radians(90), 0, 0)
+    bpy.context.view_layer.update()
+    if o.dimensions.x > w * 0.88:
+        k = w * 0.88 / o.dimensions.x
+        o.scale = (k, k, k)
+    return g
+
+
+def toy_skeleton(name, loc=(0, 0, 0), h=0.7, parent=None, rot=(0, 0, 0)):
+    g = C.empty(name, parent, loc, rot)
+    card_m = _m('cardboard', (0.93, 0.89, 0.8), rough=0.7)
+    ink = _m('sk_ink', (0.2, 0.17, 0.24), rough=0.6)
+    blush = _m('sk_blush', (0.95, 0.55, 0.55), rough=0.8)
+    d = 0.012 * h / 0.7
+    _flat(name + '.head', _circle(0.13 * h, 32, 0, 0.82 * h, 1.1), d, card_m, g)
+    for sx in (-1, 1):
+        _flat(f'{name}.eye{sx}', _circle(0.03 * h, 16, sx * 0.05 * h, 0.85 * h), d, ink, g, loc=(0, -d, 0))
+        _flat(f'{name}.blush{sx}', _circle(0.02 * h, 12, sx * 0.09 * h, 0.79 * h), d, blush, g, loc=(0, -d, 0))
+    C.tube(name + '.smile', [(-0.05 * h, -1.6 * d, 0.77 * h), (0, -1.6 * d, 0.745 * h), (0.05 * h, -1.6 * d, 0.77 * h)], 0.007 * h, ink, g)
+    C.tube(name + '.spine', [(0, 0, 0.69 * h), (0, 0, 0.36 * h)], 0.022 * h, card_m, g)
+    for k in range(3):
+        z = 0.64 * h - k * 0.075 * h
+        w = (0.14 - k * 0.02) * h
+        C.tube(f'{name}.rib{k}', [(-w, 0, z - 0.02 * h), (0, 0, z), (w, 0, z - 0.02 * h)], 0.018 * h, card_m, g)
+    for sx in (-1, 1):
+        C.tube(f'{name}.arm{sx}', [(sx * 0.12 * h, 0, 0.66 * h), (sx * 0.2 * h, 0, 0.5 * h), (sx * 0.24 * h, 0, 0.38 * h)], 0.02 * h, card_m, g)
+        C.sphere(f'{name}.hand{sx}', (sx * 0.245 * h, 0, 0.36 * h), (0.035 * h, 0.012 * h, 0.035 * h), card_m, g, 12)
+        C.tube(f'{name}.leg{sx}', [(sx * 0.05 * h, 0, 0.36 * h), (sx * 0.07 * h, 0, 0.06 * h)], 0.022 * h, card_m, g)
+        C.sphere(f'{name}.foot{sx}', (sx * 0.08 * h, -0.01 * h, 0.04 * h), (0.045 * h, 0.02 * h, 0.03 * h), card_m, g, 12)
+    C.tube(name + '.pelvis', [(-0.07 * h, 0, 0.37 * h), (0.07 * h, 0, 0.37 * h)], 0.025 * h, card_m, g)
+    return g
+
+
+def plush_snake(name, loc=(0, 0, 0), L=0.9, parent=None, rot=(0, 0, 0)):
+    g = C.empty(name, parent, loc, rot)
+    body = _m('snake', (0.42, 0.52, 0.36), rough=0.85)
+    spot = _m('snake_spot', (0.95, 0.6, 0.18), rough=0.8)
+    belly = _m('snake_belly', (0.93, 0.86, 0.68), rough=0.85)
+    r = 0.07 * L
+    pts, radii = [], []
+    for k in range(25):
+        t = k / 24
+        pts.append((-L / 2 + L * t, 0.12 * L * math.sin(t * 2.2 * math.pi), r))
+        radii.append(0.35 + 0.65 * math.sin(math.pi * min(t * 1.1, 1.0)) ** 0.5)
+    C.tube(name + '.body', pts, r, body, g, radii=radii)
+    for k in range(4, 22, 3):
+        x, y, z = pts[k]
+        C.sphere(f'{name}.spot{k}', (x, y, z + r * radii[k] * 0.85), (r * 0.45, r * 0.45, r * 0.2), spot, g, 12)
+    hx, hy, hz = pts[-1]
+    hd = C.empty(name + '.head', g, (hx + r * 0.8, hy, hz + r * 0.6))
+    C.sphere(name + '.headm', (0, 0, 0), (r * 1.7, r * 1.4, r * 1.3), body, hd, 24)
+    C.sphere(name + '.chin', (r * 0.3, 0, -r * 0.5), (r * 1.3, r * 1.1, r * 0.7), belly, hd, 20)
+    _eyes(name, hd, [(r * 0.7, -r * 0.7, r * 0.6), (r * 0.7, r * 0.7, r * 0.6)], r * 0.32, r * 0.38)
+    for e in [o for o in hd.children if o.name.startswith(name + '.eye.')]:
+        e.rotation_euler = (0, 0, math.radians(90))
+    return g
