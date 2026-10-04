@@ -8,49 +8,49 @@
   "id": "hola_pimo",
   "template": "hola",
   "char": "pimo",
-  "status": "approved"
+  "status": "hold"
  },
  {
   "id": "hola_ruki",
   "template": "hola",
   "char": "ruki",
-  "status": "approved"
+  "status": "hold"
  },
  {
   "id": "hola_luma",
   "template": "hola",
   "char": "luma",
-  "status": "approved"
+  "status": "hold"
  },
  {
   "id": "hola_tuki",
   "template": "hola",
   "char": "tuki",
-  "status": "approved"
+  "status": "hold"
  },
  {
   "id": "hola_moki",
   "template": "hola",
   "char": "moki",
-  "status": "approved"
+  "status": "hold"
  },
  {
   "id": "hola_bopi",
   "template": "hola",
   "char": "bopi",
-  "status": "approved"
+  "status": "hold"
  },
  {
   "id": "hola_bolita",
   "template": "hola",
   "char": "bolita",
-  "status": "approved"
+  "status": "hold"
  },
  {
   "id": "hola_gruno",
   "template": "hola",
   "char": "gruno",
-  "status": "approved"
+  "status": "hold"
  },
  {
   "id": "bopi_rueda_cuadrada",
