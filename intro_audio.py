@@ -116,10 +116,9 @@ add(voice, chorus(GROUP_LINE['text'], 'group', [1.3, 1.45, 1.6, 1.75], 1.1), ft(
 gv = GRUNO_LINE['voice']
 add(voice, tts(GRUNO_LINE['text'], 'gruno', gv['pitch'], gv['tempo'], max_len=1.9), ft(GRUNO_LINE['frame']), 0.9, pan=0.15)
 add(voice, chorus(SUBSCRIBE_LINE['text'], 'sub', [1.4, 1.62], 1.1), ft(SUBSCRIBE_LINE['frame']), 0.85)
-voice = reverb(voice, 0.6, 0.12)
 env = np.convolve(np.abs(voice[:, 0]), np.ones(2205) / 2205, 'same')
-duck = 1 - 0.5 * np.clip(env / (env.max() + 1e-09) * 3, 0, 1)
-mix = music * duck[:, None] * 0.8 + sfx + voice
+duck = 1 - 0.68 * np.clip(env / (env.max() + 1e-09) * 4, 0, 1)
+mix = music * duck[:, None] * 0.62 + sfx * (0.55 + 0.45 * duck)[:, None] + voice * 1.25
 mix = np.tanh(mix * 1.1) / np.tanh(1.1)
 mix /= np.abs(mix).max() / 0.89
 wavfile.write(os.path.join(HERE, 'soundtrack.wav'), SR, (mix * 32767).astype(np.int16))

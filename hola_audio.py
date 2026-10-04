@@ -73,10 +73,9 @@ limits = (1.4, 1.5, 3.6, 3.6, 2.0)
 for k, (f, text, lim) in enumerate(zip(times, D['lines'], limits)):
     s = tts(text, f'{CID}{k}', v['pitch'], v['tempo'], v.get('robot', False), max_len=lim)
     add(vo, s, ft(f), 0.9)
-vo = reverb(vo, 0.5, 0.1)
 env = np.convolve(np.abs(vo[:, 0]), np.ones(2205) / 2205, 'same')
-duck = 1 - 0.5 * np.clip(env / (env.max() + 1e-09) * 3, 0, 1)
-mix = music * duck[:, None] * 0.75 + sfx + vo
+duck = 1 - 0.68 * np.clip(env / (env.max() + 1e-09) * 4, 0, 1)
+mix = music * duck[:, None] * 0.62 + sfx * (0.55 + 0.45 * duck)[:, None] + vo * 1.25
 mix = np.tanh(mix * 1.1) / np.tanh(1.1)
 mix /= np.abs(mix).max() / 0.89
 wavfile.write(os.path.join(HERE, 'soundtrack.wav'), SR, (mix * 32767).astype(np.int16))
