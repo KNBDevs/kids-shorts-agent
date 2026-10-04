@@ -47,10 +47,16 @@ for bar, ch in enumerate(prog):
 music = reverb(music, 1.3, 0.28) + drums
 tt = np.arange(N) / SR
 music *= (np.clip(tt / 0.05, 0, 1) * np.clip((DUR - tt) / 0.6, 0, 1))[:, None]
+def tock():
+    n = int(0.12 * SR)
+    t = np.arange(n) / SR
+    return (np.sin(2 * np.pi * 820 * t) + 0.4 * np.sin(2 * np.pi * 1730 * t)) * np.exp(-t * 45) * np.minimum(1, t * 900)
+
+
 SFX = {"pop": lambda: pop(), "boing": lambda: boing(170), "boing_up": lambda: boing(260, 0.35, up=True), "splat": lambda: splat(),
        "sparkle": lambda: sparkle(88), "popper": lambda: popper(), "bip": lambda: bip(88),
        "whistle_down": lambda: slide_whistle(1400, 400, 0.5), "whistle_up": lambda: slide_whistle(500, 1500, 0.5),
-       "clonk": lambda: S.lp(kick(), 1500)}
+       "clonk": lambda: S.lp(kick(), 1500), "tock": lambda: tock()}
 sfx = np.zeros((N, 2))
 for f, kind, g in getattr(P, "SFX", []):
     add(sfx, SFX[kind](), ft(f), g)
