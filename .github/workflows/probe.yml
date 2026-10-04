@@ -1,0 +1,19 @@
+name: probe
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python lab/gemini_probe.py
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          R: ${{ github.repository }}
+        run: |
+          cd lab_out && zip -qr ../probe.zip . && cd ..
+          gh release upload preview probe.zip -R "$R" --clobber
