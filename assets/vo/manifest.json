@@ -1,408 +1,426 @@
 {
-  "hola_bolita_0": {
-    "hash": "76da94f921c4",
-    "dur": 1.2,
-    "text": "¡Hola, hola, hola!",
-    "asr": 1.0,
-    "heard": " ¡Hola, hola, hola!"
-  },
-  "hola_bolita_1": {
-    "hash": "00379b9741fd",
-    "dur": 0.67,
-    "text": "¡Soy Bolita!",
-    "asr": 1.0,
-    "heard": " ¡Soy Bolita!"
-  },
-  "hola_bolita_2": {
-    "hash": "e5c7d6406a1b",
-    "dur": 2.09,
-    "text": "¡Soy muy valiente! ¡Yo primero, yo primero!",
-    "asr": 1.0,
-    "heard": " Soy muy valiente. Yo primero, yo primero."
-  },
-  "hola_bolita_3": {
-    "hash": "3d608744d7d0",
-    "dur": 1.33,
-    "text": "Bueno... mejor todos juntos. ¿Te vienes?",
-    "asr": 1.0,
-    "heard": " Bueno, mejor todos juntos, ¿te vienes?"
-  },
-  "hola_bolita_4": {
-    "hash": "d59a26418e03",
-    "dur": 0.77,
-    "text": "¡Hasta la próxima!",
-    "asr": 1.0,
-    "heard": " ¡Hasta la próxima!"
-  },
-  "intro_bolita": {
-    "hash": "f4095a18ca1f",
-    "dur": 1.21,
-    "text": "¡Soy Bolita! ¡Yo primero!",
-    "asr": 1.0,
-    "heard": " Soy Bolita, yo primero."
-  },
-  "intro_hook_bolita": {
-    "hash": "7f15e7f5313c",
-    "dur": 0.38,
-    "text": "¡Hola!",
-    "asr": 1.0,
-    "heard": " ¡Hola!"
-  },
-  "intro_group_bolita": {
-    "hash": "5d1b7e5b24ee",
-    "dur": 1.02,
-    "text": "¡Somos Pimoruki!",
-    "asr": 1.0,
-    "heard": " Somos Pimoruki."
-  },
-  "hola_bopi_0": {
-    "hash": "1946f90c6b43",
-    "dur": 0.99,
-    "text": "Hola. ¡Bip, bop!",
-    "asr": 0.86,
-    "heard": " ¡Hola, bip bop, bop!"
-  },
-  "hola_bopi_1": {
-    "hash": "bebedfe5d53d",
-    "dur": 0.98,
-    "text": "Soy Bopi, el robot.",
-    "asr": 1.0,
-    "heard": " Soy Bopi, el robot."
-  },
-  "hola_bopi_2": {
-    "hash": "56262040fc28",
-    "dur": 2.45,
-    "text": "Me gusta tenerlo todo ordenado. ¡Uno, dos y tres!",
-    "asr": 1.0,
-    "heard": " Me gusta tenerlo todo ordenado. 1, 2 y 3."
-  },
-  "hola_bopi_3": {
-    "hash": "d138b8e75894",
-    "dur": 2.48,
-    "text": "¿Me ayudas a contar? Uno, dos, tres... ¡Perfecto!",
-    "asr": 1.0,
-    "heard": " Me ayudas a contar uno, dos, tres, perfecto."
-  },
-  "hola_bopi_4": {
-    "hash": "70428db1da63",
-    "dur": 1.02,
-    "text": "Bopi se despide. ¡Bip!",
-    "asr": 1.0,
-    "heard": " Bopi se despide.  ¡Bip!"
-  },
-  "intro_bopi": {
-    "hash": "15e9e4a62fe3",
-    "dur": 1.19,
-    "text": "Soy Bopi. ¡Todo en orden! ¡Bip!",
-    "asr": 0.91,
-    "heard": " Soy Bopi, todo en orden."
-  },
-  "hola_gruno_0": {
-    "hash": "ca23a4c8978d",
-    "dur": 1.14,
-    "text": "Vaya, vaya, vaya...",
-    "asr": 1.0,
-    "heard": " ¡Vaya, vaya, vaya!"
-  },
-  "hola_gruno_1": {
-    "hash": "ca14b036bbe4",
-    "dur": 1.25,
-    "text": "¡Soy el Doctor Gruño!",
-    "asr": 1.0,
-    "heard": " Soy el doctor Grunio."
-  },
-  "hola_gruno_2": {
-    "hash": "c26bb6bf712b",
-    "dur": 1.99,
-    "text": "¡El inventor más genial del mundo mundial!",
-    "asr": 1.0,
-    "heard": " el inventor más genial del mundo mundial."
-  },
-  "hola_gruno_3": {
-    "hash": "a31a9ecaf057",
-    "dur": 2.14,
-    "text": "Mirad mi nuevo invento... ¡Ay! ¡Ups!",
-    "asr": 1.0,
-    "heard": " Mirad mi nuevo invento. ¡Ay! ¡Ups!"
-  },
-  "hola_gruno_4": {
-    "hash": "38afbc124f19",
-    "dur": 2.03,
-    "text": "¡Ya veréis, Pimoruki! ¡Ya veréis!",
-    "asr": 1.0,
-    "heard": " Ya veréis, Pimoruki, ya veréis."
-  },
-  "intro_gruno": {
-    "hash": "cf85220f1954",
-    "dur": 2.0,
-    "text": "Je, je... ¡Ya veréis, Pimoruki!",
-    "asr": 0.73,
-    "heard": " ¡Je je! Ya veréis, pimo Ruki."
-  },
-  "hola_luma_0": {
-    "hash": "00c7d2e04eac",
-    "dur": 0.65,
-    "text": "¡Hola a todos!",
-    "asr": 1.0,
-    "heard": " ¡Hola a todos!"
-  },
-  "hola_luma_1": {
-    "hash": "85e6221792e4",
-    "dur": 1.36,
-    "text": "¡Soy Luma, encantada!",
-    "asr": 1.0,
-    "heard": " Soy Luma Encantada."
-  },
-  "hola_luma_2": {
-    "hash": "1c3d730c0b5f",
-    "dur": 2.58,
-    "text": "Cuando sonrío... ¡brillo muchísimo! ¿Lo ves?",
-    "asr": 1.0,
-    "heard": " Cuando sonrío, brillo muchísimo, ¿lo ves?"
-  },
-  "hola_luma_3": {
-    "hash": "516303903b0e",
-    "dur": 2.43,
-    "text": "¿Me enseñas tu sonrisa? ¡Oooh, qué bonita!",
-    "asr": 0.86,
-    "heard": " ¡Me enseñas tu sonrisa! ¡Oh, qué bonita!"
-  },
-  "hola_luma_4": {
-    "hash": "7758320b9ca4",
-    "dur": 1.06,
-    "text": "¡Chao, chao!",
-    "asr": 1.0,
-    "heard": " Chao, chao!"
-  },
-  "intro_luma": {
-    "hash": "1501bba0c2c8",
-    "dur": 1.74,
-    "text": "¡Soy Luma! ¡Sonreíd conmigo!",
-    "asr": 0.75,
-    "heard": " Soy Luma, sonreír conmigo."
-  },
-  "intro_hook_luma": {
-    "hash": "efa7409dc9b8",
-    "dur": 0.29,
-    "text": "¡Hola!",
-    "asr": 1.0,
-    "heard": " ¡Hola!"
-  },
-  "intro_group_luma": {
-    "hash": "a1a3169c6f35",
-    "dur": 1.0,
-    "text": "¡Somos Pimoruki!",
-    "asr": 1.0,
-    "heard": " Somos Pimoruki."
-  },
-  "intro_sub_luma": {
-    "hash": "58defa69dc00",
-    "dur": 0.8,
-    "text": "¡Suscríbete!",
-    "asr": 1.0,
-    "heard": " Suscribete!"
-  },
-  "hola_moki_0": {
-    "hash": "cdead113c550",
-    "dur": 0.21,
-    "text": "Hola...",
-    "asr": 1.0,
-    "heard": " Hola."
-  },
-  "hola_moki_1": {
-    "hash": "f8afa2ac3c26",
-    "dur": 1.26,
-    "text": "Soy Moki... una nube.",
-    "asr": 1.0,
-    "heard": " Soy Moki, una Nube."
-  },
-  "hola_moki_2": {
-    "hash": "44738e551af7",
-    "dur": 1.93,
-    "text": "Me encanta flotar... y soñar despierto.",
-    "asr": 1.0,
-    "heard": " Me encanta flotar y soñar despierto."
-  },
-  "hola_moki_3": {
-    "hash": "0bfa68035f3f",
-    "dur": 2.86,
-    "text": "¿Y tú qué sueñas? Yo... con estrellas.",
-    "asr": 1.0,
-    "heard": " ¿Y tú qué sueñas? Yo con estrellas."
-  },
-  "hola_moki_4": {
-    "hash": "aa0107b29c30",
-    "dur": 1.03,
-    "text": "Dulces sueños...",
-    "asr": 1.0,
-    "heard": " ¡Dulces sueños!"
-  },
-  "intro_moki": {
-    "hash": "8e2b60753a17",
-    "dur": 1.63,
-    "text": "Soy Moki... me encanta soñar.",
-    "asr": 1.0,
-    "heard": " Soy Moki, me encanta soñar."
-  },
-  "hola_pimo_0": {
-    "hash": "8adc08ba7f4d",
-    "dur": 0.3,
-    "text": "¡Hola!",
-    "asr": 1.0,
-    "heard": " ¡Hola!"
-  },
-  "hola_pimo_1": {
-    "hash": "7b279cb42e02",
-    "dur": 1.36,
-    "text": "¡Soy Pimo! ¡Encantado!",
-    "asr": 1.0,
-    "heard": " Soy Pimo, encantado."
-  },
-  "hola_pimo_2": {
-    "hash": "354e50316463",
-    "dur": 3.17,
-    "text": "¿Sabes qué me encanta? ¡Preguntar! ¿Por qué? ¿Y por qué?",
-    "asr": 1.0,
-    "heard": " ¿Sabes que me encanta preguntar por qué y por qué?"
-  },
-  "hola_pimo_3": {
-    "hash": "586c88f73053",
-    "dur": 2.03,
-    "text": "Y tú, ¿qué te gustaría descubrir hoy?",
-    "asr": 1.0,
-    "heard": " Y tú, ¿qué te gustaría descubrir hoy?"
-  },
-  "hola_pimo_4": {
-    "hash": "6a62cc4f26bb",
-    "dur": 0.82,
-    "text": "¡Hasta prontito!",
-    "asr": 1.0,
-    "heard": " ¡Hasta prontito!"
-  },
-  "intro_pimo": {
-    "hash": "de5783a845e7",
-    "dur": 1.82,
-    "text": "¡Hola! ¡Soy Pimo, el más preguntón!",
-    "asr": 1.0,
-    "heard": " Hola, soy Pimo, el más preguntón."
-  },
-  "intro_hook_pimo": {
-    "hash": "8adc08ba7f4d",
-    "dur": 0.39,
-    "text": "¡Hola!",
-    "asr": 1.0,
-    "heard": " ¡Hola!"
-  },
-  "intro_group_pimo": {
-    "hash": "1067e616c352",
-    "dur": 0.91,
-    "text": "¡Somos Pimoruki!",
-    "asr": 1.0,
-    "heard": " Somos Pimoruki."
-  },
-  "intro_sub_pimo": {
-    "hash": "f2b6bd024147",
-    "dur": 0.94,
-    "text": "¡Suscríbete!",
-    "asr": 1.0,
-    "heard": " ¡Suscríbete!"
-  },
-  "hola_ruki_0": {
-    "hash": "265c847f141f",
-    "dur": 0.91,
-    "text": "Hola, hola...",
-    "asr": 0.8,
-    "heard": " Hola, hola, hola."
-  },
-  "hola_ruki_1": {
-    "hash": "3d78be1bcd9c",
-    "dur": 0.8,
-    "text": "Yo soy Ruki.",
-    "asr": 1.0,
-    "heard": " ¡Yo soy Rookie!"
-  },
-  "hola_ruki_2": {
-    "hash": "880b19ea54dd",
-    "dur": 3.24,
-    "text": "Cuando me enfado... respiro hondo. Mmm... ¡y ya está!",
-    "asr": 0.94,
-    "heard": " cuando me enfado respiro hondo. Y ya está."
-  },
-  "hola_ruki_3": {
-    "hash": "665b37849bab",
-    "dur": 2.37,
-    "text": "¿Lo probamos juntos? Coge aire... y suéltalo.",
-    "asr": 1.0,
-    "heard": " Lo probamos juntos, coge aire y suéltalo."
-  },
-  "hola_ruki_4": {
-    "hash": "5768ecee4443",
-    "dur": 0.88,
-    "text": "Hasta pronto, amigo.",
-    "asr": 1.0,
-    "heard": " Hasta pronto, amigo."
-  },
-  "intro_ruki": {
-    "hash": "cb871d1754bc",
-    "dur": 2.19,
-    "text": "Yo soy Ruki. Tranquilos... respirad.",
-    "asr": 1.0,
-    "heard": " Yo soy rookie. Tranquilos. Respirad."
-  },
-  "hola_tuki_0": {
-    "hash": "054db1f472fb",
-    "dur": 0.73,
-    "text": "¡Eh, hola!",
-    "asr": 1.0,
-    "heard": " ¡Eh! ¡Hola!"
-  },
-  "hola_tuki_1": {
-    "hash": "7634368a6143",
-    "dur": 0.63,
-    "text": "¡Soy Tuki!",
-    "asr": 1.0,
-    "heard": " Soy Tuki."
-  },
-  "hola_tuki_2": {
-    "hash": "dd0f7b6d655f",
-    "dur": 2.41,
-    "text": "¡A mí me encanta saltar, girar y bailar! ¡Yujuuu!",
-    "asr": 0.89,
-    "heard": " A mi me encanta saltar, girar y bailar.  ¡Yuhu!"
-  },
-  "hola_tuki_3": {
-    "hash": "fc3a46365625",
-    "dur": 1.71,
-    "text": "¿Saltas conmigo? ¡Una, dos y tres!",
-    "asr": 1.0,
-    "heard": " ¡Saltas conmigo! ¡Una, dos y tres!"
-  },
-  "hola_tuki_4": {
-    "hash": "98719b7b436f",
-    "dur": 0.6,
-    "text": "¡Hasta luego!",
-    "asr": 1.0,
-    "heard": " ¡Hasta luego!"
-  },
-  "intro_tuki": {
-    "hash": "e5c6f339d896",
-    "dur": 1.33,
-    "text": "¡Soy Tuki! ¡A bailar!",
-    "asr": 1.0,
-    "heard": " Soy Tuki, a bailar."
-  },
-  "intro_hook_tuki": {
-    "hash": "82b25cdbe115",
-    "dur": 0.24,
-    "text": "¡Hola!",
-    "asr": 1.0,
-    "heard": " ¡Hola!"
-  },
-  "intro_group_tuki": {
-    "hash": "ddc36d7dbdd2",
-    "dur": 1.06,
-    "text": "¡Somos Pimoruki!",
-    "asr": 1.0,
-    "heard": " Somos Pimoruki."
-  }
+ "hola_bolita_0": {
+  "hash": "76da94f921c4",
+  "dur": 1.2,
+  "text": "¡Hola, hola, hola!",
+  "asr": 1.0,
+  "heard": " ¡Hola, hola, hola!"
+ },
+ "hola_bolita_1": {
+  "hash": "00379b9741fd",
+  "dur": 0.67,
+  "text": "¡Soy Bolita!",
+  "asr": 1.0,
+  "heard": " ¡Soy Bolita!"
+ },
+ "hola_bolita_2": {
+  "hash": "e5c7d6406a1b",
+  "dur": 2.09,
+  "text": "¡Soy muy valiente! ¡Yo primero, yo primero!",
+  "asr": 1.0,
+  "heard": " Soy muy valiente. Yo primero, yo primero."
+ },
+ "hola_bolita_3": {
+  "hash": "3d608744d7d0",
+  "dur": 1.33,
+  "text": "Bueno... mejor todos juntos. ¿Te vienes?",
+  "asr": 1.0,
+  "heard": " Bueno, mejor todos juntos, ¿te vienes?"
+ },
+ "hola_bolita_4": {
+  "hash": "d59a26418e03",
+  "dur": 0.77,
+  "text": "¡Hasta la próxima!",
+  "asr": 1.0,
+  "heard": " ¡Hasta la próxima!"
+ },
+ "intro_bolita": {
+  "hash": "f4095a18ca1f",
+  "dur": 1.21,
+  "text": "¡Soy Bolita! ¡Yo primero!",
+  "asr": 1.0,
+  "heard": " Soy Bolita, yo primero."
+ },
+ "intro_hook_bolita": {
+  "hash": "7f15e7f5313c",
+  "dur": 0.38,
+  "text": "¡Hola!",
+  "asr": 1.0,
+  "heard": " ¡Hola!"
+ },
+ "intro_group_bolita": {
+  "hash": "5d1b7e5b24ee",
+  "dur": 1.02,
+  "text": "¡Somos Pimoruki!",
+  "asr": 1.0,
+  "heard": " Somos Pimoruki."
+ },
+ "hola_bopi_0": {
+  "hash": "1946f90c6b43",
+  "dur": 0.99,
+  "text": "Hola. ¡Bip, bop!",
+  "asr": 0.86,
+  "heard": " ¡Hola, bip bop, bop!"
+ },
+ "hola_bopi_1": {
+  "hash": "bebedfe5d53d",
+  "dur": 0.98,
+  "text": "Soy Bopi, el robot.",
+  "asr": 1.0,
+  "heard": " Soy Bopi, el robot."
+ },
+ "hola_bopi_2": {
+  "hash": "56262040fc28",
+  "dur": 2.45,
+  "text": "Me gusta tenerlo todo ordenado. ¡Uno, dos y tres!",
+  "asr": 1.0,
+  "heard": " Me gusta tenerlo todo ordenado. 1, 2 y 3."
+ },
+ "hola_bopi_3": {
+  "hash": "d138b8e75894",
+  "dur": 2.48,
+  "text": "¿Me ayudas a contar? Uno, dos, tres... ¡Perfecto!",
+  "asr": 1.0,
+  "heard": " Me ayudas a contar uno, dos, tres, perfecto."
+ },
+ "hola_bopi_4": {
+  "hash": "70428db1da63",
+  "dur": 1.02,
+  "text": "Bopi se despide. ¡Bip!",
+  "asr": 1.0,
+  "heard": " Bopi se despide.  ¡Bip!"
+ },
+ "intro_bopi": {
+  "hash": "15e9e4a62fe3",
+  "dur": 1.19,
+  "text": "Soy Bopi. ¡Todo en orden! ¡Bip!",
+  "asr": 0.91,
+  "heard": " Soy Bopi, todo en orden."
+ },
+ "hola_gruno_0": {
+  "hash": "ca23a4c8978d",
+  "dur": 1.14,
+  "text": "Vaya, vaya, vaya...",
+  "asr": 1.0,
+  "heard": " ¡Vaya, vaya, vaya!"
+ },
+ "hola_gruno_1": {
+  "hash": "ca14b036bbe4",
+  "dur": 1.25,
+  "text": "¡Soy el Doctor Gruño!",
+  "asr": 1.0,
+  "heard": " Soy el doctor Grunio."
+ },
+ "hola_gruno_2": {
+  "hash": "c26bb6bf712b",
+  "dur": 1.99,
+  "text": "¡El inventor más genial del mundo mundial!",
+  "asr": 1.0,
+  "heard": " el inventor más genial del mundo mundial."
+ },
+ "hola_gruno_3": {
+  "hash": "a31a9ecaf057",
+  "dur": 2.14,
+  "text": "Mirad mi nuevo invento... ¡Ay! ¡Ups!",
+  "asr": 1.0,
+  "heard": " Mirad mi nuevo invento. ¡Ay! ¡Ups!"
+ },
+ "hola_gruno_4": {
+  "hash": "38afbc124f19",
+  "dur": 2.03,
+  "text": "¡Ya veréis, Pimoruki! ¡Ya veréis!",
+  "asr": 1.0,
+  "heard": " Ya veréis, Pimoruki, ya veréis."
+ },
+ "intro_gruno": {
+  "hash": "cf85220f1954",
+  "dur": 2.0,
+  "text": "Je, je... ¡Ya veréis, Pimoruki!",
+  "asr": 0.73,
+  "heard": " ¡Je je! Ya veréis, pimo Ruki."
+ },
+ "hola_luma_0": {
+  "hash": "00c7d2e04eac",
+  "dur": 0.65,
+  "text": "¡Hola a todos!",
+  "asr": 1.0,
+  "heard": " ¡Hola a todos!"
+ },
+ "hola_luma_1": {
+  "hash": "85e6221792e4",
+  "dur": 1.36,
+  "text": "¡Soy Luma, encantada!",
+  "asr": 1.0,
+  "heard": " Soy Luma Encantada."
+ },
+ "hola_luma_2": {
+  "hash": "1c3d730c0b5f",
+  "dur": 2.58,
+  "text": "Cuando sonrío... ¡brillo muchísimo! ¿Lo ves?",
+  "asr": 1.0,
+  "heard": " Cuando sonrío, brillo muchísimo, ¿lo ves?"
+ },
+ "hola_luma_3": {
+  "hash": "516303903b0e",
+  "dur": 2.43,
+  "text": "¿Me enseñas tu sonrisa? ¡Oooh, qué bonita!",
+  "asr": 0.86,
+  "heard": " ¡Me enseñas tu sonrisa! ¡Oh, qué bonita!"
+ },
+ "hola_luma_4": {
+  "hash": "7758320b9ca4",
+  "dur": 1.06,
+  "text": "¡Chao, chao!",
+  "asr": 1.0,
+  "heard": " Chao, chao!"
+ },
+ "intro_luma": {
+  "hash": "1501bba0c2c8",
+  "dur": 1.74,
+  "text": "¡Soy Luma! ¡Sonreíd conmigo!",
+  "asr": 0.75,
+  "heard": " Soy Luma, sonreír conmigo."
+ },
+ "intro_hook_luma": {
+  "hash": "efa7409dc9b8",
+  "dur": 0.29,
+  "text": "¡Hola!",
+  "asr": 1.0,
+  "heard": " ¡Hola!"
+ },
+ "intro_group_luma": {
+  "hash": "a1a3169c6f35",
+  "dur": 1.0,
+  "text": "¡Somos Pimoruki!",
+  "asr": 1.0,
+  "heard": " Somos Pimoruki."
+ },
+ "intro_sub_luma": {
+  "hash": "58defa69dc00",
+  "dur": 0.8,
+  "text": "¡Suscríbete!",
+  "asr": 1.0,
+  "heard": " Suscribete!"
+ },
+ "hola_moki_0": {
+  "hash": "cdead113c550",
+  "dur": 0.21,
+  "text": "Hola...",
+  "asr": 1.0,
+  "heard": " Hola."
+ },
+ "hola_moki_1": {
+  "hash": "f8afa2ac3c26",
+  "dur": 1.26,
+  "text": "Soy Moki... una nube.",
+  "asr": 1.0,
+  "heard": " Soy Moki, una Nube."
+ },
+ "hola_moki_2": {
+  "hash": "44738e551af7",
+  "dur": 1.93,
+  "text": "Me encanta flotar... y soñar despierto.",
+  "asr": 1.0,
+  "heard": " Me encanta flotar y soñar despierto."
+ },
+ "hola_moki_3": {
+  "hash": "0bfa68035f3f",
+  "dur": 2.86,
+  "text": "¿Y tú qué sueñas? Yo... con estrellas.",
+  "asr": 1.0,
+  "heard": " ¿Y tú qué sueñas? Yo con estrellas."
+ },
+ "hola_moki_4": {
+  "hash": "aa0107b29c30",
+  "dur": 1.03,
+  "text": "Dulces sueños...",
+  "asr": 1.0,
+  "heard": " ¡Dulces sueños!"
+ },
+ "intro_moki": {
+  "hash": "8e2b60753a17",
+  "dur": 1.63,
+  "text": "Soy Moki... me encanta soñar.",
+  "asr": 1.0,
+  "heard": " Soy Moki, me encanta soñar."
+ },
+ "hola_pimo_0": {
+  "hash": "1f51366a6c29",
+  "dur": 0.73,
+  "text": "¡Hola!",
+  "asr": 0.0,
+  "heard": "¡Ada!",
+  "engine": "gemini",
+  "voice": "Puck"
+ },
+ "hola_pimo_1": {
+  "hash": "f9530a1000ef",
+  "dur": 2.75,
+  "text": "¡Soy Pimo! ¡Encantado!",
+  "asr": 1.0,
+  "heard": "¡Soy Pimo! ¡Encantado!",
+  "engine": "gemini",
+  "voice": "Puck"
+ },
+ "hola_pimo_2": {
+  "hash": "8ef0b72b7cb8",
+  "dur": 5.13,
+  "text": "¿Sabes qué me encanta? ¡Preguntar! ¿Por qué? ¿Y por qué?",
+  "asr": 1.0,
+  "heard": "¿Sabes que me encanta preguntar por qué y por qué?",
+  "engine": "gemini",
+  "voice": "Puck"
+ },
+ "hola_pimo_3": {
+  "hash": "ffe271269dee",
+  "dur": 2.75,
+  "text": "Y tú, ¿qué te gustaría descubrir hoy?",
+  "asr": 1.0,
+  "heard": "Y tú, ¿qué te gustaría descubrir hoy?",
+  "engine": "gemini",
+  "voice": "Puck"
+ },
+ "hola_pimo_4": {
+  "hash": "187bd7ecbe90",
+  "dur": 1.34,
+  "text": "¡Hasta prontito!",
+  "asr": 1.0,
+  "heard": "¡Hasta prontito!",
+  "engine": "gemini",
+  "voice": "Puck"
+ },
+ "intro_pimo": {
+  "hash": "aec0126a3132",
+  "dur": 2.51,
+  "text": "¡Hola! ¡Soy Pimo, el más preguntón!",
+  "asr": 1.0,
+  "heard": "¡Hola! Soy Pimo, el más preguntón.",
+  "engine": "gemini",
+  "voice": "Puck"
+ },
+ "intro_hook_pimo": {
+  "hash": "1f51366a6c29",
+  "dur": 0.73,
+  "text": "¡Hola!",
+  "asr": 0.0,
+  "heard": "¡Ada!",
+  "engine": "gemini",
+  "voice": "Puck"
+ },
+ "intro_group_pimo": {
+  "hash": "864f509bd6d6",
+  "dur": 1.42,
+  "text": "¡Somos Pimoruki!",
+  "asr": 1.0,
+  "heard": "Somos Pimoruki.",
+  "engine": "gemini",
+  "voice": "Puck"
+ },
+ "intro_sub_pimo": {
+  "hash": "776187473b81",
+  "dur": 1.29,
+  "text": "¡Suscríbete!",
+  "asr": 1.0,
+  "heard": "¡Suscríbete!",
+  "engine": "gemini",
+  "voice": "Puck"
+ },
+ "hola_ruki_0": {
+  "hash": "265c847f141f",
+  "dur": 0.91,
+  "text": "Hola, hola...",
+  "asr": 0.8,
+  "heard": " Hola, hola, hola."
+ },
+ "hola_ruki_1": {
+  "hash": "3d78be1bcd9c",
+  "dur": 0.8,
+  "text": "Yo soy Ruki.",
+  "asr": 1.0,
+  "heard": " ¡Yo soy Rookie!"
+ },
+ "hola_ruki_2": {
+  "hash": "880b19ea54dd",
+  "dur": 3.24,
+  "text": "Cuando me enfado... respiro hondo. Mmm... ¡y ya está!",
+  "asr": 0.94,
+  "heard": " cuando me enfado respiro hondo. Y ya está."
+ },
+ "hola_ruki_3": {
+  "hash": "665b37849bab",
+  "dur": 2.37,
+  "text": "¿Lo probamos juntos? Coge aire... y suéltalo.",
+  "asr": 1.0,
+  "heard": " Lo probamos juntos, coge aire y suéltalo."
+ },
+ "hola_ruki_4": {
+  "hash": "5768ecee4443",
+  "dur": 0.88,
+  "text": "Hasta pronto, amigo.",
+  "asr": 1.0,
+  "heard": " Hasta pronto, amigo."
+ },
+ "intro_ruki": {
+  "hash": "cb871d1754bc",
+  "dur": 2.19,
+  "text": "Yo soy Ruki. Tranquilos... respirad.",
+  "asr": 1.0,
+  "heard": " Yo soy rookie. Tranquilos. Respirad."
+ },
+ "hola_tuki_0": {
+  "hash": "054db1f472fb",
+  "dur": 0.73,
+  "text": "¡Eh, hola!",
+  "asr": 1.0,
+  "heard": " ¡Eh! ¡Hola!"
+ },
+ "hola_tuki_1": {
+  "hash": "7634368a6143",
+  "dur": 0.63,
+  "text": "¡Soy Tuki!",
+  "asr": 1.0,
+  "heard": " Soy Tuki."
+ },
+ "hola_tuki_2": {
+  "hash": "dd0f7b6d655f",
+  "dur": 2.41,
+  "text": "¡A mí me encanta saltar, girar y bailar! ¡Yujuuu!",
+  "asr": 0.89,
+  "heard": " A mi me encanta saltar, girar y bailar.  ¡Yuhu!"
+ },
+ "hola_tuki_3": {
+  "hash": "fc3a46365625",
+  "dur": 1.71,
+  "text": "¿Saltas conmigo? ¡Una, dos y tres!",
+  "asr": 1.0,
+  "heard": " ¡Saltas conmigo! ¡Una, dos y tres!"
+ },
+ "hola_tuki_4": {
+  "hash": "98719b7b436f",
+  "dur": 0.6,
+  "text": "¡Hasta luego!",
+  "asr": 1.0,
+  "heard": " ¡Hasta luego!"
+ },
+ "intro_tuki": {
+  "hash": "e5c6f339d896",
+  "dur": 1.33,
+  "text": "¡Soy Tuki! ¡A bailar!",
+  "asr": 1.0,
+  "heard": " Soy Tuki, a bailar."
+ },
+ "intro_hook_tuki": {
+  "hash": "82b25cdbe115",
+  "dur": 0.24,
+  "text": "¡Hola!",
+  "asr": 1.0,
+  "heard": " ¡Hola!"
+ },
+ "intro_group_tuki": {
+  "hash": "ddc36d7dbdd2",
+  "dur": 1.06,
+  "text": "¡Somos Pimoruki!",
+  "asr": 1.0,
+  "heard": " Somos Pimoruki."
+ }
 }
