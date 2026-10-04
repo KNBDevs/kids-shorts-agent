@@ -182,7 +182,7 @@ def _orient(o, n, roll=0.0):
     return o
 
 
-def eye(prefix, side, surf, x, z, size, mats, parent, look=(0.0, 0.0), lash=False, depth_in=0.35, sclera=1.0):
+def eye(prefix, side, surf, x, z, size, mats, parent, look=(0.0, 0.0), lash=False, depth_in=0.35, sclera=1.0, shine=(-0.3, 0.34), shine2=True):
     """Expressive cartoon eye. size = (half-width a, half-height b)."""
     a, b = size
     p, n = surf.hit(x, z)
@@ -195,9 +195,10 @@ def eye(prefix, side, surf, x, z, size, mats, parent, look=(0.0, 0.0), lash=Fals
     sphere(f"{prefix}.eyewhite.{side}", (0, 0, 0), (a * sclera, a * 0.6, b * sclera), mats["white"], g)
     ir = empty(f"{prefix}.iris_rig.{side}", g, (lx * a * 0.18, 0, lz * b * 0.15))
     sphere(f"{prefix}.iris.{side}", (0, -a * 0.34, -b * 0.04), (a * 0.82, a * 0.36, b * 0.86), mats["iris"], ir)
-    sphere(f"{prefix}.pupil.{side}", (0, -a * 0.56, -b * 0.06), (a * 0.46, a * 0.14, b * 0.5), mats["pupil"], ir)
-    sphere(f"{prefix}.shine.{side}", (-a * 0.3, -a * 0.71, b * 0.34), (a * 0.26, a * 0.05, b * 0.27), mats["shine"], ir, 20)
-    sphere(f"{prefix}.shine2.{side}", (a * 0.3, -a * 0.68, -b * 0.36), (a * 0.11, a * 0.04, b * 0.11), mats["shine"], ir, 16)
+    sphere(f"{prefix}.pupil.{side}", (0, -a * 0.6, -b * 0.06), (a * 0.46, a * 0.14, b * 0.5), mats["pupil"], ir)
+    sphere(f"{prefix}.shine.{side}", (a * shine[0], -a * 0.74, b * shine[1]), (a * 0.22, a * 0.05, b * 0.23), mats["shine"], ir, 20)
+    if shine2:
+        sphere(f"{prefix}.shine2.{side}", (a * 0.3, -a * 0.68, -b * 0.36), (a * 0.11, a * 0.04, b * 0.11), mats["shine"], ir, 16)
     if lash:
         sx = 1 if side == "R" else -1
         pts = [(sx * a * 0.72, -a * 0.3, b * 0.62), (sx * a * 0.95, -a * 0.32, b * 0.82), (sx * a * 1.12, -a * 0.3, b * 0.86)]
@@ -214,12 +215,14 @@ def arc(prefix, surf, cx, cz, half_w, sag, n=9, out=0.004):
 
 
 def face(prefix, body, mats, parent, eyes_x, eyes_z, eye_size, brow_dz, brow_w, mouth_z, mouth_w, mouth_sag,
-         blush_x, blush_z, blush_size, line_r, lash=False, look=(0.0, 0.15), open_mouth=False, brows=True, sclera=1.0):
+         blush_x, blush_z, blush_size, line_r, lash=False, look=(0.0, 0.15), open_mouth=False, brows=True, sclera=1.0,
+         shine=(-0.3, 0.34), shine2=True):
     surf = Surface(body)
     f = empty(f"{prefix}.face", parent)
     eyes = []
     for side, sx in (("L", -1), ("R", 1)):
-        e = eye(prefix, side, surf, sx * eyes_x, eyes_z, eye_size, mats, f, look=(look[0], look[1]), lash=lash, sclera=sclera)
+        e = eye(prefix, side, surf, sx * eyes_x, eyes_z, eye_size, mats, f, look=(look[0], look[1]), lash=lash, sclera=sclera,
+                shine=shine, shine2=shine2)
         eyes.append(e)
         if brows:
             pts = arc(prefix, surf, sx * eyes_x, eyes_z + brow_dz + brow_w * 0.25, brow_w, -brow_w * 0.28, 5)
@@ -320,7 +323,7 @@ def lid(prefix, side, eye_grp, a, b, material, closed=0.45):
     bmesh.ops.delete(bm, geom=[v for v in bm.verts if v.co.z < -0.02], context="VERTS")
     piv = empty(f"{prefix}.lid_rig.{side}", eye_grp)
     o = mesh_obj(f"{prefix}.lid.{side}", bm, material, piv)
-    o.scale = (a * 1.1, a * 0.72, b * 1.1)
+    o.scale = (a * 1.1, a * 0.86, b * 1.1)
     sol = o.modifiers.new("t", "SOLIDIFY"); sol.thickness = 0.04; sol.offset = 1
     piv.rotation_euler = (math.radians((closed - 0.5) * 180), 0, 0)
     return piv

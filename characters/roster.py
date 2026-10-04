@@ -219,12 +219,13 @@ def gruno(p=None):
     fm = C.face_mats("gruno", iris=(0.62, 0.22, 0.02), line=(0.09, 0.015, 0.16))
     fp = C.face("Gruno", body, fm, rig, eyes_x=0.19 * H, eyes_z=fh + 0.72 * H, eye_size=(0.11 * H, 0.1 * H),
                 mouth_z=fh + 0.58 * H, blush_z=0, **_face_kw(brows=False, blush_size=None, mouth_w=0.12 * H,
-                                                             mouth_sag=0.035 * H, line_r=0.012 * H, look=(0.35, -0.1)))
+                                                             mouth_sag=0.035 * H, line_r=0.012 * H, look=(0.35, -0.1),
+                                                             shine=(-0.28, -0.2), shine2=False))
     for side, e in zip(("L", "R"), fp["eyes"]):
         C.lid("Gruno", side, e, 0.11 * H, 0.1 * H, purple, closed=0.42 if side == "L" else 0.5)
     # asymmetric thick brows: left arched, right lowered toward the centre (cheeky look)
-    bl = [surf.point(-0.19 * H + t * 0.09 * H, fh + 0.84 * H + 0.035 * H * (1 - t * t) + 0.01 * H * t, 0.022 * H) for t in (-1, -0.5, 0, 0.5, 1)]
-    br = [surf.point(0.19 * H + t * 0.09 * H, fh + 0.81 * H - 0.025 * H * t + 0.012 * H * (1 - t * t), 0.022 * H) for t in (-1, -0.5, 0, 0.5, 1)]
+    bl = [surf.point(-0.19 * H + t * 0.09 * H, fh + 0.815 * H + 0.03 * H * (1 - t * t) + 0.01 * H * t, 0.022 * H) for t in (-1, -0.5, 0, 0.5, 1)]
+    br = [surf.point(0.19 * H + t * 0.09 * H, fh + 0.79 * H - 0.025 * H * t + 0.012 * H * (1 - t * t), 0.022 * H) for t in (-1, -0.5, 0, 0.5, 1)]
     C.tube("Gruno.brow.L", bl, 0.034 * H, brow_m, fp["face"], radii=[0.6, 1, 1.1, 1, 0.6])
     C.tube("Gruno.brow.R", br, 0.034 * H, brow_m, fp["face"], radii=[0.6, 1, 1.1, 1, 0.6])
     # lopsided smirk replaces the default mouth
@@ -235,10 +236,10 @@ def gruno(p=None):
     # goggles on the forehead: two unequal lime rings with dark lenses
     gg = C.empty("Gruno.goggles", rig)
     for k, (gx, r) in enumerate(((-0.15 * H, 0.15 * H), (0.17 * H, 0.18 * H))):
-        gp, gn = surf.hit(gx, fh + 0.93 * H)
+        gp, gn = surf.hit(gx * 0.85, fh + 0.9 * H)
         if gp is None:
             continue
-        g = C.empty(f"Gruno.goggle.{k}", gg); g.location = gp + gn * 0.06 * H; C._orient(g, (gn + Vector((0, -0.6, 0))).normalized())
+        g = C.empty(f"Gruno.goggle.{k}", gg); g.location = gp + gn * 0.06 * H + Vector((gx * 0.15, 0, 0.07 * H)); C._orient(g, (gn + Vector((0, -0.6, 0))).normalized())
         import bmesh as _bm
         b = _bm.new(); _bm.ops.create_cone(b, cap_ends=True, segments=48, radius1=1, radius2=1, depth=1)
         ring = C.mesh_obj(f"Gruno.goggle_ring.{k}", b, lime, g)
