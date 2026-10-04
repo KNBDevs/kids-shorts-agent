@@ -4,7 +4,7 @@ MOOD = 'silly'
 LINES = [
     ('l1', 'gruno', '¡Mi aspiradora de colores!', 8, 1.9),
     ('l2', 'pimo', '¡Eh! ¡La flor ha perdido su color!', 62, 2.2),
-    ('l3', 'gruno', '¡Y ahora, el plátano!', 122, 1.5),
+    ('l3', 'gruno', '¡Y ahora, el plátano!', 130, 1.5),
     ('l4', 'pimo', '¿De qué color eran?', 214, 1.6),
     ('l5', 'pimo', '¡Amarillos! ¡Eran amarillos!', 292, 2.0),
     ('l6', 'gruno', '¡Ay, ay! ¡Se está llenando!', 350, 1.8),
