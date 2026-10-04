@@ -420,3 +420,246 @@ def plush_snake(name, loc=(0, 0, 0), L=0.9, parent=None, rot=(0, 0, 0)):
     for e in [o for o in hd.children if o.name.startswith(name + '.eye.')]:
         e.rotation_euler = (0, 0, math.radians(90))
     return g
+
+
+def album(name, loc=(0, 0, 0), w=0.42, h=0.3, parent=None, rot=(0, 0, 0), cover=(0.4, 0.25, 0.42)):
+    g = C.empty(name, parent, loc, rot)
+    cov = _m('album_cover', cover, rough=0.5, coat=0.3)
+    pg = _m('album_page', (0.96, 0.93, 0.86), rough=0.7)
+    C.rounded_box(name + '.back', (0, 0, 0.012), (w, h, 0.02), 0.006, cov, g)
+    C.rounded_box(name + '.block', (0, 0, 0.032), (w * 0.95, h * 0.94, 0.03), 0.004, pg, g)
+    spine = C.empty(name + '.spine', g, (0, 0, 0.05))
+    pages = []
+    for k in range(2):
+        piv = C.empty(f'{name}.page{k}', spine, (0, 0, 0.002 * k))
+        C.rounded_box(f'{name}.pagem{k}', (-w * 0.235, 0, 0), (w * 0.47, h * 0.92, 0.004), 0.002, pg, piv)
+        pages.append(piv)
+    lid = C.empty(name + '.lid', spine, (0, 0, 0.006))
+    C.rounded_box(name + '.coverm', (-w * 0.25, 0, 0.004), (w * 0.5, h, 0.012), 0.004, cov, lid)
+    _flat(name + '.leafdeco', [(x * 0.6, z * 0.6) for x, z in [(0.0, 0.08), (0.03, 0.03), (0.08, 0.0), (0.03, -0.03), (0.0, -0.08), (-0.03, -0.03), (-0.08, 0.0), (-0.03, 0.03)]][::-1],
+          0.004, _m('album_star', (0.95, 0.6, 0.18), rough=0.4, emit=0.2), lid, loc=(-w * 0.25, 0, 0.012), rot=(math.radians(-90), 0, 0))
+    return {'root': g, 'lid': lid, 'pages': pages, 'spine': spine}
+
+
+def harvest_basket(name, loc=(0, 0, 0), h=0.3, parent=None):
+    g = C.empty(name, parent, loc)
+    wick = _m('wicker', (0.62, 0.42, 0.22), rough=0.8)
+    C.lathe(name + '.b', [(0.0, 0.0), (0.0, 0.35 * h), (0.1 * h, 0.42 * h), (0.45 * h, 0.55 * h), (0.5 * h, 0.58 * h), (0.5 * h, 0.52 * h), (0.1 * h, 0.38 * h), (0.05 * h, 0.0)], wick, g, segs=40)
+    for k in range(3):
+        _ring(f'{name}.band{k}', g, (0.12 + 0.14 * k) * h, (0.43 + 0.05 * k) * h, (0.43 + 0.05 * k) * h, 0.012 * h, wick)
+    red = _m('apple_red', (0.8, 0.12, 0.08), rough=0.35, coat=0.5)
+    for k, (x, y) in enumerate(((-0.18, 0.0), (0.15, 0.08), (0.0, -0.15), (0.05, 0.18))):
+        C.sphere(f'{name}.ap{k}', (x * h, y * h, 0.55 * h), (0.15 * h, 0.15 * h, 0.14 * h), red, g, 20)
+    return g
+
+
+def _ring(name, parent, z, rx, ry, r, mat, n=48):
+    pts = [(rx * math.cos(2 * math.pi * k / n), ry * math.sin(2 * math.pi * k / n), z) for k in range(n + 1)]
+    return C.tube(name, pts, r, mat, parent)
+
+
+def door(name, loc=(0, 0, 0), h=1.5, parent=None, rgb=(0.4, 0.25, 0.42)):
+    g = C.empty(name, parent, loc)
+    frame = _m('door_frame', (0.92, 0.88, 0.8), rough=0.5)
+    panel = _m('door_' + '%d%d%d' % tuple(int(c * 9) for c in rgb), rgb, rough=0.45, coat=0.3)
+    w = h * 0.55
+    C.rounded_box(name + '.wall', (0, 0.06, h * 0.55), (w * 2.2, 0.1, h * 1.1), 0.02, _m('wall', (0.86, 0.78, 0.66), rough=0.8), g)
+    for x in (-w / 2 - 0.04, w / 2 + 0.04):
+        C.rounded_box(name + '.jamb', (x, 0, h / 2), (0.08, 0.12, h), 0.015, frame, g)
+    C.rounded_box(name + '.lintel', (0, 0, h + 0.04), (w + 0.16, 0.12, 0.08), 0.015, frame, g)
+    hinge = C.empty(name + '.hinge', g, (-w / 2, -0.02, 0))
+    C.rounded_box(name + '.panel', (w / 2, 0, h / 2), (w, 0.06, h), 0.02, panel, hinge)
+    C.sphere(name + '.knob', (w * 0.85, -0.06, h * 0.48), (0.04, 0.04, 0.04), _m('amber_knob', (0.95, 0.6, 0.18), rough=0.3, coat=0.6), hinge, 16)
+    return {'root': g, 'hinge': hinge}
+
+
+def marigold(name, loc=(0, 0, 0), r=0.05, parent=None, rot=(0, 0, 0)):
+    g = C.empty(name, parent, loc, rot)
+    pet = [_m('cempa_a', (1.0, 0.45, 0.02), rough=0.6), _m('cempa_b', (1.0, 0.58, 0.05), rough=0.6)]
+    C.sphere(name + '.core', (0, 0, 0.25 * r), (0.5 * r, 0.5 * r, 0.35 * r), pet[0], g, 16)
+    for ring, (rr, z, n) in enumerate(((0.85, 0.05, 14), (0.65, 0.3, 11), (0.4, 0.5, 8))):
+        for k in range(n):
+            a = 2 * math.pi * (k + 0.5 * ring) / n
+            C.sphere(f'{name}.p{ring}_{k}', (rr * r * math.cos(a), rr * r * math.sin(a), z * r), (0.28 * r, 0.2 * r, 0.22 * r), pet[(k + ring) % 2], g, 10,
+                     rot=(0, math.radians(-20), a))
+    return g
+
+
+def petal_path(name, pts, parent=None, n=40, seed=3):
+    import random as R
+    R.seed(seed)
+    g = C.empty(name, parent)
+    pet = [_m('cempa_a', (1.0, 0.45, 0.02), rough=0.6), _m('cempa_b', (1.0, 0.58, 0.05), rough=0.6)]
+    P = [Vector(p) for p in pts]
+    for k in range(n):
+        u = k / max(n - 1, 1) * (len(P) - 1)
+        i = min(int(u), len(P) - 2)
+        p = P[i].lerp(P[i + 1], u - i) + Vector((R.uniform(-0.04, 0.04), R.uniform(-0.04, 0.04), 0.004))
+        C.sphere(f'{name}.{k}', tuple(p), (0.016, 0.011, 0.004), pet[k % 2], g, 8, rot=(0, 0, R.uniform(0, 3.14)))
+    return g
+
+
+def papel_picado(name, a, b, n=6, parent=None, sag=0.1):
+    a, b = Vector(a), Vector(b)
+    g = C.empty(name, parent)
+    C.tube(name + '.cord', [tuple(a.lerp(b, k / 20) - Vector((0, 0, sag * 4 * (k / 20) * (1 - k / 20)))) for k in range(21)], 0.005, _m('cord', (0.9, 0.86, 0.78)), g)
+    cols = [(0.95, 0.3, 0.5), (1.0, 0.55, 0.05), (0.55, 0.3, 0.75), (0.2, 0.65, 0.55), (0.95, 0.8, 0.15)]
+    W, Hh = 0.2, 0.24
+    for k in range(n):
+        u = (k + 0.5) / n
+        p = a.lerp(b, u) - Vector((0, 0, sag * 4 * u * (1 - u)))
+        mt = _m('pp%d' % (k % len(cols)), cols[k % len(cols)], rough=0.7)
+        mt.use_backface_culling = False
+        bm = bmesh.new()
+        nx, nz = 10, 12
+        cells = {}
+        holes = set()
+        for i in range(nx):
+            for j in range(nz):
+                cx, cz = (i + 0.5) / nx, (j + 0.5) / nz
+                if 0.15 < cz < 0.85 and ((i + j) % 3 == 0 or ((cx - 0.5) ** 2 + (cz - 0.5) ** 2 < 0.03 and (i + j) % 2 == 0)):
+                    holes.add((i, j))
+        vs = {}
+        for i in range(nx + 1):
+            for j in range(nz + 1):
+                x = -W / 2 + W * i / nx
+                z = -Hh * (1 - j / nz)
+                if j == 0:
+                    z -= 0.012 * (1 if i % 2 else 0)
+                vs[i, j] = bm.verts.new((x, 0, z))
+        for i in range(nx):
+            for j in range(nz):
+                if (i, j) not in holes:
+                    bm.faces.new((vs[i, j], vs[i + 1, j], vs[i + 1, j + 1], vs[i, j + 1]))
+        loose = [v for v in bm.verts if not v.link_faces]
+        bmesh.ops.delete(bm, geom=loose, context='VERTS')
+        o = C.mesh_obj(f'{name}.p{k}', bm, mt, g, smooth=False)
+        o.location = tuple(p)
+        so = o.modifiers.new('t', 'SOLIDIFY')
+        so.thickness = 0.003
+    return g
+
+
+def photo_frame(name, loc=(0, 0, 0), h=0.24, parent=None, rot=(0, 0, 0)):
+    g = C.empty(name, parent, loc, rot)
+    w = h * 0.8
+    fr = _m('frame_wood', (0.55, 0.36, 0.2), rough=0.5, coat=0.3)
+    C.rounded_box(name + '.frame', (0, 0, h / 2), (w, 0.03, h), 0.012, fr, g)
+    C.rounded_box(name + '.bg', (0, -0.016, h / 2), (w * 0.8, 0.004, h * 0.82), 0.002, _m('photo_bg', (0.75, 0.85, 0.9), rough=0.8), g)
+    C.tube(name + '.stand', [(0, 0.015, h * 0.5), (0, 0.09, 0.0)], 0.008, fr, g)
+    f = C.empty(name + '.pic', g, (0, -0.02, h * 0.5))
+    skin = _m('portrait_skin', (0.85, 0.65, 0.5), rough=0.8)
+    hair = _m('portrait_hair', (0.86, 0.86, 0.88), rough=0.8)
+    shirt = _m('portrait_shirt', (0.35, 0.5, 0.42), rough=0.8)
+    ink = _m('portrait_ink', (0.2, 0.15, 0.15), rough=0.6)
+    _flat(name + '.shirt', [(-0.3 * w, -0.4 * h), (0.3 * w, -0.4 * h), (0.24 * w, -0.2 * h), (-0.24 * w, -0.2 * h)][::-1], 0.002, shirt, f)
+    _flat(name + '.hair', _circle(0.2 * h, 28, 0, 0.06 * h, 0.95), 0.002, hair, f, loc=(0, 0.001, 0))
+    _flat(name + '.bun', _circle(0.08 * h, 18, 0, 0.27 * h), 0.002, hair, f, loc=(0, 0.001, 0))
+    _flat(name + '.face', _circle(0.16 * h, 28, 0, 0.01 * h, 0.88), 0.002, skin, f, loc=(0, -0.002, 0))
+    for sx in (-1, 1):
+        _ring(f'{name}.glass{sx}', C.empty(f'{name}.gl{sx}', f, (sx * 0.06 * h, -0.004, 0.04 * h), (math.radians(90), 0, 0)), 0, 0.04 * h, 0.035 * h, 0.004 * h, ink)
+        _flat(f'{name}.eye{sx}', _circle(0.012 * h, 10, sx * 0.06 * h, 0.04 * h), 0.002, ink, f, loc=(0, -0.004, 0))
+    C.tube(name + '.smile', [(-0.05 * h, -0.005, -0.05 * h), (0, -0.005, -0.075 * h), (0.05 * h, -0.005, -0.05 * h)], 0.005 * h, ink, f)
+    return g
+
+
+def pan_de_muerto(name, loc=(0, 0, 0), r=0.08, parent=None):
+    g = C.empty(name, parent, loc)
+    bread = _m('bread', (0.78, 0.48, 0.2), rough=0.6, coat=0.2)
+    sugar = _m('bread_sugar', (0.95, 0.88, 0.75), rough=0.9)
+    C.sphere(name + '.dome', (0, 0, 0.35 * r), (r, r, 0.55 * r), bread, g, 32)
+    for k in range(4):
+        a = math.pi * k / 4
+        pts = [(math.cos(a) * r * t, math.sin(a) * r * t, 0.35 * r + 0.55 * r * math.sqrt(max(0, 1 - t * t)) + 0.03 * r) for t in [-0.95 + 1.9 * i / 10 for i in range(11)]]
+        C.tube(f'{name}.bone{k}', pts, 0.07 * r, bread, g)
+    C.sphere(name + '.knob', (0, 0, 0.95 * r), (0.18 * r, 0.18 * r, 0.14 * r), bread, g, 16)
+    return g
+
+
+def water_glass(name, loc=(0, 0, 0), h=0.1, parent=None):
+    g = C.empty(name, parent, loc)
+    gl = _m('glass_clear', (0.85, 0.93, 1.0), rough=0.08, coat=1.0)
+    wt = _m('water', (0.55, 0.78, 0.95), rough=0.1, coat=0.6)
+    C.lathe(name + '.g', [(0.0, 0.0), (0.0, 0.3 * h), (0.05 * h, 0.32 * h), (1.0 * h, 0.4 * h), (1.0 * h, 0.37 * h), (0.07 * h, 0.29 * h), (0.07 * h, 0.0)], gl, g, segs=32)
+    C.lathe(name + '.w', [(0.07 * h, 0.0), (0.07 * h, 0.285 * h), (0.7 * h, 0.35 * h), (0.71 * h, 0.0)], wt, g, segs=32)
+    return g
+
+
+def remembrance_table(name, loc=(0, 0, 0), w=0.95, parent=None, cloth=(0.92, 0.88, 0.8)):
+    g = C.empty(name, parent, loc)
+    wood = _m('table_wood', (0.6, 0.42, 0.26), rough=0.5, coat=0.2)
+    cl = _m('cloth_%d%d%d' % tuple(int(c * 9) for c in cloth), cloth, rough=0.8)
+    hh = 0.42
+    C.rounded_box(name + '.top', (0, 0, hh), (w, 0.48, 0.04), 0.01, wood, g)
+    for sx in (-1, 1):
+        for sy in (-1, 1):
+            C.rounded_box(name + '.leg', (sx * (w / 2 - 0.05), sy * 0.19, hh / 2), (0.05, 0.05, hh), 0.01, wood, g)
+    C.rounded_box(name + '.cloth', (0, 0, hh + 0.025), (w * 1.02, 0.5, 0.012), 0.004, cl, g)
+    C.rounded_box(name + '.drape', (0, -0.25, hh - 0.06), (w * 1.02, 0.012, 0.16), 0.004, cl, g)
+    return {'root': g, 'top': hh + 0.032}
+
+
+def bouquet(name, loc=(0, 0, 0), h=0.26, parent=None, cols=((0.95, 0.92, 0.88), (0.95, 0.75, 0.8), (0.98, 0.85, 0.4))):
+    g = C.empty(name, parent, loc)
+    green = _m('stemg', (0.25, 0.45, 0.22), rough=0.6)
+    C.lathe(name + '.vase', [(0.0, 0.0), (0.0, 0.07 * h / 0.26), (0.08, 0.08), (0.14, 0.05), (0.16, 0.055), (0.16, 0.0)], _m('vase', (0.45, 0.55, 0.68), rough=0.3, coat=0.5), g, segs=32)
+    for k in range(7):
+        a = 2 * math.pi * k / 7
+        tip = (0.06 * math.cos(a), 0.05 * math.sin(a), h * (0.85 + 0.1 * (k % 3) / 2))
+        C.tube(f'{name}.s{k}', [(0, 0, 0.1), tip], 0.006, green, g)
+        col = cols[k % len(cols)]
+        mt = _m('bq_%d%d%d' % tuple(int(c * 9) for c in col), col, rough=0.6)
+        fg = C.empty(f'{name}.f{k}', g, tip)
+        for j in range(5):
+            b = 2 * math.pi * j / 5
+            C.sphere(f'{name}.pt{k}_{j}', (0.018 * math.cos(b), 0.018 * math.sin(b), 0.0), (0.02, 0.02, 0.012), mt, fg, 10)
+        C.sphere(f'{name}.c{k}', (0, 0, 0.006), (0.012, 0.012, 0.01), _m('bq_center', (0.95, 0.75, 0.2)), fg, 10)
+    return g
+
+
+def shadow_screen(name, loc=(0, 0, 0), w=1.0, h=0.8, parent=None):
+    g = C.empty(name, parent, loc)
+    fr = _m('screen_frame', (0.4, 0.25, 0.42), rough=0.5)
+    pane = _m('screen_pane', (0.97, 0.94, 0.88), rough=0.9)
+    pane.node_tree.nodes['Principled BSDF'].inputs['Subsurface Weight'].default_value = 0.0
+    C.rounded_box(name + '.pane', (0, 0, 0.25 + h / 2), (w, 0.01, h), 0.003, pane, g)
+    for x in (-w / 2, w / 2):
+        C.rounded_box(name + '.post', (x, 0, (0.25 + h) / 2 + 0.02), (0.05, 0.05, 0.25 + h + 0.04), 0.01, fr, g)
+    C.rounded_box(name + '.topbar', (0, 0, 0.25 + h + 0.02), (w + 0.05, 0.05, 0.05), 0.01, fr, g)
+    return g
+
+
+def bare_tree(name, loc=(0, 0, 0), h=1.6, parent=None):
+    g = C.empty(name, parent, loc)
+    bark = _m('bark', (0.42, 0.3, 0.22), rough=0.8)
+    C.tube(name + '.trunk', [(0, 0, 0), (0.03 * h, 0, 0.35 * h), (-0.02 * h, 0, 0.62 * h), (0.0, 0, 0.8 * h)], 0.06 * h, bark, g, radii=[1.3, 1.0, 0.8, 0.5])
+    for k, (z, a, L) in enumerate(((0.45, 40, 0.3), (0.55, -35, 0.32), (0.68, 55, 0.25), (0.74, -60, 0.22), (0.8, 10, 0.2))):
+        r = math.radians(a)
+        p0 = (0, 0, z * h)
+        p1 = (math.sin(r) * L * h * 0.6, 0.05 * h * (k % 2), (z + 0.12) * h)
+        p2 = (math.sin(r) * L * h, 0.08 * h * (k % 2), (z + 0.18 + 0.05 * (k % 2)) * h)
+        C.tube(f'{name}.br{k}', [p0, p1, p2], 0.028 * h, bark, g, radii=[1.0, 0.7, 0.45])
+        C.sphere(f'{name}.tip{k}', p2, (0.013 * h,) * 3, bark, g, 10)
+    return g
+
+
+def pictogram(name, kind, loc=(0, 0, 0), s=0.08, parent=None, rot=(0, 0, 0)):
+    g = C.empty(name, parent, loc, rot)
+    if kind == 'sun':
+        y = _m('pic_sun', (0.98, 0.72, 0.15), rough=0.4, emit=0.3)
+        _flat(name + '.c', _circle(0.5 * s, 24), 0.01, y, g)
+        for k in range(8):
+            a = 2 * math.pi * k / 8
+            _flat(f'{name}.r{k}', [(0.0, 0.0), (0.12 * s, 0.0), (0.06 * s, 0.25 * s)][::-1], 0.01, y, g, loc=(0.7 * s * math.cos(a), 0, 0.7 * s * math.sin(a)), rot=(0, -a + math.pi / 2, 0))
+    elif kind == 'snow':
+        b = _m('pic_snow', (0.45, 0.65, 0.9), rough=0.4)
+        for k in range(3):
+            a = math.pi * k / 3
+            C.tube(f'{name}.a{k}', [(-s * math.cos(a), 0, -s * math.sin(a)), (s * math.cos(a), 0, s * math.sin(a))], 0.07 * s, b, g)
+    elif kind == 'apple':
+        r = _m('apple_red', (0.8, 0.12, 0.08), rough=0.35, coat=0.5)
+        _flat(name + '.a', _circle(0.55 * s, 24), 0.01, r, g)
+        C.tube(name + '.st', [(0, 0, 0.5 * s), (0.1 * s, 0, 0.8 * s)], 0.06 * s, _m('stem', (0.28, 0.33, 0.14)), g)
+    elif kind == 'leaf':
+        autumn_leaf(name + '.l', (0, 0, 0), s, parent=g)
+    return g
