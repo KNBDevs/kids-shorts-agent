@@ -32,10 +32,27 @@ def dur(p):
     return len(x) / sr
 
 
+def norm(t):
+    import unicodedata, re
+    t = unicodedata.normalize("NFD", t.lower())
+    t = "".join(c for c in t if unicodedata.category(c) != "Mn")
+    return re.sub(r"[^a-zñ ]+", " ", t).split()
+
+
+def score(asr, path, text):
+    import difflib
+    segs, _ = asr.transcribe(path, language="es", beam_size=3)
+    heard = " ".join(s.text for s in segs)
+    a, b = norm(text), norm(heard)
+    return difflib.SequenceMatcher(None, a, b).ratio(), heard
+
+
 def main(chars):
     import torch
     from chatterbox.mtl_tts import ChatterboxMultilingualTTS
     m = ChatterboxMultilingualTTS.from_pretrained(device="cpu")
+    from faster_whisper import WhisperModel
+    asr = WhisperModel("small", device="cpu", compute_type="int8")
     base = os.path.join(TMP, "base.wav")
     torch.manual_seed(7)
     write(base, m.sr, m.generate(BASE_TEXT, language_id="es", exaggeration=0.6, cfg_weight=0.45).squeeze().numpy())
@@ -48,11 +65,21 @@ def main(chars):
         for key, e in todo.items():
             if e["char"] != cid:
                 continue
-            torch.manual_seed(sum(map(ord, key)))
             raw = os.path.join(TMP, f"{key}_raw.wav")
-            w = m.generate(e["text"], language_id="es", audio_prompt_path=ref, exaggeration=p["exag"],
-                           cfg_weight=p["cfg"], temperature=p["temp"])
-            write(raw, m.sr, w.squeeze().numpy())
+            best = (-1, None, "")
+            for attempt in range(4):
+                torch.manual_seed(sum(map(ord, key)) + 101 * attempt)
+                w = m.generate(e["text"], language_id="es", audio_prompt_path=ref, exaggeration=p["exag"],
+                               cfg_weight=p["cfg"], temperature=p["temp"]).squeeze().numpy()
+                cand = os.path.join(TMP, f"{key}_c{attempt}.wav")
+                write(cand, m.sr, w)
+                sc, heard = score(asr, cand, e["text"])
+                print("  try", key, attempt, round(sc, 2), heard, flush=True)
+                if sc > best[0]:
+                    best = (sc, cand, heard)
+                if sc >= 0.9:
+                    break
+            os.replace(best[1], raw)
             trim = "silenceremove=start_periods=1:start_threshold=-42dB,areverse,silenceremove=start_periods=1:start_threshold=-42dB,areverse"
             mid = os.path.join(TMP, f"{key}_trim.wav")
             ff(raw, mid, trim)
@@ -65,7 +92,7 @@ def main(chars):
                   f"afade=t=in:d=0.01,areverse,afade=t=in:d=0.04,areverse")
             final = os.path.join(OUT, f"{key}.wav")
             ff(mid, final, af)
-            man[key] = {"hash": digest(e), "dur": round(dur(final), 2), "text": e["text"]}
+            man[key] = {"hash": digest(e), "dur": round(dur(final), 2), "text": e["text"], "asr": round(best[0], 2), "heard": best[2]}
             print(key, man[key]["dur"], e["text"], flush=True)
     json.dump(man, open(os.path.join(OUT, f"manifest_{'_'.join(chars)}.json"), "w"), ensure_ascii=False, indent=1)
 
