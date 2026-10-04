@@ -28,7 +28,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-          cache: pip
       - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg > /dev/null
       - run: pip install -q chatterbox-tts scipy
       - run: python voices/bake.py ${{ matrix.char }}
@@ -49,7 +48,8 @@ jobs:
           merge-multiple: true
       - run: |
           cd assets/vo
-          jq -s 'add' $( [ -f manifest.json ] && echo manifest.json ) manifest_*.json > m.tmp && mv m.tmp manifest.json && rm -f manifest_*.json
+          ls manifest_*.json >/dev/null 2>&1 || exit 0
+          jq -s "add" $( [ -f manifest.json ] && echo manifest.json ) manifest_*.json > m.tmp && mv m.tmp manifest.json && rm -f manifest_*.json
           cd ../..
           git config user.name "bot"; git config user.email "bot@users.noreply.github.com"
           git add assets/vo && git commit -qm "update assets" && git pull -q --rebase && git push -q || true
