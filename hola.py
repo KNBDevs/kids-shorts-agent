@@ -30,10 +30,18 @@ land(ch, 12)
 if G:
     K(ch['spin'], 'rotation_euler', 0, (0, 0, math.radians(-12)))
 
-def say(f, text):
-    C.talk(ch, f, syllables=max(3, len(text) // 4), step=4)
-for f, t in zip((T_HOLA, T_NAME, T_TRAIT, T_ASK, T_BYE), L):
-    say(f, t)
+import json
+try:
+    MAN = json.load(open(os.path.join(HERE, 'assets', 'vo', 'manifest.json')))
+except Exception:
+    MAN = {}
+
+def say(f, text, key):
+    d = MAN.get(key, {}).get('dur')
+    n = round(d * FPS / 4) if d else len(text) // 4
+    C.talk(ch, f, syllables=max(3, n), step=4)
+for k, (f, t) in enumerate(zip((T_HOLA, T_NAME, T_TRAIT, T_ASK, T_BYE), L)):
+    say(f, t, f'hola_{CID}_{k}')
 for f in (40, 120, 230, 300, 410, 520, 580):
     C.blink(ch, f)
 confetti(2, (0, -1.2, 1.8), 30)

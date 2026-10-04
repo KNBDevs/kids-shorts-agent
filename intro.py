@@ -5,6 +5,11 @@ sys.path.insert(0, HERE)
 sys.path.insert(0, os.path.join(HERE, 'characters'))
 import roster, common as C
 from intro_plan import *
+import json
+try:
+    MAN = json.load(open(os.path.join(HERE, 'assets', 'vo', 'manifest.json')))
+except Exception:
+    MAN = {}
 random.seed(11)
 bpy.ops.wm.read_factory_settings(use_empty=True)
 sc = bpy.context.scene
@@ -220,7 +225,8 @@ for i, c in enumerate(CAST):
         K(ch['hold'], 'location', s0 + t, tuple(CENTER + Vector((0, 0, 7.5 * (1 - u * u)))))
     S(ch, 0, (0.85, 0.85, 1.2))
     land(ch, s0 + 8)
-    C.talk(ch, s0 + 12, syllables=max(4, len(c['line']) // 4), step=4)
+    _d = MAN.get(f"intro_{c['id']}", {}).get('dur')
+    C.talk(ch, s0 + 12, syllables=max(4, round(_d * FPS / 4) if _d else len(c['line']) // 4), step=4)
     C.blink(ch, s0 + 40)
     gesture(ch, c['gesture'], s0 + 16)
     word3d(c['name'], ch['accent'], (0, -1.6, 3.15), s0 + 10, s0 + 52, size=1.0, max_w=2.6)
