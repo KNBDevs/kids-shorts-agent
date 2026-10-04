@@ -27,7 +27,7 @@ on:
         default: false
 
 concurrency:
-  group: build-${{ github.run_id }}
+  group: ${{ (github.event_name == 'schedule' || inputs.template == 'queue') && 'publish' || format('build-{0}', github.run_id) }}
   cancel-in-progress: false
 
 env:
