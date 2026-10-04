@@ -29,9 +29,20 @@ def slots_after(t):
                 return s
 
 
+def reserved():
+    q = json.load(open(QUEUE))
+    return {datetime.fromisoformat(e['publish_local']).replace(tzinfo=MAD) for e in q if e.get('publish_local')}
+
+
 def next_slot(sched, now):
-    last = max([datetime.fromisoformat(v) for v in sched.values()], default=now)
-    return slots_after(max(last, now + timedelta(hours=2), now))
+    fixed = reserved()
+    free = [datetime.fromisoformat(v) for k, v in sched.items()]
+    free = [d for d in free if d not in fixed]
+    t = max(free + [now + timedelta(hours=2), now])
+    while True:
+        t = slots_after(t)
+        if t not in fixed:
+            return t
 
 
 def voices_ready(item):
