@@ -2,5 +2,10 @@ frames/
 *.wav
 *.onnx*
 *.mp4
+*.m4a
+x264*
 MODEL_CARD
 LilitaOne.ttf
+spec.json
+meta.json
+t.json
