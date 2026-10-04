@@ -165,6 +165,15 @@ jobs:
             out.mp4
             meta.json
           retention-days: 7
+      - name: Preview
+        if: ${{ github.event_name != 'schedule' && !inputs.deliver }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          R: ${{ github.repository }}
+        run: |
+          N="$(jq -r '.episode // .char // .template // "colors"' spec.json)-${{ github.run_id }}"
+          gh release view preview -R "$R" >/dev/null 2>&1 || gh release create preview -R "$R" -t preview -n "" --prerelease
+          cp out.mp4 "$N.mp4" && gh release upload preview "$N.mp4" -R "$R" --clobber
       - name: Deliver
         if: ${{ github.event_name == 'schedule' || inputs.deliver }}
         env:

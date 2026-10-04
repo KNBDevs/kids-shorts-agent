@@ -1,0 +1,23 @@
+name: pull
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        required: true
+      name:
+        required: true
+permissions:
+  contents: write
+  actions: read
+jobs:
+  pull:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          R: ${{ github.repository }}
+        run: |
+          gh run download "${{ inputs.run_id }}" -R "$R" -n output
+          gh release view preview -R "$R" >/dev/null 2>&1 || gh release create preview -R "$R" -t preview -n "" --prerelease
+          cp out.mp4 "${{ inputs.name }}.mp4"
+          gh release upload preview "${{ inputs.name }}.mp4" -R "$R" --clobber
