@@ -71,3 +71,77 @@ def shake_cup(name, parent, loc, r=0.1):
     C.sphere(name + '.foam', (0, 0, 2.35 * r), (0.95 * r, 0.95 * r, 0.45 * r), pink, g, 32)
     C.tube(name + '.straw', [(0.2 * r, 0, 1.5 * r), (0.4 * r, 0, 3.4 * r), (0.9 * r, 0, 3.9 * r)], 0.12 * r, straw, g)
     return g, pink
+
+
+def anim_color(m, f, rgb):
+    inp = m.node_tree.nodes['Principled BSDF'].inputs['Base Color']
+    inp.default_value = (*rgb, 1)
+    inp.keyframe_insert('default_value', frame=f)
+
+
+def flower_head(name, parent, loc, r, petal_m, center_m, n=8):
+    g = C.empty(name, parent, loc)
+    C.sphere(name + '.center', (0, -0.02 * r, 0), (0.42 * r, 0.25 * r, 0.42 * r), center_m, g, 24)
+    for k in range(n):
+        a = 2 * math.pi * k / n
+        C.sphere(f'{name}.petal.{k}', (0.72 * r * math.cos(a), 0.02 * r, 0.72 * r * math.sin(a)), (0.42 * r, 0.1 * r, 0.24 * r), petal_m, g, 20,
+                 rot=(0, -a, 0))
+    return g
+
+
+def potted_flower(name, loc, petal_m, h=0.85):
+    root = C.empty(name, None, loc)
+    pot = C.mat(name + '_pot', (0.75, 0.32, 0.18), rough=0.6)
+    soil = C.mat(name + '_soil', (0.25, 0.14, 0.08), rough=0.9)
+    green = C.mat(name + '_green', (0.15, 0.55, 0.18), rough=0.5)
+    center = C.mat(name + '_center', (0.55, 0.28, 0.06), rough=0.6)
+    C.lathe(name + '.pot', [(0.0, 0.0), (0.0, 0.11), (0.2, 0.15), (0.24, 0.17), (0.27, 0.17), (0.27, 0.0)], pot, root, segs=48)
+    C.sphere(name + '.soil', (0, 0, 0.245), (0.15, 0.15, 0.02), soil, root, 24)
+    top = h - 0.15
+    C.tube(name + '.stem', [(0, 0, 0.25), (0.02, 0, 0.45), (-0.01, 0, top - 0.05), (0, 0, top)], 0.018, green, root)
+    for sx, z in ((-1, 0.38), (1, 0.48)):
+        lp = C.empty(f'{name}.lp{sx}', root, (0, 0, z), (0, math.radians(sx * 70), 0))
+        C.leaf(f'{name}.leaf{sx}', 0.16, 0.06, 0.02, green, lp, thick=0.012)
+    head = flower_head(name + '.head', root, (0, -0.02, top), 0.15, petal_m, center)
+    return root, head
+
+
+def banana(name, parent, loc, m, L=0.55):
+    g = C.empty(name, parent, loc)
+    tip = C.mat(name + '_tip', (0.3, 0.2, 0.08), rough=0.7)
+    pts = []
+    for k in range(13):
+        t = -1 + 2 * k / 12
+        pts.append((t * L * 0.5, 0, 0.16 * L * (t * t)))
+    radii = [0.3 + 0.7 * math.sin(math.pi * k / 12) ** 0.6 for k in range(13)]
+    C.tube(name + '.m', pts, 0.085 * L, m, g, radii=radii, res=8)
+    for e in (pts[0], pts[-1]):
+        C.sphere(name + '.tip', e, (0.025 * L, 0.025 * L, 0.025 * L), tip, g, 12)
+    return g
+
+
+def color_vacuum(name, loc):
+    root = C.empty(name, None, loc)
+    lime = C.mat(name + '_body', (0.45, 0.65, 0.04), rough=0.4, coat=0.4)
+    purple = C.mat(name + '_trim', (0.3, 0.08, 0.5), rough=0.5, coat=0.3)
+    orange = C.mat(name + '_nozzle', (0.95, 0.3, 0.04), rough=0.4, coat=0.3)
+    fill_m = C.mat(name + '_fill', (1.0, 0.82, 0.05), rough=0.3, emit=0.3)
+    C.rounded_box(name + '.body', (0, 0, 0.3), (0.62, 0.46, 0.38), 0.07, lime, root)
+    for sx in (-1, 1):
+        for sy in (-1, 1):
+            C.sphere(f'{name}.wheel', (sx * 0.24, sy * 0.17, 0.08), (0.08, 0.06, 0.08), purple, root, 20)
+    for k, col in enumerate(((0.95, 0.3, 0.04), (0.25, 0.75, 0.45))):
+        C.sphere(f'{name}.btn{k}', (-0.12 + 0.24 * k, -0.235, 0.32), (0.045, 0.02, 0.045), C.mat(f'{name}_b{k}', col, rough=0.3), root, 16)
+    tank = C.empty(name + '.tank', root, (0, 0.04, 0.49))
+    C.lathe(name + '.base', [(0.0, 0.0), (0.0, 0.17), (0.04, 0.17), (0.05, 0.0)], purple, tank, segs=48)
+    for k in range(3):
+        a = 2 * math.pi * k / 3 + math.pi / 2
+        C.tube(f'{name}.bar{k}', [(0.165 * math.cos(a), 0.165 * math.sin(a), 0.03), (0.165 * math.cos(a), 0.165 * math.sin(a), 0.38)], 0.012, purple, tank)
+    C.lathe(name + '.cap', [(0.36, 0.0), (0.37, 0.17), (0.42, 0.17), (0.44, 0.0)], purple, tank, segs=48)
+    lvl = C.empty(name + '.level', tank, (0, 0, 0.045))
+    C.lathe(name + '.fill', [(0.0, 0.0), (0.0, 0.14), (1.0, 0.14), (1.0, 0.0)], fill_m, lvl, segs=48)
+    lvl.scale = (1, 1, 0.001)
+    arm = C.empty(name + '.arm', root, (0, -0.18, 0.42))
+    C.tube(name + '.hose', [(0, 0, 0), (0, -0.2, 0.02), (0, -0.4, 0)], 0.045, purple, arm)
+    C.lathe(name + '.cone', [(0.0, 0.05), (0.08, 0.09), (0.16, 0.13), (0.17, 0.0)], orange, C.empty(name + '.nz', arm, (0, -0.38, 0), (math.radians(90), 0, 0)), segs=32)
+    return {'root': root, 'tank': tank, 'level': lvl, 'arm': arm, 'fill': fill_m}
