@@ -577,5 +577,41 @@
   "heard": "¡Hasta la próxima equipo!",
   "engine": "gemini",
   "voice": "Zephyr"
+ },
+ "ep_gruno_roba_amarillo_l2": {
+  "hash": "1d50286b47a2",
+  "dur": 2.51,
+  "text": "¡Eh! ¡La flor ha perdido su color!",
+  "asr": 0.86,
+  "heard": "E. La flor ha perdido su color.",
+  "engine": "gemini",
+  "voice": "Puck"
+ },
+ "ep_gruno_roba_amarillo_l4": {
+  "hash": "54bfa68969a8",
+  "dur": 1.49,
+  "text": "¿De qué color eran?",
+  "asr": 1.0,
+  "heard": "¿De qué color eran?",
+  "engine": "gemini",
+  "voice": "Puck"
+ },
+ "ep_gruno_roba_amarillo_l5": {
+  "hash": "e5cd1591ee2d",
+  "dur": 2.03,
+  "text": "¡Amarillos! ¡Eran amarillos!",
+  "asr": 1.0,
+  "heard": "Amarillos. Eran amarillos.",
+  "engine": "gemini",
+  "voice": "Puck"
+ },
+ "ep_gruno_roba_amarillo_l7": {
+  "hash": "23ed5514b3b8",
+  "dur": 1.6,
+  "text": "¡Ahora hacéis juego!",
+  "asr": 1.0,
+  "heard": "Ahora hacéis juego.",
+  "engine": "gemini",
+  "voice": "Puck"
  }
 }
