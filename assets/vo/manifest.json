@@ -98,11 +98,11 @@
     "heard": " Soy Bopi, todo en orden."
   },
   "hola_gruno_0": {
-    "hash": "af953cdcd0b2",
-    "dur": 0.44,
-    "text": "¡Ja, ja, ja!",
-    "asr": 0.0,
-    "heard": " ¡Ya!"
+    "hash": "ca23a4c8978d",
+    "dur": 1.14,
+    "text": "Vaya, vaya, vaya...",
+    "asr": 1.0,
+    "heard": " ¡Vaya, vaya, vaya!"
   },
   "hola_gruno_1": {
     "hash": "ca14b036bbe4",
@@ -137,14 +137,14 @@
     "dur": 2.0,
     "text": "Je, je... ¡Ya veréis, Pimoruki!",
     "asr": 0.73,
-    "heard": " ¡Je, je! Ya veréis, pimo rookie."
+    "heard": " ¡Je je! Ya veréis, pimo Ruki."
   },
   "hola_luma_0": {
-    "hash": "0fc8504f7573",
-    "dur": 0.64,
-    "text": "¡Hola, holita!",
-    "asr": 0.5,
-    "heard": " Hola ahorita"
+    "hash": "00c7d2e04eac",
+    "dur": 0.65,
+    "text": "¡Hola a todos!",
+    "asr": 1.0,
+    "heard": " ¡Hola a todos!"
   },
   "hola_luma_1": {
     "hash": "85e6221792e4",
