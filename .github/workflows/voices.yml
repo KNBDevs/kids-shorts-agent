@@ -7,49 +7,24 @@ on:
         default: "pimo,ruki,luma,tuki,moki,bopi,bolita,gruno"
 permissions:
   contents: write
+concurrency:
+  group: voices
+  cancel-in-progress: false
 jobs:
-  matrix:
-    runs-on: ubuntu-latest
-    outputs:
-      list: ${{ steps.m.outputs.list }}
-    steps:
-      - id: m
-        run: echo "list=$(echo '${{ inputs.chars }}' | jq -Rc 'split(",")')" >> "$GITHUB_OUTPUT"
   bake:
-    needs: matrix
     runs-on: ubuntu-latest
-    timeout-minutes: 90
-    strategy:
-      fail-fast: false
-      matrix:
-        char: ${{ fromJson(needs.matrix.outputs.list) }}
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
       - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg > /dev/null
-      - run: pip install -q chatterbox-tts scipy faster-whisper
-      - run: python voices/bake.py ${{ matrix.char }}
-      - uses: actions/upload-artifact@v4
-        with:
-          name: vo-${{ matrix.char }}
-          path: assets/vo/
-  commit:
-    needs: bake
-    if: always()
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
-        with:
-          pattern: vo-*
-          path: assets/vo
-          merge-multiple: true
-      - run: |
-          cd assets/vo
-          ls manifest_*.json >/dev/null 2>&1 || exit 0
-          jq -s "add" $( [ -f manifest.json ] && echo manifest.json ) manifest_*.json > m.tmp && mv m.tmp manifest.json && rm -f manifest_*.json
-          cd ../..
+      - run: pip install -q numpy scipy faster-whisper
+      - env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python voices/gemini_bake.py "${{ inputs.chars }}"
+      - if: always()
+        run: |
           git config user.name "bot"; git config user.email "bot@users.noreply.github.com"
           git add assets/vo && git commit -qm "update assets" && git pull -q --rebase && git push -q || true

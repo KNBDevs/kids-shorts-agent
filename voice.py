@@ -48,9 +48,6 @@ def baked(key, char=None):
     if sr0 != SR:
         from scipy.signal import resample_poly
         v = resample_poly(v, SR, sr0)
-    if char == 'bopi':
-        t = np.arange(len(v)) / SR
-        v = 0.8 * v + 0.2 * v * np.sin(2 * np.pi * 55 * t)
     return v / (np.abs(v).max() + 1e-09)
 
 
