@@ -311,3 +311,16 @@ def wave(ch, side, f0, cycles=3, period=8, amp=55):
             key(arm, "rotation_euler", f0 + c * period + k * period // 2 + 3,
                 (rest[0], rest[1] + math.radians(-sx * (120 + (a - amp))), rest[2]))
     key(arm, "rotation_euler", f0 + cycles * period + 6, rest)
+
+
+def lid(prefix, side, eye_grp, a, b, material, closed=0.45):
+    """Upper eyelid shell covering the top of the eye; closed in [0,1] (1 = fully shut)."""
+    bm = bmesh.new()
+    bmesh.ops.create_uvsphere(bm, u_segments=40, v_segments=20, radius=1.0)
+    bmesh.ops.delete(bm, geom=[v for v in bm.verts if v.co.z < -0.02], context="VERTS")
+    piv = empty(f"{prefix}.lid_rig.{side}", eye_grp)
+    o = mesh_obj(f"{prefix}.lid.{side}", bm, material, piv)
+    o.scale = (a * 1.1, a * 0.72, b * 1.1)
+    sol = o.modifiers.new("t", "SOLIDIFY"); sol.thickness = 0.04; sol.offset = 1
+    piv.rotation_euler = (math.radians((closed - 0.5) * 180), 0, 0)
+    return piv

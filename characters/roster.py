@@ -189,7 +189,86 @@ def bolita(p=None):
     return C.result("bolita", root, rig, fp, top + 0.45 * H, {"body": body, "accent": (0.78, 0.025, 0.02)})
 
 
-ROSTER = {"pimo": pimo, "ruki": ruki, "luma": luma, "tuki": tuki, "moki": moki, "bopi": bopi, "bolita": bolita}
+def gruno(p=None):
+    root, rig = C.new_rig("Gruno", H)
+    purple = C.mat("gruno_body", (0.24, 0.05, 0.42), rough=0.8, sheen=0.5)
+    teal = C.mat("gruno_coat", (0.02, 0.22, 0.26), rough=0.75, sheen=0.4)
+    cream = C.mat("gruno_belly", (0.85, 0.76, 0.58), rough=0.8)
+    orange = C.mat("gruno_orange", (0.95, 0.28, 0.03), rough=0.45, coat=0.3)
+    lime = C.mat("gruno_lime", (0.45, 0.65, 0.04), rough=0.4, coat=0.4)
+    glass = C.mat("gruno_glass", (0.01, 0.08, 0.1), rough=0.05, coat=1.0)
+    brow_m = C.mat("gruno_brow", (0.09, 0.015, 0.16), rough=0.8)
+    fh = 0.1 * H
+    P = [(0, 0), (0.03, 0.4), (0.12, 0.52), (0.28, 0.55), (0.45, 0.52), (0.62, 0.45), (0.78, 0.34), (0.9, 0.22), (0.97, 0.11), (1.0, 0.0)]
+    body = C.lathe("Gruno.body", [(fh + z * H, r * H) for z, r in P], purple, rig, sy=0.86)
+    coat = C.lathe("Gruno.coat", [(fh + z * H, r * H * 1.03) for z, r in P[:5]] + [(fh + 0.47 * H, 0.0)], teal, rig, sy=0.86)
+    import bmesh as _b0
+    bt = _b0.new(); _b0.ops.create_circle(bt, cap_ends=False, segments=64, radius=1.0)
+    col = C.mesh_obj("Gruno.collar", bt, None, rig)
+    import bpy as _bp
+    _bp.data.objects.remove(col)
+    rr = 0.52 * H * 1.03
+    ring = [(rr * math.cos(2 * math.pi * k / 64), 0.86 * rr * math.sin(2 * math.pi * k / 64), fh + 0.45 * H) for k in range(65)]
+    C.tube("Gruno.collar", ring, 0.045 * H, teal, rig)
+    surf = C.Surface(body)
+    pb, nb = surf.hit(0, fh + 0.2 * H)
+    bel = C.sphere("Gruno.belly", tuple(pb + nb * (-0.05 * H)), (0.3 * H, 0.1 * H, 0.22 * H), cream, rig)
+    C._orient(bel, nb)
+    pbt, nbt = surf.hit(0, fh + 0.43 * H)
+    C.sphere("Gruno.button", tuple(pbt + nbt * 0.04 * H), (0.06 * H, 0.025 * H, 0.06 * H), orange, rig, 32)
+    fm = C.face_mats("gruno", iris=(0.62, 0.22, 0.02), line=(0.09, 0.015, 0.16))
+    fp = C.face("Gruno", body, fm, rig, eyes_x=0.19 * H, eyes_z=fh + 0.72 * H, eye_size=(0.11 * H, 0.1 * H),
+                mouth_z=fh + 0.58 * H, blush_z=0, **_face_kw(brows=False, blush_size=None, mouth_w=0.12 * H,
+                                                             mouth_sag=0.035 * H, line_r=0.012 * H, look=(0.35, -0.1)))
+    for side, e in zip(("L", "R"), fp["eyes"]):
+        C.lid("Gruno", side, e, 0.11 * H, 0.1 * H, purple, closed=0.42 if side == "L" else 0.5)
+    # asymmetric thick brows: left arched, right lowered toward the centre (cheeky look)
+    bl = [surf.point(-0.19 * H + t * 0.09 * H, fh + 0.84 * H + 0.035 * H * (1 - t * t) + 0.01 * H * t, 0.022 * H) for t in (-1, -0.5, 0, 0.5, 1)]
+    br = [surf.point(0.19 * H + t * 0.09 * H, fh + 0.81 * H - 0.025 * H * t + 0.012 * H * (1 - t * t), 0.022 * H) for t in (-1, -0.5, 0, 0.5, 1)]
+    C.tube("Gruno.brow.L", bl, 0.034 * H, brow_m, fp["face"], radii=[0.6, 1, 1.1, 1, 0.6])
+    C.tube("Gruno.brow.R", br, 0.034 * H, brow_m, fp["face"], radii=[0.6, 1, 1.1, 1, 0.6])
+    # lopsided smirk replaces the default mouth
+    import bpy as _bpy
+    _bpy.data.objects.remove(fp["mouth"])
+    sm = [surf.point(t * 0.12 * H, fh + 0.58 * H - 0.035 * H * (1 - t * t) + 0.03 * H * max(t, 0) ** 2, 0.004) for t in [-1 + 2 * k / 10 for k in range(11)]]
+    fp["mouth"] = C.tube("Gruno.mouth", sm, 0.013 * H, fm["line"], fp["face"], radii=[0.5] + [1] * 9 + [0.7])
+    # goggles on the forehead: two unequal lime rings with dark lenses
+    gg = C.empty("Gruno.goggles", rig)
+    for k, (gx, r) in enumerate(((-0.15 * H, 0.15 * H), (0.17 * H, 0.18 * H))):
+        gp, gn = surf.hit(gx, fh + 0.93 * H)
+        if gp is None:
+            continue
+        g = C.empty(f"Gruno.goggle.{k}", gg); g.location = gp + gn * 0.06 * H; C._orient(g, (gn + Vector((0, -0.6, 0))).normalized())
+        import bmesh as _bm
+        b = _bm.new(); _bm.ops.create_cone(b, cap_ends=True, segments=48, radius1=1, radius2=1, depth=1)
+        ring = C.mesh_obj(f"Gruno.goggle_ring.{k}", b, lime, g)
+        ring.rotation_euler = (math.radians(90), 0, 0); ring.scale = (r, r, 0.07 * H)
+        bv = ring.modifiers.new("bev", "BEVEL"); bv.width = 0.02 * H; bv.segments = 4
+        C.sphere(f"Gruno.lens.{k}", (0, -0.045 * H, 0), (r * 0.72, 0.03 * H, r * 0.72), glass, g)
+    # tufts
+    top = fh + 1.0 * H
+    for nm, d in (("L", -1), ("R", 1)):
+        o = 0.05 * H if nm == "L" else 0.17 * H
+        pts = C.catmull([(o - 0.08 * H, 0.06 * H, top - 0.14 * H), (o - 0.03 * H, 0.08 * H, top + 0.0 * H),
+                         (o + 0.06 * H, 0.12 * H, top + 0.1 * H), (o + 0.16 * H, 0.16 * H, top + 0.13 * H)], 30)
+        t = C.tube(f"Gruno.tuft.{nm}", pts, 0.1 * H, purple, rig)
+        n = len(t.data.splines[0].points)
+        for i, pt in enumerate(t.data.splines[0].points):
+            pt.radius = 1.0 - 0.9 * i / (n - 1)
+    for s, sx in (("L", -1), ("R", 1)):
+        arm = C.arm("Gruno", s, rig, (sx * 0.5 * H, -0.02 * H, fh + 0.4 * H), 0.3 * H, 0.095 * H, purple,
+                    out_deg=(135 if s == "L" else 30), fwd_deg=(-25 if s == "L" else 0))
+        if s == "L":
+            hand_arm = arm
+        C.foot("Gruno", s, root, (sx * 0.22 * H, -0.06 * H, 0.06 * H), (0.2 * H, 0.26 * H, 0.1 * H), teal)
+    # optional remote in the raised hand
+    rem = C.empty("Gruno.remote", hand_arm, (-0.03 * H, -0.05 * H, -0.36 * H), (0, math.radians(-135), 0))
+    C.sphere("Gruno.remote_body", (0, 0, 0), (0.07 * H, 0.05 * H, 0.1 * H), orange, rem)
+    C.sphere("Gruno.remote_btn", (0, -0.045 * H, 0.015 * H), (0.035 * H, 0.015 * H, 0.035 * H), C.mat("gruno_btn", (0.25, 0.75, 0.45), rough=0.3), rem, 24)
+    return C.result("gruno", root, rig, fp, top + 0.3 * H, {"body": body, "accent": (0.24, 0.05, 0.42)})
+
+
+ROSTER = {"pimo": pimo, "ruki": ruki, "luma": luma, "tuki": tuki, "moki": moki, "bopi": bopi, "bolita": bolita, "gruno": gruno}
 
 
 def build(name, params=None):

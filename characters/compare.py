@@ -1,7 +1,7 @@
 import sys
 from PIL import Image
 U = "/root/.claude/uploads/351725bd-2a89-5b50-868a-9a93c20278f1/"
-REF = {"pimo": "6b2ad09b", "ruki": "79511248", "luma": "bc2662d2", "tuki": "d96f809c", "moki": "b04bf85b", "bopi": "ac601686", "bolita": "a72ad1aa"}
+REF = {"pimo": "6b2ad09b", "ruki": "79511248", "luma": "bc2662d2", "tuki": "d96f809c", "moki": "b04bf85b", "bopi": "ac601686", "bolita": "a72ad1aa", "gruno": "16f63fc9"}
 for n in sys.argv[1:]:
     ref = Image.open(U + REF[n] + "-image.png").convert("RGB").crop((0, 150, 1536, 940))
     W = 1920; ref = ref.resize((W, int(ref.height * W / ref.width)))
