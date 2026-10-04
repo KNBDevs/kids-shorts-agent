@@ -13,3 +13,6 @@ characters/inspect/
 _vo/
 test/
 __pycache__/
+!assets/vo/*.wav
+_bake/
+lab_out/

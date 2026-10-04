@@ -4,6 +4,7 @@ from scipy.io import wavfile
 import synth as S
 from synth import SR, ft, add, glock, marimba, pluck, bass, kick, clap, shaker, slide_whistle, boing, splat, sparkle, pop, bip, popper, reverb, lp, hp, env_adsr
 from intro_plan import *
+from voice import line as VL, group as VG
 HERE = os.path.dirname(os.path.abspath(__file__))
 DUR = TOTAL / FPS
 N = int(SR * DUR)
@@ -107,15 +108,15 @@ add(sfx, pop(), ft(SUBSCRIBE), 0.3)
 add(sfx, sparkle(96), ft(SUBSCRIBE + 1), 0.22)
 voice = np.zeros((N, 2))
 pans = [-0.25, -0.1, 0.1, 0.25, -0.18, 0.0, 0.18]
-add(voice, chorus('¡Hola!', 'hook', [1.35, 1.55, 1.7], 1.0), ft(4), 0.75)
+add(voice, VG([(f'intro_hook_{c}', c) for c in ('pimo', 'luma', 'tuki', 'bolita')], '¡Hola!', [1.35, 1.55, 1.7]), ft(4), 0.75)
 for i, c in enumerate(CAST):
     v = c['voice']
-    s = tts(c['line'], c['id'], v['pitch'], v['tempo'], v.get('robot', False), max_len=MAX_LINE)
+    s = VL(f"intro_{c['id']}", c['line'], c['id'], v['pitch'], v['tempo'], v.get('robot', False), max_len=MAX_LINE)
     add(voice, s, ft(c['start'] + 12), 0.85, pan=pans[i])
-add(voice, chorus(GROUP_LINE['text'], 'group', [1.3, 1.45, 1.6, 1.75], 1.1), ft(GROUP_LINE['frame']), 0.85)
+add(voice, VG([(f'intro_group_{c}', c) for c in ('pimo', 'luma', 'tuki', 'bolita')], GROUP_LINE['text'], [1.3, 1.45, 1.6, 1.75]), ft(GROUP_LINE['frame']), 0.85)
 gv = GRUNO_LINE['voice']
-add(voice, tts(GRUNO_LINE['text'], 'gruno', gv['pitch'], gv['tempo'], max_len=1.9), ft(GRUNO_LINE['frame']), 0.9, pan=0.15)
-add(voice, chorus(SUBSCRIBE_LINE['text'], 'sub', [1.4, 1.62], 1.1), ft(SUBSCRIBE_LINE['frame']), 0.85)
+add(voice, VL('intro_gruno', GRUNO_LINE['text'], 'gruno', gv['pitch'], gv['tempo'], max_len=1.9), ft(GRUNO_LINE['frame']), 0.9, pan=0.15)
+add(voice, VG([('intro_sub_luma', 'luma'), ('intro_sub_pimo', 'pimo')], SUBSCRIBE_LINE['text'], [1.4, 1.62]), ft(SUBSCRIBE_LINE['frame']), 0.85)
 env = np.convolve(np.abs(voice[:, 0]), np.ones(2205) / 2205, 'same')
 duck = 1 - 0.68 * np.clip(env / (env.max() + 1e-09) * 4, 0, 1)
 mix = music * duck[:, None] * 0.62 + sfx * (0.55 + 0.45 * duck)[:, None] + voice * 1.25

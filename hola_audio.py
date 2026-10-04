@@ -3,7 +3,7 @@ import numpy as np
 from scipy.io import wavfile
 import synth as S
 from synth import SR, ft, add, glock, marimba, pluck, bass, kick, clap, shaker, slide_whistle, boing, splat, sparkle, pop, bip, popper, reverb
-from voice import tts
+from voice import line
 from hola_plan import *
 HERE = os.path.dirname(os.path.abspath(__file__))
 CID = current()
@@ -71,7 +71,7 @@ v = VOICES[CID]
 times = (T_HOLA, T_NAME, T_TRAIT, T_ASK, T_BYE)
 limits = (1.4, 1.5, 3.6, 3.6, 2.0)
 for k, (f, text, lim) in enumerate(zip(times, D['lines'], limits)):
-    s = tts(text, f'{CID}{k}', v['pitch'], v['tempo'], v.get('robot', False), max_len=lim)
+    s = line(f'hola_{CID}_{k}', text, CID, v['pitch'], v['tempo'], v.get('robot', False), max_len=lim)
     add(vo, s, ft(f), 0.9)
 env = np.convolve(np.abs(vo[:, 0]), np.ones(2205) / 2205, 'same')
 duck = 1 - 0.68 * np.clip(env / (env.max() + 1e-09) * 4, 0, 1)

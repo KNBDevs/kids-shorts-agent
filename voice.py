@@ -33,3 +33,38 @@ def chorus(text, key, pitches, tempo=1.1):
     for p in parts:
         out[:len(p)] += p
     return out / (np.abs(out).max() + 1e-09)
+
+VO = os.path.join(HERE, 'assets', 'vo')
+
+
+def baked(key, char=None):
+    p = os.path.join(VO, f'{key}.wav')
+    if not os.path.exists(p):
+        return None
+    sr0, v = wavfile.read(p)
+    v = v.astype(np.float64) / 32768
+    if v.ndim > 1:
+        v = v.mean(1)
+    if sr0 != SR:
+        from scipy.signal import resample_poly
+        v = resample_poly(v, SR, sr0)
+    if char == 'bopi':
+        t = np.arange(len(v)) / SR
+        v = 0.8 * v + 0.2 * v * np.sin(2 * np.pi * 55 * t)
+    return v / (np.abs(v).max() + 1e-09)
+
+
+def line(key, text, char, pitch=1.4, tempo=1.08, robot=False, max_len=None):
+    v = baked(key, char)
+    return v if v is not None else tts(text, key, pitch, tempo, robot, max_len)
+
+
+def group(keys_chars, text, pitches):
+    parts = [baked(k, c) for k, c in keys_chars]
+    if any(p is None for p in parts):
+        return chorus(text, keys_chars[0][0], pitches)
+    n = max(len(p) for p in parts)
+    out = np.zeros(n)
+    for p in parts:
+        out[:len(p)] += p
+    return out / (np.abs(out).max() + 1e-09)
