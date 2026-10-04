@@ -2,7 +2,8 @@
  {
   "id": "intro_v2",
   "template": "intro",
-  "status": "approved"
+  "status": "approved",
+  "immediate": true
  },
  {
   "id": "intro",

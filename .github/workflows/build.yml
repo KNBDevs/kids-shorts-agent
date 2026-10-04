@@ -2,10 +2,10 @@ name: build
 
 on:
   schedule:
-    - cron: "43 11 * * 1-5"
-    - cron: "13 16 * * 1-5"
-    - cron: "43 7 * * 0,6"
-    - cron: "13 15 * * 0,6"
+    - cron: "43 8 * * *"
+    - cron: "23 12 * * *"
+    - cron: "53 15 * * *"
+    - cron: "33 19 * * *"
   workflow_dispatch:
     inputs:
       seed:
@@ -15,12 +15,16 @@ on:
       template:
         description: "Template"
         type: choice
-        options: [queue, colors, intro, hola]
+        options: [queue, colors, intro, hola, episode]
         default: queue
       char:
         description: "Character (hola)"
         required: false
         default: "pimo"
+      episode:
+        description: "Episode id (episode)"
+        required: false
+        default: ""
       deliver:
         description: "Deliver output"
         type: boolean
@@ -50,6 +54,7 @@ jobs:
           SEED: ${{ inputs.seed }}
           TEMPLATE: ${{ inputs.template || 'queue' }}
           CHAR: ${{ inputs.char }}
+          EPISODE: ${{ inputs.episode }}
         run: |
           if [ "$TEMPLATE" = "colors" ]; then python plan.py; else python plan_$TEMPLATE.py; fi
           [ -f spec.json ] || echo "skip=true" >> "$GITHUB_OUTPUT"
@@ -173,7 +178,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           R: ${{ github.repository }}
         run: |
-          N="$(jq -r '.episode // .char // .template // "colors"' spec.json)-${{ github.run_id }}"
+          N="$(jq -r '.episode // .episode_id // .char // .template // "colors"' spec.json)-${{ github.run_id }}"
           gh release view preview -R "$R" >/dev/null 2>&1 || gh release create preview -R "$R" -t preview -n "" --prerelease
           cp out.mp4 "$N.mp4" && gh release upload preview "$N.mp4" -R "$R" --clobber
       - name: Deliver
@@ -188,7 +193,9 @@ jobs:
             -F "description=$(jq -r .description meta.json)" \
             -F "tags=$(jq -r '.tags | join(",")' meta.json)" \
             -F "categoryId=$(jq -r .categoryId meta.json)" \
-            -F "madeForKids=true"
+            -F "madeForKids=true" \
+            -F "publishAt=$(jq -r '.publishAt // empty' spec.json)" \
+            -F "publishLocal=$(jq -r '.publishLocal // empty' spec.json)"
       - name: Mark published
         if: ${{ github.event_name == 'schedule' || inputs.deliver }}
         run: |
@@ -197,4 +204,6 @@ jobs:
           git config user.name "bot"; git config user.email "bot@users.noreply.github.com"
           git pull -q --rebase || true
           jq --arg e "$EP" '. + [$e] | unique' state/published.json > p.tmp && mv p.tmp state/published.json
-          git add state/published.json && git commit -qm "update state" && git push -q || true
+          PA=$(jq -r '.publishAt // empty' spec.json)
+          if [ -n "$PA" ]; then jq --arg e "$EP" --arg t "$PA" '. + {($e): $t}' state/schedule.json > s.tmp && mv s.tmp state/schedule.json; fi
+          git add state/published.json state/schedule.json && git commit -qm "update state" && git push -q || true

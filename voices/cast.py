@@ -28,6 +28,8 @@ def lines():
         out[f"intro_group_{cid}"] = {"char": cid, "text": GROUP_LINE["text"], "max": 1.4}
     for cid in ("luma", "pimo"):
         out[f"intro_sub_{cid}"] = {"char": cid, "text": SUBSCRIBE_LINE["text"], "max": 1.3}
+    from episode_lib import voice_lines
+    out.update(voice_lines())
     return out
 
 
