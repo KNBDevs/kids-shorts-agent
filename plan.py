@@ -31,7 +31,7 @@ def fallback_copy(words):
     emo = {'ROJO': '🔴', 'AZUL': '🔵', 'AMARILLO': '🟡', 'VERDE': '🟢', 'NARANJA': '🟠', 'MORADO': '🟣', 'ROSA': '🩷', 'CELESTE': '🩵'}
     icons = ''.join((emo.get(w, '') for w in words))
     title = f'¡Aprende los colores con Pip! {icons} #Shorts'
-    desc = f"¡Salta con Pip y aprende los colores! {', '.join((w.lower() for w in words))} en una animación 3D alegre para peques.\n\n¿Cuál es tu color favorito? 🌈\n\n#aprendecolores #coloresparaniños #videosinfantiles #shorts #educacioninfantil"
+    desc = f"¡Salta con Pip y aprende los colores! {', '.join((w.lower() for w in words))} en una animación 3D alegre para peques.\n\n¿Cuál es tu color favorito? 🌈\n¡Suscríbete a Pimoruki para más! 💫\n\n#aprendecolores #pimoruki #coloresparaniños #videosinfantiles #shorts #educacioninfantil"
     tags = ['colores para niños', 'aprende los colores', 'videos para niños', 'colores en español', 'animación infantil', 'educación infantil', 'shorts infantiles'] + [f'color {w.lower()}' for w in words]
     return {'title': title, 'description': desc, 'tags': tags}
 
@@ -50,7 +50,7 @@ def main():
     key = os.environ.get('GEMINI_API_KEY')
     if key:
         recent_titles = [h.get('title', '') for h in hist[-15:]]
-        prompt = f"""Eres experto en SEO de YouTube Shorts infantiles en español (España y Latinoamérica).\nVídeo: animación 3D de 20 s en bucle. Un personaje adorable llamado Pip salta sobre botones gigantes y cambia\nde color; una voz dice cada color: {', '.join(words)}. Público: niños de 1 a 5 años y sus padres.\nDevuelve SOLO JSON con: "title" (máx 70 caracteres, atractivo, con 1-4 emojis, termina en #Shorts, sin mayúsculas\nexcesivas, distinto de estos recientes: {recent_titles}), "description" (3-5 líneas, natural, pregunta al\nespectador, 4-6 hashtags al final, sin promesas engañosas), "tags" (10-15 etiquetas en español, búsquedas reales).\nNo menciones IA. Contenido apto para niños."""
+        prompt = f"""Eres experto en SEO de YouTube Shorts infantiles en español (España y Latinoamérica).\nVídeo: animación 3D de 20 s en bucle. Un personaje adorable llamado Pip salta sobre botones gigantes y cambia\nde color; una voz dice cada color: {', '.join(words)}. Público: niños de 1 a 5 años y sus padres. Canal: Pimoruki (incluye una invitación breve a suscribirse a Pimoruki en la descripción y #pimoruki entre los hashtags).\nDevuelve SOLO JSON con: "title" (máx 70 caracteres, atractivo, con 1-4 emojis, termina en #Shorts, sin mayúsculas\nexcesivas, distinto de estos recientes: {recent_titles}), "description" (3-5 líneas, natural, pregunta al\nespectador, 4-6 hashtags al final, sin promesas engañosas), "tags" (10-15 etiquetas en español, búsquedas reales).\nNo menciones IA. Contenido apto para niños."""
         copy = gemini(prompt, key)
         if copy and (not all((k in copy for k in ('title', 'description', 'tags')))):
             copy = None
