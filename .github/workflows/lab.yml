@@ -1,0 +1,54 @@
+name: lab
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  tts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+      matrix:
+        engine: [piper_sharvard_f, piper_sharvard_m, piper_davefx, kokoro_dora, kokoro_alex, chatterbox_expr]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq espeak-ng ffmpeg > /dev/null
+      - name: Deps
+        run: |
+          case "${{ matrix.engine }}" in
+            piper*) pip install -q piper-tts
+              B=https://huggingface.co/rhasspy/piper-voices/resolve/main/es/es_ES
+              for v in sharvard davefx; do curl -sSLO $B/$v/medium/es_ES-$v-medium.onnx; curl -sSLO $B/$v/medium/es_ES-$v-medium.onnx.json; done ;;
+            kokoro*) pip install -q "kokoro>=0.9" soundfile scipy ;;
+            chatterbox*) pip install -q chatterbox-tts scipy ;;
+          esac
+          pip install -q numpy scipy
+      - run: python lab/voice_lab.py ${{ matrix.engine }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lab-${{ matrix.engine }}
+          path: lab_out/
+  pack:
+    needs: tts
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg > /dev/null
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: lab-*
+          path: lab_out
+          merge-multiple: true
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          R: ${{ github.repository }}
+        run: |
+          ls -R lab_out
+          cd lab_out && zip -qr ../voces.zip .
+          cd .. && (gh release view preview -R "$R" >/dev/null 2>&1 || gh release create preview -R "$R" -t preview -n "" --prerelease)
+          gh release upload preview voces.zip -R "$R" --clobber
