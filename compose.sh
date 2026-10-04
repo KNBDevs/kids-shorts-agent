@@ -1,6 +1,6 @@
 set -euo pipefail
 cd "$(dirname "$0")"
-FR=${FR:-frames}; OUT=${OUT:-out.mp4}; MAX_BYTES=${MAX_BYTES:-4800000}; DUR=20
+FR=${FR:-frames}; OUT=${OUT:-out.mp4}; MAX_BYTES=${MAX_BYTES:-4800000}; DUR=${DUR:-20}
 ABR=128
 VBR=$(( (MAX_BYTES * 8 / DUR / 1000) * 92 / 100 - ABR ))
 ffmpeg -y -loglevel error -i soundtrack.wav -af loudnorm=I=-14:TP=-1.5:LRA=9,aresample=48000 -c:a aac -b:a ${ABR}k a.m4a

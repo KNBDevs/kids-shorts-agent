@@ -10,3 +10,6 @@ spec.json
 meta.json
 t.json
 characters/inspect/
+_vo/
+test/
+__pycache__/
