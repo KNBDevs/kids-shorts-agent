@@ -40,9 +40,9 @@ def say(f, text, key):
     d = MAN.get(key, {}).get('dur')
     n = round(d * FPS / 4) if d else len(text) // 4
     C.talk(ch, f, syllables=max(3, n), step=4)
-for k, (f, t) in enumerate(zip((T_HOLA, T_NAME, T_TRAIT, T_ASK, T_BYE), L)):
+for k, (f, t) in enumerate(zip(TIMES, L)):
     say(f, t, f'hola_{CID}_{k}')
-for f in (40, 120, 230, 300, 410, 520, 580):
+for f in (40, 120, 230, 300, 470, 540, 585):
     C.blink(ch, f)
 confetti(2, (0, -1.2, 1.8), 30)
 word3d('¡HOLA!', (0.2, 0.55, 1.0), (0, -1.6, 2.95), 3, T_NAME - 4, size=1.2, max_w=2.3)
@@ -91,6 +91,7 @@ if G:
     K(ch['spin'], 'rotation_euler', fp + 6, (0, 0, math.radians(14)))
     K(ch['spin'], 'rotation_euler', fp + 14, (0, 0, math.radians(-12)))
 else:
+    confetti(T_PRAISE, (0, -1.2, 2.2), 30, 2.4)
     confetti(T_BYE + 2, (0, -1.2, 2.4), 26, 2.4)
 if __name__ == '__main__':
     run()

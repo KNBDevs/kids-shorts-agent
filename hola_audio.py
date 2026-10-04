@@ -53,6 +53,7 @@ add(sfx, popper(), ft(2), 0.3)
 add(sfx, sparkle(88), ft(3), 0.2)
 add(sfx, boing(260, 0.35, up=True), ft(1), 0.25)
 add(sfx, boing(170), ft(12), 0.35)
+add(sfx, sparkle(96), ft(T_PRAISE), 0.18)
 for f in (T_NAME, T_TRAIT + 2, T_BYE + 4):
     add(sfx, pop(), ft(f), 0.26)
 add(sfx, sparkle(91), ft(T_TRAIT + 3), 0.16)
@@ -68,8 +69,8 @@ else:
     add(sfx, popper(), ft(T_BYE + 2), 0.28)
 vo = np.zeros((N, 2))
 v = VOICES[CID]
-times = (T_HOLA, T_NAME, T_TRAIT, T_ASK, T_BYE)
-limits = (1.4, 1.5, 3.6, 3.6, 2.0)
+times = TIMES
+limits = (1.6, 3.6, 6.5, 4.3, 2.0, 3.6)
 for k, (f, text, lim) in enumerate(zip(times, D['lines'], limits)):
     s = line(f'hola_{CID}_{k}', text, CID, v['pitch'], v['tempo'], v.get('robot', False), max_len=lim)
     add(vo, s, ft(f), 0.9)

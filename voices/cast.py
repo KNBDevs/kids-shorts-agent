@@ -16,7 +16,7 @@ def lines():
     from hola_plan import CHARS
     from intro_plan import CAST, GROUP_LINE, GRUNO_LINE, SUBSCRIBE_LINE
     out = {}
-    lim_h = (1.6, 3.0, 6.2, 5.6, 3.4)
+    lim_h = (1.6, 3.6, 6.5, 4.3, 2.0, 3.6)
     for cid, d in CHARS.items():
         for k, t in enumerate(d["lines"]):
             out[f"hola_{cid}_{k}"] = {"char": cid, "text": t, "max": lim_h[k]}
