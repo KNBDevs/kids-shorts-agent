@@ -33,4 +33,4 @@ def lines():
 
 def digest(entry):
     p = PROFILES[entry["char"]]
-    return hashlib.sha1((entry["text"] + repr(sorted(p.items()))).encode()).hexdigest()[:12]
+    return hashlib.sha1(("v2" + entry["text"] + repr(sorted(p.items()))).encode()).hexdigest()[:12]
