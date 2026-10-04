@@ -1,0 +1,222 @@
+[
+ {
+  "id": "intro",
+  "template": "intro",
+  "status": "approved"
+ },
+ {
+  "id": "hola_pimo",
+  "template": "hola",
+  "char": "pimo",
+  "status": "approved"
+ },
+ {
+  "id": "hola_ruki",
+  "template": "hola",
+  "char": "ruki",
+  "status": "approved"
+ },
+ {
+  "id": "hola_luma",
+  "template": "hola",
+  "char": "luma",
+  "status": "approved"
+ },
+ {
+  "id": "hola_tuki",
+  "template": "hola",
+  "char": "tuki",
+  "status": "approved"
+ },
+ {
+  "id": "hola_moki",
+  "template": "hola",
+  "char": "moki",
+  "status": "approved"
+ },
+ {
+  "id": "hola_bopi",
+  "template": "hola",
+  "char": "bopi",
+  "status": "approved"
+ },
+ {
+  "id": "hola_bolita",
+  "template": "hola",
+  "char": "bolita",
+  "status": "approved"
+ },
+ {
+  "id": "hola_gruno",
+  "template": "hola",
+  "char": "gruno",
+  "status": "approved"
+ },
+ {
+  "id": "bopi_rueda_cuadrada",
+  "template": "episode",
+  "title": "Bopi busca una rueda cuadrada",
+  "cast": [
+   "bopi",
+   "ruki",
+   "gruno"
+  ],
+  "status": "draft"
+ },
+ {
+  "id": "gruno_roba_amarillo",
+  "template": "episode",
+  "title": "Gruño roba el amarillo",
+  "cast": [
+   "pimo",
+   "gruno"
+  ],
+  "status": "draft"
+ },
+ {
+  "id": "tuki_cuenta_saltos",
+  "template": "episode",
+  "title": "Tuki cuenta sus saltos",
+  "cast": [
+   "tuki",
+   "ruki"
+  ],
+  "status": "draft"
+ },
+ {
+  "id": "sombra_no_obedece",
+  "template": "episode",
+  "title": "La sombra que no obedece",
+  "cast": [
+   "pimo",
+   "bolita",
+   "gruno"
+  ],
+  "status": "draft"
+ },
+ {
+  "id": "maquina_silencio",
+  "template": "episode",
+  "title": "La máquina de hacer silencio",
+  "cast": [
+   "gruno",
+   "bopi"
+  ],
+  "status": "draft"
+ },
+ {
+  "id": "moki_colador_lluvia",
+  "template": "episode",
+  "title": "Moki intenta guardar la lluvia",
+  "cast": [
+   "moki",
+   "pimo"
+  ],
+  "status": "draft"
+ },
+ {
+  "id": "boton_mas_grande",
+  "template": "episode",
+  "title": "El botón de más grande",
+  "cast": [
+   "gruno",
+   "ruki"
+  ],
+  "status": "draft"
+ },
+ {
+  "id": "carrera_mas_lenta",
+  "template": "episode",
+  "title": "La carrera más lenta del mundo",
+  "cast": [
+   "tuki",
+   "ruki",
+   "gruno"
+  ],
+  "status": "draft"
+ },
+ {
+  "id": "bolita_mezcla_verde",
+  "template": "episode",
+  "title": "El rojo que quería ser verde",
+  "cast": [
+   "bolita",
+   "pimo"
+  ],
+  "status": "draft"
+ },
+ {
+  "id": "monstruo_caja",
+  "template": "episode",
+  "title": "El monstruo dentro de la caja",
+  "cast": [
+   "pimo",
+   "ruki",
+   "gruno"
+  ],
+  "status": "draft"
+ },
+ {
+  "id": "luma_escucha",
+  "template": "episode",
+  "title": "Luma quiere que la escuchen",
+  "cast": [
+   "luma",
+   "pimo",
+   "tuki"
+  ],
+  "status": "draft"
+ },
+ {
+  "id": "puerta_empuja_tira",
+  "template": "episode",
+  "title": "La puerta que dice tira",
+  "cast": [
+   "gruno",
+   "bopi"
+  ],
+  "status": "draft"
+ },
+ {
+  "id": "mitades_merienda",
+  "template": "episode",
+  "title": "Dos mitades, una merienda",
+  "cast": [
+   "pimo",
+   "tuki",
+   "ruki"
+  ],
+  "status": "draft"
+ },
+ {
+  "id": "invento_error_util",
+  "template": "episode",
+  "title": "El invento que necesitaba un error",
+  "cast": [
+   "gruno",
+   "pimo"
+  ],
+  "status": "draft"
+ },
+ {
+  "id": "donde_esta_tres",
+  "template": "episode",
+  "title": "¿Dónde está el tres?",
+  "cast": [
+   "pimo",
+   "gruno"
+  ],
+  "status": "draft"
+ },
+ {
+  "id": "puente_cooperacion",
+  "template": "episode",
+  "title": "Gruño quiere todas las piezas",
+  "cast": [
+   "gruno",
+   "ruki",
+   "pimo"
+  ],
+  "status": "draft"
+ }
+]

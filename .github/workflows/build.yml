@@ -1,6 +1,9 @@
 name: build
 
 on:
+  schedule:
+    - cron: "13 15 * * 1-5"
+    - cron: "13 8 * * 0,6"
   workflow_dispatch:
     inputs:
       seed:
@@ -10,12 +13,16 @@ on:
       template:
         description: "Template"
         type: choice
-        options: [colors, intro]
-        default: colors
+        options: [queue, colors, intro, hola]
+        default: queue
+      char:
+        description: "Character (hola)"
+        required: false
+        default: "pimo"
       deliver:
         description: "Deliver output"
         type: boolean
-        default: true
+        default: false
 
 concurrency:
   group: build-${{ github.run_id }}
@@ -28,23 +35,30 @@ jobs:
   plan:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    outputs:
+      skip: ${{ steps.plan.outputs.skip }}
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@v4
       - name: Plan
+        id: plan
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           SEED: ${{ inputs.seed }}
-          TEMPLATE: ${{ inputs.template || 'colors' }}
+          TEMPLATE: ${{ inputs.template || 'queue' }}
+          CHAR: ${{ inputs.char }}
         run: |
           if [ "$TEMPLATE" = "colors" ]; then python plan.py; else python plan_$TEMPLATE.py; fi
+          [ -f spec.json ] || echo "skip=true" >> "$GITHUB_OUTPUT"
       - name: Save state
+        if: steps.plan.outputs.skip != 'true'
         run: |
           git config user.name "bot"; git config user.email "bot@users.noreply.github.com"
           git add state/history.json
           git commit -qm "update state" && git pull -q --rebase && git push -q || true
       - uses: actions/upload-artifact@v4
+        if: steps.plan.outputs.skip != 'true'
         with:
           name: plan
           path: |
@@ -54,6 +68,7 @@ jobs:
 
   render:
     needs: plan
+    if: needs.plan.outputs.skip != 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 60
     strategy:
@@ -93,6 +108,7 @@ jobs:
 
   audio:
     needs: plan
+    if: needs.plan.outputs.skip != 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -121,6 +137,8 @@ jobs:
   compose:
     needs: [render, audio]
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
@@ -160,3 +178,12 @@ jobs:
             -F "tags=$(jq -r '.tags | join(",")' meta.json)" \
             -F "categoryId=$(jq -r .categoryId meta.json)" \
             -F "madeForKids=true"
+      - name: Mark published
+        if: ${{ github.event_name == 'schedule' || inputs.deliver }}
+        run: |
+          EP=$(jq -r '.episode // empty' spec.json)
+          [ -n "$EP" ] || exit 0
+          git config user.name "bot"; git config user.email "bot@users.noreply.github.com"
+          git pull -q --rebase || true
+          jq --arg e "$EP" '. + [$e] | unique' state/published.json > p.tmp && mv p.tmp state/published.json
+          git add state/published.json && git commit -qm "update state" && git push -q || true
