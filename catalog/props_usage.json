@@ -1335,7 +1335,17 @@
     "rot": 26.6
    }
   ],
-  "order": 16
+  "order": 16,
+  "hero": [
+   {
+    "prop": "play_ball",
+    "style": 1
+   },
+   {
+    "prop": "play_step",
+    "style": 0
+   }
+  ]
  },
  "elefante_limite": {
   "env": "plaza",

@@ -34,5 +34,6 @@ REGISTRY = {
     "toy_magnet": {"styles": 3, "envs": ["lab", "casa", "aula"], "tags": ["ciencia", "iman"], "decor": False},
     "fruit": {"styles": 3, "envs": ["cocina", "casa", "patio", "lab"], "tags": ["comida"], "decor": False},
     "low_table": {"styles": 3, "envs": ["casa", "lab", "aula", "cocina", "patio"], "tags": ["mueble"], "decor": False},
+    "play_step": {"styles": 3, "envs": ["patio", "casa", "aula", "plaza"], "tags": ["plataforma", "juego"], "decor": False},
     "bridge_kit": {"styles": 3, "envs": ["patio", "casa", "aula"], "tags": ["construir", "juguete"], "decor": False},
 }

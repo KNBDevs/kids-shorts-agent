@@ -935,6 +935,27 @@ def low_table(r, s, fam, root):
     return Hh
 
 
+def play_step(r, s, fam, root):
+    a, b, c = [_rich(x, 1.3, 0.95) for x in _cols(r, fam, 3)]
+    ma, mb, mc = M(a, rough=0.5, coat=0.4), M(b, rough=0.45, coat=0.5), M(c, rough=0.45, coat=0.5)
+    if s == 0:
+        C.rounded_box("blk", (0, 0, 0.11), (0.72, 0.46, 0.22), 0.06, ma, root)
+        for x in (-0.22, 0.0, 0.22):
+            C.rounded_box("strip", (x, -0.232, 0.11), (0.08, 0.01, 0.16), 0.004, mb, root)
+        C.rounded_box("pad", (0, 0, 0.225), (0.62, 0.36, 0.02), 0.008, mc, root)
+        return 0.235
+    if s == 1:
+        C.lathe("drum", [(0.0, 0.0), (0.0, 0.3), (0.02, 0.32), (0.2, 0.32), (0.22, 0.3), (0.22, 0.0)], ma, root, segs=56, sy=0.7)
+        C.tube("band", [(math.cos(k * 6.2832 / 56) * 0.322, math.sin(k * 6.2832 / 56) * 0.322 * 0.7, 0.11) for k in range(57)], 0.016, mb, root)
+        C.lathe("top", [(0.215, 0.0), (0.215, 0.27), (0.228, 0.26), (0.228, 0.0)], mc, root, segs=56, sy=0.7)
+        return 0.228
+    C.rounded_box("low", (0, 0, 0.07), (0.8, 0.5, 0.14), 0.04, ma, root)
+    C.rounded_box("up", (0.12, 0.04, 0.17), (0.5, 0.38, 0.12), 0.04, mb, root)
+    for x in (-0.3, 0.38):
+        C.sphere("dot", (x, -0.252, 0.07), (0.03, 0.01, 0.03), mc, root, 12)
+    return 0.23
+
+
 GEN = {k: v for k, v in globals().items() if k in REGISTRY}
 
 
