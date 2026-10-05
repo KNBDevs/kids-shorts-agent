@@ -402,13 +402,15 @@
   "shift": -3.53
  },
  "intro_group_pimo": {
-  "hash": "rejected",
-  "dur": 1.42,
+  "hash": "864f509bd6d6",
+  "dur": 1.22,
   "text": "¡Somos Pimoruki!",
   "asr": 1.0,
   "heard": "Somos Pimoruki.",
   "engine": "gemini",
-  "voice": "Puck"
+  "voice": "Puck",
+  "lock": "L1",
+  "shift": -2.79
  },
  "intro_sub_pimo": {
   "hash": "776187473b81",
@@ -1308,5 +1310,27 @@
   "voice": "Puck",
   "lock": "L1",
   "shift": -3.53
+ },
+ "ep_luma_escucha_l3": {
+  "hash": "b6a3159c4269",
+  "dur": 2.45,
+  "text": "Había una vez una estrella pequeñita...",
+  "asr": 1.0,
+  "heard": "Había una vez una estrella pequeñita.",
+  "engine": "gemini",
+  "voice": "Leda",
+  "lock": "L1",
+  "shift": -3.51
+ },
+ "ep_bolita_mezcla_verde_p2": {
+  "hash": "f292e3a767d0",
+  "dur": 2.9,
+  "text": "Un poco de azul... y un poco de amarillo.",
+  "asr": 1.0,
+  "heard": "Un poco de azul y un poco de amarillo.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "lock": "L1",
+  "shift": -6.78
  }
 }
