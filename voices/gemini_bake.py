@@ -16,6 +16,8 @@ from lock import conform, profiles, LOCK
 
 
 def reg(c):
+    if c not in profiles():
+        return "siempre con el mismo tono y el mismo timbre, sin cambiar de registro"
     f = profiles()[c]["f0"]
     r = "agudo" if f > 240 else ("medio" if f > 170 else "grave")
     return f"siempre con el mismo tono {r} y el mismo timbre de su presentación, sin cambiar de registro"
@@ -168,7 +170,7 @@ def finish(seg, sr, key, e, asr):
 
 
 PAIRS = [("pimo", "luma"), ("ruki", "moki"), ("tuki", "bolita"), ("bopi", "gruno")]
-NAMES = {"pimo": "Pimo", "luma": "Luma", "ruki": "Ruki", "moki": "Moki", "tuki": "Tuki", "bolita": "Bolita", "bopi": "Bopi", "gruno": "Gruno"}
+NAMES = {"pimo": "Pimo", "luma": "Luma", "ruki": "Ruki", "moki": "Moki", "tuki": "Tuki", "bolita": "Bolita", "bopi": "Bopi", "gruno": "Gruno", "narrador": "Narradora", "nubi": "Nubi"}
 
 
 def pending(man, allL, cid):

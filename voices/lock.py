@@ -55,7 +55,10 @@ def profiles():
 def conform(path, char):
     """Shift a baked line so its median pitch matches the character's locked reference.
     Returns semitone offset measured before correction, or None if out of range (reject)."""
-    ref = profiles()[char]["f0"]
+    pr = profiles()
+    if char not in pr:
+        return 0.0
+    ref = pr[char]["f0"]
     t = f0_file(path)
     if len(t) < 5:
         return 0.0
