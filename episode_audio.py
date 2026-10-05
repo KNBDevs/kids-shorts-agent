@@ -108,12 +108,33 @@ def rain():
     return s * np.clip(t / 0.5, 0, 1) * np.clip((6.0 - t) / 0.5, 0, 1)
 
 
+def roar():
+    n = int(1.1 * SR)
+    t = np.arange(n) / SR
+    f = 95 * (1 + 0.08 * np.sin(2 * np.pi * 5 * t)) * (1 - 0.15 * t)
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    s = sum(np.sin(k * ph) / k for k in range(1, 9))
+    s = S.lp(s + 0.4 * S.lp(S.rng.uniform(-1, 1, n), 500), 700)
+    return s * np.sin(np.pi * t / 1.1) ** 1.2 * 0.6
+
+
+def meow():
+    n = int(0.75 * SR)
+    t = np.arange(n) / SR
+    u = t / 0.75
+    f = 520 + 380 * np.sin(np.pi * np.clip(u * 1.3, 0, 1)) ** 1.5 - 120 * u
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    s = np.sin(ph) + 0.5 * np.sin(2 * ph) + 0.25 * np.sin(3 * ph)
+    return S.lp(s, 3000) * np.sin(np.pi * u) ** 0.8 * 0.6
+
+
 SFX = {"pop": lambda: pop(), "boing": lambda: boing(170), "boing_up": lambda: boing(260, 0.35, up=True), "splat": lambda: splat(),
        "sparkle": lambda: sparkle(88), "popper": lambda: popper(), "bip": lambda: bip(88),
        "whistle_down": lambda: slide_whistle(1400, 400, 0.5), "whistle_up": lambda: slide_whistle(500, 1500, 0.5),
        "clonk": lambda: S.lp(kick(), 1500), "tock": lambda: tock(),
        "bell": lambda: bell(), "bell_cut": lambda: _tail(bell(), 0.48), "drum": lambda: drum(), "drum_cut": lambda: _tail(drum(), 0.16),
-       "snore": lambda: snore(), "snore_soft": lambda: snore(True), "snore_cut": lambda: _tail(snore(), 0.85, 0.06), "drip": lambda: drip(), "rain": lambda: rain()}
+       "snore": lambda: snore(), "snore_soft": lambda: snore(True), "snore_cut": lambda: _tail(snore(), 0.85, 0.06), "drip": lambda: drip(), "rain": lambda: rain(),
+       "roar": lambda: roar(), "meow": lambda: meow()}
 sfx = np.zeros((N, 2))
 for f, kind, g in getattr(P, "SFX", []):
     add(sfx, SFX[kind](), ft(f), g)

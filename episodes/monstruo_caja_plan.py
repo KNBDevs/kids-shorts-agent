@@ -13,7 +13,7 @@ LINES = [
     ('g1', 'gruno', '¡Mi altavoz! ¿Quién lo ha encendido?', 600, 2.4),
     ('p4', 'pimo', '¡Ahora es un gatito!', 730, 1.4),
 ]
-SFX = []
+SFX = [(12, 'roar', 0.45), (160, 'roar', 0.35), (396, 'tock', 0.25), (424, 'pop', 0.2), (690, 'meow', 0.55), (700, 'boing_up', 0.2)]
 META = {
     'title': 'El monstruo dentro de la caja 📦🔊 ¿Qué habrá dentro? #shorts',
     'description': 'De una caja sale un rugido suave. Pimo se pregunta si hay un monstruo, pero Ruki mira con calma y descubre una lucecita... ¡es el altavoz del Doctor Gruño! Aprende jugando a observar antes de sacar conclusiones.\n\n#pimoruki #dibujosanimados #videosinfantiles #aprenderjugando #shorts',

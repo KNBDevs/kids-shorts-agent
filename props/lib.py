@@ -563,6 +563,60 @@ def paint_palette(r, s, fam, root):
         C.sphere("well", (x, y, z), (0.055, 0.055, 0.008), white, root, 24)
 
 
+def lidded_box(r, s, fam, root):
+    body, lid, trim = _cols(r, fam, 3)
+    W, D, H = [(0.62, 0.5, 0.42), (0.56, 0.56, 0.4), (0.7, 0.44, 0.38)][s]
+    if s == 1:
+        C.lathe("box", [(0, 0.0), (0, W / 2), (H, W / 2), (H, W / 2 - 0.02), (0.02, W / 2 - 0.02), (0.02, 0.0)], M(body, rough=0.5, coat=0.4), root, segs=56)
+        C.tube("band", _ring(W / 2 + 0.005, H * 0.5, 56), 0.014, M(trim, coat=0.6), root)
+    else:
+        th = 0.025
+        C.rounded_box("bot", (0, 0, th / 2), (W, D, th), 0.01, M(body, rough=0.5, coat=0.4), root)
+        for sx in (-1, 1):
+            C.rounded_box("side", (sx * (W / 2 - th / 2), 0, H / 2), (th, D, H), 0.01, M(body, rough=0.5, coat=0.4), root)
+        for sy in (-1, 1):
+            C.rounded_box("side", (0, sy * (D / 2 - th / 2), H / 2), (W, th, H), 0.01, M(body, rough=0.5, coat=0.4), root)
+        C.rounded_box("strip", (0, -D / 2 - 0.004, H * 0.5), (W * 0.18, 0.012, H * 0.98), 0.005, M(trim, coat=0.6), root)
+    hinge = C.empty("lid_hinge", root, (0, D / 2 if s != 1 else W / 2, H))
+    if s == 0:
+        C.rounded_box("lid", (0, -D / 2, 0.03), (W + 0.04, D + 0.04, 0.06), 0.02, M(lid, rough=0.45, coat=0.6), hinge)
+        C.sphere("knob", (0, -D - 0.025, 0.03), (0.035, 0.025, 0.025), M(trim, coat=0.7), hinge, 16)
+    elif s == 1:
+        lg = C.empty("lidg", hinge, (0, -W / 2, 0))
+        C.lathe("lid", [(0, 0.0), (0, W / 2 + 0.02), (0.07, W / 2 + 0.02), (0.08, 0.0)], M(lid, rough=0.45, coat=0.6), lg, segs=56)
+        C.sphere("knob", (0, 0, 0.1), (0.04, 0.04, 0.03), M(trim, coat=0.7), lg, 16)
+    else:
+        lg = C.empty("lidg", hinge, (0, -D / 2, 0))
+        bm_ = C.lathe("lid", [(0, 0.0), (0.0, D / 2 + 0.02), (0.08, D / 2 * 0.8), (0.14, 0.0)], M(lid, rough=0.45, coat=0.6), lg, segs=40, sx=(W + 0.04) / (D + 0.04), sy=1.0)
+        C.rounded_box("clasp", (0, -D / 2 - 0.03, -0.02), (0.08, 0.02, 0.08), 0.01, M(trim, coat=0.8), lg)
+
+
+def toy_speaker(r, s, fam, root):
+    body, grille, accent = _cols(r, fam, 3)
+    dark = M((0.16, 0.15, 0.22), rough=0.55, coat=0.3)
+    if s == 0:
+        C.rounded_box("cab", (0, 0, 0.17), (0.3, 0.22, 0.34), 0.05, M(body, coat=0.6), root)
+        for z, rr in ((0.22, 0.09), (0.09, 0.05)):
+            fc = C.empty("cone", root, (0, -0.112, z), (math.radians(90), 0, 0))
+            C.lathe("ring", [(0, 0.0), (0, rr), (0.01, rr + 0.012), (0.018, rr), (0.018, 0.0)], M(grille, coat=0.5), fc, segs=40)
+            C.sphere("dust", (0, 0, 0.012), (rr * 0.8, rr * 0.8, 0.02), dark, fc, 24)
+        led = (0.11, -0.112, 0.31)
+    elif s == 1:
+        C.lathe("cyl", [(0, 0.0), (0, 0.11), (0.02, 0.12), (0.26, 0.12), (0.28, 0.11), (0.28, 0.0)], M(body, coat=0.6), root, segs=48)
+        for z in (0.07, 0.11, 0.15, 0.19):
+            C.tube("grl", _ring(0.122, z, 48), 0.006, M(grille, rough=0.5), root)
+        led = (0.0, -0.122, 0.24)
+    else:
+        C.rounded_box("cab", (0, 0, 0.13), (0.42, 0.18, 0.26), 0.06, M(body, coat=0.6), root)
+        C.tube("handle", [(-0.15, 0, 0.25), (-0.12, 0, 0.34), (0.12, 0, 0.34), (0.15, 0, 0.25)], 0.014, M(accent, coat=0.6), root)
+        fc = C.empty("cone", root, (-0.07, -0.092, 0.13), (math.radians(90), 0, 0))
+        C.lathe("ring", [(0, 0.0), (0, 0.08), (0.012, 0.09), (0.02, 0.08), (0.02, 0.0)], M(grille, coat=0.5), fc, segs=40)
+        C.sphere("dial", (0.12, -0.092, 0.16), (0.035, 0.015, 0.035), M(accent, coat=0.7), root, 20)
+        led = (0.12, -0.092, 0.07)
+    lm = C.mat("led", (0.3, 1.0, 0.45), rough=0.2, emit=3.0)
+    C.sphere("led", led, (0.018, 0.012, 0.018), lm, root, 16)
+
+
 GEN = {k: v for k, v in globals().items() if k in REGISTRY}
 
 

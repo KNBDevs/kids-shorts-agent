@@ -23,4 +23,6 @@ REGISTRY = {
     "pouf": {"styles": 3, "envs": ["casa", "aula"], "tags": ["asiento"]},
     "finish_line": {"styles": 3, "envs": ["plaza", "patio"], "tags": ["juego", "carrera"], "decor": False},
     "paint_palette": {"styles": 3, "envs": ["casa", "aula", "patio"], "tags": ["arte", "colores"], "decor": False},
+    "lidded_box": {"styles": 3, "envs": ["casa", "aula", "lab"], "tags": ["caja", "misterio"], "decor": False},
+    "toy_speaker": {"styles": 3, "envs": ["casa", "aula", "lab"], "tags": ["sonido"], "decor": False},
 }
