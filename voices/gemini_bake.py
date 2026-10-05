@@ -94,6 +94,12 @@ def finish(seg, sr, key, e, asr):
     final = os.path.join(OUT, f"{key}.wav")
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", raw, "-af", af, "-ar", "44100", "-ac", "1", final], check=True)
     sr2, y = wavfile.read(final)
+    h = int(sr2 * 0.01)
+    en = np.array([np.sqrt(np.mean((y[i:i + h] / 32768.0) ** 2)) for i in range(0, len(y) - h, h)])
+    on = np.where(en > en.max() * 0.06)[0]
+    if len(on):
+        y = y[max(0, (on[0] - 5) * h):min(len(y), (on[-1] + 20) * h)]
+        wavfile.write(final, sr2, y)
     return {"hash": digest(e["char"], e["text"]), "dur": round(len(y) / sr2, 2), "text": e["text"], "asr": round(sc, 2),
             "heard": heard.strip(), "engine": "gemini", "voice": VOICES[e["char"]][0]}
 

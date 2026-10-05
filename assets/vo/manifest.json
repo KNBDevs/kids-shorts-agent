@@ -739,7 +739,7 @@
  },
  "ep_moki_colador_lluvia_p2": {
   "hash": "51d6214ac883",
-  "dur": 1.51,
+  "dur": 1.31,
   "text": "Prueba con mi taza.",
   "asr": 1.0,
   "heard": "¡Prueba con mi taza!",
@@ -748,7 +748,7 @@
  },
  "ep_moki_colador_lluvia_p3": {
   "hash": "80c9cb77a585",
-  "dur": 1.81,
+  "dur": 1.62,
   "text": "¿Por dónde se escapa el agua?",
   "asr": 1.0,
   "heard": "¿Por dónde se escapa el agua?",
@@ -757,7 +757,7 @@
  },
  "ep_moki_colador_lluvia_p4": {
   "hash": "dae6a0fd48d3",
-  "dur": 1.45,
+  "dur": 1.22,
   "text": "¡Por los agujeros!",
   "asr": 1.0,
   "heard": "por los agujeros",
@@ -766,7 +766,7 @@
  },
  "ep_sombra_no_obedece_p1": {
   "hash": "bddded36f53f",
-  "dur": 1.35,
+  "dur": 1.14,
   "text": "¡Mira mi sombra!",
   "asr": 1.0,
   "heard": "¡Mira mi sombra!",
@@ -775,7 +775,7 @@
  },
  "ep_sombra_no_obedece_p2": {
   "hash": "4eaad7e9d13e",
-  "dur": 1.71,
+  "dur": 1.47,
   "text": "¿Dónde está mi sombra?",
   "asr": 1.0,
   "heard": "¿Dónde está mi sombra?",
@@ -784,7 +784,7 @@
  },
  "ep_sombra_no_obedece_p3": {
   "hash": "a2886caa36cb",
-  "dur": 2.19,
+  "dur": 1.99,
   "text": "¡Ahí está! ¡Hola, sombra!",
   "asr": 1.0,
   "heard": "¡Ahí está! ¡Hola Sombra!",
@@ -793,7 +793,7 @@
  },
  "ep_sombra_no_obedece_p4": {
   "hash": "c1bb79a534cd",
-  "dur": 2.81,
+  "dur": 2.61,
   "text": "¡La luz va a un lado y la sombra al otro!",
   "asr": 0.95,
   "heard": "La luz va un lado y la sombra al otro.",
@@ -802,7 +802,7 @@
  },
  "ep_moki_colador_lluvia_m5": {
   "hash": "ea099029c5d7",
-  "dur": 1.71,
+  "dur": 1.35,
   "text": "¡Ay! ¡Gota en la nariz!",
   "asr": 0.89,
   "heard": "Gota en la nariz.",
@@ -811,7 +811,7 @@
  },
  "ep_tuki_cuenta_saltos_a1": {
   "hash": "611fa006ace0",
-  "dur": 0.92,
+  "dur": 0.72,
   "text": "¡Uno!",
   "asr": 1.0,
   "heard": "¡Uno!",
@@ -820,7 +820,7 @@
  },
  "ep_tuki_cuenta_saltos_a2": {
   "hash": "ce11e5e3aa68",
-  "dur": 1.57,
+  "dur": 0.63,
   "text": "¡Dos!",
   "asr": 1.0,
   "heard": "dos",
@@ -829,7 +829,7 @@
  },
  "ep_tuki_cuenta_saltos_a4": {
   "hash": "53665d0bdec8",
-  "dur": 1.47,
+  "dur": 0.53,
   "text": "¡Cuatro!",
   "asr": 0.0,
   "heard": "4",
@@ -838,7 +838,7 @@
  },
  "ep_tuki_cuenta_saltos_c1": {
   "hash": "611fa006ace0",
-  "dur": 0.92,
+  "dur": 0.72,
   "text": "¡Uno!",
   "asr": 1.0,
   "heard": "¡Uno!",
@@ -847,7 +847,7 @@
  },
  "ep_tuki_cuenta_saltos_c2": {
   "hash": "ce11e5e3aa68",
-  "dur": 1.57,
+  "dur": 0.63,
   "text": "¡Dos!",
   "asr": 1.0,
   "heard": "dos",
@@ -856,7 +856,7 @@
  },
  "ep_tuki_cuenta_saltos_c3": {
   "hash": "7fd54e05a7f8",
-  "dur": 1.55,
+  "dur": 0.59,
   "text": "¡Tres!",
   "asr": 1.0,
   "heard": "¡Tres!",
@@ -865,7 +865,7 @@
  },
  "ep_tuki_cuenta_saltos_c4": {
   "hash": "53665d0bdec8",
-  "dur": 1.47,
+  "dur": 0.53,
   "text": "¡Cuatro!",
   "asr": 0.0,
   "heard": "4",
@@ -874,7 +874,7 @@
  },
  "ep_tuki_cuenta_saltos_t5": {
   "hash": "53665d0bdec8",
-  "dur": 1.47,
+  "dur": 0.53,
   "text": "¡Cuatro!",
   "asr": 0.0,
   "heard": "4",
@@ -883,7 +883,7 @@
  },
  "ep_tuki_cuenta_saltos_t6": {
   "hash": "a9227f66849e",
-  "dur": 1.89,
+  "dur": 0.95,
   "text": "¡Y otro más!",
   "asr": 1.0,
   "heard": "y otro más",
@@ -892,7 +892,7 @@
  },
  "ep_tuki_cuenta_saltos_t7": {
   "hash": "52c568b144ee",
-  "dur": 1.64,
+  "dur": 0.73,
   "text": "¡Cinco!",
   "asr": 1.0,
   "heard": "Cinco",
@@ -901,7 +901,7 @@
  },
  "ep_maquina_silencio_b4": {
   "hash": "c9742fd38778",
-  "dur": 1.57,
+  "dur": 1.43,
   "text": "Y este, ¿qué será?",
   "asr": 1.0,
   "heard": "¿Y este qué será?",
@@ -910,7 +910,7 @@
  },
  "ep_maquina_silencio_b6": {
   "hash": "5d6d6132204a",
-  "dur": 2.5,
+  "dur": 2.21,
   "text": "¡Bip! ¡Hasta el ronquido va en burbuja!",
   "asr": 0.92,
   "heard": "Hasta el ronquido va en burbuja.",
@@ -919,7 +919,7 @@
  },
  "ep_maquina_silencio_g3": {
   "hash": "4b6ce21b7044",
-  "dur": 1.6,
+  "dur": 1.45,
   "text": "¡Y ahora, el tambor!",
   "asr": 1.0,
   "heard": "¡Y ahora el tambor!",
@@ -928,7 +928,7 @@
  },
  "ep_sombra_no_obedece_g2": {
   "hash": "a948330334e8",
-  "dur": 1.77,
+  "dur": 1.61,
   "text": "Bah... ¡pues mediano!",
   "asr": 0.67,
   "heard": "Va, pues mediano.",
@@ -937,7 +937,7 @@
  },
  "ep_tuki_cuenta_saltos_r1": {
   "hash": "5583210b2a7d",
-  "dur": 1.09,
+  "dur": 0.9,
   "text": "¿Y el tres?",
   "asr": 1.0,
   "heard": "¿Y el 3?",
@@ -946,7 +946,7 @@
  },
  "ep_tuki_cuenta_saltos_r2": {
   "hash": "743497b8a9f6",
-  "dur": 3.32,
+  "dur": 2.98,
   "text": "Contamos despacio: un salto, una ficha.",
   "asr": 1.0,
   "heard": "Contamos despacio. Un salto, una ficha.",
@@ -955,7 +955,7 @@
  },
  "ep_tuki_cuenta_saltos_r3": {
   "hash": "be645cf58d04",
-  "dur": 1.61,
+  "dur": 1.19,
   "text": "¿Cuántas fichas hay?",
   "asr": 1.0,
   "heard": "¿Cuántas fichas hay?",
@@ -964,7 +964,7 @@
  },
  "ep_tuki_cuenta_saltos_r4": {
   "hash": "d5733e2be823",
-  "dur": 2.38,
+  "dur": 2.08,
   "text": "¡Cuatro saltos, cuatro fichas!",
   "asr": 1.0,
   "heard": "Cuatro saltos, cuatro fichas.",
@@ -973,7 +973,7 @@
  },
  "ep_tuki_cuenta_saltos_r5": {
   "hash": "a2f99ec007c3",
-  "dur": 2.39,
+  "dur": 2.11,
   "text": "¡Cinco saltos, cinco fichas!",
   "asr": 1.0,
   "heard": "5 saltos, 5 fichas",
@@ -982,7 +982,7 @@
  },
  "ep_moki_colador_lluvia_m1": {
   "hash": "397b68a02360",
-  "dur": 2.01,
+  "dur": 1.7,
   "text": "Voy a guardar la lluvia...",
   "asr": 1.0,
   "heard": "Voy a guardar la lluvia.",
@@ -991,7 +991,7 @@
  },
  "ep_moki_colador_lluvia_m2": {
   "hash": "628eafa675c0",
-  "dur": 1.71,
+  "dur": 1.38,
   "text": "¿Eh? ¡Está vacío!",
   "asr": 1.0,
   "heard": "¡Eh! ¡Está vacío!",
@@ -1000,7 +1000,7 @@
  },
  "ep_moki_colador_lluvia_m3": {
   "hash": "8a7fab870604",
-  "dur": 1.87,
+  "dur": 1.61,
   "text": "¡Mira! ¡El agua sube!",
   "asr": 1.0,
   "heard": "¡Mira, el agua sube!",
@@ -1009,7 +1009,7 @@
  },
  "ep_moki_colador_lluvia_m4": {
   "hash": "80037a1c992c",
-  "dur": 2.01,
+  "dur": 1.7,
   "text": "Pues... ¡será un sombrero!",
   "asr": 1.0,
   "heard": "¡Pues será un sombrero!",
@@ -1027,7 +1027,7 @@
  },
  "ep_sombra_no_obedece_b2": {
   "hash": "e22b65ba2000",
-  "dur": 2.01,
+  "dur": 1.62,
   "text": "¿Y si movemos la lámpara?",
   "asr": 1.0,
   "heard": "Y sí, movemos la lámpara.",
@@ -1036,7 +1036,7 @@
  },
  "ep_sombra_no_obedece_b3": {
   "hash": "5a308c06b9c7",
-  "dur": 2.02,
+  "dur": 1.63,
   "text": "¿Hacia dónde irá la sombra?",
   "asr": 1.0,
   "heard": "¿Hacia dónde irá la sombra?",
@@ -1045,7 +1045,7 @@
  },
  "ep_sombra_no_obedece_b4": {
   "hash": "baad060b57cb",
-  "dur": 2.41,
+  "dur": 2.0,
   "text": "¡Es que estás muy cerca de la luz!",
   "asr": 1.0,
   "heard": "Es que estás muy cerca de la luz.",
@@ -1063,7 +1063,7 @@
  },
  "ep_maquina_silencio_b2": {
   "hash": "1223e137564a",
-  "dur": 2.06,
+  "dur": 1.86,
   "text": "Escucha. ¿Qué suena?",
   "asr": 1.0,
   "heard": "¡Escucha! ¡Qué suena!",
@@ -1072,7 +1072,7 @@
  },
  "ep_maquina_silencio_b3": {
   "hash": "8e8df4e013b3",
-  "dur": 1.41,
+  "dur": 1.2,
   "text": "¡Es la campana!",
   "asr": 1.0,
   "heard": "¡Es la campana!",
@@ -1081,7 +1081,7 @@
  },
  "ep_maquina_silencio_b5": {
   "hash": "ec76887a9d46",
-  "dur": 1.18,
+  "dur": 0.99,
   "text": "¡El tambor!",
   "asr": 1.0,
   "heard": "¡El tambor!",
@@ -1090,7 +1090,7 @@
  },
  "ep_maquina_silencio_g1": {
   "hash": "5b4d36793ed7",
-  "dur": 2.09,
+  "dur": 1.88,
   "text": "¡Mi máquina de hacer silencio!",
   "asr": 1.0,
   "heard": "Mi máquina de hacer silencio.",
@@ -1099,7 +1099,7 @@
  },
  "ep_maquina_silencio_g2": {
   "hash": "9cde56baca94",
-  "dur": 1.57,
+  "dur": 1.35,
   "text": "¡Silencio atrapado!",
   "asr": 1.0,
   "heard": "Silencio atrapado",
@@ -1108,7 +1108,7 @@
  },
  "ep_maquina_silencio_g4": {
   "hash": "0f016d4f5f0f",
-  "dur": 2.28,
+  "dur": 2.06,
   "text": "Bah... el silencio me da sueño.",
   "asr": 0.83,
   "heard": "Va, el silencio me da sueño.",
@@ -1117,7 +1117,7 @@
  },
  "ep_sombra_no_obedece_g1": {
   "hash": "015e58975168",
-  "dur": 1.94,
+  "dur": 1.74,
   "text": "¡Mirad! ¡Soy gigante!",
   "asr": 1.0,
   "heard": "¡Mirad! ¡Soy gigante!",

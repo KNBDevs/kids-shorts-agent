@@ -11,7 +11,7 @@ LINES = [
     ('a2', 'tuki', '¡Dos!', 24, 1.0),
     ('a4', 'tuki', '¡Cuatro!', 42, 1.0),
     ('r1', 'ruki', '¿Y el tres?', 76, 1.4),
-    ('r2', 'ruki', 'Contamos despacio: un salto, una ficha.', 114, 2.9),
+    ('r2', 'ruki', 'Contamos despacio: un salto, una ficha.', 106, 2.9),
     ('c1', 'tuki', '¡Uno!', 194, 1.0),
     ('c2', 'tuki', '¡Dos!', 234, 1.0),
     ('c3', 'tuki', '¡Tres!', 274, 1.0),
