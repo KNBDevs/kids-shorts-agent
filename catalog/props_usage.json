@@ -1164,5 +1164,345 @@
     "style": 1
    }
   ]
+ },
+ "iman_manzana": {
+  "env": "lab",
+  "family": "candy",
+  "decor": [
+   {
+    "prop": "floor_lamp",
+    "style": 2,
+    "seed": 189476,
+    "loc": [
+     -1.4,
+     2.58,
+     0.0
+    ],
+    "scale": 1.16,
+    "rot": -7.1
+   },
+   {
+    "prop": "gear_tower",
+    "style": 2,
+    "seed": 305640,
+    "loc": [
+     -2.46,
+     2.16,
+     0.0
+    ],
+    "scale": 1.0,
+    "rot": -16.1
+   },
+   {
+    "prop": "toy_blocks",
+    "style": 0,
+    "seed": 87578,
+    "loc": [
+     -4.44,
+     2.56,
+     0.0
+    ],
+    "scale": 1.13,
+    "rot": -30.2
+   },
+   {
+    "prop": "pebbles",
+    "style": 0,
+    "seed": 780832,
+    "loc": [
+     -3.49,
+     0.45,
+     0.0
+    ],
+    "scale": 1.04,
+    "rot": -10.7
+   },
+   {
+    "prop": "bunting",
+    "style": 2,
+    "seed": 104843,
+    "loc": [
+     0.95,
+     2.6,
+     0.0
+    ],
+    "scale": 1.19,
+    "rot": 10.8
+   }
+  ],
+  "order": 15
+ },
+ "pelota_cae": {
+  "env": "patio",
+  "family": "fresh",
+  "decor": [
+   {
+    "prop": "bush",
+    "style": 1,
+    "seed": 191262,
+    "loc": [
+     4.5,
+     3.09,
+     0.0
+    ],
+    "scale": 1.14,
+    "rot": 24.0
+   },
+   {
+    "prop": "pebbles",
+    "style": 2,
+    "seed": 628556,
+    "loc": [
+     2.08,
+     1.61,
+     0.0
+    ],
+    "scale": 1.0,
+    "rot": 16.8
+   },
+   {
+    "prop": "fence",
+    "style": 0,
+    "seed": 261558,
+    "loc": [
+     -0.87,
+     2.31,
+     0.0
+    ],
+    "scale": 1.19,
+    "rot": -8.8
+   },
+   {
+    "prop": "soft_token",
+    "style": 1,
+    "seed": 602053,
+    "loc": [
+     1.13,
+     4.27,
+     0.0
+    ],
+    "scale": 0.94,
+    "rot": -5.5
+   },
+   {
+    "prop": "mushroom_stool",
+    "style": 0,
+    "seed": 834390,
+    "loc": [
+     -2.02,
+     2.94,
+     0.0
+    ],
+    "scale": 1.25,
+    "rot": -28.4
+   },
+   {
+    "prop": "planter_box",
+    "style": 2,
+    "seed": 468938,
+    "loc": [
+     3.57,
+     2.76,
+     0.0
+    ],
+    "scale": 1.0,
+    "rot": 20.6
+   },
+   {
+    "prop": "birdhouse",
+    "style": 1,
+    "seed": 226060,
+    "loc": [
+     -4.47,
+     3.22,
+     0.0
+    ],
+    "scale": 1.25,
+    "rot": 26.6
+   }
+  ],
+  "order": 16
+ },
+ "elefante_limite": {
+  "env": "plaza",
+  "family": "pastel",
+  "decor": [
+   {
+    "prop": "flower_pot",
+    "style": 0,
+    "seed": 54550,
+    "loc": [
+     2.39,
+     2.73,
+     0.0
+    ],
+    "scale": 1.07,
+    "rot": 19.2
+   },
+   {
+    "prop": "bunting",
+    "style": 0,
+    "seed": 45225,
+    "loc": [
+     1.08,
+     3.0,
+     0.0
+    ],
+    "scale": 1.1,
+    "rot": 31.0
+   },
+   {
+    "prop": "toy_blocks",
+    "style": 2,
+    "seed": 269951,
+    "loc": [
+     4.76,
+     1.03,
+     0.0
+    ],
+    "scale": 1.02,
+    "rot": 29.8
+   },
+   {
+    "prop": "bench",
+    "style": 2,
+    "seed": 61747,
+    "loc": [
+     -1.13,
+     3.72,
+     0.0
+    ],
+    "scale": 1.01,
+    "rot": -8.1
+   },
+   {
+    "prop": "lamp_post",
+    "style": 2,
+    "seed": 863648,
+    "loc": [
+     -2.0,
+     2.13,
+     0.0
+    ],
+    "scale": 0.88,
+    "rot": -28.9
+   },
+   {
+    "prop": "planter_box",
+    "style": 0,
+    "seed": 552081,
+    "loc": [
+     3.34,
+     0.99,
+     0.0
+    ],
+    "scale": 0.93,
+    "rot": -8.2
+   },
+   {
+    "prop": "birdhouse",
+    "style": 2,
+    "seed": 61280,
+    "loc": [
+     -4.41,
+     2.63,
+     0.0
+    ],
+    "scale": 1.19,
+    "rot": -21.0
+   }
+  ],
+  "order": 17
+ },
+ "esponja_absorbe": {
+  "env": "casa",
+  "family": "pastel",
+  "decor": [
+   {
+    "prop": "toy_blocks",
+    "style": 1,
+    "seed": 448197,
+    "loc": [
+     4.75,
+     0.98,
+     0.0
+    ],
+    "scale": 0.92,
+    "rot": -14.6
+   },
+   {
+    "prop": "ball_basket",
+    "style": 1,
+    "seed": 213420,
+    "loc": [
+     2.42,
+     3.56,
+     0.0
+    ],
+    "scale": 1.01,
+    "rot": 14.8
+   },
+   {
+    "prop": "flower_pot",
+    "style": 2,
+    "seed": 992959,
+    "loc": [
+     -1.01,
+     4.0,
+     0.0
+    ],
+    "scale": 1.15,
+    "rot": 20.4
+   },
+   {
+    "prop": "pouf",
+    "style": 1,
+    "seed": 276638,
+    "loc": [
+     0.99,
+     2.14,
+     0.0
+    ],
+    "scale": 0.92,
+    "rot": -32.2
+   },
+   {
+    "prop": "soft_token",
+    "style": 2,
+    "seed": 419472,
+    "loc": [
+     -2.4,
+     2.88,
+     0.0
+    ],
+    "scale": 0.92,
+    "rot": -14.0
+   },
+   {
+    "prop": "floor_lamp",
+    "style": 1,
+    "seed": 837075,
+    "loc": [
+     -3.38,
+     1.95,
+     0.0
+    ],
+    "scale": 1.02,
+    "rot": 15.4
+   },
+   {
+    "prop": "play_mat",
+    "style": 0,
+    "seed": 369723,
+    "loc": [
+     -4.71,
+     3.41,
+     0.0
+    ],
+    "scale": 1.06,
+    "rot": -13.6
+   }
+  ],
+  "order": 18
  }
 }
