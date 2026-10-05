@@ -72,88 +72,112 @@
   "voice": "Zephyr"
  },
  "hola_bopi_0": {
-  "hash": "1946f90c6b43",
-  "dur": 0.99,
+  "hash": "fec00cec1f40",
+  "dur": 1.68,
   "text": "Hola. ¡Bip, bop!",
-  "asr": 0.86,
-  "heard": " ¡Hola, bip bop, bop!"
+  "asr": 0.4,
+  "heard": "¡Hola! Bebop.",
+  "engine": "gemini",
+  "voice": "Iapetus"
  },
  "hola_bopi_1": {
-  "hash": "bebedfe5d53d",
-  "dur": 0.98,
-  "text": "Soy Bopi, el robot.",
+  "hash": "35eaadd7ad50",
+  "dur": 3.49,
+  "text": "Soy Bopi, un robot muy ordenado.",
   "asr": 1.0,
-  "heard": " Soy Bopi, el robot."
+  "heard": "Soy Bopi, un robot muy ordenado.",
+  "engine": "gemini",
+  "voice": "Iapetus"
  },
  "hola_bopi_2": {
-  "hash": "56262040fc28",
-  "dur": 2.45,
-  "text": "Me gusta tenerlo todo ordenado. ¡Uno, dos y tres!",
+  "hash": "78061a02dfc4",
+  "dur": 3.94,
+  "text": "Cada cosa en su sitio: ¡los juguetes en la caja!",
   "asr": 1.0,
-  "heard": " Me gusta tenerlo todo ordenado. 1, 2 y 3."
+  "heard": "Cada cosa en su sitio, los juguetes en la caja.",
+  "engine": "gemini",
+  "voice": "Iapetus"
  },
  "hola_bopi_3": {
-  "hash": "d138b8e75894",
-  "dur": 2.48,
-  "text": "¿Me ayudas a contar? Uno, dos, tres... ¡Perfecto!",
+  "hash": "78b94f9a7dd7",
+  "dur": 4.31,
+  "text": "¿Me ayudas a contar? Uno, dos, tres...",
   "asr": 1.0,
-  "heard": " Me ayudas a contar uno, dos, tres, perfecto."
+  "heard": "¿Me ayudas a contar? ¿1, 2, 3?",
+  "engine": "gemini",
+  "voice": "Iapetus"
  },
  "hola_bopi_4": {
-  "hash": "70428db1da63",
-  "dur": 1.02,
-  "text": "Bopi se despide. ¡Bip!",
+  "hash": "31fee57e020e",
+  "dur": 2.0,
+  "text": "¡Correcto! ¡Eres un gran ayudante!",
   "asr": 1.0,
-  "heard": " Bopi se despide.  ¡Bip!"
+  "heard": "¡Correcto! Eres un gran ayudante.",
+  "engine": "gemini",
+  "voice": "Iapetus"
  },
  "intro_bopi": {
-  "hash": "15e9e4a62fe3",
-  "dur": 1.19,
+  "hash": "346a7f3aa149",
+  "dur": 2.82,
   "text": "Soy Bopi. ¡Todo en orden! ¡Bip!",
-  "asr": 0.91,
-  "heard": " Soy Bopi, todo en orden."
+  "asr": 1.0,
+  "heard": "Soy Bopi. Todo en orden. Bip!",
+  "engine": "gemini",
+  "voice": "Iapetus"
  },
  "hola_gruno_0": {
-  "hash": "ca23a4c8978d",
-  "dur": 1.14,
+  "hash": "ce3859cb31b9",
+  "dur": 1.7,
   "text": "Vaya, vaya, vaya...",
-  "asr": 1.0,
-  "heard": " ¡Vaya, vaya, vaya!"
+  "asr": 0.0,
+  "heard": "¡Badia, badia, badia!",
+  "engine": "gemini",
+  "voice": "Algenib"
  },
  "hola_gruno_1": {
-  "hash": "ca14b036bbe4",
-  "dur": 1.25,
-  "text": "¡Soy el Doctor Gruño!",
-  "asr": 1.0,
-  "heard": " Soy el doctor Grunio."
+  "hash": "9da13bb50578",
+  "dur": 3.29,
+  "text": "¡Soy el Doctor Gruño, el gran inventor!",
+  "asr": 0.86,
+  "heard": "Soy el doctor Guño, el gran inventor.",
+  "engine": "gemini",
+  "voice": "Algenib"
  },
  "hola_gruno_2": {
-  "hash": "c26bb6bf712b",
-  "dur": 1.99,
-  "text": "¡El inventor más genial del mundo mundial!",
+  "hash": "7f15e3ba4327",
+  "dur": 4.01,
+  "text": "¡Mis inventos son geniales! Bueno... casi siempre.",
   "asr": 1.0,
-  "heard": " el inventor más genial del mundo mundial."
+  "heard": "Mis inventos son geniales. Bueno, casi siempre.",
+  "engine": "gemini",
+  "voice": "Algenib"
  },
  "hola_gruno_3": {
-  "hash": "a31a9ecaf057",
-  "dur": 2.14,
-  "text": "Mirad mi nuevo invento... ¡Ay! ¡Ups!",
-  "asr": 1.0,
-  "heard": " Mirad mi nuevo invento. ¡Ay! ¡Ups!"
+  "hash": "630e0f0c6a5c",
+  "dur": 3.64,
+  "text": "Mirad mi nueva máquina... ¡Ay! ¡Ups!",
+  "asr": 0.83,
+  "heard": "Mirad mi nueva máquina. ¡Ay! ¡Oops!",
+  "engine": "gemini",
+  "voice": "Algenib"
  },
  "hola_gruno_4": {
-  "hash": "38afbc124f19",
-  "dur": 2.03,
-  "text": "¡Ya veréis, Pimoruki! ¡Ya veréis!",
-  "asr": 1.0,
-  "heard": " Ya veréis, Pimoruki, ya veréis."
+  "hash": "8169bd2b1d4c",
+  "dur": 2.7,
+  "text": "Bah... ¡de los errores también se aprende!",
+  "asr": 0.86,
+  "heard": "Va, de los errores también se aprende.",
+  "engine": "gemini",
+  "voice": "Algenib"
  },
  "intro_gruno": {
-  "hash": "cf85220f1954",
-  "dur": 2.0,
+  "hash": "524dccb8349e",
+  "dur": 2.18,
   "text": "Je, je... ¡Ya veréis, Pimoruki!",
-  "asr": 0.73,
-  "heard": " ¡Je je! Ya veréis, pimo Ruki."
+  "asr": 0.67,
+  "heard": "Jeje, ya veréis Pimoruki.",
+  "engine": "gemini",
+  "voice": "Algenib"
  },
  "hola_luma_0": {
   "hash": "6df9b1d5bd76",
@@ -613,5 +637,95 @@
   "heard": "Ahora hacéis juego.",
   "engine": "gemini",
   "voice": "Puck"
+ },
+ "hola_bopi_5": {
+  "hash": "cef30bf58fa6",
+  "dur": 3.02,
+  "text": "Bopi se despide. ¡Bip, bop!",
+  "asr": 0.73,
+  "heard": "Bop y se despide. Bip, bop.",
+  "engine": "gemini",
+  "voice": "Iapetus"
+ },
+ "ep_bopi_rueda_cuadrada_l2": {
+  "hash": "4d9ddcd9dced",
+  "dur": 2.3,
+  "text": "¡Bip! ¡Pues probaré con triángulos!",
+  "asr": 0.8,
+  "heard": "VIP, pues probaré con triángulos.",
+  "engine": "gemini",
+  "voice": "Iapetus"
+ },
+ "ep_bopi_rueda_cuadrada_l3": {
+  "hash": "b5900ae53146",
+  "dur": 1.88,
+  "text": "¡Uy! ¡Da más saltos!",
+  "asr": 0.57,
+  "heard": "¡Uy, damas saltos!",
+  "engine": "gemini",
+  "voice": "Iapetus"
+ },
+ "ep_bopi_rueda_cuadrada_l6": {
+  "hash": "f4b04d94a63a",
+  "dur": 1.61,
+  "text": "¡El círculo rueda!",
+  "asr": 1.0,
+  "heard": "El círculo rueda",
+  "engine": "gemini",
+  "voice": "Iapetus"
+ },
+ "hola_gruno_5": {
+  "hash": "f6ffb9cc7f4c",
+  "dur": 2.97,
+  "text": "¡Ya veréis, Pimoruki! ¡Ya veréis!",
+  "asr": 1.0,
+  "heard": "Ya veréis, Pimoruki. Ya veréis.",
+  "engine": "gemini",
+  "voice": "Algenib"
+ },
+ "ep_bopi_rueda_cuadrada_l7": {
+  "hash": "8a9598ca09de",
+  "dur": 1.61,
+  "text": "¡El mío es mejor!",
+  "asr": 1.0,
+  "heard": "El mío es mejor.",
+  "engine": "gemini",
+  "voice": "Algenib"
+ },
+ "ep_gruno_roba_amarillo_l1": {
+  "hash": "68d86a5a37bc",
+  "dur": 1.91,
+  "text": "¡Mi aspiradora de colores!",
+  "asr": 1.0,
+  "heard": "Mi aspiradora de colores.",
+  "engine": "gemini",
+  "voice": "Algenib"
+ },
+ "ep_gruno_roba_amarillo_l3": {
+  "hash": "e7d19b88c128",
+  "dur": 1.75,
+  "text": "¡Y ahora, el plátano!",
+  "asr": 1.0,
+  "heard": "¡Y ahora el plátano!",
+  "engine": "gemini",
+  "voice": "Algenib"
+ },
+ "ep_gruno_roba_amarillo_l6": {
+  "hash": "540d6e9423a7",
+  "dur": 1.83,
+  "text": "¡Ay, ay! ¡Se está llenando!",
+  "asr": 1.0,
+  "heard": "¡Ay, ay! ¡Se está llenando!",
+  "engine": "gemini",
+  "voice": "Algenib"
+ },
+ "ep_gruno_roba_amarillo_l8": {
+  "hash": "c0310c9a686d",
+  "dur": 2.41,
+  "text": "Bah... ¡el amarillo me queda genial!",
+  "asr": 0.83,
+  "heard": "Va, el amarillo me queda genial.",
+  "engine": "gemini",
+  "voice": "Algenib"
  }
 }
