@@ -1010,6 +1010,92 @@ def mixing_bowl(r, s, fam, root):
     piv.scale = (0.001, 0.001, 0.001)
 
 
+def toy_elephant(r, s, fam, root):
+    body_c = [(0.42, 0.5, 0.78), (0.6, 0.42, 0.78), (0.3, 0.6, 0.68)][s]
+    acc = _rich(_cols(r, fam, 1)[0])
+    bm_ = M(body_c, rough=0.75 if s != 1 else 0.45, coat=0.05 if s != 1 else 0.5)
+    am = M(acc, rough=0.6, coat=0.3)
+    ink = M((0.12, 0.1, 0.15), rough=0.4, coat=0.5)
+    hi = M((1, 1, 1), rough=0.2, emit=0.3)
+    if s == 1:
+        C.rounded_box("body", (0, 0, 0.36), (0.5, 0.32, 0.3), 0.08, bm_, root)
+        for x in (-0.16, 0.16):
+            for y in (-0.1, 0.1):
+                C.rounded_box("leg", (x, y, 0.12), (0.12, 0.12, 0.24), 0.04, bm_, root)
+        C.rounded_box("head", (-0.3, 0, 0.5), (0.26, 0.28, 0.26), 0.08, bm_, root)
+        hx, hz = -0.3, 0.5
+        trunk = [(-0.42, 0, 0.48), (-0.5, 0, 0.4), (-0.52, 0, 0.3), (-0.48, 0, 0.24)]
+        for sy in (-1, 1):
+            C.rounded_box("ear", (-0.24, sy * 0.17, 0.52), (0.04, 0.16, 0.2), 0.02, am, root)
+        C.tube("trunk", trunk, 0.045, bm_, root)
+    else:
+        if s == 0:
+            C.sphere("body", (0, 0, 0.36), (0.3, 0.2, 0.2), bm_, root, 40)
+            for x in (-0.15, 0.15):
+                for y in (-0.1, 0.1):
+                    C.tube("leg", [(x, y, 0.3), (x, y, 0.06)], 0.065, bm_, root)
+                    C.sphere("pad", (x, y, 0.05), (0.07, 0.07, 0.04), am, root, 16)
+            hx, hz = -0.3, 0.52
+            C.sphere("head", (hx, 0, hz), (0.17, 0.16, 0.16), bm_, root, 40)
+            ear = [(-0.24, 0.18, 0.55)]
+            for sy in (-1, 1):
+                C.sphere("ear", (-0.25, sy * 0.19, 0.55), (0.04, 0.13, 0.14), am, root, 24, rot=(0, 0, math.radians(sy * 20)))
+        else:
+            C.sphere("body", (0, 0, 0.34), (0.26, 0.22, 0.24), bm_, root, 40)
+            for x in (-0.13, 0.13):
+                for y in (-0.11, 0.11):
+                    C.sphere("leg", (x, y, 0.09), (0.075, 0.075, 0.09), bm_, root, 20)
+            hx, hz = -0.28, 0.5
+            C.sphere("head", (hx, 0, hz), (0.15, 0.15, 0.15), bm_, root, 40)
+            for sy in (-1, 1):
+                C.sphere("ear", (-0.22, sy * 0.17, 0.52), (0.03, 0.11, 0.11), am, root, 20)
+            C.sphere("patch", (0.05, -0.2, 0.38), (0.08, 0.03, 0.08), am, root, 16)
+        trunk = [(hx - 0.13, 0, hz - 0.02), (hx - 0.21, 0, hz - 0.1), (hx - 0.23, 0, hz - 0.2), (hx - 0.19, 0, hz - 0.26)]
+        C.tube("trunk", trunk, 0.04, bm_, root, radii=[1.3, 1.0, 0.85, 0.75])
+    HR = [0.165, 0.14, 0.15][s]
+    for sy in (-1, 1):
+        d = Vector((-0.78, sy * 0.48, 0.4)).normalized()
+        e = Vector((hx, 0, hz)) + d * HR
+        if s == 1:
+            e = Vector((hx - 0.135, sy * 0.07, hz + 0.05))
+        C.sphere("eye", tuple(e), (0.022, 0.022, 0.028), ink, root, 12)
+        C.sphere("shine", tuple(e + Vector((-0.016, -0.004 * sy, 0.012))), (0.007,) * 3, hi, root, 8)
+    C.tube("tail", [(0.28 if s != 1 else 0.25, 0, 0.4), (0.34, 0, 0.34), (0.35, 0, 0.28)], 0.012, bm_, root)
+    C.sphere("tuft", (0.35, 0, 0.27), (0.025,) * 3, am, root, 10)
+
+
+def net_swing(r, s, fam, root):
+    post, netc = [_rich(c, 1.3, 0.95) for c in _cols(r, fam, 2)]
+    pm = M(post, rough=0.45, coat=0.5)
+    nm = M(netc, rough=0.7, coat=0.1)
+    W, H = [(0.6, 0.55), (0.52, 0.6), (0.66, 0.5)][s]
+    for x in (-W / 2, W / 2):
+        if s == 1:
+            C.tube("post", [(x, 0, 0.0), (x, 0, H)], 0.022, pm, root)
+            C.rounded_box("foot", (x, 0, 0.015), (0.08, 0.3, 0.03), 0.012, pm, root)
+        else:
+            for y in (-0.13, 0.13):
+                C.tube("leg", [(x, y, 0.0), (x, 0, H)], 0.018, pm, root)
+        C.sphere("cap", (x, 0, H + 0.01), (0.03,) * 3, pm, root, 12)
+    if s == 2:
+        arc = [(math.cos(math.pi * k / 16) * W / 2, 0, H + math.sin(math.pi * k / 16) * 0.08) for k in range(17)]
+        C.tube("top", arc, 0.016, pm, root)
+    else:
+        C.tube("top", [(-W / 2, 0, H), (W / 2, 0, H)], 0.016, pm, root)
+    hang = C.empty("net_hang", root, (0, 0, H - 0.12))
+    for x in (-W / 2 + 0.06, W / 2 - 0.06):
+        C.tube("rope", [(x, 0, H - 0.0), (x * 0.92, 0, H - 0.12)], 0.006, nm, root)
+    n = 7
+    w = W / 2 - 0.06
+    for i in range(n):
+        u = -1 + 2 * i / (n - 1)
+        C.tube("nl", [(u * w * 0.98, -0.05 + 0.1 * j / 6, -0.12 * (1 - (u * 0.98) ** 2) * (1 - 0.3 * abs(j / 6 - 0.5))) for j in range(7)], 0.004, nm, hang)
+    for j in range(4):
+        v = -0.05 + 0.1 * j / 3
+        C.tube("nw", [(-w + 2 * w * k / 12, v, -0.12 * (1 - (-1 + 2 * k / 12) ** 2)) for k in range(13)], 0.004, nm, hang)
+    return hang
+
+
 GEN = {k: v for k, v in globals().items() if k in REGISTRY}
 
 

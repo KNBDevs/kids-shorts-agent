@@ -24,6 +24,9 @@ else:
     mel = {"C": [(0, 79), (1, 76), (1.5, 77), (2, 79), (3, 84)], "G": [(0, 83), (1, 79), (2, 74), (2.5, 76), (3, 77)],
            "Am": [(0, 76), (0.5, 77), (1, 76), (2, 72), (3, 69)], "F": [(0, 72), (1, 74), (1.5, 76), (2, 77), (3, 81)]}
 lead = marimba if MOOD in ("calm", "mystery", "silly") else glock
+SONG = getattr(P, "SONG", None)
+smel = {"C": [(0, 72), (0.5, 74), (1, 76), (2, 79), (3, 76)], "G": [(0, 74), (1, 71), (1.5, 74), (2, 79), (3, 74)],
+        "Am": [(0, 72), (1, 76), (2, 81), (3, 79)], "F": [(0, 77), (0.5, 76), (1, 74), (2, 72), (3, 69)]}
 music = np.zeros((N, 2)); drums = np.zeros((N, 2))
 for bar, ch in enumerate(prog):
     t0 = bar * 4 * BEAT
@@ -35,8 +38,13 @@ for bar, ch in enumerate(prog):
     for b in (0.5, 1.5, 2.5, 3.5):
         for k, m in enumerate(chords[ch]):
             add(music, pluck(m + 12, 0.42, 0.6), t0 + b * BEAT + k * 0.008, 0.08, pan=-0.3)
-    for b, m in mel[ch]:
-        add(music, lead(m, 0.5), t0 + b * BEAT, 0.13 if lead is glock else 0.2, pan=0.2)
+    if SONG and SONG[0] / FPS - 0.01 <= t0 < SONG[1] / FPS:
+        for b, m in smel.get(ch, mel[ch]):
+            add(music, marimba(m, 0.45), t0 + b * BEAT, 0.24, pan=0.1)
+            add(music, glock(m + 12, 0.4), t0 + b * BEAT, 0.05, pan=-0.1)
+    else:
+        for b, m in mel[ch]:
+            add(music, lead(m, 0.5), t0 + b * BEAT, 0.13 if lead is glock else 0.2, pan=0.2)
     for b in range(4):
         add(drums, kick(), t0 + b * BEAT, 0.45 if b % 2 == 0 else 0.2)
         if b % 2:

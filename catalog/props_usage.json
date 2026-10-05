@@ -1436,7 +1436,21 @@
     "rot": -21.0
    }
   ],
-  "order": 17
+  "order": 17,
+  "hero": [
+   {
+    "prop": "toy_elephant",
+    "style": 0
+   },
+   {
+    "prop": "net_swing",
+    "style": 0
+   },
+   {
+    "prop": "play_step",
+    "style": 2
+   }
+  ]
  },
  "esponja_absorbe": {
   "env": "casa",
