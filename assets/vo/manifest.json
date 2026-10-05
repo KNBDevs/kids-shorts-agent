@@ -659,13 +659,15 @@
   "voice": "Puck"
  },
  "ep_gruno_roba_amarillo_l5": {
-  "hash": "rejected",
-  "dur": 2.03,
+  "hash": "e5cd1591ee2d",
+  "dur": 1.85,
   "text": "¡Amarillos! ¡Eran amarillos!",
   "asr": 1.0,
   "heard": "Amarillos. Eran amarillos.",
   "engine": "gemini",
-  "voice": "Puck"
+  "voice": "Puck",
+  "lock": "L1",
+  "shift": -6.21
  },
  "ep_gruno_roba_amarillo_l7": {
   "hash": "23ed5514b3b8",
@@ -1048,22 +1050,26 @@
   "voice": "Umbriel"
  },
  "ep_tuki_cuenta_saltos_r3": {
-  "hash": "rejected",
-  "dur": 1.19,
+  "hash": "be645cf58d04",
+  "dur": 1.31,
   "text": "¿Cuántas fichas hay?",
   "asr": 1.0,
   "heard": "¿Cuántas fichas hay?",
   "engine": "gemini",
-  "voice": "Umbriel"
+  "voice": "Umbriel",
+  "lock": "L1",
+  "shift": -4.23
  },
  "ep_tuki_cuenta_saltos_r4": {
-  "hash": "rejected",
-  "dur": 2.08,
+  "hash": "d5733e2be823",
+  "dur": 2.29,
   "text": "¡Cuatro saltos, cuatro fichas!",
   "asr": 1.0,
   "heard": "Cuatro saltos, cuatro fichas.",
   "engine": "gemini",
-  "voice": "Umbriel"
+  "voice": "Umbriel",
+  "lock": "L1",
+  "shift": 1.77
  },
  "ep_tuki_cuenta_saltos_r5": {
   "hash": "a2f99ec007c3",
@@ -1088,13 +1094,15 @@
   "shift": -1.12
  },
  "ep_moki_colador_lluvia_m2": {
-  "hash": "rejected",
-  "dur": 1.38,
+  "hash": "628eafa675c0",
+  "dur": 1.39,
   "text": "¿Eh? ¡Está vacío!",
   "asr": 1.0,
-  "heard": "¡Eh! ¡Está vacío!",
+  "heard": "¡Eh, está vacío!",
   "engine": "gemini",
-  "voice": "Enceladus"
+  "voice": "Enceladus",
+  "lock": "L1",
+  "shift": 0.11
  },
  "ep_moki_colador_lluvia_m3": {
   "hash": "8a7fab870604",
