@@ -994,5 +994,151 @@
    }
   ],
   "order": 12
+ },
+ "donde_esta_tres": {
+  "env": "plaza",
+  "family": "pastel",
+  "decor": [
+   {
+    "prop": "bush",
+    "style": 0,
+    "seed": 100433,
+    "loc": [
+     3.23,
+     3.02,
+     0.0
+    ],
+    "scale": 1.17,
+    "rot": 1.4
+   },
+   {
+    "prop": "lamp_post",
+    "style": 1,
+    "seed": 686681,
+    "loc": [
+     -0.87,
+     2.61,
+     0.0
+    ],
+    "scale": 1.07,
+    "rot": 3.4
+   },
+   {
+    "prop": "bench",
+    "style": 0,
+    "seed": 959504,
+    "loc": [
+     4.59,
+     3.04,
+     0.0
+    ],
+    "scale": 1.05,
+    "rot": 7.4
+   },
+   {
+    "prop": "planter_box",
+    "style": 1,
+    "seed": 408730,
+    "loc": [
+     -2.37,
+     2.69,
+     0.0
+    ],
+    "scale": 0.91,
+    "rot": -22.8
+   },
+   {
+    "prop": "mushroom_stool",
+    "style": 1,
+    "seed": 552322,
+    "loc": [
+     -3.49,
+     3.46,
+     0.0
+    ],
+    "scale": 1.24,
+    "rot": -5.9
+   },
+   {
+    "prop": "fence",
+    "style": 2,
+    "seed": 330777,
+    "loc": [
+     2.01,
+     3.7,
+     0.0
+    ],
+    "scale": 1.23,
+    "rot": 19.0
+   }
+  ],
+  "order": 13
+ },
+ "puente_cooperacion": {
+  "env": "patio",
+  "family": "fresh",
+  "decor": [
+   {
+    "prop": "birdhouse",
+    "style": 0,
+    "seed": 324723,
+    "loc": [
+     -3.44,
+     1.8,
+     0.0
+    ],
+    "scale": 0.88,
+    "rot": 23.8
+   },
+   {
+    "prop": "bench",
+    "style": 1,
+    "seed": 795406,
+    "loc": [
+     4.63,
+     0.77,
+     0.0
+    ],
+    "scale": 1.12,
+    "rot": 33.0
+   },
+   {
+    "prop": "play_mat",
+    "style": 1,
+    "seed": 732943,
+    "loc": [
+     -2.34,
+     2.22,
+     0.0
+    ],
+    "scale": 1.17,
+    "rot": 32.8
+   },
+   {
+    "prop": "ball_basket",
+    "style": 0,
+    "seed": 879520,
+    "loc": [
+     3.4,
+     3.45,
+     0.0
+    ],
+    "scale": 0.96,
+    "rot": 4.5
+   },
+   {
+    "prop": "fence",
+    "style": 1,
+    "seed": 475505,
+    "loc": [
+     -1.05,
+     4.22,
+     0.0
+    ],
+    "scale": 0.85,
+    "rot": -14.0
+   }
+  ],
+  "order": 14
  }
 }
