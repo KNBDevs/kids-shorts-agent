@@ -617,6 +617,61 @@ def toy_speaker(r, s, fam, root):
     C.sphere("led", led, (0.018, 0.012, 0.018), lm, root, 16)
 
 
+def star_plush(r, s, fam, root):
+    c, d = _cols(r, fam, 2)
+    soft = M(c, rough=0.85, coat=0.05)
+    face = M((0.2, 0.12, 0.15), rough=0.6)
+    if s == 0:
+        balls = [((0, 0, 0), 0.11, (1, 0.7, 1))]
+        for k in range(5):
+            a = k * 1.2566 + 1.5708
+            for j, t in enumerate((0.1, 0.17, 0.23)):
+                balls.append(((math.cos(a) * t, 0, math.sin(a) * t), 0.07 - 0.018 * j, (1, 0.8, 1)))
+        C.metablob("star", balls, soft, root)
+    elif s == 1:
+        C.sphere("core", (0, 0, 0), (0.09, 0.07, 0.09), soft, root, 24)
+        for k in range(4):
+            a = k * 1.5708
+            C.sphere("ray", (math.cos(a) * 0.13, 0, math.sin(a) * 0.13), (0.11, 0.04, 0.035), soft, root, 20, rot=(0, -a, 0))
+    else:
+        pts = [(math.cos(math.radians(a)) * 0.17, 0, math.sin(math.radians(a)) * 0.17) for a in range(60, 301, 20)]
+        C.tube("moon", pts, 0.07, soft, root, radii=[0.35, 0.65, 0.85, 1, 1, 1, 1, 1, 1, 1, 0.85, 0.65, 0.35])
+        C.sphere("mini", (0.12, 0, 0.12), (0.045, 0.03, 0.045), M(d, rough=0.8), root, 16)
+    for sx in (-1, 1):
+        C.sphere("eye", (sx * 0.035 + (-0.09 if s == 2 else 0), -0.075 if s != 2 else -0.06, 0.01), (0.012, 0.006, 0.016), face, root, 12)
+    C.tube("smile", [((-0.09 if s == 2 else 0) + 0.025 * math.cos(math.radians(a)), -0.078 if s != 2 else -0.063, -0.02 + 0.015 * math.sin(math.radians(a))) for a in range(200, 341, 20)], 0.004, face, root)
+
+
+def play_door(r, s, fam, root):
+    fr, leaf, knob = _cols(r, fam, 3)
+    W, H = [(1.1, 1.95), (1.05, 2.0), (1.15, 1.9)][s]
+    fm = M(fr, rough=0.45, coat=0.5)
+    lm = M(leaf, rough=0.5, coat=0.4)
+    for x in (-W / 2 - 0.06, W / 2 + 0.06):
+        C.rounded_box("post", (x, 0, H / 2), (0.12, 0.16, H), 0.03, fm, root)
+        C.rounded_box("foot", (x, 0, 0.03), (0.2, 0.42, 0.06), 0.025, fm, root)
+    if s == 1:
+        arc = [(math.cos(math.pi * k / 20) * (W / 2 + 0.06), 0, H + math.sin(math.pi * k / 20) * (W / 2 + 0.06)) for k in range(21)]
+        C.tube("arch", arc, 0.065, fm, root)
+    else:
+        C.rounded_box("top", (0, 0, H + 0.06), (W + 0.24, 0.16, 0.12), 0.03, fm, root)
+    hinge = C.empty("door_hinge", root, (-W / 2, 0, 0))
+    C.rounded_box("leaf", (W / 2, 0, H / 2 + 0.01), (W - 0.03, 0.07, H - 0.03), 0.025, lm, hinge)
+    if s == 1:
+        lg = C.empty("leaftop", hinge, (W / 2, 0, H), (math.radians(90), 0, 0))
+        C.lathe("ltop", [(-0.035, 0.0), (-0.035, W / 2 - 0.02), (0.035, W / 2 - 0.02), (0.035, 0.0)], lm, lg, segs=48)
+    if s == 0:
+        win = C.empty("win", hinge, (W / 2, -0.04, H * 0.72), (math.radians(90), 0, 0))
+        C.lathe("winr", [(0, 0.0), (0, 0.17), (0.02, 0.19), (0.04, 0.17), (0.04, 0.0)], M(knob, coat=0.6), win, segs=40)
+        C.sphere("glass", (W / 2, -0.045, H * 0.72), (0.15, 0.01, 0.15), M((0.75, 0.9, 1.0), rough=0.1, coat=1.0), hinge, 32)
+    elif s == 2:
+        for x in (W * 0.25, W * 0.5, W * 0.75):
+            C.rounded_box("plank", (x, -0.04, H / 2), (0.025, 0.012, H - 0.15), 0.008, M(knob, rough=0.6), hinge)
+        C.sphere("port", (W / 2, -0.045, H * 0.75), (0.12, 0.01, 0.12), M((0.75, 0.9, 1.0), rough=0.1, coat=1.0), hinge, 32)
+    for sy in (-1, 1):
+        C.sphere("knob", (W - 0.12, sy * 0.07, H * 0.48), (0.05, 0.04, 0.05), M(knob, coat=0.8), hinge, 20)
+
+
 GEN = {k: v for k, v in globals().items() if k in REGISTRY}
 
 

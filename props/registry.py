@@ -25,4 +25,6 @@ REGISTRY = {
     "paint_palette": {"styles": 3, "envs": ["casa", "aula", "patio"], "tags": ["arte", "colores"], "decor": False},
     "lidded_box": {"styles": 3, "envs": ["casa", "aula", "lab"], "tags": ["caja", "misterio"], "decor": False},
     "toy_speaker": {"styles": 3, "envs": ["casa", "aula", "lab"], "tags": ["sonido"], "decor": False},
+    "star_plush": {"styles": 3, "envs": ["casa", "aula"], "tags": ["juguete", "cuento"], "decor": False},
+    "play_door": {"styles": 3, "envs": ["casa", "aula", "patio"], "tags": ["puerta"], "decor": False},
 }

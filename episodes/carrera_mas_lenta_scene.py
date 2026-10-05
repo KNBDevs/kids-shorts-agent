@@ -39,7 +39,7 @@ def top_of(ch):
 tuki = make('tuki', 1.4)
 ruki = make('ruki', 1.4)
 gruno = make('gruno', 1.55)
-TS = Vector((-1.35, -1.55, Z0))
+TS = Vector((-1.2, -1.55, Z0))
 TF = Vector((-0.2, -1.55, Z0))
 RS = Vector((-1.5, -0.55, Z0))
 RF = Vector((0.75, -0.55, Z0))
