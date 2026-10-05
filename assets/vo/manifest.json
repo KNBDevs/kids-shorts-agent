@@ -596,13 +596,15 @@
   "shift": -4.42
  },
  "ep_bopi_rueda_cuadrada_l4": {
-  "hash": "rejected",
-  "dur": 1.72,
+  "hash": "0292fe59c4b7",
+  "dur": 1.69,
   "text": "Probemos un círculo.",
-  "asr": 0.67,
+  "asr": 1.0,
   "heard": "Provemos un círculo.",
   "engine": "gemini",
-  "voice": "Umbriel"
+  "voice": "Umbriel",
+  "lock": "L1",
+  "shift": 3.42
  },
  "ep_bopi_rueda_cuadrada_l5": {
   "hash": "6a0d121384ef",
@@ -1338,15 +1340,15 @@
   "shift": -6.78
  },
  "ep_boton_mas_grande_r1": {
-  "hash": "rejected",
-  "dur": 1.39,
+  "hash": "f961f4a563f3",
+  "dur": 2.89,
   "text": "Tu galleta es grande. La mía, pequeña.",
-  "asr": 0.73,
-  "heard": "Tu galleta es grande.",
+  "asr": 1.0,
+  "heard": "Tu galleta es grande, la mía pequeña.",
   "engine": "gemini",
   "voice": "Umbriel",
   "lock": "L1",
-  "shift": -3.53
+  "shift": -3.41
  },
  "ep_esponja_absorbe_m1": {
   "hash": "fc387f5e234f",
