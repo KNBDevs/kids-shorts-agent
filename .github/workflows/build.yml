@@ -189,6 +189,11 @@ jobs:
           HOOK: ${{ secrets.DELIVERY_HOOK }}
         run: |
           if [ -z "$HOOK" ]; then echo "No delivery hook configured; output kept as artifact."; exit 0; fi
+          PA=$(jq -r '.publishAt // empty' spec.json)
+          if [ -n "$PA" ] && [ "$(date -u -d "$PA" +%s)" -lt "$(( $(date -u +%s) + 600 ))" ]; then
+            PA=$(date -u -d '+15 min' +%Y-%m-%dT%H:%M:%SZ)
+            jq --arg a "$PA" --arg l "$(TZ=Europe/Madrid date -d "$PA" '+%d/%m/%Y %H:%M')" '.publishAt=$a | .publishLocal=$l' spec.json > s.tmp && mv s.tmp spec.json
+          fi
           curl -sS --fail --retry 3 -X POST "$HOOK" \
             -F "file=@out.mp4;type=video/mp4" \
             -F "title=$(jq -r .title meta.json)" \

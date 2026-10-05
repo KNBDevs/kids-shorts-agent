@@ -63,7 +63,7 @@ def main():
     done = set(json.load(open(PUB))) if os.path.exists(PUB) else set()
     sched = json.load(open(SCHED)) if os.path.exists(SCHED) else {}
     now = datetime.now(timezone.utc)
-    nxt = next((e for e in q if e['status'] == 'approved' and e['id'] not in done and e['template'] in READY and voices_ready(e)), None)
+    nxt = next((e for e in q if e['status'] == 'approved' and e['id'] not in done and e['template'] in READY and (not e.get('not_before') or datetime.fromisoformat(e['not_before']) <= now) and voices_ready(e)), None)
     if not nxt:
         out('skip', 'true')
         return
@@ -96,7 +96,7 @@ def main():
     json.dump(spec, open(p, 'w'), ensure_ascii=False, indent=1)
     out('skip', 'false')
     out('episode', nxt['id'])
-    nxt2 = next((e for e in q if e['status'] == 'approved' and e['id'] not in done and e['id'] != nxt['id'] and e['template'] in READY and voices_ready(e)), None)
+    nxt2 = next((e for e in q if e['status'] == 'approved' and e['id'] not in done and e['id'] != nxt['id'] and e['template'] in READY and (not e.get('not_before') or datetime.fromisoformat(e['not_before']) <= now) and voices_ready(e)), None)
     out('chain', 'true' if nxt2 and (nxt2.get('publish_local') or nxt2.get('immediate')) else 'false')
 if __name__ == '__main__':
     main()

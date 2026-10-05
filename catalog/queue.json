@@ -1,570 +1,571 @@
 [
- {
-  "id": "intro_v2",
-  "template": "intro",
-  "status": "approved",
-  "immediate": true
- },
- {
-  "id": "intro",
-  "template": "intro",
-  "status": "approved"
- },
- {
-  "id": "hola_pimo",
-  "template": "hola",
-  "char": "pimo",
-  "status": "approved",
-  "publish_local": "2026-10-06T14:00"
- },
- {
-  "id": "hola_ruki",
-  "template": "hola",
-  "char": "ruki",
-  "status": "approved",
-  "publish_local": "2026-10-06T14:05"
- },
- {
-  "id": "hola_luma",
-  "template": "hola",
-  "char": "luma",
-  "status": "approved",
-  "publish_local": "2026-10-06T14:10"
- },
- {
-  "id": "hola_tuki",
-  "template": "hola",
-  "char": "tuki",
-  "status": "approved",
-  "publish_local": "2026-10-06T14:15"
- },
- {
-  "id": "hola_moki",
-  "template": "hola",
-  "char": "moki",
-  "status": "approved",
-  "publish_local": "2026-10-06T14:20"
- },
- {
-  "id": "hola_bopi",
-  "template": "hola",
-  "char": "bopi",
-  "status": "approved",
-  "publish_local": "2026-10-06T14:25"
- },
- {
-  "id": "hola_bolita",
-  "template": "hola",
-  "char": "bolita",
-  "status": "approved",
-  "publish_local": "2026-10-06T14:30"
- },
- {
-  "id": "hola_gruno",
-  "template": "hola",
-  "char": "gruno",
-  "status": "approved",
-  "publish_local": "2026-10-06T14:35"
- },
- {
-  "id": "hw26_01_nombre",
-  "template": "episode",
-  "season": "halloween_2026",
-  "title": "¿Por qué se llama Halloween?",
-  "publish_local": "2026-10-25T10:00",
-  "status": "draft"
- },
- {
-  "id": "hw26_02_samhain",
-  "template": "episode",
-  "season": "halloween_2026",
-  "title": "La fiesta antes del invierno",
-  "publish_local": "2026-10-25T17:30",
-  "status": "draft"
- },
- {
-  "id": "hw26_03_faroles",
-  "template": "episode",
-  "season": "halloween_2026",
-  "title": "El farol que era un nabo",
-  "publish_local": "2026-10-26T14:00",
-  "status": "draft"
- },
- {
-  "id": "hw26_04_disfraces",
-  "template": "episode",
-  "season": "halloween_2026",
-  "title": "Un disfraz, el mismo amigo",
-  "publish_local": "2026-10-26T18:30",
-  "status": "draft"
- },
- {
-  "id": "hw26_05_escocia",
-  "template": "episode",
-  "season": "halloween_2026",
-  "title": "Una canción por la puerta",
-  "publish_local": "2026-10-27T14:00",
-  "status": "draft"
- },
- {
-  "id": "hw26_06_truco_trato",
-  "template": "episode",
-  "season": "halloween_2026",
-  "title": "Truco o trato con amabilidad",
-  "publish_local": "2026-10-27T18:30",
-  "status": "draft"
- },
- {
-  "id": "hw26_07_arana",
-  "template": "episode",
-  "season": "halloween_2026",
-  "title": "Ocho patas, ninguna de sobra",
-  "publish_local": "2026-10-28T14:00",
-  "status": "draft"
- },
- {
-  "id": "hw26_08_murcielago",
-  "template": "episode",
-  "season": "halloween_2026",
-  "title": "Alas sin plumas",
-  "publish_local": "2026-10-28T18:30",
-  "status": "draft"
- },
- {
-  "id": "hw26_09_telarana",
-  "template": "episode",
-  "season": "halloween_2026",
-  "title": "La tela que no era una sábana",
-  "publish_local": "2026-10-29T14:00",
-  "status": "draft"
- },
- {
-  "id": "hw26_10_santos_difuntos",
-  "template": "episode",
-  "season": "halloween_2026",
-  "title": "El uno y el dos de noviembre",
-  "publish_local": "2026-10-29T18:30",
-  "status": "draft"
- },
- {
-  "id": "hw26_11_mexico",
-  "template": "episode",
-  "season": "halloween_2026",
-  "title": "Flores para recordar en México",
-  "publish_local": "2026-10-30T14:00",
-  "status": "draft"
- },
- {
-  "id": "hw26_12_recuerdos",
-  "template": "episode",
-  "season": "halloween_2026",
-  "title": "Un recuerdo cabe en una foto",
-  "publish_local": "2026-10-30T18:30",
-  "status": "draft"
- },
- {
-  "id": "hw26_13_fantasia_sombra",
-  "template": "episode",
-  "season": "halloween_2026",
-  "title": "El fantasma era una sombra",
-  "publish_local": "2026-10-31T10:00",
-  "status": "draft"
- },
- {
-  "id": "hw26_14_final",
-  "template": "episode",
-  "season": "halloween_2026",
-  "title": "Una fiesta, muchas maneras",
-  "publish_local": "2026-10-31T17:30",
-  "status": "draft"
- },
- {
-  "id": "bopi_rueda_cuadrada",
-  "template": "episode",
-  "title": "Bopi busca una rueda cuadrada",
-  "cast": [
-   "bopi",
-   "ruki",
-   "gruno"
-  ],
-  "status": "approved"
- },
- {
-  "id": "gruno_roba_amarillo",
-  "template": "episode",
-  "title": "Gruño roba el amarillo",
-  "cast": [
-   "pimo",
-   "gruno"
-  ],
-  "status": "approved"
- },
- {
-  "id": "tuki_cuenta_saltos",
-  "template": "episode",
-  "title": "Tuki cuenta sus saltos",
-  "cast": [
-   "tuki",
-   "ruki"
-  ],
-  "status": "approved"
- },
- {
-  "id": "sombra_no_obedece",
-  "template": "episode",
-  "title": "La sombra que no obedece",
-  "cast": [
-   "pimo",
-   "bolita",
-   "gruno"
-  ],
-  "status": "approved"
- },
- {
-  "id": "maquina_silencio",
-  "template": "episode",
-  "title": "La máquina de hacer silencio",
-  "cast": [
-   "gruno",
-   "bopi"
-  ],
-  "status": "draft"
- },
- {
-  "id": "moki_colador_lluvia",
-  "template": "episode",
-  "title": "Moki intenta guardar la lluvia",
-  "cast": [
-   "moki",
-   "pimo"
-  ],
-  "status": "draft"
- },
- {
-  "id": "boton_mas_grande",
-  "template": "episode",
-  "title": "El botón de más grande",
-  "cast": [
-   "gruno",
-   "ruki"
-  ],
-  "status": "draft"
- },
- {
-  "id": "carrera_mas_lenta",
-  "template": "episode",
-  "title": "La carrera más lenta del mundo",
-  "cast": [
-   "tuki",
-   "ruki",
-   "gruno"
-  ],
-  "status": "draft"
- },
- {
-  "id": "bolita_mezcla_verde",
-  "template": "episode",
-  "title": "El rojo que quería ser verde",
-  "cast": [
-   "bolita",
-   "pimo"
-  ],
-  "status": "draft"
- },
- {
-  "id": "monstruo_caja",
-  "template": "episode",
-  "title": "El monstruo dentro de la caja",
-  "cast": [
-   "pimo",
-   "ruki",
-   "gruno"
-  ],
-  "status": "draft"
- },
- {
-  "id": "luma_escucha",
-  "template": "episode",
-  "title": "Luma quiere que la escuchen",
-  "cast": [
-   "luma",
-   "pimo",
-   "tuki"
-  ],
-  "status": "draft"
- },
- {
-  "id": "puerta_empuja_tira",
-  "template": "episode",
-  "title": "La puerta que dice tira",
-  "cast": [
-   "gruno",
-   "bopi"
-  ],
-  "status": "draft"
- },
- {
-  "id": "mitades_merienda",
-  "template": "episode",
-  "title": "Dos mitades, una merienda",
-  "cast": [
-   "pimo",
-   "tuki",
-   "ruki"
-  ],
-  "status": "draft"
- },
- {
-  "id": "invento_error_util",
-  "template": "episode",
-  "title": "El invento que necesitaba un error",
-  "cast": [
-   "gruno",
-   "pimo"
-  ],
-  "status": "draft"
- },
- {
-  "id": "donde_esta_tres",
-  "template": "episode",
-  "title": "¿Dónde está el tres?",
-  "cast": [
-   "pimo",
-   "gruno"
-  ],
-  "status": "draft"
- },
- {
-  "id": "puente_cooperacion",
-  "template": "episode",
-  "title": "Gruño quiere todas las piezas",
-  "cast": [
-   "gruno",
-   "ruki",
-   "pimo"
-  ],
-  "status": "draft"
- },
- {
-  "id": "iman_manzana",
-  "template": "episode",
-  "title": "El imán que no quería la manzana",
-  "cast": [
-   "bopi",
-   "pimo",
-   "gruno"
-  ],
-  "status": "draft",
-  "batch": "17_36"
- },
- {
-  "id": "pelota_cae",
-  "template": "episode",
-  "title": "La pelota que se negaba a subir",
-  "cast": [
-   "tuki",
-   "ruki"
-  ],
-  "status": "draft",
-  "batch": "17_36"
- },
- {
-  "id": "elefante_limite",
-  "template": "episode",
-  "title": "El elefante y el sitio equivocado",
-  "cast": [
-   "gruno",
-   "pimo"
-  ],
-  "status": "draft",
-  "batch": "17_36"
- },
- {
-  "id": "esponja_absorbe",
-  "template": "episode",
-  "title": "La esponja sedienta",
-  "cast": [
-   "moki",
-   "pimo"
-  ],
-  "status": "draft",
-  "batch": "17_36"
- },
- {
-  "id": "sal_disuelta",
-  "template": "episode",
-  "title": "La sal que seguía ahí",
-  "cast": [
-   "bopi",
-   "ruki"
-  ],
-  "status": "draft",
-  "batch": "17_36"
- },
- {
-  "id": "hielo_derrite",
-  "template": "episode",
-  "title": "El cubito sin abrigo",
-  "cast": [
-   "luma",
-   "tuki"
-  ],
-  "status": "draft",
-  "batch": "17_36"
- },
- {
-  "id": "agua_evapora",
-  "template": "episode",
-  "title": "El charco que se hizo pequeño",
-  "cast": [
-   "pimo",
-   "gruno"
-  ],
-  "status": "draft",
-  "batch": "17_36"
- },
- {
-  "id": "corcho_flota",
-  "template": "episode",
-  "title": "La piedra y el corcho",
-  "cast": [
-   "ruki",
-   "bolita"
-  ],
-  "status": "draft",
-  "batch": "17_36"
- },
- {
-  "id": "vaca_cuidado",
-  "template": "episode",
-  "title": "La vaca no trabaja con botones",
-  "cast": [
-   "gruno"
-  ],
-  "status": "draft",
-  "batch": "17_36"
- },
- {
-  "id": "roce_suelo",
-  "template": "episode",
-  "title": "Los patines del carrito",
-  "cast": [
-   "bopi",
-   "gruno"
-  ],
-  "status": "draft",
-  "batch": "17_36"
- },
- {
-  "id": "coche_preparado",
-  "template": "episode",
-  "title": "El coche espera al cinturón",
-  "cast": [
-   "bopi",
-   "bolita",
-   "gruno"
-  ],
-  "status": "draft",
-  "batch": "17_36"
- },
- {
-  "id": "viento_hoja",
-  "template": "episode",
-  "title": "La hoja que bailaba sin piernas",
-  "cast": [
-   "moki",
-   "luma"
-  ],
-  "status": "draft",
-  "batch": "17_36"
- },
- {
-  "id": "semilla_brota",
-  "template": "episode",
-  "title": "La semilla del álbum",
-  "cast": [
-   "pimo",
-   "ruki"
-  ],
-  "status": "draft",
-  "batch": "17_36"
- },
- {
-  "id": "raices_agua",
-  "template": "episode",
-  "title": "Las raíces beben por abajo",
-  "cast": [
-   "pimo",
-   "moki"
-  ],
-  "status": "draft",
-  "batch": "17_36"
- },
- {
-  "id": "patio_vecinos",
-  "template": "episode",
-  "title": "Un patio también tiene vecinos",
-  "cast": [
-   "tuki",
-   "moki",
-   "ruki"
-  ],
-  "status": "draft",
-  "batch": "17_36"
- },
- {
-  "id": "barco_revision",
-  "template": "episode",
-  "title": "El barquito revisa su viaje",
-  "cast": [
-   "gruno",
-   "bopi"
-  ],
-  "status": "draft",
-  "batch": "17_36"
- },
- {
-  "id": "patron_ab",
-  "template": "episode",
-  "title": "El tren que repetía su dibujo",
-  "cast": [
-   "tuki",
-   "bopi"
-  ],
-  "status": "draft",
-  "batch": "17_36"
- },
- {
-  "id": "silabas_mesa",
-  "template": "episode",
-  "title": "La palabra que cabía en palmadas",
-  "cast": [
-   "pimo",
-   "tuki"
-  ],
-  "status": "draft",
-  "batch": "17_36"
- },
- {
-  "id": "rima_gato",
-  "template": "episode",
-  "title": "El gato buscaba su zapato",
-  "cast": [
-   "moki",
-   "luma"
-  ],
-  "status": "draft",
-  "batch": "17_36"
- },
- {
-  "id": "muneca_reparar",
-  "template": "episode",
-  "title": "La muñeca necesita un arreglo",
-  "cast": [
-   "pimo",
-   "gruno"
-  ],
-  "status": "draft",
-  "batch": "17_36"
- }
+  {
+    "id": "intro_v2",
+    "template": "intro",
+    "status": "approved",
+    "immediate": true
+  },
+  {
+    "id": "intro",
+    "template": "intro",
+    "status": "approved"
+  },
+  {
+    "id": "hola_pimo",
+    "template": "hola",
+    "char": "pimo",
+    "status": "approved",
+    "publish_local": "2026-10-06T14:00"
+  },
+  {
+    "id": "hola_ruki",
+    "template": "hola",
+    "char": "ruki",
+    "status": "approved",
+    "publish_local": "2026-10-06T14:05"
+  },
+  {
+    "id": "hola_luma",
+    "template": "hola",
+    "char": "luma",
+    "status": "approved",
+    "publish_local": "2026-10-06T14:10"
+  },
+  {
+    "id": "hola_tuki",
+    "template": "hola",
+    "char": "tuki",
+    "status": "approved",
+    "publish_local": "2026-10-06T14:15"
+  },
+  {
+    "id": "hola_moki",
+    "template": "hola",
+    "char": "moki",
+    "status": "approved",
+    "publish_local": "2026-10-06T14:20"
+  },
+  {
+    "id": "hola_bopi",
+    "template": "hola",
+    "char": "bopi",
+    "status": "approved",
+    "publish_local": "2026-10-06T14:25"
+  },
+  {
+    "id": "hola_bolita",
+    "template": "hola",
+    "char": "bolita",
+    "status": "approved",
+    "publish_local": "2026-10-06T14:30"
+  },
+  {
+    "id": "hola_gruno",
+    "template": "hola",
+    "char": "gruno",
+    "status": "approved",
+    "publish_local": "2026-10-06T14:35",
+    "not_before": "2026-10-06T06:00:00+00:00"
+  },
+  {
+    "id": "hw26_01_nombre",
+    "template": "episode",
+    "season": "halloween_2026",
+    "title": "¿Por qué se llama Halloween?",
+    "publish_local": "2026-10-25T10:00",
+    "status": "draft"
+  },
+  {
+    "id": "hw26_02_samhain",
+    "template": "episode",
+    "season": "halloween_2026",
+    "title": "La fiesta antes del invierno",
+    "publish_local": "2026-10-25T17:30",
+    "status": "draft"
+  },
+  {
+    "id": "hw26_03_faroles",
+    "template": "episode",
+    "season": "halloween_2026",
+    "title": "El farol que era un nabo",
+    "publish_local": "2026-10-26T14:00",
+    "status": "draft"
+  },
+  {
+    "id": "hw26_04_disfraces",
+    "template": "episode",
+    "season": "halloween_2026",
+    "title": "Un disfraz, el mismo amigo",
+    "publish_local": "2026-10-26T18:30",
+    "status": "draft"
+  },
+  {
+    "id": "hw26_05_escocia",
+    "template": "episode",
+    "season": "halloween_2026",
+    "title": "Una canción por la puerta",
+    "publish_local": "2026-10-27T14:00",
+    "status": "draft"
+  },
+  {
+    "id": "hw26_06_truco_trato",
+    "template": "episode",
+    "season": "halloween_2026",
+    "title": "Truco o trato con amabilidad",
+    "publish_local": "2026-10-27T18:30",
+    "status": "draft"
+  },
+  {
+    "id": "hw26_07_arana",
+    "template": "episode",
+    "season": "halloween_2026",
+    "title": "Ocho patas, ninguna de sobra",
+    "publish_local": "2026-10-28T14:00",
+    "status": "draft"
+  },
+  {
+    "id": "hw26_08_murcielago",
+    "template": "episode",
+    "season": "halloween_2026",
+    "title": "Alas sin plumas",
+    "publish_local": "2026-10-28T18:30",
+    "status": "draft"
+  },
+  {
+    "id": "hw26_09_telarana",
+    "template": "episode",
+    "season": "halloween_2026",
+    "title": "La tela que no era una sábana",
+    "publish_local": "2026-10-29T14:00",
+    "status": "draft"
+  },
+  {
+    "id": "hw26_10_santos_difuntos",
+    "template": "episode",
+    "season": "halloween_2026",
+    "title": "El uno y el dos de noviembre",
+    "publish_local": "2026-10-29T18:30",
+    "status": "draft"
+  },
+  {
+    "id": "hw26_11_mexico",
+    "template": "episode",
+    "season": "halloween_2026",
+    "title": "Flores para recordar en México",
+    "publish_local": "2026-10-30T14:00",
+    "status": "draft"
+  },
+  {
+    "id": "hw26_12_recuerdos",
+    "template": "episode",
+    "season": "halloween_2026",
+    "title": "Un recuerdo cabe en una foto",
+    "publish_local": "2026-10-30T18:30",
+    "status": "draft"
+  },
+  {
+    "id": "hw26_13_fantasia_sombra",
+    "template": "episode",
+    "season": "halloween_2026",
+    "title": "El fantasma era una sombra",
+    "publish_local": "2026-10-31T10:00",
+    "status": "draft"
+  },
+  {
+    "id": "hw26_14_final",
+    "template": "episode",
+    "season": "halloween_2026",
+    "title": "Una fiesta, muchas maneras",
+    "publish_local": "2026-10-31T17:30",
+    "status": "draft"
+  },
+  {
+    "id": "bopi_rueda_cuadrada",
+    "template": "episode",
+    "title": "Bopi busca una rueda cuadrada",
+    "cast": [
+      "bopi",
+      "ruki",
+      "gruno"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "gruno_roba_amarillo",
+    "template": "episode",
+    "title": "Gruño roba el amarillo",
+    "cast": [
+      "pimo",
+      "gruno"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "tuki_cuenta_saltos",
+    "template": "episode",
+    "title": "Tuki cuenta sus saltos",
+    "cast": [
+      "tuki",
+      "ruki"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "sombra_no_obedece",
+    "template": "episode",
+    "title": "La sombra que no obedece",
+    "cast": [
+      "pimo",
+      "bolita",
+      "gruno"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "maquina_silencio",
+    "template": "episode",
+    "title": "La máquina de hacer silencio",
+    "cast": [
+      "gruno",
+      "bopi"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "moki_colador_lluvia",
+    "template": "episode",
+    "title": "Moki intenta guardar la lluvia",
+    "cast": [
+      "moki",
+      "pimo"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "boton_mas_grande",
+    "template": "episode",
+    "title": "El botón de más grande",
+    "cast": [
+      "gruno",
+      "ruki"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "carrera_mas_lenta",
+    "template": "episode",
+    "title": "La carrera más lenta del mundo",
+    "cast": [
+      "tuki",
+      "ruki",
+      "gruno"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "bolita_mezcla_verde",
+    "template": "episode",
+    "title": "El rojo que quería ser verde",
+    "cast": [
+      "bolita",
+      "pimo"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "monstruo_caja",
+    "template": "episode",
+    "title": "El monstruo dentro de la caja",
+    "cast": [
+      "pimo",
+      "ruki",
+      "gruno"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "luma_escucha",
+    "template": "episode",
+    "title": "Luma quiere que la escuchen",
+    "cast": [
+      "luma",
+      "pimo",
+      "tuki"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "puerta_empuja_tira",
+    "template": "episode",
+    "title": "La puerta que dice tira",
+    "cast": [
+      "gruno",
+      "bopi"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "mitades_merienda",
+    "template": "episode",
+    "title": "Dos mitades, una merienda",
+    "cast": [
+      "pimo",
+      "tuki",
+      "ruki"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "invento_error_util",
+    "template": "episode",
+    "title": "El invento que necesitaba un error",
+    "cast": [
+      "gruno",
+      "pimo"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "donde_esta_tres",
+    "template": "episode",
+    "title": "¿Dónde está el tres?",
+    "cast": [
+      "pimo",
+      "gruno"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "puente_cooperacion",
+    "template": "episode",
+    "title": "Gruño quiere todas las piezas",
+    "cast": [
+      "gruno",
+      "ruki",
+      "pimo"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "iman_manzana",
+    "template": "episode",
+    "title": "El imán que no quería la manzana",
+    "cast": [
+      "bopi",
+      "pimo",
+      "gruno"
+    ],
+    "status": "draft",
+    "batch": "17_36"
+  },
+  {
+    "id": "pelota_cae",
+    "template": "episode",
+    "title": "La pelota que se negaba a subir",
+    "cast": [
+      "tuki",
+      "ruki"
+    ],
+    "status": "draft",
+    "batch": "17_36"
+  },
+  {
+    "id": "elefante_limite",
+    "template": "episode",
+    "title": "El elefante y el sitio equivocado",
+    "cast": [
+      "gruno",
+      "pimo"
+    ],
+    "status": "draft",
+    "batch": "17_36"
+  },
+  {
+    "id": "esponja_absorbe",
+    "template": "episode",
+    "title": "La esponja sedienta",
+    "cast": [
+      "moki",
+      "pimo"
+    ],
+    "status": "draft",
+    "batch": "17_36"
+  },
+  {
+    "id": "sal_disuelta",
+    "template": "episode",
+    "title": "La sal que seguía ahí",
+    "cast": [
+      "bopi",
+      "ruki"
+    ],
+    "status": "draft",
+    "batch": "17_36"
+  },
+  {
+    "id": "hielo_derrite",
+    "template": "episode",
+    "title": "El cubito sin abrigo",
+    "cast": [
+      "luma",
+      "tuki"
+    ],
+    "status": "draft",
+    "batch": "17_36"
+  },
+  {
+    "id": "agua_evapora",
+    "template": "episode",
+    "title": "El charco que se hizo pequeño",
+    "cast": [
+      "pimo",
+      "gruno"
+    ],
+    "status": "draft",
+    "batch": "17_36"
+  },
+  {
+    "id": "corcho_flota",
+    "template": "episode",
+    "title": "La piedra y el corcho",
+    "cast": [
+      "ruki",
+      "bolita"
+    ],
+    "status": "draft",
+    "batch": "17_36"
+  },
+  {
+    "id": "vaca_cuidado",
+    "template": "episode",
+    "title": "La vaca no trabaja con botones",
+    "cast": [
+      "gruno"
+    ],
+    "status": "draft",
+    "batch": "17_36"
+  },
+  {
+    "id": "roce_suelo",
+    "template": "episode",
+    "title": "Los patines del carrito",
+    "cast": [
+      "bopi",
+      "gruno"
+    ],
+    "status": "draft",
+    "batch": "17_36"
+  },
+  {
+    "id": "coche_preparado",
+    "template": "episode",
+    "title": "El coche espera al cinturón",
+    "cast": [
+      "bopi",
+      "bolita",
+      "gruno"
+    ],
+    "status": "draft",
+    "batch": "17_36"
+  },
+  {
+    "id": "viento_hoja",
+    "template": "episode",
+    "title": "La hoja que bailaba sin piernas",
+    "cast": [
+      "moki",
+      "luma"
+    ],
+    "status": "draft",
+    "batch": "17_36"
+  },
+  {
+    "id": "semilla_brota",
+    "template": "episode",
+    "title": "La semilla del álbum",
+    "cast": [
+      "pimo",
+      "ruki"
+    ],
+    "status": "draft",
+    "batch": "17_36"
+  },
+  {
+    "id": "raices_agua",
+    "template": "episode",
+    "title": "Las raíces beben por abajo",
+    "cast": [
+      "pimo",
+      "moki"
+    ],
+    "status": "draft",
+    "batch": "17_36"
+  },
+  {
+    "id": "patio_vecinos",
+    "template": "episode",
+    "title": "Un patio también tiene vecinos",
+    "cast": [
+      "tuki",
+      "moki",
+      "ruki"
+    ],
+    "status": "draft",
+    "batch": "17_36"
+  },
+  {
+    "id": "barco_revision",
+    "template": "episode",
+    "title": "El barquito revisa su viaje",
+    "cast": [
+      "gruno",
+      "bopi"
+    ],
+    "status": "draft",
+    "batch": "17_36"
+  },
+  {
+    "id": "patron_ab",
+    "template": "episode",
+    "title": "El tren que repetía su dibujo",
+    "cast": [
+      "tuki",
+      "bopi"
+    ],
+    "status": "draft",
+    "batch": "17_36"
+  },
+  {
+    "id": "silabas_mesa",
+    "template": "episode",
+    "title": "La palabra que cabía en palmadas",
+    "cast": [
+      "pimo",
+      "tuki"
+    ],
+    "status": "draft",
+    "batch": "17_36"
+  },
+  {
+    "id": "rima_gato",
+    "template": "episode",
+    "title": "El gato buscaba su zapato",
+    "cast": [
+      "moki",
+      "luma"
+    ],
+    "status": "draft",
+    "batch": "17_36"
+  },
+  {
+    "id": "muneca_reparar",
+    "template": "episode",
+    "title": "La muñeca necesita un arreglo",
+    "cast": [
+      "pimo",
+      "gruno"
+    ],
+    "status": "draft",
+    "batch": "17_36"
+  }
 ]
