@@ -85,6 +85,48 @@ def norm(t):
     return re.sub(r"[^a-zñ ]+", " ", t).split()
 
 
+def align(x, sr, texts, asr):
+    try:
+        raw = os.path.join(TMP, "_take.wav")
+        wavfile.write(raw, sr, (x / (np.abs(x).max() + 1e-9) * 0.9 * 32767).astype(np.int16))
+        segs, _ = asr.transcribe(raw, language="es", beam_size=3, word_timestamps=True)
+        hw = []
+        for s in segs:
+            for w in (s.words or []):
+                for t in norm(w.word):
+                    hw.append((t, w.start, w.end))
+        sw, own = [], []
+        for i, t in enumerate(texts):
+            for wd in norm(t):
+                sw.append(wd); own.append(i)
+        sm = difflib.SequenceMatcher(None, sw, [h[0] for h in hw], autojunk=False)
+        span = [[None, None] for _ in texts]
+        for a, b, n in sm.get_matching_blocks():
+            for j in range(n):
+                i = own[a + j]; h = hw[b + j]
+                span[i][0] = h[1] if span[i][0] is None else min(span[i][0], h[1])
+                span[i][1] = h[2] if span[i][1] is None else max(span[i][1], h[2])
+        out, n = [], len(x)
+        for i, (a, b) in enumerate(span):
+            if a is None:
+                out.append(None); continue
+            lo = max(0.0, a - 0.15)
+            hi = b + 0.3
+            prev = next((span[k][1] for k in range(i - 1, -1, -1) if span[k][1] is not None), None)
+            nxt = next((span[k][0] for k in range(i + 1, len(span)) if span[k][0] is not None), None)
+            if prev is not None:
+                lo = max(lo, (prev + a) / 2)
+            if nxt is not None:
+                hi = min(hi, (b + nxt) / 2)
+            if hi - lo < 0.2:
+                out.append(None); continue
+            out.append(x[int(lo * sr):min(n, int(hi * sr))])
+        return out if any(o is not None for o in out) else None
+    except Exception as e:
+        print("align err", e, flush=True)
+        return None
+
+
 def finish(seg, sr, key, e, asr):
     raw = os.path.join(TMP, f"{key}.wav")
     wavfile.write(raw, sr, (seg / (np.abs(seg).max() + 1e-9) * 0.9 * 32767).astype(np.int16))
@@ -142,8 +184,37 @@ def store(man, todo, results):
         man[k] = dict(res)
 
 
+def rank():
+    from datetime import date, timedelta
+    q = json.load(open(os.path.join(ROOT, "catalog", "queue.json")))
+    r, n = {}, 0
+    for it in q:
+        if it.get("template") != "episode":
+            continue
+        if it.get("publish_local"):
+            d = date.fromisoformat(it["publish_local"][:10])
+        else:
+            d = date(2026, 10, 7) + timedelta(days=n // 2)
+            n += 1
+        r[f"ep_{it['id']}_"] = (d.isoformat(), n)
+    return r
+
+
+def prio(k, R):
+    for p, v in R.items():
+        if k.startswith(p):
+            return v
+    return ("0000", 0) if not k.startswith("ep_") else ("9999", 0)
+
+
+CHUNK = int(os.environ.get("CHUNK", "8"))
+
+
 def run_group(cids, man, allL, asr):
     jobs = {c: pending(man, allL, c) for c in cids}
+    R = rank()
+    for c in cids:
+        jobs[c] = (jobs[c][0], sorted(jobs[c][1], key=lambda t: prio(t[0], R))[:CHUNK if len(cids) == 1 else CHUNK // 2 + 1])
     seq = [(c, k, e) for c in cids for k, e in jobs[c][1]]
     if not seq:
         return
@@ -167,16 +238,26 @@ def run_group(cids, man, allL, asr):
         x, sr = tts(prompt, VOICES[c][0])
     parts = split(x, sr, len(seq))
     if parts is None:
-        print("split failed", cids, flush=True)
-        return False
+        print("split failed, aligning", cids, flush=True)
+        parts = align(x, sr, [e["text"] for c, k, e in seq], asr)
+        if parts is None:
+            return False
     results = {c: {} for c in cids}
     for (c, k, e), seg in zip(seq, parts):
+        if seg is None:
+            continue
         res = finish(seg, sr, k, e, asr)
         results[c][e["text"]] = (k, res)
         print(c, k, res["dur"], res["asr"], "|", e["text"], "|", res["heard"], flush=True)
     for c in cids:
         store(man, jobs[c][0], results[c])
     return all(r["asr"] >= 0.7 for c in cids for _, r in results[c].values())
+
+
+def first(man, allL, cids):
+    R = rank()
+    ks = [prio(k, R) for c in cids for k, e in pending(man, allL, c)[1]]
+    return min(ks) if ks else None
 
 
 def main(chars):
@@ -188,14 +269,22 @@ def main(chars):
     groups = [p for p in PAIRS if p[0] in chars and p[1] in chars]
     done = {c for p in groups for c in p}
     groups += [(c,) for c in chars if c not in done]
+    fails = {}
     try:
-        for g in groups:
+        while BUDGET[0] > 0:
+            live = [(first(man, allL, g), g) for g in groups if fails.get(g, 0) < 3]
+            live = sorted([t for t in live if t[0] is not None])
+            if not live:
+                break
+            g = live[0][1]
+            if len(g) == 2 and (fails.get(g, 0) or len([c for c in g if pending(man, allL, c)[1]]) == 1):
+                g = (min((c for c in g if pending(man, allL, c)[1]), key=lambda c: first(man, allL, [c])),)
+            before = sum(len(pending(man, allL, c)[0]) for c in g)
             ok = run_group(list(g), man, allL, asr)
             json.dump(man, open(mp, "w"), ensure_ascii=False, indent=1)
-            if ok is False and len(g) == 2:
-                for c in g:
-                    run_group([c], man, allL, asr)
-                    json.dump(man, open(mp, "w"), ensure_ascii=False, indent=1)
+            after = sum(len(pending(man, allL, c)[0]) for c in g)
+            key = g if g in groups else next(p for p in groups if set(g) <= set(p))
+            fails[key] = 0 if after < before else fails.get(key, 0) + 1
     except RuntimeError as e:
         print("stopped:", e, flush=True)
     json.dump(man, open(mp, "w"), ensure_ascii=False, indent=1)
