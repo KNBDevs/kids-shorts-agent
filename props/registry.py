@@ -35,5 +35,8 @@ REGISTRY = {
     "fruit": {"styles": 3, "envs": ["cocina", "casa", "patio", "lab"], "tags": ["comida"], "decor": False},
     "low_table": {"styles": 3, "envs": ["casa", "lab", "aula", "cocina", "patio"], "tags": ["mueble"], "decor": False},
     "play_step": {"styles": 3, "envs": ["patio", "casa", "aula", "plaza"], "tags": ["plataforma", "juego"], "decor": False},
+    "sponge": {"styles": 3, "envs": ["cocina", "casa", "lab"], "tags": ["limpieza", "agua"], "decor": False},
+    "big_spoon": {"styles": 3, "envs": ["cocina", "casa", "lab"], "tags": ["cocina"], "decor": False},
+    "mixing_bowl": {"styles": 3, "envs": ["cocina", "casa", "lab"], "tags": ["cocina", "agua"], "decor": False},
     "bridge_kit": {"styles": 3, "envs": ["patio", "casa", "aula"], "tags": ["construir", "juguete"], "decor": False},
 }

@@ -956,6 +956,60 @@ def play_step(r, s, fam, root):
     return 0.23
 
 
+def sponge(r, s, fam, root):
+    base = (1.0, 0.82, 0.3) if s != 2 else (0.55, 0.85, 1.0)
+    pad = (0.35, 0.75, 0.45)
+    bm_ = M(base, rough=0.85, coat=0.0)
+    pore = M(tuple(v * 0.7 for v in base), rough=0.9)
+    if s == 0:
+        C.rounded_box("body", (0, 0, 0.045), (0.26, 0.16, 0.09), 0.03, bm_, root)
+        C.rounded_box("scrub", (0, 0, 0.1), (0.26, 0.16, 0.025), 0.01, M(pad, rough=0.9), root)
+        pts = [(x, -0.081, z) for x in (-0.09, -0.04, 0.02, 0.07, 0.1) for z in (0.02, 0.05, 0.075)]
+    elif s == 1:
+        C.sphere("body", (0, 0, 0.055), (0.15, 0.1, 0.055), bm_, root, 40)
+        pts = [(math.cos(a) * 0.1, -0.075 * abs(math.sin(a + 1.0)) - 0.02, 0.04 + 0.03 * math.sin(3 * a)) for a in [k * 0.6 for k in range(10)]]
+    else:
+        for k in range(5):
+            a = k * 1.2566
+            C.sphere("lobe", (math.cos(a) * 0.07, math.sin(a) * 0.07, 0.045), (0.07, 0.07, 0.045), bm_, root, 24)
+        C.sphere("mid", (0, 0, 0.05), (0.06, 0.06, 0.05), bm_, root, 24)
+        pts = [(math.cos(k * 0.9) * 0.1, -0.09, 0.03 + 0.012 * (k % 3)) for k in range(7)]
+    for i, pt in enumerate(pts):
+        C.sphere("pore", pt, (0.009 + 0.004 * (i % 2),) * 3, pore, root, 8)
+    return bm_
+
+
+def big_spoon(r, s, fam, root):
+    steel = M((0.82, 0.84, 0.88), rough=0.18, coat=0.9)
+    grip = M(_rich(_cols(r, fam, 1)[0]), rough=0.5, coat=0.4)
+    L = [0.42, 0.38, 0.46][s]
+    bw, bl = [(0.075, 0.11), (0.09, 0.09), (0.065, 0.13)][s]
+    C.sphere("bowl", (-L / 2 + bl * 0.5, 0, 0.022), (bl * 0.5, bw * 0.5, 0.022), steel, root, 32)
+    C.tube("neck", [(-L / 2 + bl * 0.95, 0, 0.03), (-L / 2 + bl + 0.06, 0, 0.045), (L / 2, 0, 0.055)], 0.011, steel, root)
+    if s == 0:
+        C.tube("grip", [(L / 2 - 0.14, 0, 0.055), (L / 2, 0, 0.058)], 0.02, grip, root)
+    elif s == 1:
+        C.sphere("knob", (L / 2, 0, 0.058), (0.03, 0.022, 0.016), grip, root, 16)
+    else:
+        C.tube("ring", [(L / 2 + 0.025 * math.cos(k * 6.2832 / 20), 0.025 * math.sin(k * 6.2832 / 20), 0.058) for k in range(21)], 0.007, grip, root)
+
+
+def mixing_bowl(r, s, fam, root):
+    c, d = [_rich(x, 1.2, 0.95) for x in _cols(r, fam, 2)]
+    R, h = [(0.16, 0.1), (0.14, 0.12), (0.18, 0.08)][s]
+    if s == 0:
+        prof = [(0.0, 0.0), (0.0, R * 0.5), (h * 0.3, R * 0.8), (h, R), (h + 0.008, R - 0.006), (h * 0.3 + 0.01, R * 0.8 - 0.012), (0.012, R * 0.5 - 0.012), (0.012, 0.0)]
+    elif s == 1:
+        prof = [(0.0, 0.0), (0.0, R * 0.55), (0.02, R * 0.6), (h, R), (h + 0.008, R - 0.006), (0.03, R * 0.6 - 0.012), (0.03, 0.0)]
+    else:
+        prof = [(0.0, 0.0), (0.0, R * 0.7), (h * 0.6, R * 0.95), (h, R), (h + 0.008, R - 0.006), (h * 0.6, R * 0.95 - 0.012), (0.012, R * 0.7 - 0.012), (0.012, 0.0)]
+    C.lathe("bowl", prof, M(c, rough=0.35, coat=0.7), root, segs=56)
+    C.tube("rim", _ring(R - 0.002, h + 0.004, 56), 0.008, M(d, coat=0.7), root)
+    piv = C.empty("water_pivot", root, (0, 0, 0.014 if s != 1 else 0.032))
+    C.sphere("water", (0, 0, 0.0), (R * 0.62, R * 0.62, 0.01), MA((0.32, 0.64, 1.0), 0.75, rough=0.05, emit=0.15), piv, 32)
+    piv.scale = (0.001, 0.001, 0.001)
+
+
 GEN = {k: v for k, v in globals().items() if k in REGISTRY}
 
 

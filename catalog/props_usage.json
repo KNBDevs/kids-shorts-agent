@@ -1527,6 +1527,28 @@
     "rot": -13.6
    }
   ],
-  "order": 18
+  "order": 18,
+  "hero": [
+   {
+    "prop": "sponge",
+    "style": 0
+   },
+   {
+    "prop": "big_spoon",
+    "style": 0
+   },
+   {
+    "prop": "mixing_bowl",
+    "style": 0
+   },
+   {
+    "prop": "low_table",
+    "style": 2
+   },
+   {
+    "prop": "clear_cup",
+    "style": 0
+   }
+  ]
  }
 }
