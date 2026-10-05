@@ -866,6 +866,75 @@ def bridge_kit(r, s, fam, root):
     return root
 
 
+def toy_magnet(r, s, fam, root):
+    red = (0.88, 0.16, 0.18) if s != 2 else _rich(_cols(r, fam, 1)[0])
+    body = M(red, rough=0.35, coat=0.7)
+    tip = M((0.86, 0.88, 0.92), rough=0.25, coat=0.8)
+    grip = M(_rich(_cols(r, fam, 2)[1]), rough=0.6, coat=0.2)
+    if s == 0:
+        arc = [(math.cos(math.pi * k / 20) * 0.11, 0, 0.11 + math.sin(math.pi * k / 20) * 0.11) for k in range(21)]
+        C.tube("arc", arc, 0.045, body, root)
+        for x in (-0.11, 0.11):
+            C.tube("leg", [(x, 0, 0.11), (x, 0, 0.0)], 0.045, body, root)
+            C.lathe("tip", [(-0.06, 0.0), (-0.06, 0.045), (-0.005, 0.045), (0.0, 0.035), (0.0, 0.0)], tip, C.empty("t", root, (x, 0, 0)), segs=32)
+        C.tube("handle", [(0, 0, 0.22), (0, 0, 0.36)], 0.032, grip, root)
+        C.sphere("knob", (0, 0, 0.37), (0.045, 0.045, 0.035), grip, root, 20)
+        return (0, 0, -0.06)
+    if s == 1:
+        C.rounded_box("bar", (0, 0, 0.0), (0.12, 0.12, 0.3), 0.04, body, root)
+        C.rounded_box("pole", (0, 0, -0.2), (0.125, 0.125, 0.12), 0.04, tip, root)
+        C.tube("handle", [(0, 0, 0.15), (0, 0, 0.3)], 0.03, grip, root)
+        C.sphere("knob", (0, 0, 0.31), (0.05, 0.05, 0.035), grip, root, 20)
+        return (0, 0, -0.26)
+    ring = C.empty("ring", root, (0, 0, 0), (math.radians(90), 0, 0))
+    C.lathe("donut", [(-0.04, 0.05), (-0.045, 0.09), (-0.04, 0.12), (0.04, 0.12), (0.045, 0.09), (0.04, 0.05)], body, ring, segs=48)
+    C.tube("face", [(math.cos(k * 6.2832 / 40) * 0.085, -0.047, math.sin(k * 6.2832 / 40) * 0.085) for k in range(41)], 0.018, tip, root)
+    C.tube("stick", [(0, 0, 0.12), (0, 0, 0.34)], 0.025, grip, root)
+    C.sphere("knob", (0, 0, 0.35), (0.04, 0.04, 0.04), grip, root, 20)
+    return (0, -0.06, 0)
+
+
+def fruit(r, s, fam, root):
+    leaf = M((0.3, 0.68, 0.25), rough=0.5, coat=0.3)
+    stem = M((0.4, 0.25, 0.12), rough=0.7)
+    if s == 0:
+        C.lathe("apple", [(0.0, 0.0), (0.0, 0.03), (0.01, 0.07), (0.04, 0.1), (0.09, 0.11), (0.14, 0.1), (0.17, 0.07), (0.185, 0.03), (0.175, 0.0)], M((0.9, 0.18, 0.15), rough=0.3, coat=0.8), root, segs=48)
+        top = 0.175
+    elif s == 1:
+        C.lathe("pear", [(0.0, 0.0), (0.0, 0.04), (0.02, 0.09), (0.06, 0.105), (0.11, 0.085), (0.16, 0.055), (0.21, 0.045), (0.245, 0.03), (0.255, 0.0)], M((0.72, 0.85, 0.3), rough=0.35, coat=0.6), root, segs=48)
+        top = 0.255
+    else:
+        C.sphere("orange", (0, 0, 0.095), (0.1, 0.1, 0.095), M((1.0, 0.55, 0.1), rough=0.55, coat=0.4), root, 40)
+        C.sphere("navel", (0, 0, 0.19), (0.012, 0.012, 0.004), M((0.55, 0.4, 0.1), rough=0.6), root, 10)
+        top = 0.19
+    C.tube("stem", [(0, 0, top - 0.01), (0.008, 0, top + 0.04)], 0.007, stem, root)
+    C.leaf("leaf", 0.04, 0.02, 0.2, leaf, C.empty("lf", root, (0.012, 0, top + 0.02), (0, math.radians(-60), math.radians(20))))
+
+
+def low_table(r, s, fam, root):
+    top, leg = [_rich(c, 1.3, 0.95) for c in _cols(r, fam, 2)]
+    tm = M(top, rough=0.4, coat=0.6)
+    lm = M(leg, rough=0.45, coat=0.5)
+    Hh = 0.62
+    if s == 0:
+        C.rounded_box("top", (0, 0, Hh - 0.04), (1.2, 0.6, 0.08), 0.035, tm, root)
+        for x in (-0.5, 0.5):
+            for y in (-0.22, 0.22):
+                C.tube("leg", [(x, y, 0.0), (x, y, Hh - 0.06)], 0.035, lm, root)
+                C.sphere("foot", (x, y, 0.02), (0.05, 0.05, 0.025), lm, root, 16)
+    elif s == 1:
+        C.lathe("top", [(Hh - 0.08, 0.0), (Hh - 0.08, 0.5), (Hh - 0.065, 0.53), (Hh - 0.015, 0.53), (Hh, 0.5), (Hh, 0.0)], tm, root, segs=64, sy=0.6)
+        C.lathe("ped", [(0.0, 0.0), (0.0, 0.26), (0.03, 0.27), (0.06, 0.24), (0.08, 0.07), (Hh - 0.08, 0.06), (Hh - 0.08, 0.0)], lm, root, segs=48, sy=0.6)
+    else:
+        C.rounded_box("top", (0, 0, Hh - 0.04), (1.15, 0.58, 0.08), 0.03, tm, root)
+        for x in (-0.45, 0.45):
+            for y in (-0.2, 0.2):
+                C.tube("leg", [(x, 0, Hh - 0.08), (x + (0.06 if x > 0 else -0.06), y, 0.0)], 0.03, lm, root)
+            C.tube("bar", [(x, -0.15, 0.2), (x, 0.15, 0.2)], 0.02, lm, root)
+        C.tube("rail", [(-0.45, 0, 0.2), (0.45, 0, 0.2)], 0.02, lm, root)
+    return Hh
+
+
 GEN = {k: v for k, v in globals().items() if k in REGISTRY}
 
 

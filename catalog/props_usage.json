@@ -1230,7 +1230,21 @@
     "rot": 10.8
    }
   ],
-  "order": 15
+  "order": 15,
+  "hero": [
+   {
+    "prop": "toy_magnet",
+    "style": 0
+   },
+   {
+    "prop": "fruit",
+    "style": 0
+   },
+   {
+    "prop": "low_table",
+    "style": 0
+   }
+  ]
  },
  "pelota_cae": {
   "env": "patio",
