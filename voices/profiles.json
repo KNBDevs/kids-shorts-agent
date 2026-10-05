@@ -1,0 +1,106 @@
+{
+ "pimo": {
+  "ref": [
+   "hola_pimo_0.wav",
+   "hola_pimo_1.wav",
+   "hola_pimo_2.wav",
+   "hola_pimo_3.wav",
+   "hola_pimo_4.wav",
+   "hola_pimo_5.wav"
+  ],
+  "f0": 302.1,
+  "p10": 198.6,
+  "p90": 469.1
+ },
+ "ruki": {
+  "ref": [
+   "hola_ruki_0.wav",
+   "hola_ruki_1.wav",
+   "hola_ruki_2.wav",
+   "hola_ruki_3.wav",
+   "hola_ruki_4.wav",
+   "hola_ruki_5.wav"
+  ],
+  "f0": 129.7,
+  "p10": 90.4,
+  "p90": 206.7
+ },
+ "luma": {
+  "ref": [
+   "hola_luma_0.wav",
+   "hola_luma_1.wav",
+   "hola_luma_2.wav",
+   "hola_luma_3.wav",
+   "hola_luma_4.wav",
+   "hola_luma_5.wav"
+  ],
+  "f0": 319.6,
+  "p10": 211.0,
+  "p90": 459.4
+ },
+ "tuki": {
+  "ref": [
+   "hola_tuki_0.wav",
+   "hola_tuki_1.wav",
+   "hola_tuki_2.wav",
+   "hola_tuki_3.wav",
+   "hola_tuki_4.wav",
+   "hola_tuki_5.wav"
+  ],
+  "f0": 257.9,
+  "p10": 163.8,
+  "p90": 350.0
+ },
+ "moki": {
+  "ref": [
+   "hola_moki_0.wav",
+   "hola_moki_1.wav",
+   "hola_moki_2.wav",
+   "hola_moki_3.wav",
+   "hola_moki_4.wav",
+   "hola_moki_5.wav"
+  ],
+  "f0": 137.8,
+  "p10": 96.9,
+  "p90": 202.3
+ },
+ "bopi": {
+  "ref": [
+   "hola_bopi_0.wav",
+   "hola_bopi_1.wav",
+   "hola_bopi_2.wav",
+   "hola_bopi_3.wav",
+   "hola_bopi_4.wav",
+   "hola_bopi_5.wav"
+  ],
+  "f0": 165.5,
+  "p10": 111.1,
+  "p90": 235.8
+ },
+ "bolita": {
+  "ref": [
+   "hola_bolita_0.wav",
+   "hola_bolita_1.wav",
+   "hola_bolita_2.wav",
+   "hola_bolita_3.wav",
+   "hola_bolita_4.wav",
+   "hola_bolita_5.wav"
+  ],
+  "f0": 310.6,
+  "p10": 191.7,
+  "p90": 408.3
+ },
+ "gruno": {
+  "ref": [
+   "hola_gruno_0.wav",
+   "hola_gruno_1.wav",
+   "hola_gruno_2.wav",
+   "hola_gruno_3.wav",
+   "hola_gruno_4.wav",
+   "hola_gruno_5.wav"
+  ],
+  "f0": 164.2,
+  "p10": 100.0,
+  "p90": 225.1
+ }
+}

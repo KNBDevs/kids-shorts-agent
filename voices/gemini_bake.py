@@ -12,6 +12,13 @@ OUT = os.path.join(ROOT, "assets", "vo")
 TMP = os.path.join(ROOT, "_bake")
 os.makedirs(OUT, exist_ok=True); os.makedirs(TMP, exist_ok=True)
 from gvoices import ACC, VOICES, VERSION, digest
+from lock import conform, profiles, LOCK
+
+
+def reg(c):
+    f = profiles()[c]["f0"]
+    r = "agudo" if f > 240 else ("medio" if f > 170 else "grave")
+    return f"siempre con el mismo tono {r} y el mismo timbre de su presentación, sin cambiar de registro"
 
 
 BUDGET = [int(os.environ.get("MAX_REQ", "12"))]
@@ -100,8 +107,14 @@ def finish(seg, sr, key, e, asr):
     if len(on):
         y = y[max(0, (on[0] - 5) * h):min(len(y), (on[-1] + 20) * h)]
         wavfile.write(final, sr2, y)
+    st = conform(final, e["char"])
+    if st is None:
+        print("pitch drift, reject", key, flush=True)
+        sc = 0.0
+    else:
+        sr2, y = wavfile.read(final)
     return {"hash": digest(e["char"], e["text"]), "dur": round(len(y) / sr2, 2), "text": e["text"], "asr": round(sc, 2),
-            "heard": heard.strip(), "engine": "gemini", "voice": VOICES[e["char"]][0]}
+            "heard": heard.strip(), "engine": "gemini", "voice": VOICES[e["char"]][0], "lock": LOCK, "shift": st}
 
 
 PAIRS = [("pimo", "luma"), ("ruki", "moki"), ("tuki", "bolita"), ("bopi", "gruno")]
@@ -141,7 +154,7 @@ def run_group(cids, man, allL, asr):
             if a: order.append(a.pop(0))
             if b: order.append(b.pop(0))
         seq = order
-        styles = " ".join(f"{NAMES[c]}: {VOICES[c][1]}." for c in cids)
+        styles = " ".join(f"{NAMES[c]}: {VOICES[c][1]}, {reg(c)}." for c in cids)
         script = "\n".join(f"{NAMES[c]}: {e['text']}" for c, k, e in seq)
         prompt = (f"Lee este guion de un dibujo animado infantil. {styles} Cada frase con naturalidad y emoción, "
                   f"y una pausa de dos segundos entre frase y frase.\n\n{script}")
@@ -149,7 +162,7 @@ def run_group(cids, man, allL, asr):
     else:
         c = cids[0]
         script = "\n".join(f"{e['text']}" for _, k, e in seq)
-        prompt = (f"{VOICES[c][1]}. Lee las siguientes frases en orden, con naturalidad y emoción, "
+        prompt = (f"{VOICES[c][1]}, {reg(c)}. Lee las siguientes frases en orden, con naturalidad y emoción, "
                   f"haciendo una pausa de dos segundos entre cada frase.\n\n{script}")
         x, sr = tts(prompt, VOICES[c][0])
     parts = split(x, sr, len(seq))
