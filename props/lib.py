@@ -419,6 +419,81 @@ def clear_cup(r, s, fam, root):
     piv.scale = (1, 1, 0.001)
 
 
+def birdhouse(r, s, fam, root):
+    body, roof, trim = _cols(r, fam, 3)
+    hp = [1.0, 0.85, 1.15][s]
+    C.tube("pole", [(0, 0, 0), (0, 0, hp)], 0.035, M(trim, rough=0.5), root)
+    C.sphere("foot", (0, 0, 0.02), (0.12, 0.12, 0.03), M(trim, coat=0.5), root, 24)
+    if s == 0:
+        C.rounded_box("box", (0, 0, hp + 0.14), (0.3, 0.26, 0.28), 0.04, M(body, coat=0.5), root)
+        for sx in (-1, 1):
+            C.rounded_box("roof", (sx * 0.09, 0, hp + 0.33), (0.22, 0.34, 0.035), 0.015, M(roof, coat=0.6), root).rotation_euler = (0, math.radians(sx * 35), 0)
+        door_z = hp + 0.15
+    elif s == 1:
+        C.lathe("box", [(hp, 0.0), (hp, 0.14), (hp + 0.02, 0.15), (hp + 0.28, 0.15), (hp + 0.3, 0.0)], M(body, coat=0.5), root, segs=40)
+        C.lathe("roof", [(hp + 0.27, 0.0), (hp + 0.27, 0.2), (hp + 0.29, 0.21), (hp + 0.48, 0.02), (hp + 0.5, 0.0)], M(roof, coat=0.6), root, segs=40)
+        C.sphere("tip", (0, 0, hp + 0.51), (0.035,) * 3, M(trim, coat=0.7), root, 16)
+        door_z = hp + 0.15
+    else:
+        C.lathe("box", [(hp, 0.0), (hp, 0.15), (hp + 0.26, 0.17), (hp + 0.28, 0.0)], M(body, coat=0.5), root, segs=6)
+        C.lathe("roof", [(hp + 0.27, 0.0), (hp + 0.27, 0.24), (hp + 0.31, 0.24), (hp + 0.33, 0.0)], M(roof, coat=0.6), root, segs=48)
+        door_z = hp + 0.14
+    C.sphere("door", (0, -0.13 if s == 0 else -0.145, door_z), (0.045, 0.02, 0.045), M((0.15, 0.1, 0.12), rough=0.7), root, 20)
+    C.tube("perch", [(0, -0.13, door_z - 0.07), (0, -0.22, door_z - 0.07)], 0.01, M(trim), root)
+
+
+def planter_box(r, s, fam, root):
+    box, f1, f2, f3 = _cols(r, fam, 4)
+    leaf = M((0.35, 0.72, 0.4), rough=0.5)
+    if s == 0:
+        C.rounded_box("box", (0, 0, 0.13), (0.9, 0.26, 0.26), 0.05, M(box, rough=0.5, coat=0.4), root)
+        spots = [(-0.3 + 0.15 * k, 0) for k in range(5)]
+        top = 0.26
+    elif s == 1:
+        C.rounded_box("box", (0, 0, 0.42), (0.8, 0.24, 0.18), 0.05, M(box, rough=0.5, coat=0.4), root)
+        for x in (-0.33, 0.33):
+            for y in (-0.08, 0.08):
+                C.tube("leg", [(x, y, 0.0), (x, y, 0.34)], 0.02, M(box, rough=0.5), root)
+        spots = [(-0.27 + 0.135 * k, 0) for k in range(5)]
+        top = 0.51
+    else:
+        spots = []
+        for k, (x, z, rr) in enumerate(((-0.32, 0.0, 0.14), (0.0, 0.18, 0.13), (0.32, 0.36, 0.12))):
+            C.rounded_box("step", (x, 0.02, z / 2 + 0.0001), (0.3, 0.3, max(z, 0.02)), 0.02, M((0.95, 0.92, 0.86), rough=0.5), root) if z > 0 else None
+            C.lathe("pot", [(z, 0.0), (z, rr * 0.75), (z + rr * 1.2, rr), (z + rr * 1.3, 0.0)], M([box, f3, box][k], coat=0.5), root, segs=36)
+            spots.append((x, z + rr * 1.3))
+        for k, (x, z) in enumerate(spots):
+            C.tube("stem", [(x, 0, z), (x, 0, z + 0.22)], 0.012, leaf, root)
+            C.sphere("bloom", (x, 0, z + 0.25), (0.06, 0.06, 0.06), M([f1, f2, f1][k], coat=0.6), root, 20)
+            C.leaf("lf", 0.12, 0.05, 0.3, leaf, root).location = (x + 0.03, 0, z + 0.1)
+        return
+    for k, (x, y) in enumerate(spots):
+        h = 0.18 + 0.08 * ((k * 7) % 3)
+        C.tube("stem", [(x, y, top), (x, y, top + h)], 0.012, leaf, root)
+        if s == 0:
+            for j in range(5):
+                a = j * 1.2566
+                C.sphere("pet", (x + math.cos(a) * 0.04, y - 0.01, top + h + math.sin(a) * 0.04), (0.03, 0.012, 0.03), M(f1 if k % 2 else f2, coat=0.3), root, 12)
+            C.sphere("ctr", (x, y - 0.015, top + h), (0.022,) * 3, M((1, 0.85, 0.3)), root, 12)
+        else:
+            C.lathe("tulip", [(top + h - 0.02, 0.0), (top + h, 0.035), (top + h + 0.06, 0.04), (top + h + 0.09, 0.0)], M(f1 if k % 2 else f3, coat=0.5), root, segs=16).location = (x, y, 0)
+
+
+def pouf(r, s, fam, root):
+    c, d, e = _cols(r, fam, 3)
+    if s == 0:
+        C.metablob("bag", [((0, 0, 0.2), 0.3, (1, 1, 0.75)), ((0, 0.04, 0.42), 0.2, (1, 1, 1))], M(c, rough=0.8, coat=0.1), root)
+    elif s == 1:
+        C.lathe("pouf", [(0, 0.0), (0, 0.28), (0.04, 0.32), (0.26, 0.32), (0.3, 0.28), (0.31, 0.0)], M(c, rough=0.75, coat=0.1), root, segs=48)
+        C.sphere("btn", (0, 0, 0.31), (0.04, 0.04, 0.02), M(d, coat=0.6), root, 16)
+        C.tube("seam", _ring(0.322, 0.155, 48), 0.012, M(d, rough=0.6), root)
+    else:
+        z = 0.0
+        for k, (w, h) in enumerate(((0.62, 0.12), (0.52, 0.11), (0.4, 0.1))):
+            C.rounded_box("cush", (0.02 * k, 0, z + h / 2), (w, w, h), 0.05, M([c, d, e][k], rough=0.75, coat=0.1), root).rotation_euler = (0, 0, math.radians(12 * k))
+            z += h
+
+
 GEN = {k: v for k, v in globals().items() if k in REGISTRY}
 
 

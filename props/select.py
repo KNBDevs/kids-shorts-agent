@@ -34,7 +34,7 @@ def recent(usage, n=6, exclude=None):
     items.sort()
     used = set()
     for _, _, v in items[-n:]:
-        for d in v.get("decor", []):
+        for d in v.get("decor", []) + v.get("hero", []):
             used.add((d["prop"], d["style"]))
     return used
 
@@ -46,7 +46,7 @@ def choose(eid, env, registry, count=6, seed=None, family=None):
     rng = random.Random(seed if seed is not None else sum(map(ord, eid)))
     family = family or ENV_DEFAULT.get(env, "pastel")
     blocked = recent(usage, exclude=eid)
-    pool = [(n, s) for n, meta in registry.items() if env in meta["envs"] or "any" in meta["envs"] for s in range(meta["styles"])]
+    pool = [(n, s) for n, meta in registry.items() if (env in meta["envs"] or "any" in meta["envs"]) and meta.get("decor", True) for s in range(meta["styles"])]
     fresh = [p for p in pool if p not in blocked]
     rng.shuffle(fresh)
     picked, names = [], set()
