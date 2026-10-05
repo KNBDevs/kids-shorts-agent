@@ -30,4 +30,6 @@ REGISTRY = {
     "snack_plate": {"styles": 3, "envs": ["casa", "cocina", "patio"], "tags": ["cocina", "merienda"], "decor": False},
     "bubble_blower": {"styles": 3, "envs": ["lab", "patio"], "tags": ["invento", "burbujas"], "decor": False},
     "play_ball": {"styles": 3, "envs": ["patio", "casa", "plaza", "aula"], "tags": ["juguete"], "decor": False},
+    "number_stand": {"styles": 3, "envs": ["plaza", "patio", "casa", "aula"], "tags": ["numeros", "contar"], "decor": False},
+    "bridge_kit": {"styles": 3, "envs": ["patio", "casa", "aula"], "tags": ["construir", "juguete"], "decor": False},
 }

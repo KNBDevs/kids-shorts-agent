@@ -1072,7 +1072,17 @@
     "rot": 19.0
    }
   ],
-  "order": 13
+  "order": 13,
+  "hero": [
+   {
+    "prop": "number_stand",
+    "style": 0
+   },
+   {
+    "prop": "bush",
+    "style": 2
+   }
+  ]
  },
  "puente_cooperacion": {
   "env": "patio",
@@ -1139,6 +1149,20 @@
     "rot": -14.0
    }
   ],
-  "order": 14
+  "order": 14,
+  "hero": [
+   {
+    "prop": "bridge_kit",
+    "style": 1
+   },
+   {
+    "prop": "play_ball",
+    "style": 2
+   },
+   {
+    "prop": "snack_plate",
+    "style": 1
+   }
+  ]
  }
 }

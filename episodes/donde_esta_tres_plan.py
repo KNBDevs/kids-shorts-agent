@@ -13,7 +13,10 @@ LINES = [
     ('p6', 'pimo', 'Tú, aquí, al lado.', 620, 1.6),
     ('g2', 'gruno', '¡El más importante!', 700, 1.4),
 ]
-SFX = []
+SFX = [(14, 'pop', 0.3), (34, 'pop', 0.3), (69, 'boing_up', 0.2), (96, 'sparkle', 0.25), (200, 'tock', 0.2), (212, 'tock', 0.2), (224, 'tock', 0.2),
+       (289, 'boing_up', 0.2), (318, 'whistle_up', 0.2), (378, 'sparkle', 0.3), (424, 'tock', 0.35), (425, 'sparkle', 0.3),
+       (432, 'pop', 0.3), (446, 'pop', 0.3), (460, 'pop', 0.3), (474, 'pop', 0.3), (517, 'boing_up', 0.25), (538, 'boing', 0.3),
+       (670, 'boing', 0.25), (704, 'whistle_up', 0.2), (776, 'pop', 0.25), (782, 'pop', 0.25), (788, 'pop', 0.25), (794, 'pop', 0.25)]
 META = {
     'title': '¿Dónde está el tres? 🔢 Uno, dos, tres, cuatro #shorts',
     'description': 'En la fila de números falta el tres. ¿Dónde se ha escondido? Pimo lo busca, lo encuentra detrás de un arbusto y lo coloca en su sitio. Aprende jugando a contar del uno al cuatro.\n\n#pimoruki #dibujosanimados #videosinfantiles #aprenderjugando #shorts',

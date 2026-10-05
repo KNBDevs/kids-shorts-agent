@@ -740,12 +740,138 @@ def play_ball(r, s, fam, root):
         C.tube("band2", [(math.cos(k * 6.2832 / 48) * R * 1.01, 0, R + math.sin(k * 6.2832 / 48) * R * 1.01) for k in range(49)], R * 0.12, M(cs[3], coat=0.6), root)
 
 
+def _font():
+    import os
+    f = next((x for x in bpy.data.fonts if 'Lilita' in x.name or 'LilitaOne' in x.filepath), None)
+    if f is None:
+        f = bpy.data.fonts.load(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "LilitaOne.ttf"))
+    return f
+
+
+def glyph(txt, size, depth, m, parent, loc=(0, 0, 0)):
+    cu = bpy.data.curves.new("g", "FONT")
+    cu.body = txt
+    cu.font = _font()
+    cu.align_x = "CENTER"
+    cu.align_y = "CENTER"
+    cu.size = size
+    cu.extrude = depth
+    cu.bevel_depth = depth * 0.45
+    cu.bevel_resolution = 2
+    o = bpy.data.objects.new("glyph", cu)
+    bpy.context.scene.collection.objects.link(o)
+    o.data.materials.append(m)
+    o.parent = parent
+    o.location = loc
+    o.rotation_euler = (math.radians(90), 0, 0)
+    return o
+
+
+def number_stand(r, s, fam, root, label=None):
+    c, d, e = _cols(r, fam, 3)
+    label = label if label is not None else str(1 + r.randrange(9))
+    body = M(c, rough=0.4, coat=0.6)
+    trim = M(d, rough=0.45, coat=0.5)
+    ink = M((0.99, 0.98, 0.95), rough=0.3, coat=0.7, emit=0.08) if isinstance(fam, tuple) else M(tuple(v * 0.42 for v in e), rough=0.3, coat=0.7)
+    face = C.empty("face", root, (0, 0, 0))
+    if s == 0:
+        C.rounded_box("foot", (0, 0, 0.03), (0.4, 0.26, 0.06), 0.025, trim, root)
+        C.rounded_box("tile", (0, 0, 0.29), (0.44, 0.1, 0.44), 0.07, body, face)
+        g = glyph(label, 0.32, 0.018, ink, face, (0, -0.05, 0.27))
+    elif s == 1:
+        C.lathe("base", [(0, 0.0), (0, 0.17), (0.015, 0.185), (0.04, 0.18), (0.05, 0.15), (0.05, 0.0)], trim, root, segs=48)
+        C.tube("peg", [(0, 0, 0.04), (0, 0, 0.12)], 0.035, trim, root)
+        dk = C.empty("disc", face, (0, 0.045, 0.33), (math.radians(90), 0, 0))
+        C.lathe("dsk", [(0, 0.0), (0, 0.2), (0.02, 0.23), (0.07, 0.23), (0.09, 0.2), (0.09, 0.0)], body, dk, segs=64)
+        C.tube("rim", [(math.cos(k * 6.2832 / 48) * 0.205, -0.003, 0.33 + math.sin(k * 6.2832 / 48) * 0.205) for k in range(49)], 0.012, M(d, coat=0.6), face)
+        g = glyph(label, 0.3, 0.016, ink, face, (0, -0.06, 0.31))
+    else:
+        C.rounded_box("plinth", (0, 0, 0.045), (0.46, 0.22, 0.09), 0.03, trim, root)
+        C.rounded_box("block", (0, 0, 0.25), (0.38, 0.14, 0.32), 0.05, body, face)
+        cap = C.empty("cap", face, (0, 0.0, 0.41), (math.radians(90), 0, 0))
+        C.lathe("dome", [(-0.07, 0.0), (-0.07, 0.185), (-0.055, 0.19), (0.055, 0.19), (0.07, 0.185), (0.07, 0.0)], body, cap, segs=48)
+        C.sphere("dot", (0, -0.07, 0.47), (0.035, 0.015, 0.035), M(e, coat=0.7), face, 16)
+        g = glyph(label, 0.27, 0.016, ink, face, (0, -0.07, 0.25))
+    g.name = "glyph_" + label
+    return face
+
+
+def _rich(c, k=1.6, v=0.92):
+    import colorsys
+    h, ss, vv = colorsys.rgb_to_hsv(*c)
+    return colorsys.hsv_to_rgb(h, min(1.0, ss * k + 0.1), vv * v)
+
+
+def bridge_kit(r, s, fam, root):
+    wood, top, extra, rail = [_rich(c) for c in _cols(r, fam, 4)]
+    if s == 0:
+        wood = (0.86, 0.66, 0.42)
+    bm_ = M(wood, rough=0.55 if s == 0 else 0.4, coat=0.3 if s == 0 else 0.6)
+    tm = M(top, rough=0.45, coat=0.5)
+    xm = M(extra, rough=0.45, coat=0.55)
+    water = M((0.45, 0.72, 0.95), rough=0.25, coat=0.8)
+    foam = M((0.92, 0.97, 1.0), rough=0.4, coat=0.4)
+    C.rounded_box("river", (0, 0, 0.012), (1.36, 0.78, 0.024), 0.01, water, root)
+    for k in range(3):
+        y = -0.24 + 0.24 * k
+        C.tube("wave", [(-0.55 + 0.11 * j, y + 0.03 * math.sin(j * 1.6 + k), 0.026) for j in range(11)], 0.008, foam, root)
+    H = 0.3
+    parts = {}
+    for side in (-1, 1):
+        b = C.empty("bk_bank" + ("L" if side < 0 else "R"), root, (side * 0.93, 0, 0))
+        if s == 0:
+            C.rounded_box("bank", (0, 0, H / 2), (0.5, 0.62, H), 0.04, bm_, b)
+            C.rounded_box("step", (side * 0.2, 0, H * 0.25), (0.22, 0.62, H * 0.5), 0.03, tm, b)
+        elif s == 1:
+            C.sphere("mound", (0, 0, 0.0), (0.3, 0.34, H), bm_, b, 40)
+            C.rounded_box("pad", (0, 0, H - 0.04), (0.42, 0.5, 0.06), 0.03, tm, b)
+        else:
+            C.rounded_box("bank", (0, 0, H / 2), (0.46, 0.6, H), 0.06, bm_, b)
+            for y in (-0.2, 0.2):
+                C.sphere("stud", (0, y, H + 0.01), (0.05, 0.05, 0.025), xm, b, 16)
+        parts[b.name] = b
+    for i, x in enumerate((-0.3, 0.3)):
+        p = C.empty(f"bk_base{i}", root, (x, 0, 0))
+        if s == 0:
+            C.rounded_box("pillar", (0, 0, H / 2), (0.14, 0.34, H), 0.025, tm, p)
+        elif s == 1:
+            C.lathe("pillar", [(0, 0.0), (0, 0.09), (0.02, 0.1), (H - 0.02, 0.1), (H, 0.09), (H, 0.0)], tm, p, segs=40)
+        else:
+            for y in (-0.12, 0.12):
+                C.tube("leg", [(-0.05, y, 0.0), (0, y, H - 0.03)], 0.025, tm, p)
+                C.tube("leg", [(0.05, y, 0.0), (0, y, H - 0.03)], 0.025, tm, p)
+            C.rounded_box("cap", (0, 0, H - 0.02), (0.14, 0.34, 0.04), 0.015, xm, p)
+    D = 0.06
+
+    def plank(name, L, mat):
+        p = C.empty(name, root, (0, 0, H + D / 2))
+        if s == 1:
+            C.rounded_box("deck", (0, 0, 0), (L, 0.36, D), D * 0.45, mat, p)
+        else:
+            C.rounded_box("deck", (0, 0, 0), (L, 0.36, D), 0.018, mat, p)
+        if s == 0:
+            n = max(2, int(L / 0.12))
+            for k in range(1, n):
+                C.tube("seam", [(-L / 2 + L * k / n, -0.181, -D * 0.3), (-L / 2 + L * k / n, -0.181, D * 0.3)], 0.004, M((0.6, 0.42, 0.25), rough=0.7), p)
+        elif s == 2:
+            for x in (-L / 2 + 0.05, L / 2 - 0.05):
+                for y in (-0.16, 0.16):
+                    C.tube("post", [(x, y, D / 2), (x, y, D / 2 + 0.1)], 0.012, M(rail, coat=0.6), p)
+                    C.sphere("ball", (x, y, D / 2 + 0.11), (0.025,) * 3, M(rail, coat=0.7), p, 12)
+        return p
+
+    plank("bk_deck", 1.05, bm_).location.x = -0.2
+    plank("bk_last", 0.5, xm).location.x = 0.6
+    plank("bk_short", 0.62, M(rail, rough=0.45, coat=0.5)).location.x = -0.45
+    return root
+
+
 GEN = {k: v for k, v in globals().items() if k in REGISTRY}
 
 
-def spawn(name, style=0, seed=0, family="pastel", loc=(0, 0, 0), scale=1.0, rot=0.0, parent=None):
+def spawn(name, style=0, seed=0, family="pastel", loc=(0, 0, 0), scale=1.0, rot=0.0, parent=None, **kw):
     root = C.empty(f"prop_{name}", parent, loc, (0, 0, math.radians(rot)))
-    GEN[name](random.Random(seed), style, family, root)
+    GEN[name](random.Random(seed), style, family, root, **kw)
     root.scale = (scale, scale, scale)
     return root
 

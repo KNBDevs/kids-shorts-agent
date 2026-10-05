@@ -13,7 +13,10 @@ LINES = [
     ('r3', 'ruki', 'Cada uno ha puesto una parte.', 560, 2.2),
     ('g4', 'gruno', 'Esperad... ¡traigo la merienda!', 650, 2.2),
 ]
-SFX = []
+SFX = [(66, 'whistle_up', 0.2), (90, 'clonk', 0.35), (141, 'whistle_down', 0.2), (202, 'tock', 0.3), (203, 'sparkle', 0.2),
+       (230, 'tock', 0.3), (231, 'sparkle', 0.2), (280, 'tock', 0.3), (281, 'sparkle', 0.25), (408, 'boing_up', 0.2), (452, 'tock', 0.35),
+       (453, 'sparkle', 0.3), (492, 'popper', 0.3), (572, 'pop', 0.25), (576, 'pop', 0.25), (592, 'pop', 0.25), (610, 'pop', 0.25),
+       (683, 'boing_up', 0.2), (741, 'boing_up', 0.2), (762, 'boing', 0.25), (766, 'sparkle', 0.25)]
 META = {
     'title': 'Gruño quiere todas las piezas 🌉 ¿Quién pone la última? #shorts',
     'description': 'El Doctor Gruño quiere todas las piezas para él, pero su puente de juguete no llega a la otra orilla. Con Ruki y Pimo, cada uno pone una parte... ¡y el puente se completa! Aprende jugando a cooperar.\n\n#pimoruki #dibujosanimados #videosinfantiles #aprenderjugando #shorts',
