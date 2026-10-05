@@ -672,6 +672,74 @@ def play_door(r, s, fam, root):
         C.sphere("knob", (W - 0.12, sy * 0.07, H * 0.48), (0.05, 0.04, 0.05), M(knob, coat=0.8), hinge, 20)
 
 
+def snack_plate(r, s, fam, root):
+    c, d = _cols(r, fam, 2)
+    pm = M((0.98, 0.97, 0.94), rough=0.3, coat=0.7)
+    if s == 0:
+        C.lathe("plate", [(0, 0.0), (0, 0.1), (0.012, 0.13), (0.02, 0.2), (0.035, 0.24), (0.04, 0.235), (0.028, 0.2), (0.022, 0.13), (0.022, 0.0)], pm, root, segs=56)
+        for k in range(12):
+            a = k * 0.5236
+            C.sphere("dot", (math.cos(a) * 0.215, math.sin(a) * 0.215, 0.032), (0.012, 0.012, 0.005), M(c, coat=0.6), root, 10)
+    elif s == 1:
+        C.rounded_box("plate", (0, 0, 0.015), (0.42, 0.42, 0.03), 0.012, pm, root)
+        C.tube("rim", [(-0.19, -0.19, 0.032), (0.19, -0.19, 0.032), (0.19, 0.19, 0.032), (-0.19, 0.19, 0.032), (-0.19, -0.19, 0.032)], 0.01, M(c, coat=0.6), root)
+    else:
+        C.sphere("plate", (0, 0, 0.012), (0.27, 0.18, 0.016), M(c, rough=0.4, coat=0.6), root, 40)
+        C.tube("vein", [(-0.22, 0, 0.026), (0.2, 0, 0.026)], 0.006, M(d, coat=0.4), root)
+        for sx in (-1, 1):
+            for k in range(3):
+                x = -0.12 + 0.1 * k
+                C.tube("vein", [(x, 0, 0.026), (x + 0.06, sx * 0.1, 0.026)], 0.005, M(d, coat=0.4), root)
+
+
+def bubble_blower(r, s, fam, root):
+    body, ring, trim = _cols(r, fam, 3)
+    bm_ = M(body, rough=0.35, coat=0.7)
+    rm = M(ring, rough=0.3, coat=0.8)
+    tm = M(trim, rough=0.35, coat=0.7)
+    if s == 0:
+        C.rounded_box("base", (0, 0, 0.25), (0.6, 0.45, 0.5), 0.08, bm_, root)
+        hub = C.empty("nozzle", root, (0, -0.05, 0.62), (math.radians(90), 0, 0))
+        C.lathe("fan", [(-0.08, 0.0), (-0.08, 0.2), (0.08, 0.2), (0.08, 0.0)], tm, hub, segs=48)
+        C.tube("wand", _ring(0.24, 0.1, 48), 0.025, rm, hub)
+        for k in range(4):
+            C.sphere("lamp", (-0.2 + 0.13 * k, -0.226, 0.38), (0.035, 0.015, 0.035), M([(1, 0.5, 0.6), (0.5, 0.9, 0.6), (1, 0.85, 0.3), (0.5, 0.7, 1)][k], rough=0.3, emit=1.0), root, 16)
+    elif s == 1:
+        C.lathe("tank", [(0, 0.0), (0, 0.25), (0.05, 0.27), (0.5, 0.25), (0.56, 0.18), (0.6, 0.0)], bm_, root, segs=48)
+        hub = C.empty("nozzle", root, (0, -0.1, 0.75), (math.radians(70), 0, 0))
+        C.lathe("horn", [(0.0, 0.05), (0.12, 0.06), (0.22, 0.1), (0.28, 0.18), (0.3, 0.2), (0.28, 0.17), (0.2, 0.08), (0.05, 0.04)], tm, hub, segs=48)
+        C.tube("wand", _ring(0.2, 0.31, 48), 0.022, rm, hub)
+    else:
+        for x in (-0.22, 0.22):
+            C.tube("leg", [(x, 0, 0), (x, 0, 0.55)], 0.03, tm, root)
+        C.sphere("drum", (0, 0, 0.62), (0.32, 0.26, 0.22), bm_, root, 40)
+        hub = C.empty("nozzle", root, (0, -0.24, 0.66), (math.radians(90), 0, 0))
+        C.tube("wand", _ring(0.18, 0.06, 48), 0.024, rm, hub)
+        C.tube("stick", [(0, 0, 0.0), (0, 0, 0.06)], 0.02, rm, hub)
+        C.sphere("bulb", (0, 0, 0.86), (0.06, 0.06, 0.06), M(ring, rough=0.3, emit=0.8), root, 16)
+
+
+def play_ball(r, s, fam, root):
+    cs = _cols(r, fam, 4)
+    R = 0.11
+    if s == 0:
+        C.sphere("ball", (0, 0, R), (R, R, R), M((0.98, 0.97, 0.94), rough=0.35, coat=0.6), root, 32)
+        for k in range(3):
+            C.sphere("seg", (0, 0, R), (R * 1.004, R * 0.35, R * 1.004), M(cs[k], rough=0.35, coat=0.6), root, 32, rot=(0, 0, k * 1.0472))
+    elif s == 1:
+        C.sphere("ball", (0, 0, R), (R, R, R), M(cs[0], rough=0.4, coat=0.6), root, 32)
+        for k in range(14):
+            a = k * 2.399
+            z = 1 - 2 * (k + 0.5) / 14
+            rr = math.sqrt(1 - z * z)
+            n = Vector((math.cos(a) * rr, math.sin(a) * rr, z))
+            _dot("spot", Vector((0, 0, R)) + n * R * 1.002, n, R * 0.2, M(cs[1], coat=0.6), root)
+    else:
+        C.sphere("ball", (0, 0, R), (R, R, R), M(cs[2], rough=0.4, coat=0.6), root, 32)
+        C.tube("band", _ring(R * 1.01, R, 48), R * 0.12, M(cs[3], coat=0.6), root)
+        C.tube("band2", [(math.cos(k * 6.2832 / 48) * R * 1.01, 0, R + math.sin(k * 6.2832 / 48) * R * 1.01) for k in range(49)], R * 0.12, M(cs[3], coat=0.6), root)
+
+
 GEN = {k: v for k, v in globals().items() if k in REGISTRY}
 
 

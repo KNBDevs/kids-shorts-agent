@@ -14,7 +14,8 @@ LINES = [
     ('p3', 'pimo', '¿Cambiamos?', 560, 1.0),
     ('t3', 'tuki', '¡Es igual!', 640, 1.0),
 ]
-SFX = []
+SFX = [(140, 'pop', 0.3), (150, 'sparkle', 0.25), (252, 'tock', 0.2), (296, 'sparkle', 0.3), (376, 'tock', 0.25), (408, 'tock', 0.25),
+       (576, 'whistle_up', 0.12), (606, 'tock', 0.2), (642, 'sparkle', 0.3)]
 META = {
     'title': 'Dos mitades, una merienda 🍎 ¿Son iguales? #shorts',
     'description': 'Pimo y Tuki quieren la misma manzana. Ruki les enseña que ya está partida en dos mitades iguales: una para cada uno. Aprende jugando qué es la mitad.\n\n#pimoruki #dibujosanimados #videosinfantiles #aprenderjugando #shorts',

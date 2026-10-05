@@ -13,7 +13,8 @@ LINES = [
     ('b5', 'bopi', 'Esta flecha va hacia dentro: empuja.', 600, 2.4),
     ('g4', 'gruno', '¡Bah! ¡Las puertas me tienen manía!', 700, 2.2),
 ]
-SFX = []
+SFX = [(62, 'clonk', 0.4), (82, 'clonk', 0.4), (240, 'sparkle', 0.2), (404, 'tock', 0.3), (418, 'whistle_up', 0.15), (430, 'sparkle', 0.3),
+       (544, 'boing', 0.3), (560, 'boing', 0.3), (748, 'tock', 0.3), (760, 'whistle_up', 0.15), (766, 'boing', 0.25)]
 META = {
     'title': 'La puerta que dice tira 🚪➡️ ¿Empujar o tirar? #shorts',
     'description': 'El Doctor Gruño empuja una puerta que se abre tirando... Bopi mira la flecha y la abre con suavidad. ¿Y la segunda puerta? Aprende jugando a empujar y tirar mirando las flechas.\n\n#pimoruki #dibujosanimados #videosinfantiles #aprenderjugando #shorts',

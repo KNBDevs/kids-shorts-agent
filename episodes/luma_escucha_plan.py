@@ -14,7 +14,8 @@ LINES = [
     ('l4', 'luma', '...que tenía muchas ganas de contar su cuento.', 520, 2.8),
     ('p4', 'pimo', '¡Qué cuento tan bonito!', 640, 1.6),
 ]
-SFX = []
+SFX = [(66, 'boing_up', 0.2), (84, 'boing', 0.15), (114, 'tock', 0.2), (126, 'tock', 0.2), (180, 'whistle_down', 0.12),
+       (446, 'sparkle', 0.35), (660, 'sparkle', 0.3), (726, 'pop', 0.15), (770, 'whistle_up', 0.15)]
 META = {
     'title': 'Luma quiere que la escuchen ✨ ¿Nos lo cuentas? #shorts',
     'description': 'Luma empieza un cuento, pero Pimo y Tuki no la escuchan y su brillo se apaga. Pimo se da cuenta, se acerca y pregunta: «¿Nos lo cuentas?». Aprende jugando a escuchar a los amigos.\n\n#pimoruki #dibujosanimados #videosinfantiles #aprenderjugando #shorts',

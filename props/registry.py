@@ -27,4 +27,7 @@ REGISTRY = {
     "toy_speaker": {"styles": 3, "envs": ["casa", "aula", "lab"], "tags": ["sonido"], "decor": False},
     "star_plush": {"styles": 3, "envs": ["casa", "aula"], "tags": ["juguete", "cuento"], "decor": False},
     "play_door": {"styles": 3, "envs": ["casa", "aula", "patio"], "tags": ["puerta"], "decor": False},
+    "snack_plate": {"styles": 3, "envs": ["casa", "cocina", "patio"], "tags": ["cocina", "merienda"], "decor": False},
+    "bubble_blower": {"styles": 3, "envs": ["lab", "patio"], "tags": ["invento", "burbujas"], "decor": False},
+    "play_ball": {"styles": 3, "envs": ["patio", "casa", "plaza", "aula"], "tags": ["juguete"], "decor": False},
 }

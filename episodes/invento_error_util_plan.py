@@ -12,7 +12,9 @@ LINES = [
     ('p4', 'pimo', 'Ese error nos ha dado una idea.', 560, 2.2),
     ('g4', 'gruno', '¡Eh! ¡Mi mando!', 700, 1.2),
 ]
-SFX = []
+SFX = [(58, 'bip', 0.3), (62, 'whistle_up', 0.2), (96, 'boing', 0.3), (116, 'whistle_down', 0.2), (244, 'pop', 0.2),
+       (326, 'boing_up', 0.25), (340, 'sparkle', 0.3), (454, 'pop', 0.35), (474, 'tock', 0.3), (480, 'sparkle', 0.3),
+       (644, 'whistle_up', 0.15), (684, 'pop', 0.25)]
 META = {
     'title': 'El invento que necesitaba un error 🫧⚽ ¿Y si metemos la pelota? #shorts',
     'description': 'El Doctor Gruño quiere mil burbujas, pero su máquina solo hace una enorme. Pimo observa y prueba otra idea: ¡la burbuja transporta una pelota! Aprende jugando a observar y adaptar.\n\n#pimoruki #dibujosanimados #videosinfantiles #aprenderjugando #shorts',
