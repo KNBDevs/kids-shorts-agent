@@ -494,6 +494,75 @@ def pouf(r, s, fam, root):
             z += h
 
 
+def finish_line(r, s, fam, root):
+    c1, c2 = _cols(r, fam, 2)
+    W = [1.8, 1.9, 1.7][s]
+    white = M((0.98, 0.97, 0.94), rough=0.5)
+    dark = M((0.2, 0.18, 0.28), rough=0.5)
+    if s != 1:
+        n = 12
+        for i in range(n):
+            for j in range(2):
+                C.rounded_box("chk", (-W / 2 + W * (i + 0.5) / n, (j - 0.5) * 0.15, 0.006), (W / n, 0.15, 0.012), 0.004, white if (i + j) % 2 else dark, root)
+    if s == 0:
+        for x in (-W / 2 - 0.08, W / 2 + 0.08):
+            C.tube("pole", [(x, 0, 0), (x, 0, 0.8)], 0.025, M(c1, coat=0.6), root)
+            C.sphere("cap", (x, 0, 0.82), (0.04,) * 3, M(c2, coat=0.7), root, 16)
+            fl = C.empty("flag", root, (x, 0, 0.62))
+            for i in range(3):
+                for j in range(2):
+                    C.rounded_box("fl", (0.04 + 0.06 * i, 0, 0.03 + 0.06 * j), (0.06, 0.012, 0.06), 0.004, white if (i + j) % 2 else dark, fl)
+    elif s == 1:
+        H = 1.5
+        pts = [(math.cos(math.pi * k / 24) * W / 2, 0, math.sin(math.pi * k / 24) * H) for k in range(25)]
+        C.tube("arch", pts, 0.06, M(c1, coat=0.6, rough=0.35), root)
+        for k in range(1, 24, 2):
+            x, _, z = pts[k]
+            C.sphere("ball", (x, -0.05, z), (0.05,) * 3, M(c2, coat=0.7), root, 16)
+        C.rounded_box("line", (0, 0, 0.006), (W, 0.12, 0.012), 0.005, white, root)
+    else:
+        for x in (-W / 2 - 0.1, W / 2 + 0.1):
+            C.lathe("cone", [(0, 0.0), (0, 0.13), (0.03, 0.13), (0.04, 0.09), (0.36, 0.03), (0.38, 0.0)], M(c1, coat=0.5, rough=0.4), root, segs=32).location = (x, 0, 0)
+            C.tube("band", [(x + math.cos(k * 6.2832 / 32) * 0.065, math.sin(k * 6.2832 / 32) * 0.065, 0.2) for k in range(33)], 0.012, white, root)
+        C.tube("tape", [(-W / 2 - 0.1, 0, 0.3), (0, 0, 0.26), (W / 2 + 0.1, 0, 0.3)], 0.012, M(c2, coat=0.3), root)
+
+
+def paint_palette(r, s, fam, root):
+    base, rim = _cols(r, fam, 2)
+    white = M((0.98, 0.97, 0.95), rough=0.4, coat=0.5)
+    wells = []
+    if s == 0:
+        bm = bmesh.new()
+        pts = []
+        for k in range(40):
+            a = k * 6.2832 / 40
+            rr = 0.3 * (1 + 0.12 * math.cos(2 * a)) * (0.82 if abs(math.sin(a / 2 - 1.2)) < 0.12 else 1.0)
+            pts.append((math.cos(a) * rr, math.sin(a) * rr * 0.75))
+        bot = [bm.verts.new((x, y, 0)) for x, y in pts]
+        top = [bm.verts.new((x, y, 0.035)) for x, y in pts]
+        bm.faces.new(bot[::-1])
+        bm.faces.new(top)
+        for i in range(len(pts)):
+            j = (i + 1) % len(pts)
+            bm.faces.new((bot[i], bot[j], top[j], top[i]))
+        o = C.mesh_obj("pal", bm, M(base, rough=0.45, coat=0.6), root, smooth=False)
+        bv = o.modifiers.new("b", "BEVEL"); bv.width = 0.012; bv.segments = 3
+        C.sphere("hole", (0.2, -0.05, 0.036), (0.04, 0.035, 0.004), M((0.2, 0.18, 0.25)), root, 20)
+        wells = [(-0.17, 0.08), (-0.05, 0.13), (0.08, 0.12), (-0.2, -0.06)]
+        z = 0.037
+    elif s == 1:
+        C.rounded_box("tray", (0, 0, 0.03), (0.62, 0.36, 0.06), 0.025, M(base, rough=0.45, coat=0.6), root)
+        C.tube("rim", [(-0.31, -0.18, 0.06), (0.31, -0.18, 0.06), (0.31, 0.18, 0.06), (-0.31, 0.18, 0.06), (-0.31, -0.18, 0.06)], 0.012, M(rim, coat=0.6), root)
+        wells = [(-0.2 + 0.2 * i, 0.08) for i in range(3)] + [(-0.2 + 0.2 * i, -0.08) for i in range(3)]
+        z = 0.061
+    else:
+        C.lathe("tray", [(0, 0.0), (0, 0.26), (0.02, 0.29), (0.04, 0.28), (0.04, 0.0)], M(base, rough=0.45, coat=0.6), root, segs=60)
+        wells = [(math.cos(k * 1.2566 + 0.3) * 0.18, math.sin(k * 1.2566 + 0.3) * 0.18) for k in range(5)] + [(0, 0)]
+        z = 0.041
+    for x, y in wells:
+        C.sphere("well", (x, y, z), (0.055, 0.055, 0.008), white, root, 24)
+
+
 GEN = {k: v for k, v in globals().items() if k in REGISTRY}
 
 

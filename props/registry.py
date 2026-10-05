@@ -21,4 +21,6 @@ REGISTRY = {
     "birdhouse": {"styles": 3, "envs": ["patio", "plaza", "otono"], "tags": ["jardin"]},
     "planter_box": {"styles": 3, "envs": ["patio", "plaza", "casa"], "tags": ["planta"]},
     "pouf": {"styles": 3, "envs": ["casa", "aula"], "tags": ["asiento"]},
+    "finish_line": {"styles": 3, "envs": ["plaza", "patio"], "tags": ["juego", "carrera"], "decor": False},
+    "paint_palette": {"styles": 3, "envs": ["casa", "aula", "patio"], "tags": ["arte", "colores"], "decor": False},
 }

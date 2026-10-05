@@ -13,7 +13,9 @@ LINES = [
     ('b4', 'bolita', '¡Pies verdes! ¡Y el resto, rojo!', 600, 2.4),
     ('b5', 'bolita', '¡Mira mis huellas!', 720, 1.4),
 ]
-SFX = []
+SFX = [(14, 'boing_up', 0.2), (266, 'splat', 0.15), (276, 'pop', 0.25), (304, 'splat', 0.15), (314, 'pop', 0.25),
+       (420, 'sparkle', 0.35), (492, 'pop', 0.2), (500, 'pop', 0.2), (508, 'pop', 0.2), (516, 'pop', 0.2), (530, 'sparkle', 0.3),
+       (584, 'sparkle', 0.25), (650, 'splat', 0.15), (662, 'tock', 0.2), (676, 'splat', 0.15), (688, 'tock', 0.2)]
 META = {
     'title': 'El rojo que quería ser verde 🎨 ¿Azul y amarillo? #shorts',
     'description': 'Bolita quiere unos pies verdes, pero solo tiene pintura azul y amarilla. Pimo las mezcla en la bandeja... ¿qué color saldrá? Aprende jugando a mezclar colores.\n\n#pimoruki #dibujosanimados #videosinfantiles #aprenderjugando #shorts',
