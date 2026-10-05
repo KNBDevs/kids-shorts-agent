@@ -2,6 +2,9 @@ name: voices
 on:
   schedule:
     - cron: "17 7 * * *"
+    - cron: "47 10 * * *"
+    - cron: "17 14 * * *"
+    - cron: "47 17 * * *"
   workflow_dispatch:
     inputs:
       chars:
