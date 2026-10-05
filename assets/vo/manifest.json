@@ -871,13 +871,15 @@
   "voice": "Puck"
  },
  "ep_moki_colador_lluvia_m5": {
-  "hash": "rejected",
-  "dur": 1.35,
+  "hash": "ea099029c5d7",
+  "dur": 2.24,
   "text": "¡Ay! ¡Gota en la nariz!",
-  "asr": 0.89,
-  "heard": "Gota en la nariz.",
+  "asr": 0.8,
+  "heard": "¡Ay, gota el la nariz!",
   "engine": "gemini",
-  "voice": "Enceladus"
+  "voice": "Enceladus",
+  "lock": "L1",
+  "shift": -1.5
  },
  "ep_tuki_cuenta_saltos_a1": {
   "hash": "611fa006ace0",
@@ -1045,13 +1047,15 @@
   "shift": 0.17
  },
  "ep_tuki_cuenta_saltos_r2": {
-  "hash": "rejected",
-  "dur": 2.98,
+  "hash": "743497b8a9f6",
+  "dur": 3.91,
   "text": "Contamos despacio: un salto, una ficha.",
   "asr": 1.0,
   "heard": "Contamos despacio. Un salto, una ficha.",
   "engine": "gemini",
-  "voice": "Umbriel"
+  "voice": "Umbriel",
+  "lock": "L1",
+  "shift": 0.84
  },
  "ep_tuki_cuenta_saltos_r3": {
   "hash": "be645cf58d04",
@@ -1332,5 +1336,148 @@
   "voice": "Puck",
   "lock": "L1",
   "shift": -6.78
+ },
+ "ep_boton_mas_grande_r1": {
+  "hash": "f961f4a563f3",
+  "dur": 1.39,
+  "text": "Tu galleta es grande. La mía, pequeña.",
+  "asr": 0.73,
+  "heard": "Tu galleta es grande.",
+  "engine": "gemini",
+  "voice": "Umbriel",
+  "lock": "L1",
+  "shift": -3.53
+ },
+ "ep_esponja_absorbe_m1": {
+  "hash": "fc387f5e234f",
+  "dur": 2.76,
+  "text": "¿Tienes sed, esponja? Aquí tienes agua.",
+  "asr": 0.83,
+  "heard": "¿Tienes sede esponja? Aquí tienes agua.",
+  "engine": "gemini",
+  "voice": "Enceladus",
+  "lock": "L1",
+  "shift": -0.71
+ },
+ "ep_boton_mas_grande_r2": {
+  "hash": "8022811f6b7e",
+  "dur": 1.21,
+  "text": "¿Cuál es más grande?",
+  "asr": 1.0,
+  "heard": "¿Cuál es más grande?",
+  "engine": "gemini",
+  "voice": "Umbriel",
+  "lock": "L1",
+  "shift": 4.58
+ },
+ "ep_boton_mas_grande_r3": {
+  "hash": "69f10f376fbf",
+  "dur": 2.47,
+  "text": "¡La tuya! ¿La partimos para compartir?",
+  "asr": 1.0,
+  "heard": "¿La tuya? ¿La partimos para compartir?",
+  "engine": "gemini",
+  "voice": "Umbriel",
+  "lock": "L1",
+  "shift": -0.82
+ },
+ "ep_carrera_mas_lenta_r1": {
+  "hash": "73ba3dfb3971",
+  "dur": 1.6,
+  "text": "Yo voy despacito.",
+  "asr": 1.0,
+  "heard": "Yo voy despacito.",
+  "engine": "gemini",
+  "voice": "Umbriel",
+  "lock": "L1",
+  "shift": 4.71
+ },
+ "ep_esponja_absorbe_m2": {
+  "hash": "271203eab8c9",
+  "dur": 2.01,
+  "text": "La cuchara no recoge nada.",
+  "asr": 1.0,
+  "heard": "La cuchara no recoge nada.",
+  "engine": "gemini",
+  "voice": "Enceladus",
+  "lock": "L1",
+  "shift": -3.33
+ },
+ "ep_esponja_absorbe_m3": {
+  "hash": "a57f197a0a79",
+  "dur": 2.78,
+  "text": "¡Te has mojado! Toma, un pañuelo.",
+  "asr": 1.0,
+  "heard": "¡Te has mojado! ¡Toma un pañuelo!",
+  "engine": "gemini",
+  "voice": "Enceladus",
+  "lock": "L1",
+  "shift": 2.94
+ },
+ "ep_boton_mas_grande_r4": {
+  "hash": "0168a42bab17",
+  "dur": 1.92,
+  "text": "Un trozo para cada uno.",
+  "asr": 1.0,
+  "heard": "Un trozo para cada uno.",
+  "engine": "gemini",
+  "voice": "Umbriel",
+  "lock": "L1",
+  "shift": 5.89
+ },
+ "ep_carrera_mas_lenta_r2": {
+  "hash": "e8ecbbd3f4dc",
+  "dur": 2.17,
+  "text": "Paso a paso... sin prisa.",
+  "asr": 1.0,
+  "heard": "Paso a paso, sin prisa.",
+  "engine": "gemini",
+  "voice": "Umbriel",
+  "lock": "L1",
+  "shift": 1.94
+ },
+ "ep_carrera_mas_lenta_r3": {
+  "hash": "d4ef5149988d",
+  "dur": 1.93,
+  "text": "¡Despacio llegan todos!",
+  "asr": 1.0,
+  "heard": "Despacio llegan todos.",
+  "engine": "gemini",
+  "voice": "Umbriel",
+  "lock": "L1",
+  "shift": 5.89
+ },
+ "ep_monstruo_caja_r1": {
+  "hash": "594610f69574",
+  "dur": 1.62,
+  "text": "Vamos a mirar con calma.",
+  "asr": 1.0,
+  "heard": "Vamos a mirar con calma.",
+  "engine": "gemini",
+  "voice": "Umbriel",
+  "lock": "L1",
+  "shift": -0.3
+ },
+ "ep_monstruo_caja_r3": {
+  "hash": "652af95a7fbf",
+  "dur": 0.93,
+  "text": "¿Qué habrá dentro?",
+  "asr": 1.0,
+  "heard": "¿Qué habrá dentro?",
+  "engine": "gemini",
+  "voice": "Umbriel",
+  "lock": "L1",
+  "shift": -2.6
+ },
+ "ep_monstruo_caja_r4": {
+  "hash": "e5d0f83162f9",
+  "dur": 2.32,
+  "text": "Primero miramos, luego pensamos.",
+  "asr": 1.0,
+  "heard": "Primero miramos, luego pensamos.",
+  "engine": "gemini",
+  "voice": "Umbriel",
+  "lock": "L1",
+  "shift": 1.1
  }
 }
