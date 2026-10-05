@@ -72,7 +72,7 @@ def split(x, sr, n):
 
 def norm(t):
     t = t.lower()
-    for k, v in {"1": " uno ", "2": " dos ", "3": " tres "}.items():
+    for k, v in {"10": " diez ", "1": " uno ", "2": " dos ", "3": " tres ", "4": " cuatro ", "5": " cinco ", "6": " seis ", "7": " siete ", "8": " ocho ", "9": " nueve "}.items():
         t = t.replace(k, v)
     t = "".join(c for c in unicodedata.normalize("NFD", t) if unicodedata.category(c) != "Mn")
     return re.sub(r"[^a-zñ ]+", " ", t).split()
@@ -116,6 +116,8 @@ def store(man, todo, results):
         if e["text"] not in results:
             continue
         src_k, res = results[e["text"]]
+        if res["asr"] < 0.7:
+            continue
         if src_k != k:
             subprocess.run(["cp", os.path.join(OUT, f"{src_k}.wav"), os.path.join(OUT, f"{k}.wav")], check=True)
         man[k] = dict(res)
@@ -155,7 +157,7 @@ def run_group(cids, man, allL, asr):
         print(c, k, res["dur"], res["asr"], "|", e["text"], "|", res["heard"], flush=True)
     for c in cids:
         store(man, jobs[c][0], results[c])
-    return True
+    return all(r["asr"] >= 0.7 for c in cids for _, r in results[c].values())
 
 
 def main(chars):
