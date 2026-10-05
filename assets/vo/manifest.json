@@ -641,13 +641,15 @@
   "voice": "Zephyr"
  },
  "ep_gruno_roba_amarillo_l2": {
-  "hash": "rejected",
-  "dur": 2.51,
+  "hash": "1d50286b47a2",
+  "dur": 2.1,
   "text": "¡Eh! ¡La flor ha perdido su color!",
   "asr": 0.86,
-  "heard": "E. La flor ha perdido su color.",
+  "heard": "¡Eh! La flora ha perdido su color.",
   "engine": "gemini",
-  "voice": "Puck"
+  "voice": "Puck",
+  "lock": "L1",
+  "shift": -6.38
  },
  "ep_gruno_roba_amarillo_l4": {
   "hash": "rejected",
@@ -1251,5 +1253,60 @@
   "heard": "¡Mirad! ¡Soy gigante!",
   "engine": "gemini",
   "voice": "Algenib"
+ },
+ "ep_bolita_mezcla_verde_p3": {
+  "hash": "11d21c8f8c4d",
+  "dur": 1.17,
+  "text": "¿Qué color saldrá?",
+  "asr": 1.0,
+  "heard": "¿Qué color saldrá?",
+  "engine": "gemini",
+  "voice": "Puck",
+  "lock": "L1",
+  "shift": -6.21
+ },
+ "ep_bolita_mezcla_verde_p4": {
+  "hash": "0a92136282ec",
+  "dur": 2.19,
+  "text": "¡Azul y amarillo hacen verde!",
+  "asr": 1.0,
+  "heard": "Azul y amarillo hacen verde.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "lock": "L1",
+  "shift": -6.78
+ },
+ "ep_monstruo_caja_p1": {
+  "hash": "4aec576190cd",
+  "dur": 1.14,
+  "text": "¿Qué ha sido eso?",
+  "asr": 1.0,
+  "heard": "¿Qué ha sido eso?",
+  "engine": "gemini",
+  "voice": "Puck",
+  "lock": "L1",
+  "shift": -6.54
+ },
+ "ep_monstruo_caja_p3": {
+  "hash": "7566b5e6badb",
+  "dur": 0.98,
+  "text": "¡Es un altavoz!",
+  "asr": 1.0,
+  "heard": "Es un altavoz.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "lock": "L1",
+  "shift": -4.83
+ },
+ "ep_monstruo_caja_p4": {
+  "hash": "7bc545575c97",
+  "dur": 1.26,
+  "text": "¡Ahora es un gatito!",
+  "asr": 1.0,
+  "heard": "Ahora es un gatito.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "lock": "L1",
+  "shift": -3.53
  }
 }
