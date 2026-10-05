@@ -934,5 +934,194 @@
   "heard": "Va, pues mediano.",
   "engine": "gemini",
   "voice": "Algenib"
+ },
+ "ep_tuki_cuenta_saltos_r1": {
+  "hash": "5583210b2a7d",
+  "dur": 1.09,
+  "text": "¿Y el tres?",
+  "asr": 1.0,
+  "heard": "¿Y el 3?",
+  "engine": "gemini",
+  "voice": "Umbriel"
+ },
+ "ep_tuki_cuenta_saltos_r2": {
+  "hash": "743497b8a9f6",
+  "dur": 3.32,
+  "text": "Contamos despacio: un salto, una ficha.",
+  "asr": 1.0,
+  "heard": "Contamos despacio. Un salto, una ficha.",
+  "engine": "gemini",
+  "voice": "Umbriel"
+ },
+ "ep_tuki_cuenta_saltos_r3": {
+  "hash": "be645cf58d04",
+  "dur": 1.61,
+  "text": "¿Cuántas fichas hay?",
+  "asr": 1.0,
+  "heard": "¿Cuántas fichas hay?",
+  "engine": "gemini",
+  "voice": "Umbriel"
+ },
+ "ep_tuki_cuenta_saltos_r4": {
+  "hash": "d5733e2be823",
+  "dur": 2.38,
+  "text": "¡Cuatro saltos, cuatro fichas!",
+  "asr": 1.0,
+  "heard": "Cuatro saltos, cuatro fichas.",
+  "engine": "gemini",
+  "voice": "Umbriel"
+ },
+ "ep_tuki_cuenta_saltos_r5": {
+  "hash": "a2f99ec007c3",
+  "dur": 2.39,
+  "text": "¡Cinco saltos, cinco fichas!",
+  "asr": 1.0,
+  "heard": "5 saltos, 5 fichas",
+  "engine": "gemini",
+  "voice": "Umbriel"
+ },
+ "ep_moki_colador_lluvia_m1": {
+  "hash": "397b68a02360",
+  "dur": 2.01,
+  "text": "Voy a guardar la lluvia...",
+  "asr": 1.0,
+  "heard": "Voy a guardar la lluvia.",
+  "engine": "gemini",
+  "voice": "Enceladus"
+ },
+ "ep_moki_colador_lluvia_m2": {
+  "hash": "628eafa675c0",
+  "dur": 1.71,
+  "text": "¿Eh? ¡Está vacío!",
+  "asr": 1.0,
+  "heard": "¡Eh! ¡Está vacío!",
+  "engine": "gemini",
+  "voice": "Enceladus"
+ },
+ "ep_moki_colador_lluvia_m3": {
+  "hash": "8a7fab870604",
+  "dur": 1.87,
+  "text": "¡Mira! ¡El agua sube!",
+  "asr": 1.0,
+  "heard": "¡Mira, el agua sube!",
+  "engine": "gemini",
+  "voice": "Enceladus"
+ },
+ "ep_moki_colador_lluvia_m4": {
+  "hash": "80037a1c992c",
+  "dur": 2.01,
+  "text": "Pues... ¡será un sombrero!",
+  "asr": 1.0,
+  "heard": "¡Pues será un sombrero!",
+  "engine": "gemini",
+  "voice": "Enceladus"
+ },
+ "ep_sombra_no_obedece_b1": {
+  "hash": "7083ecd9d885",
+  "dur": 2.03,
+  "text": "¡Uy! ¡Estoy tapando la luz!",
+  "asr": 1.0,
+  "heard": "¡Uy, estoy tapando la luz!",
+  "engine": "gemini",
+  "voice": "Zephyr"
+ },
+ "ep_sombra_no_obedece_b2": {
+  "hash": "e22b65ba2000",
+  "dur": 2.01,
+  "text": "¿Y si movemos la lámpara?",
+  "asr": 1.0,
+  "heard": "Y sí, movemos la lámpara.",
+  "engine": "gemini",
+  "voice": "Zephyr"
+ },
+ "ep_sombra_no_obedece_b3": {
+  "hash": "5a308c06b9c7",
+  "dur": 2.02,
+  "text": "¿Hacia dónde irá la sombra?",
+  "asr": 1.0,
+  "heard": "¿Hacia dónde irá la sombra?",
+  "engine": "gemini",
+  "voice": "Zephyr"
+ },
+ "ep_sombra_no_obedece_b4": {
+  "hash": "baad060b57cb",
+  "dur": 2.41,
+  "text": "¡Es que estás muy cerca de la luz!",
+  "asr": 1.0,
+  "heard": "Es que estás muy cerca de la luz.",
+  "engine": "gemini",
+  "voice": "Zephyr"
+ },
+ "ep_maquina_silencio_b1": {
+  "hash": "45c00365e366",
+  "dur": 2.6,
+  "text": "¡Bip! ¿Dónde están los sonidos?",
+  "asr": 0.8,
+  "heard": "VIP, ¿dónde están los sonidos?",
+  "engine": "gemini",
+  "voice": "Iapetus"
+ },
+ "ep_maquina_silencio_b2": {
+  "hash": "1223e137564a",
+  "dur": 2.06,
+  "text": "Escucha. ¿Qué suena?",
+  "asr": 1.0,
+  "heard": "¡Escucha! ¡Qué suena!",
+  "engine": "gemini",
+  "voice": "Iapetus"
+ },
+ "ep_maquina_silencio_b3": {
+  "hash": "8e8df4e013b3",
+  "dur": 1.41,
+  "text": "¡Es la campana!",
+  "asr": 1.0,
+  "heard": "¡Es la campana!",
+  "engine": "gemini",
+  "voice": "Iapetus"
+ },
+ "ep_maquina_silencio_b5": {
+  "hash": "ec76887a9d46",
+  "dur": 1.18,
+  "text": "¡El tambor!",
+  "asr": 1.0,
+  "heard": "¡El tambor!",
+  "engine": "gemini",
+  "voice": "Iapetus"
+ },
+ "ep_maquina_silencio_g1": {
+  "hash": "5b4d36793ed7",
+  "dur": 2.09,
+  "text": "¡Mi máquina de hacer silencio!",
+  "asr": 1.0,
+  "heard": "Mi máquina de hacer silencio.",
+  "engine": "gemini",
+  "voice": "Algenib"
+ },
+ "ep_maquina_silencio_g2": {
+  "hash": "9cde56baca94",
+  "dur": 1.57,
+  "text": "¡Silencio atrapado!",
+  "asr": 1.0,
+  "heard": "Silencio atrapado",
+  "engine": "gemini",
+  "voice": "Algenib"
+ },
+ "ep_maquina_silencio_g4": {
+  "hash": "0f016d4f5f0f",
+  "dur": 2.28,
+  "text": "Bah... el silencio me da sueño.",
+  "asr": 0.83,
+  "heard": "Va, el silencio me da sueño.",
+  "engine": "gemini",
+  "voice": "Algenib"
+ },
+ "ep_sombra_no_obedece_g1": {
+  "hash": "015e58975168",
+  "dur": 1.94,
+  "text": "¡Mirad! ¡Soy gigante!",
+  "asr": 1.0,
+  "heard": "¡Mirad! ¡Soy gigante!",
+  "engine": "gemini",
+  "voice": "Algenib"
  }
 }
