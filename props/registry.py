@@ -14,4 +14,8 @@ REGISTRY = {
     "soft_token": {"styles": 3, "envs": ["patio", "casa", "aula"], "tags": ["juguete", "contar"]},
     "play_mat": {"styles": 3, "envs": ["patio", "casa", "aula"], "tags": ["suelo", "juego"]},
     "floor_lamp": {"styles": 3, "envs": ["casa", "aula", "lab"], "tags": ["luz", "sombra"]},
+    "desk_bell": {"styles": 3, "envs": ["casa", "aula", "lab", "plaza"], "tags": ["sonido", "musica"]},
+    "toy_drum": {"styles": 3, "envs": ["casa", "aula", "lab", "plaza", "patio"], "tags": ["sonido", "musica"]},
+    "colander": {"styles": 3, "envs": ["cocina", "casa", "patio"], "tags": ["cocina", "agua"]},
+    "clear_cup": {"styles": 3, "envs": ["cocina", "casa", "patio", "lab"], "tags": ["cocina", "agua"]},
 }

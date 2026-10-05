@@ -248,9 +248,43 @@
     ],
     "scale": 0.92,
     "rot": 32.1
+   },
+   {
+    "prop": "gear_tower",
+    "style": 2,
+    "seed": 9031,
+    "loc": [
+     -3.3,
+     1.6,
+     0.0
+    ],
+    "scale": 1.1,
+    "rot": -12.0
+   },
+   {
+    "prop": "bunting",
+    "style": 0,
+    "seed": 9032,
+    "loc": [
+     2.6,
+     4.2,
+     0.0
+    ],
+    "scale": 1.0,
+    "rot": -8.0
    }
   ],
-  "order": 3
+  "order": 3,
+  "hero": [
+   {
+    "prop": "desk_bell",
+    "style": 2
+   },
+   {
+    "prop": "toy_drum",
+    "style": 0
+   }
+  ]
  },
  "moki_colador_lluvia": {
   "env": "patio",
@@ -341,6 +375,16 @@
     "rot": 12.3
    }
   ],
-  "order": 4
+  "order": 4,
+  "hero": [
+   {
+    "prop": "colander",
+    "style": 0
+   },
+   {
+    "prop": "clear_cup",
+    "style": 0
+   }
+  ]
  }
 }

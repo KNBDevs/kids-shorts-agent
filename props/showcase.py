@@ -7,7 +7,7 @@ from props.lib import spawn
 from props.registry import REGISTRY
 STYLE = int(os.environ.get("STYLE", "0"))
 FAM = os.environ.get("FAM", "pastel")
-names = list(REGISTRY)
+names = [n for n in REGISTRY if not os.environ.get("ONLY") or n in os.environ["ONLY"].split(",")]
 for i, n in enumerate(names):
     col, row = i % 3, i // 3
     spawn(n, STYLE, 7 + i, FAM, ((col - 1) * 1.25, -1.2 + row * 0.9, 0), 1.0, 15)

@@ -239,6 +239,186 @@ def floor_lamp(r, s, fam, root):
     C.sphere("knob", (0, 0, -0.04), (0.04, 0.04, 0.04), M(trim, coat=0.6), head, 16)
 
 
+_A = {}
+
+
+def MA(rgb, alpha, rough=0.08, emit=0.0):
+    k = (tuple(round(c, 2) for c in rgb), alpha, rough, emit)
+    if k not in _A:
+        m = C.mat(f"pa{len(_A)}", rgb, rough=rough, coat=1.0, emit=emit)
+        m.node_tree.nodes["Principled BSDF"].inputs["Alpha"].default_value = alpha
+        _A[k] = m
+    return _A[k]
+
+
+def _ring(R, z, n=48, sy=1.0):
+    return [(math.cos(k * 6.2832 / n) * R, math.sin(k * 6.2832 / n) * R * sy, z) for k in range(n + 1)]
+
+
+def _dot(name, p, n, size, m, root):
+    q = Vector((0, 0, 1)).rotation_difference(Vector(n).normalized())
+    return C.sphere(name, tuple(p), (size, size, size * 0.3), m, root, 12, rot=tuple(q.to_euler()))
+
+
+def desk_bell(r, s, fam, root):
+    base, trim = _cols(r, fam, 2)
+    gold = M((1.0, 0.76, 0.28), rough=0.22, coat=0.9)
+    if s == 1:
+        C.lathe("base", [(0, 0), (0, 0.17), (0.02, 0.18), (0.045, 0.16), (0.05, 0)], M(base, rough=0.4, coat=0.6), root, segs=48)
+        piv = C.empty("bell_pivot", root, (0, 0, 0.05))
+        C.lathe("dome", [(0, 0.15), (0.03, 0.15), (0.08, 0.13), (0.13, 0.08), (0.155, 0.03), (0.16, 0)], gold, piv, segs=48)
+        C.tube("plunger", [(0, 0, 0.15), (0, 0, 0.2)], 0.012, gold, piv)
+        C.sphere("knob", (0, 0, 0.215), (0.03, 0.03, 0.022), M(trim, coat=0.8), piv, 20)
+        return
+    w = 0.42 if s == 0 else 0.36
+    C.rounded_box("base", (0, 0, 0.03), (w, 0.2, 0.06), 0.025, M(base, rough=0.5, coat=0.5), root)
+    top = 0.5
+    if s == 0:
+        for x in (-w / 2 + 0.05, w / 2 - 0.05):
+            C.tube("post", [(x, 0, 0.05), (x, 0, top)], 0.018, M(trim, rough=0.4), root)
+            C.sphere("cap", (x, 0, top + 0.01), (0.03, 0.03, 0.03), M(trim, coat=0.7), root, 16)
+        C.tube("bar", [(-w / 2 + 0.05, 0, top), (w / 2 - 0.05, 0, top)], 0.014, M(trim, rough=0.4), root)
+        outer = [(-0.205, 0.14), (-0.19, 0.132), (-0.16, 0.1), (-0.11, 0.085), (-0.06, 0.08), (-0.025, 0.066), (-0.008, 0.04), (0.0, 0.0)]
+    else:
+        arc = [(math.cos(math.pi * k / 24) * (w / 2 - 0.04), 0, 0.06 + math.sin(math.pi * k / 24) * 0.46) for k in range(25)]
+        C.tube("arch", arc, 0.02, M(trim, rough=0.4), root)
+        top = 0.52
+        for sx in (-1, 1):
+            C.sphere("bow", (sx * 0.045, 0, top + 0.02), (0.045, 0.02, 0.03), M(trim, coat=0.6), root, 16, rot=(0, math.radians(sx * 20), 0))
+        outer = [(-0.19, 0.15), (-0.175, 0.14), (-0.13, 0.09), (-0.09, 0.07), (-0.05, 0.075), (-0.02, 0.06), (-0.006, 0.035), (0.0, 0.0)]
+    inner = [(-0.03, 0.0), (-0.05, 0.05)] + [(z - 0.004, rr - 0.014) for z, rr in outer[2:4]][::-1] + [(outer[1][0] + 0.002, outer[1][1] - 0.014)]
+    piv = C.empty("bell_pivot", root, (0, 0, top))
+    C.lathe("bell", inner + outer, gold, piv, segs=48)
+    C.tube("hang", [(0, 0, 0.012), (0, 0, -0.01)], 0.012, M(trim), piv)
+    C.sphere("clapper", (0, 0, outer[0][0] + 0.03), (0.03, 0.03, 0.03), M(trim, coat=0.7), piv, 16)
+
+
+def toy_drum(r, s, fam, root):
+    body, rim, dot = _cols(r, fam, 3)
+    skin_m = M((0.98, 0.95, 0.88), rough=0.55, coat=0.2)
+    R, h = [(0.2, 0.36), (0.3, 0.17), (0.17, 0.5)][s]
+    z0 = 0.06 if s == 1 else 0.0
+    if s == 2:
+        prof = [(z0, 0.0), (z0, R * 0.8), (z0 + h * 0.15, R * 0.92), (z0 + h * 0.6, R * 1.08), (z0 + h, R)]
+    else:
+        prof = [(z0, 0.0), (z0, R), (z0 + h, R)]
+    C.lathe("shell", prof + [(z0 + h, 0.0)], M(body, rough=0.4, coat=0.6), root, segs=48)
+    top = z0 + h
+    piv = C.empty("skin", root, (0, 0, top))
+    C.sphere("skinface", (0, 0, 0.004), (R * 0.97, R * 0.97, 0.012), skin_m, piv, 40)
+    C.tube("rimtop", _ring(R * 1.01, top), 0.022, M(rim, coat=0.7), root)
+    if s == 0:
+        C.tube("rimbot", _ring(R * 1.01, z0 + 0.02), 0.022, M(rim, coat=0.7), root)
+        zig = []
+        for k in range(17):
+            a = k * 6.2832 / 16
+            z = z0 + 0.04 if k % 2 == 0 else top - 0.03
+            zig.append((math.cos(a) * R * 1.03, math.sin(a) * R * 1.03, z))
+        C.tube("cord", zig, 0.011, M(tuple(v * 0.45 for v in body), rough=0.6), root)
+        for k in range(8):
+            a = k * 6.2832 / 8
+            for z in (z0 + 0.02, top):
+                C.sphere("lug", (math.cos(a) * R * 1.06, math.sin(a) * R * 1.06, z), (0.022, 0.022, 0.03), M(rim, coat=0.8), root, 12)
+        for sx in (-1, 1):
+            st = C.empty("stick", root, (0, 0, top + 0.03), (0, math.radians(84), math.radians(sx * 25)))
+            C.tube("stk", [(0, 0, -R * 1.1), (0, 0, R * 1.1)], 0.012, M((0.98, 0.85, 0.6), rough=0.5), st)
+            C.sphere("stktip", (0, 0, R * 1.1), (0.03, 0.03, 0.03), M(dot, coat=0.7), st, 16)
+    elif s == 1:
+        for k in range(3):
+            a = k * 2.0944 + 0.5
+            C.sphere("foot", (math.cos(a) * R * 0.7, math.sin(a) * R * 0.7, 0.04), (0.05, 0.05, 0.045), M(rim, coat=0.6), root, 16)
+        for k in range(10):
+            a = k * 6.2832 / 10
+            _dot("spot", (math.cos(a) * R * 1.005, math.sin(a) * R * 1.005, z0 + h * 0.5), (math.cos(a), math.sin(a), 0), 0.035, M(dot, coat=0.6), root)
+    else:
+        for z in (z0 + h * 0.3, z0 + h * 0.75):
+            rr = R * (1.0 + 0.08 * math.sin(math.pi * (z - z0) / h))
+            C.tube("band", _ring(rr * 1.02, z), 0.014, M(dot, coat=0.6), root)
+
+
+def colander(r, s, fam, root):
+    body, trim = _cols(r, fam, 2)
+    bm = M(body, rough=0.35, coat=0.7)
+    hole = M(tuple(v * 0.35 for v in body), rough=0.7, coat=0.0)
+    R = [0.2, 0.18, 0.21][s]
+    depth = [1.0, 1.15, 0.85][s]
+    N = 14
+    def rad(t):
+        return R * math.sin(t) if s != 2 else R * (0.25 + 0.75 * t / 1.5708)
+    def hz(t):
+        return depth * (R - R * math.cos(t)) if s != 2 else depth * R * (t / 1.5708) * 1.1
+    ts = [k * 1.5708 / N for k in range(N + 1)]
+    outer = [(hz(t), rad(t)) for t in ts]
+    H = outer[-1][0]
+    th = 0.014
+    inner = [(z + th, max(0.0, rr - th)) for z, rr in outer][::-1]
+    C.lathe("bowl", [(0, 0)] + outer[1:] + [(H + 0.008, outer[-1][1] + 0.012), (H + 0.012, outer[-1][1] - 0.004)] + inner[:-1] + [(th, 0.0)], bm, root, segs=56)
+    C.tube("lip", _ring(outer[-1][1] + 0.006, H + 0.006, 56), 0.012, M(trim, coat=0.7), root)
+    for row, t in enumerate([0.55, 0.85, 1.1, 1.32]):
+        n = int(8 + row * 5)
+        for k in range(n):
+            a = k * 6.2832 / n + row * 0.3
+            z = hz(t); rr = rad(t)
+            if s == 2:
+                nz = -0.75 * R / (depth * R * 1.1)
+                nv = Vector((math.cos(a), math.sin(a), nz)).normalized()
+            else:
+                nv = Vector((math.sin(t) * math.cos(a), math.sin(t) * math.sin(a), -math.cos(t) / depth)).normalized()
+            p = Vector((math.cos(a) * rr, math.sin(a) * rr, z)) + nv * 0.002
+            _dot("hole", p, nv, 0.011, hole, root)
+            pi = Vector((math.cos(a) * (rr - th), math.sin(a) * (rr - th), z + th)) - nv * 0.002
+            _dot("holei", pi, -nv, 0.011, hole, root)
+    for k in range(5):
+        a = k * 6.2832 / 5
+        _dot("holeb", (math.cos(a) * 0.04, math.sin(a) * 0.04, -0.001), (0, 0, -1), 0.011, hole, root)
+    rim_r = outer[-1][1]
+    if s == 1:
+        for sx in (-1, 1):
+            C.tube("ear", [(sx * rim_r * 0.98, 0, H - 0.01), (sx * (rim_r + 0.05), 0, H + 0.005), (sx * (rim_r + 0.07), 0, H - 0.03), (sx * (rim_r + 0.04), 0, H - 0.055), (sx * rim_r * 0.99, 0, H - 0.05)], 0.012, M(trim, coat=0.7), root)
+        for k in range(3):
+            a = k * 2.0944
+            C.sphere("foot", (math.cos(a) * 0.07, math.sin(a) * 0.07, -0.012), (0.025, 0.025, 0.018), M(trim, coat=0.6), root, 16)
+    else:
+        L = 0.22 if s == 0 else 0.26
+        C.tube("handle", [(rim_r * 0.98, 0, H - 0.01), (rim_r + L * 0.5, 0, H + 0.015), (rim_r + L, 0, H + 0.02)], 0.016, M(trim, coat=0.7), root)
+        if s == 0:
+            C.sphere("grip", (rim_r + L, 0, H + 0.02), (0.035, 0.024, 0.024), M(trim, coat=0.7), root, 16)
+            C.tube("foot", _ring(0.06, hz(0.42) - 0.012, 36), 0.01, M(trim, coat=0.6), root)
+        else:
+            C.tube("hook", [(rim_r + L, 0, H + 0.02), (rim_r + L + 0.035, 0, H + 0.035), (rim_r + L + 0.045, 0, H + 0.065), (rim_r + L + 0.025, 0, H + 0.08)], 0.01, M(trim, coat=0.7), root)
+
+
+def clear_cup(r, s, fam, root):
+    trim, accent = _cols(r, fam, 2)
+    glass = MA((0.9, 0.96, 1.0), 0.22)
+    water = MA((0.32, 0.64, 1.0), 0.72, rough=0.05, emit=0.15)
+    R, h = [(0.11, 0.2), (0.095, 0.27), (0.12, 0.22)][s]
+    th = 0.008
+    if s == 1:
+        out = [(0, 0.0), (0, R * 0.82), (h, R)]
+        bot = 0.03
+    elif s == 2:
+        out = [(0, 0.0), (0, R * 0.9), (0.02, R), (h * 0.7, R), (h * 0.85, R * 0.78), (h, R * 0.72)]
+        bot = 0.014
+    else:
+        out = [(0, 0.0), (0, R * 0.95), (0.015, R), (h, R)]
+        bot = 0.014
+    inn = [(z, rr - th) for z, rr in out[2:]][::-1] + [(bot, out[1][1] - th), (bot, 0.0)]
+    C.lathe("glass", out + [(h + 0.004, out[-1][1] - th * 0.5)] + inn, glass, root, segs=48)
+    C.tube("rimband", _ring(out[-1][1] + 0.002, h - 0.012, 48), 0.008, M(trim, coat=0.7), root)
+    if s == 0:
+        C.tube("handle", [(R, 0, h * 0.8), (R + 0.06, 0, h * 0.75), (R + 0.07, 0, h * 0.45), (R + 0.05, 0, h * 0.25), (R, 0, h * 0.22)], 0.016, M(accent, coat=0.7), root)
+    elif s == 1:
+        C.tube("base", _ring(R * 0.82, 0.012, 48), 0.012, M(accent, coat=0.7), root)
+    else:
+        C.tube("neck", _ring(R * 0.74, h * 0.85, 48), 0.012, M(accent, coat=0.7), root)
+    piv = C.empty("water_pivot", root, (0, 0, bot + 0.002))
+    wr = min(rr for z, rr in out[1:]) - th - 0.004
+    wh = (h * 0.7 if s == 2 else h - 0.02) - bot
+    C.lathe("water", [(0, 0.0), (0, wr), (wh, wr), (wh, 0.0)], water, piv, segs=40)
+    piv.scale = (1, 1, 0.001)
+
+
 GEN = {k: v for k, v in globals().items() if k in REGISTRY}
 
 

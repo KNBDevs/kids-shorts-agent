@@ -14,7 +14,9 @@ LINES = [
     ('g4', 'gruno', 'Bah... el silencio me da sueño.', 628, 2.3),
     ('b6', 'bopi', '¡Bip! ¡Hasta el ronquido va en burbuja!', 744, 2.6),
 ]
-SFX = []
+SFX = [(66, 'bell_cut', 0.55), (86, 'whistle_up', 0.18), (280, 'drum', 0.85), (290, 'drum_cut', 0.85), (298, 'whistle_up', 0.18),
+       (406, 'pop', 0.35), (407, 'bell', 0.55), (530, 'pop', 0.35), (531, 'drum', 0.9), (543, 'drum', 0.9),
+       (704, 'snore_cut', 0.6), (720, 'pop', 0.2), (726, 'snore_soft', 0.45), (802, 'snore_soft', 0.45)]
 META = {
     'title': 'La máquina de hacer silencio 🔔🥁 ¿Qué suena? #shorts',
     'description': 'El Doctor Gruño atrapa sonidos en burbujas con su máquina de hacer silencio. Bopi las abre una a una: ¿es la campana o el tambor? Aprende a reconocer sonidos jugando.\n\n#pimoruki #dibujosanimados #videosinfantiles #aprenderjugando #shorts',

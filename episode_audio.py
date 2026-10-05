@@ -53,10 +53,67 @@ def tock():
     return (np.sin(2 * np.pi * 820 * t) + 0.4 * np.sin(2 * np.pi * 1730 * t)) * np.exp(-t * 45) * np.minimum(1, t * 900)
 
 
+def _tail(sig, sec, fade=0.03):
+    n = int(sec * SR)
+    out = sig[:n].copy()
+    k = int(fade * SR)
+    out[-k:] *= np.linspace(1, 0, k)
+    return out
+
+
+def bell():
+    n = int(1.8 * SR)
+    t = np.arange(n) / SR
+    s = np.zeros(n)
+    for r, a, d in ((1, 1, 2.2), (2.0, 0.45, 3.2), (2.76, 0.32, 4.5), (4.07, 0.18, 6), (5.4, 0.1, 8)):
+        s += a * np.sin(2 * np.pi * 1046 * r * t) * np.exp(-t * d)
+    return s * np.minimum(1, t * 900) / 1.6
+
+
+def drum():
+    n = int(0.6 * SR)
+    t = np.arange(n) / SR
+    f = 92 + 80 * np.exp(-t * 30)
+    s = np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-t * 7)
+    s += 0.25 * S.lp(S.rng.uniform(-1, 1, n), 1200) * np.exp(-t * 45)
+    return s * np.minimum(1, t * 1200)
+
+
+def snore(soft=False):
+    n = int(1.4 * SR)
+    t = np.arange(n) / SR
+    e = np.sin(np.pi * t / 1.4) ** 1.5
+    puls = 0.55 + 0.45 * np.sin(2 * np.pi * 32 * t) ** 8
+    s = S.lp(S.rng.uniform(-1, 1, n), 420) * 2.5 * puls + 0.5 * np.sin(2 * np.pi * np.cumsum(80 + 20 * t) / SR) * puls
+    s *= e
+    return S.lp(s, 260) * 0.5 if soft else s
+
+
+def drip():
+    n = int(0.12 * SR)
+    t = np.arange(n) / SR
+    f = 900 + 900 * (t / 0.06).clip(0, 1)
+    return np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-t * 32) * np.minimum(1, t * 2000)
+
+
+def rain():
+    n = int(6.0 * SR)
+    t = np.arange(n) / SR
+    s = 0.18 * S.hp(S.lp(S.rng.uniform(-1, 1, n), 3500), 500)
+    for k in range(140):
+        i = int(S.rng.uniform(0, 5.85) * SR)
+        m = int(S.rng.uniform(78, 92))
+        g = marimba(m, 0.05) * S.rng.uniform(0.05, 0.16)
+        s[i:i + len(g)] += g
+    return s * np.clip(t / 0.5, 0, 1) * np.clip((6.0 - t) / 0.5, 0, 1)
+
+
 SFX = {"pop": lambda: pop(), "boing": lambda: boing(170), "boing_up": lambda: boing(260, 0.35, up=True), "splat": lambda: splat(),
        "sparkle": lambda: sparkle(88), "popper": lambda: popper(), "bip": lambda: bip(88),
        "whistle_down": lambda: slide_whistle(1400, 400, 0.5), "whistle_up": lambda: slide_whistle(500, 1500, 0.5),
-       "clonk": lambda: S.lp(kick(), 1500), "tock": lambda: tock()}
+       "clonk": lambda: S.lp(kick(), 1500), "tock": lambda: tock(),
+       "bell": lambda: bell(), "bell_cut": lambda: _tail(bell(), 0.48), "drum": lambda: drum(), "drum_cut": lambda: _tail(drum(), 0.16),
+       "snore": lambda: snore(), "snore_soft": lambda: snore(True), "snore_cut": lambda: _tail(snore(), 0.85, 0.06), "drip": lambda: drip(), "rain": lambda: rain()}
 sfx = np.zeros((N, 2))
 for f, kind, g in getattr(P, "SFX", []):
     add(sfx, SFX[kind](), ft(f), g)
