@@ -386,5 +386,369 @@
     "style": 0
    }
   ]
+ },
+ "boton_mas_grande": {
+  "env": "casa",
+  "family": "pastel",
+  "decor": [
+   {
+    "prop": "colander",
+    "style": 2,
+    "seed": 386159,
+    "loc": [
+     4.87,
+     2.17,
+     0.0
+    ],
+    "scale": 0.89,
+    "rot": 31.1
+   },
+   {
+    "prop": "toy_blocks",
+    "style": 0,
+    "seed": 954260,
+    "loc": [
+     -2.34,
+     2.94,
+     0.0
+    ],
+    "scale": 1.0,
+    "rot": -5.3
+   },
+   {
+    "prop": "clear_cup",
+    "style": 2,
+    "seed": 618449,
+    "loc": [
+     -3.41,
+     3.14,
+     0.0
+    ],
+    "scale": 1.02,
+    "rot": 31.3
+   },
+   {
+    "prop": "flower_pot",
+    "style": 0,
+    "seed": 63935,
+    "loc": [
+     3.4,
+     1.24,
+     0.0
+    ],
+    "scale": 1.17,
+    "rot": 18.1
+   },
+   {
+    "prop": "play_mat",
+    "style": 0,
+    "seed": 221137,
+    "loc": [
+     1.15,
+     1.61,
+     0.0
+    ],
+    "scale": 1.23,
+    "rot": -20.8
+   },
+   {
+    "prop": "soft_token",
+    "style": 1,
+    "seed": 581835,
+    "loc": [
+     -4.49,
+     2.33,
+     0.0
+    ],
+    "scale": 1.22,
+    "rot": -16.5
+   },
+   {
+    "prop": "toy_drum",
+    "style": 2,
+    "seed": 811334,
+    "loc": [
+     2.3,
+     2.99,
+     0.0
+    ],
+    "scale": 1.06,
+    "rot": -0.9
+   }
+  ],
+  "order": 5
+ },
+ "carrera_mas_lenta": {
+  "env": "plaza",
+  "family": "pastel",
+  "decor": [
+   {
+    "prop": "desk_bell",
+    "style": 1,
+    "seed": 897886,
+    "loc": [
+     1.9,
+     3.92,
+     0.0
+    ],
+    "scale": 1.03,
+    "rot": -24.2
+   },
+   {
+    "prop": "lamp_post",
+    "style": 1,
+    "seed": 789735,
+    "loc": [
+     4.67,
+     2.26,
+     0.0
+    ],
+    "scale": 1.12,
+    "rot": -13.4
+   },
+   {
+    "prop": "fence",
+    "style": 0,
+    "seed": 604252,
+    "loc": [
+     1.38,
+     4.35,
+     0.0
+    ],
+    "scale": 1.04,
+    "rot": -13.8
+   },
+   {
+    "prop": "toy_drum",
+    "style": 1,
+    "seed": 680387,
+    "loc": [
+     -4.4,
+     2.08,
+     0.0
+    ],
+    "scale": 1.1,
+    "rot": 19.0
+   },
+   {
+    "prop": "bush",
+    "style": 1,
+    "seed": 602664,
+    "loc": [
+     -2.15,
+     2.66,
+     0.0
+    ],
+    "scale": 1.12,
+    "rot": 30.3
+   },
+   {
+    "prop": "bench",
+    "style": 0,
+    "seed": 19366,
+    "loc": [
+     -3.56,
+     2.08,
+     0.0
+    ],
+    "scale": 1.13,
+    "rot": -27.2
+   },
+   {
+    "prop": "pebbles",
+    "style": 1,
+    "seed": 265853,
+    "loc": [
+     3.1,
+     1.56,
+     0.0
+    ],
+    "scale": 0.87,
+    "rot": -33.6
+   }
+  ],
+  "order": 6
+ },
+ "bolita_mezcla_verde": {
+  "env": "patio",
+  "family": "fresh",
+  "decor": [
+   {
+    "prop": "colander",
+    "style": 0,
+    "seed": 84785,
+    "loc": [
+     -3.53,
+     3.34,
+     0.0
+    ],
+    "scale": 1.09,
+    "rot": -25.5
+   },
+   {
+    "prop": "play_mat",
+    "style": 1,
+    "seed": 643238,
+    "loc": [
+     3.15,
+     2.23,
+     0.0
+    ],
+    "scale": 1.01,
+    "rot": 8.9
+   },
+   {
+    "prop": "toy_drum",
+    "style": 0,
+    "seed": 849021,
+    "loc": [
+     2.37,
+     2.11,
+     0.0
+    ],
+    "scale": 1.06,
+    "rot": -13.4
+   },
+   {
+    "prop": "ball_basket",
+    "style": 0,
+    "seed": 197933,
+    "loc": [
+     -1.22,
+     1.97,
+     0.0
+    ],
+    "scale": 1.03,
+    "rot": 16.8
+   },
+   {
+    "prop": "soft_token",
+    "style": 0,
+    "seed": 649876,
+    "loc": [
+     -2.35,
+     1.81,
+     0.0
+    ],
+    "scale": 1.07,
+    "rot": -13.7
+   },
+   {
+    "prop": "clear_cup",
+    "style": 0,
+    "seed": 870767,
+    "loc": [
+     1.03,
+     2.23,
+     0.0
+    ],
+    "scale": 1.18,
+    "rot": 10.6
+   },
+   {
+    "prop": "flower_pot",
+    "style": 0,
+    "seed": 305752,
+    "loc": [
+     4.76,
+     2.37,
+     0.0
+    ],
+    "scale": 1.01,
+    "rot": 14.5
+   }
+  ],
+  "order": 7
+ },
+ "monstruo_caja": {
+  "env": "casa",
+  "family": "pastel",
+  "decor": [
+   {
+    "prop": "colander",
+    "style": 1,
+    "seed": 706007,
+    "loc": [
+     4.74,
+     1.13,
+     0.0
+    ],
+    "scale": 1.19,
+    "rot": -24.2
+   },
+   {
+    "prop": "desk_bell",
+    "style": 2,
+    "seed": 335465,
+    "loc": [
+     2.39,
+     3.15,
+     0.0
+    ],
+    "scale": 1.01,
+    "rot": 32.2
+   },
+   {
+    "prop": "flower_pot",
+    "style": 2,
+    "seed": 557508,
+    "loc": [
+     -2.43,
+     2.21,
+     0.0
+    ],
+    "scale": 1.16,
+    "rot": 2.9
+   },
+   {
+    "prop": "floor_lamp",
+    "style": 2,
+    "seed": 327684,
+    "loc": [
+     -1.35,
+     3.43,
+     0.0
+    ],
+    "scale": 1.05,
+    "rot": -4.5
+   },
+   {
+    "prop": "clear_cup",
+    "style": 1,
+    "seed": 662551,
+    "loc": [
+     -4.67,
+     0.38,
+     0.0
+    ],
+    "scale": 0.94,
+    "rot": 21.7
+   },
+   {
+    "prop": "ball_basket",
+    "style": 2,
+    "seed": 222347,
+    "loc": [
+     -3.6,
+     1.97,
+     0.0
+    ],
+    "scale": 0.94,
+    "rot": -5.6
+   },
+   {
+    "prop": "toy_drum",
+    "style": 0,
+    "seed": 513137,
+    "loc": [
+     3.34,
+     0.35,
+     0.0
+    ],
+    "scale": 1.19,
+    "rot": -27.8
+   }
+  ],
+  "order": 8
  }
 }

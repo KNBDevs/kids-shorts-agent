@@ -91,7 +91,6 @@ T.turn(pimo, 0, -20)
 bpy.context.view_layer.update()
 mbody = moki['body']
 top = max((mbody.matrix_world @ Vector(c)).z for c in mbody.bound_box) - Z0
-print('MOKITOP', top)
 
 col = spawn('colander', 0, 6201, (0.98, 0.6, 0.45), (0, 0, 0), 1.4, 0)
 col.parent = moki['hold']
