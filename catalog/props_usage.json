@@ -1,1 +1,346 @@
-{}
+{
+ "tuki_cuenta_saltos": {
+  "env": "patio",
+  "family": "fresh",
+  "decor": [
+   {
+    "prop": "flower_pot",
+    "style": 2,
+    "seed": 527956,
+    "loc": [
+     -4.85,
+     3.03,
+     0.0
+    ],
+    "scale": 0.91,
+    "rot": -28.8
+   },
+   {
+    "prop": "mushroom_stool",
+    "style": 0,
+    "seed": 32316,
+    "loc": [
+     3.12,
+     1.68,
+     0.0
+    ],
+    "scale": 0.99,
+    "rot": -27.0
+   },
+   {
+    "prop": "ball_basket",
+    "style": 2,
+    "seed": 782860,
+    "loc": [
+     0.93,
+     4.0,
+     0.0
+    ],
+    "scale": 1.14,
+    "rot": 7.7
+   },
+   {
+    "prop": "fence",
+    "style": 1,
+    "seed": 405255,
+    "loc": [
+     4.68,
+     1.28,
+     0.0
+    ],
+    "scale": 0.91,
+    "rot": 30.3
+   },
+   {
+    "prop": "pebbles",
+    "style": 1,
+    "seed": 685081,
+    "loc": [
+     -3.56,
+     2.35,
+     0.0
+    ],
+    "scale": 1.22,
+    "rot": 26.2
+   },
+   {
+    "prop": "bench",
+    "style": 2,
+    "seed": 757799,
+    "loc": [
+     2.5,
+     2.75,
+     0.0
+    ],
+    "scale": 0.85,
+    "rot": -29.0
+   },
+   {
+    "prop": "bush",
+    "style": 2,
+    "seed": 781136,
+    "loc": [
+     -1.09,
+     2.31,
+     0.0
+    ],
+    "scale": 1.19,
+    "rot": -1.6
+   }
+  ],
+  "order": 1,
+  "hero": [
+   {
+    "prop": "soft_token",
+    "style": 0
+   },
+   {
+    "prop": "play_mat",
+    "style": 0
+   }
+  ]
+ },
+ "sombra_no_obedece": {
+  "env": "plaza",
+  "family": "pastel",
+  "decor": [
+   {
+    "prop": "flower_pot",
+    "style": 1,
+    "seed": 607521,
+    "loc": [
+     -3.27,
+     2.14,
+     0.0
+    ],
+    "scale": 1.11,
+    "rot": -7.4
+   },
+   {
+    "prop": "mushroom_stool",
+    "style": 1,
+    "seed": 799450,
+    "loc": [
+     4.42,
+     0.29,
+     0.0
+    ],
+    "scale": 0.98,
+    "rot": -11.9
+   },
+   {
+    "prop": "toy_blocks",
+    "style": 1,
+    "seed": 683488,
+    "loc": [
+     3.3,
+     0.43,
+     0.0
+    ],
+    "scale": 0.97,
+    "rot": 15.5
+   },
+   {
+    "prop": "pebbles",
+    "style": 2,
+    "seed": 209870,
+    "loc": [
+     -4.74,
+     2.58,
+     0.0
+    ],
+    "scale": 1.11,
+    "rot": -30.3
+   },
+   {
+    "prop": "bunting",
+    "style": 2,
+    "seed": 156960,
+    "loc": [
+     2.4,
+     3.19,
+     0.0
+    ],
+    "scale": 0.89,
+    "rot": 31.2
+   },
+   {
+    "prop": "lamp_post",
+    "style": 0,
+    "seed": 890355,
+    "loc": [
+     -0.84,
+     2.79,
+     0.0
+    ],
+    "scale": 0.96,
+    "rot": 5.4
+   }
+  ],
+  "order": 2,
+  "hero": [
+   {
+    "prop": "floor_lamp",
+    "style": 0
+   }
+  ]
+ },
+ "maquina_silencio": {
+  "env": "lab",
+  "family": "candy",
+  "decor": [
+   {
+    "prop": "pebbles",
+    "style": 0,
+    "seed": 446713,
+    "loc": [
+     3.15,
+     0.74,
+     0.0
+    ],
+    "scale": 1.04,
+    "rot": -31.5
+   },
+   {
+    "prop": "floor_lamp",
+    "style": 1,
+    "seed": 510146,
+    "loc": [
+     4.4,
+     1.44,
+     0.0
+    ],
+    "scale": 1.21,
+    "rot": 18.9
+   },
+   {
+    "prop": "bunting",
+    "style": 1,
+    "seed": 704868,
+    "loc": [
+     -2.48,
+     2.76,
+     0.0
+    ],
+    "scale": 0.98,
+    "rot": -30.2
+   },
+   {
+    "prop": "toy_blocks",
+    "style": 2,
+    "seed": 555672,
+    "loc": [
+     -0.97,
+     4.01,
+     0.0
+    ],
+    "scale": 1.07,
+    "rot": 15.1
+   },
+   {
+    "prop": "gear_tower",
+    "style": 1,
+    "seed": 398929,
+    "loc": [
+     1.28,
+     4.47,
+     0.0
+    ],
+    "scale": 0.92,
+    "rot": 32.1
+   }
+  ],
+  "order": 3
+ },
+ "moki_colador_lluvia": {
+  "env": "patio",
+  "family": "fresh",
+  "decor": [
+   {
+    "prop": "soft_token",
+    "style": 2,
+    "seed": 503514,
+    "loc": [
+     -2.14,
+     4.22,
+     0.0
+    ],
+    "scale": 1.1,
+    "rot": 2.6
+   },
+   {
+    "prop": "fence",
+    "style": 2,
+    "seed": 123652,
+    "loc": [
+     2.17,
+     2.73,
+     0.0
+    ],
+    "scale": 1.01,
+    "rot": 9.7
+   },
+   {
+    "prop": "mushroom_stool",
+    "style": 2,
+    "seed": 527297,
+    "loc": [
+     3.63,
+     0.99,
+     0.0
+    ],
+    "scale": 0.9,
+    "rot": 12.6
+   },
+   {
+    "prop": "ball_basket",
+    "style": 1,
+    "seed": 432123,
+    "loc": [
+     1.2,
+     2.85,
+     0.0
+    ],
+    "scale": 0.92,
+    "rot": 34.2
+   },
+   {
+    "prop": "bench",
+    "style": 1,
+    "seed": 819787,
+    "loc": [
+     -1.31,
+     2.68,
+     0.0
+    ],
+    "scale": 0.96,
+    "rot": 27.9
+   },
+   {
+    "prop": "bush",
+    "style": 0,
+    "seed": 864270,
+    "loc": [
+     4.37,
+     1.66,
+     0.0
+    ],
+    "scale": 1.11,
+    "rot": -34.2
+   },
+   {
+    "prop": "play_mat",
+    "style": 2,
+    "seed": 121661,
+    "loc": [
+     -4.83,
+     2.8,
+     0.0
+    ],
+    "scale": 1.07,
+    "rot": 12.3
+   }
+  ],
+  "order": 4
+ }
+}

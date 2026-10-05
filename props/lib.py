@@ -1,5 +1,5 @@
 import math, random
-import bpy
+import bpy, bmesh
 from mathutils import Vector
 import common as C
 from props.select import colors
@@ -147,6 +147,96 @@ def ball_basket(r, s, fam, root):
     for i in range([3, 4, 2][s]):
         a = i * 2.1
         C.sphere("ball", (math.cos(a) * 0.1, math.sin(a) * 0.08, 0.27 + 0.03 * (i % 2)), (0.1,) * 3, M(cs[i], coat=0.7), root, 20)
+
+
+def _cols(r, fam, n):
+    if isinstance(fam, tuple) and len(fam) == 3 and all(isinstance(v, (int, float)) for v in fam):
+        base = fam
+        return [base] + [tuple(min(1, v * 0.55 + 0.45) for v in base)] * (n - 1)
+    return colors(r, fam, n)
+
+
+def soft_token(r, s, fam, root):
+    c, lite = _cols(r, fam, 2)
+    if s == 0:
+        C.sphere("tk", (0, 0, 0.065), (0.17, 0.17, 0.065), M(c, rough=0.6, coat=0.15), root, 40)
+        pts = [(math.cos(a) * 0.162, math.sin(a) * 0.162, 0.065) for a in [k * 6.2832 / 48 for k in range(49)]]
+        C.tube("pipe", pts, 0.012, M(lite, rough=0.5), root)
+        C.sphere("btn", (0, 0, 0.128), (0.032, 0.032, 0.014), M(lite, rough=0.4, coat=0.5), root, 16)
+    elif s == 1:
+        C.rounded_box("tk", (0, 0, 0.07), (0.3, 0.3, 0.14), 0.05, M(c, rough=0.6, coat=0.15), root)
+        for k in range(4):
+            a = 0.785 + k * 1.5708
+            C.sphere("tuft", (math.cos(a) * 0.17, math.sin(a) * 0.17, 0.07), (0.03, 0.03, 0.03), M(lite, rough=0.5), root, 12)
+        C.sphere("btn", (0, 0, 0.142), (0.04, 0.04, 0.012), M(lite, rough=0.4, coat=0.5), root, 16)
+    else:
+        n = 6
+        for k in range(n):
+            a = k * 6.2832 / n
+            C.sphere("lobe", (math.cos(a) * 0.1, math.sin(a) * 0.1, 0.055), (0.085, 0.085, 0.055), M(c, rough=0.6, coat=0.15), root, 24)
+        C.sphere("ctr", (0, 0, 0.07), (0.1, 0.1, 0.06), M(lite, rough=0.5, coat=0.3), root, 24)
+
+
+def play_mat(r, s, fam, root):
+    a, b, c = _cols(r, fam, 3)
+    if s == 0:
+        C.lathe("mat", [(0, 0), (0, 0.5), (0.025, 0.53), (0.05, 0.5), (0.05, 0)], M(a, rough=0.7), root, segs=64)
+        C.tube("ring", [(math.cos(k * 6.2832 / 64) * 0.34, math.sin(k * 6.2832 / 64) * 0.34, 0.05) for k in range(65)], 0.022, M(b, rough=0.6), root)
+        C.sphere("dot", (0, 0, 0.05), (0.12, 0.12, 0.008), M(c, rough=0.6), root, 32)
+    elif s == 1:
+        for i, (x, y) in enumerate(((-0.24, -0.24), (0.24, -0.24), (-0.24, 0.24), (0.24, 0.24))):
+            C.rounded_box("tile", (x, y, 0.025), (0.46, 0.46, 0.05), 0.015, M((a, b, c, b)[i], rough=0.75), root)
+            C.sphere("nub", (x, y, 0.05), (0.06, 0.06, 0.01), M((b, c, a, c)[i], rough=0.7), root, 16)
+    else:
+        bm_pts = [(math.cos(k * 6.2832 / 6 + 0.5236) * 0.52, math.sin(k * 6.2832 / 6 + 0.5236) * 0.52) for k in range(6)]
+        bm = bmesh.new()
+        vs = [bm.verts.new((x, y, 0)) for x, y in bm_pts]
+        f = bm.faces.new(vs)
+        ext = bmesh.ops.extrude_face_region(bm, geom=[f])
+        for v in [e for e in ext["geom"] if isinstance(e, bmesh.types.BMVert)]:
+            v.co.z += 0.06
+        bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
+        o = C.mesh_obj("hex", bm, M(a, rough=0.7), root, smooth=False)
+        bv = o.modifiers.new("b", "BEVEL"); bv.width = 0.025; bv.segments = 4
+        for k in range(6):
+            t = k * 6.2832 / 6
+            C.sphere("star", (math.cos(t) * 0.3, math.sin(t) * 0.3, 0.06), (0.05, 0.05, 0.008), M(b if k % 2 else c, rough=0.6), root, 16)
+
+
+def floor_lamp(r, s, fam, root):
+    body, shade, trim = _cols(r, fam, 3)
+    cream = (0.98, 0.95, 0.88)
+    glow = M((1.0, 0.92, 0.7), rough=0.3, coat=0, emit=3.0)
+    h = [1.05, 0.95, 1.15][s]
+    if s == 2:
+        for k in range(3):
+            a = k * 2.0944 + 1.5708
+            C.tube("leg", [(math.cos(a) * 0.26, math.sin(a) * 0.26, 0.03), (0, 0, h * 0.45)], 0.022, M(body, rough=0.4), root)
+            C.sphere("foot", (math.cos(a) * 0.26, math.sin(a) * 0.26, 0.03), (0.04, 0.04, 0.03), M(trim), root, 12)
+        C.tube("pole", [(0, 0, h * 0.45), (0, 0, h - 0.05)], 0.028, M(body, rough=0.4), root)
+    else:
+        C.lathe("base", [(0, 0), (0, 0.2), (0.03, 0.22), (0.07, 0.17), (0.09, 0.05), (0.09, 0)], M(body, rough=0.4, coat=0.5), root, segs=48)
+        for k in range(4):
+            a = k * 1.5708 + 0.785
+            C.sphere("wheel", (math.cos(a) * 0.17, math.sin(a) * 0.17, 0.03), (0.035, 0.03, 0.035), M((0.3, 0.3, 0.35), rough=0.6), root, 16)
+        if s == 0:
+            C.tube("pole", [(0, 0, 0.08), (0, 0, h - 0.05)], 0.03, M(cream, rough=0.4), root)
+        else:
+            C.tube("pole", [(0, 0, 0.08), (0, 0, h * 0.7), (0, 0.06, h * 0.92), (0, 0.12, h - 0.02)], 0.03, M(cream, rough=0.4), root)
+    hy = 0.12 if s == 1 else 0.0
+    head = C.empty("head", root, (0, hy, h), (math.radians(-90), 0, 0))
+    if s == 0:
+        C.lathe("shade", [(-0.02, 0.0), (0.0, 0.08), (0.08, 0.17), (0.2, 0.22), (0.22, 0.2), (0.12, 0.13), (0.03, 0.06), (0.0, 0.0)], M(shade, rough=0.35, coat=0.6), head, segs=48)
+        C.sphere("rim", (0, 0, 0.21), (0.21, 0.21, 0.018), M(trim, rough=0.4), head, 32)
+    elif s == 1:
+        C.lathe("shade", [(-0.02, 0.0), (0.0, 0.06), (0.22, 0.2), (0.24, 0.19), (0.04, 0.05), (0.0, 0.0)], M(shade, rough=0.35, coat=0.6), head, segs=48)
+        C.tube("band", [(math.cos(k * 6.2832 / 48) * 0.205, math.sin(k * 6.2832 / 48) * 0.205, 0.2) for k in range(49)], 0.014, M(trim), head)
+    else:
+        C.lathe("shade", [(-0.02, 0.0), (0.0, 0.15), (0.24, 0.17), (0.25, 0.15), (0.04, 0.13), (0.0, 0.0)], M(shade, rough=0.35, coat=0.6), head, segs=48)
+        for z in (0.06, 0.14):
+            C.tube("stripe", [(math.cos(k * 6.2832 / 48) * 0.162, math.sin(k * 6.2832 / 48) * 0.162, z) for k in range(49)], 0.012, M(trim), head)
+    C.sphere("bulb", (0, 0, 0.12), (0.075, 0.075, 0.075), glow, head, 24)
+    C.sphere("knob", (0, 0, -0.04), (0.04, 0.04, 0.04), M(trim, coat=0.6), head, 16)
 
 
 GEN = {k: v for k, v in globals().items() if k in REGISTRY}

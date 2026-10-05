@@ -11,4 +11,7 @@ REGISTRY = {
     "gear_tower": {"styles": 3, "envs": ["lab"], "tags": ["invento"]},
     "leaf_pile": {"styles": 3, "envs": ["otono"], "tags": ["otoño"]},
     "ball_basket": {"styles": 3, "envs": ["patio", "casa"], "tags": ["juguete"]},
+    "soft_token": {"styles": 3, "envs": ["patio", "casa", "aula"], "tags": ["juguete", "contar"]},
+    "play_mat": {"styles": 3, "envs": ["patio", "casa", "aula"], "tags": ["suelo", "juego"]},
+    "floor_lamp": {"styles": 3, "envs": ["casa", "aula", "lab"], "tags": ["luz", "sombra"]},
 }
