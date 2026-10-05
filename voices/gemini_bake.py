@@ -82,6 +82,7 @@ def norm(t):
     for k, v in {"10": " diez ", "1": " uno ", "2": " dos ", "3": " tres ", "4": " cuatro ", "5": " cinco ", "6": " seis ", "7": " siete ", "8": " ocho ", "9": " nueve "}.items():
         t = t.replace(k, v)
     t = "".join(c for c in unicodedata.normalize("NFD", t) if unicodedata.category(c) != "Mn")
+    t = t.replace("v", "b")
     return re.sub(r"[^a-zñ ]+", " ", t).split()
 
 
@@ -134,13 +135,15 @@ def finish(seg, sr, key, e, asr):
     segs = list(segs)
     heard = " ".join(s.text for s in segs)
     words = [w for s in segs for w in (s.words or [])]
-    sc = difflib.SequenceMatcher(None, norm(e["text"]), norm(heard)).ratio()
+    a_, b_ = norm(e["text"]), norm(heard)
+    sm_ = difflib.SequenceMatcher(None, a_, b_, autojunk=False)
+    sc = min(sm_.ratio(), sum(n for _, _, n in sm_.get_matching_blocks()) / max(1, len(a_)) + 0.05)
     a0, a1 = (max(0, words[0].start - 0.08), words[-1].end + 0.25) if words else (0, len(seg) / sr)
     d = a1 - a0
     tempo = min(max(d / e["max"], 1.0), 1.2)
     af = (f"atrim={a0:.3f}:{a1:.3f},asetpts=PTS-STARTPTS,atempo={tempo:.3f},highpass=f=80,"
           f"acompressor=threshold=-20dB:ratio=2:attack=5:release=90,afade=t=in:d=0.01,areverse,afade=t=in:d=0.05,areverse")
-    final = os.path.join(OUT, f"{key}.wav")
+    final = os.path.join(TMP, f"{key}.final.wav")
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", raw, "-af", af, "-ar", "44100", "-ac", "1", final], check=True)
     sr2, y = wavfile.read(final)
     h = int(sr2 * 0.01)
@@ -156,7 +159,7 @@ def finish(seg, sr, key, e, asr):
     else:
         sr2, y = wavfile.read(final)
     return {"hash": digest(e["char"], e["text"]), "dur": round(len(y) / sr2, 2), "text": e["text"], "asr": round(sc, 2),
-            "heard": heard.strip(), "engine": "gemini", "voice": VOICES[e["char"]][0], "lock": LOCK, "shift": st}
+            "heard": heard.strip(), "engine": "gemini", "voice": VOICES[e["char"]][0], "lock": LOCK, "shift": st, "_path": final}
 
 
 PAIRS = [("pimo", "luma"), ("ruki", "moki"), ("tuki", "bolita"), ("bopi", "gruno")]
@@ -177,11 +180,10 @@ def store(man, todo, results):
         if e["text"] not in results:
             continue
         src_k, res = results[e["text"]]
-        if res["asr"] < 0.7:
+        if res["asr"] < 0.75:
             continue
-        if src_k != k:
-            subprocess.run(["cp", os.path.join(OUT, f"{src_k}.wav"), os.path.join(OUT, f"{k}.wav")], check=True)
-        man[k] = dict(res)
+        subprocess.run(["cp", res["_path"], os.path.join(OUT, f"{k}.wav")], check=True)
+        man[k] = {a: b for a, b in res.items() if a != "_path"}
 
 
 def rank():
