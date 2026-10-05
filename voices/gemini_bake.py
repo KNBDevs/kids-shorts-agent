@@ -44,9 +44,14 @@ def tts(prompt, voice, speakers=None):
             time.sleep(21)
             return np.frombuffer(pcm, dtype=np.int16).astype(np.float64) / 32768, 24000
         except urllib.error.HTTPError as e:
-            print("http", e.code, e.read()[:300], flush=True)
-            if e.code == 429 and attempt >= 1:
-                raise RuntimeError("quota")
+            body = e.read().decode("utf-8", "ignore")
+            print("http", e.code, body[:600], flush=True)
+            if e.code == 429:
+                if "PerDay" in body or attempt >= 2:
+                    raise RuntimeError("quota")
+                m = re.search(r'"retryDelay":\s*"(\d+)', body)
+                time.sleep((int(m.group(1)) if m else 60) + 3)
+                continue
             time.sleep(40 * (attempt + 1))
         except Exception as e:
             print("err", e, flush=True)
