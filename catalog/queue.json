@@ -218,7 +218,7 @@
       "bolita",
       "gruno"
     ],
-    "status": "approved"
+    "status": "draft"
   },
   {
     "id": "maquina_silencio",
@@ -228,7 +228,7 @@
       "gruno",
       "bopi"
     ],
-    "status": "approved"
+    "status": "draft"
   },
   {
     "id": "moki_colador_lluvia",
@@ -238,7 +238,7 @@
       "moki",
       "pimo"
     ],
-    "status": "approved"
+    "status": "draft"
   },
   {
     "id": "boton_mas_grande",
