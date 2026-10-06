@@ -179,7 +179,7 @@ def finish(seg, sr, key, e, asr):
             "heard": heard.strip(), "engine": "gemini", "voice": VOICES[e["char"]][0], "dev": st, "_path": final}
 
 
-PAIRS = [("pimo", "luma"), ("ruki", "moki"), ("tuki", "bolita"), ("bopi", "gruno")]
+PAIRS = []
 NAMES = {"pimo": "Pimo", "luma": "Luma", "ruki": "Ruki", "moki": "Moki", "tuki": "Tuki", "bolita": "Bolita", "bopi": "Bopi", "gruno": "Gruno", "narrador": "Narradora", "nubi": "Nubi"}
 
 
