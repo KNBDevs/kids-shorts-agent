@@ -2047,5 +2047,60 @@
   "voice": "Puck",
   "lock": "L1",
   "shift": -6.05
+ },
+ "ep_iman_manzana_b3": {
+  "hash": "8aa1ac1cefd4",
+  "dur": 2.39,
+  "text": "Este hierro sí se acerca.",
+  "asr": 1.0,
+  "heard": "Este hierro sí se acerca.",
+  "engine": "gemini",
+  "voice": "Iapetus",
+  "lock": "L1",
+  "shift": 2.62
+ },
+ "ep_monstruo_caja_g1": {
+  "hash": "0abe8de6da92",
+  "dur": 2.39,
+  "text": "¡Mi altavoz! ¿Quién lo ha encendido?",
+  "asr": 0.77,
+  "heard": "¡Mi alta voz! ¿Quién lo ha encendido?",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "lock": "L1",
+  "shift": 0.63
+ },
+ "ep_luma_escucha_p4": {
+  "hash": "efdcd466656f",
+  "dur": 1.27,
+  "text": "¡Qué cuento tan bonito!",
+  "asr": 1.0,
+  "heard": "¡Que cuento tan bonito!",
+  "engine": "gemini",
+  "voice": "Puck",
+  "lock": "L1",
+  "shift": -6.54
+ },
+ "ep_monstruo_caja_p2": {
+  "hash": "3208ceef4a86",
+  "dur": 1.47,
+  "text": "¿Un monstruo en la caja?",
+  "asr": 1.0,
+  "heard": "Un monstruo en la caja.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "lock": "L1",
+  "shift": -5.19
+ },
+ "ep_viento_hoja_l1": {
+  "hash": "bef1ac67a5ce",
+  "dur": 1.94,
+  "text": "Mira. Dejo quieto el abanico.",
+  "asr": 1.0,
+  "heard": "Mira, dejo quieto el abanico.",
+  "engine": "gemini",
+  "voice": "Leda",
+  "lock": "L1",
+  "shift": -5.08
  }
 }
