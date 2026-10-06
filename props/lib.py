@@ -1282,6 +1282,49 @@ def ring_fence(r, s, fam, root):
         C.tube("rail", _ring(R, z, 64, 0.75), 0.008 if s != 1 else 0.006, rm, root)
     return R
 
+
+def float_item(r, s, fam, root):
+    if s == 0:
+        cm = M((0.82, 0.6, 0.36), rough=0.85, coat=0.05)
+        C.lathe("cork", [(0.0, 0.0), (0.0, 0.055), (0.006, 0.062), (0.064, 0.064), (0.07, 0.058), (0.07, 0.0)], cm, root, segs=40)
+        pm = M((0.55, 0.36, 0.2), rough=0.9)
+        for k in range(14):
+            a = k * 2.39
+            rr = 0.012 + 0.035 * ((k * 7) % 10) / 10
+            C.sphere("pore", (math.cos(a) * rr, math.sin(a) * rr, 0.07), (0.006, 0.006, 0.002), pm, root, 8)
+        for k in range(10):
+            a = k * 0.63
+            C.sphere("pore", (math.cos(a) * 0.063, math.sin(a) * 0.063, 0.015 + 0.04 * ((k * 3) % 5) / 5), (0.005, 0.005, 0.005), pm, root, 8)
+        return 0.07
+    if s == 1:
+        c = _rich(_cols(r, fam, 1)[0], 0.4, 0.62)
+        C.sphere("stone", (0, 0, 0.034), (0.075, 0.062, 0.036), M(c, rough=0.3, coat=0.5), root, 40)
+        C.sphere("fleck", (0.03, -0.03, 0.05), (0.012, 0.008, 0.004), M(tuple(min(1, v * 1.3) for v in c), rough=0.3, coat=0.5), root, 10)
+        return 0.068
+    wm = M((0.92, 0.72, 0.45), rough=0.6, coat=0.2)
+    C.rounded_box("block", (0, 0, 0.03), (0.13, 0.08, 0.06), 0.012, wm, root)
+    gm = M((0.75, 0.52, 0.3), rough=0.7)
+    for z in (0.018, 0.034, 0.048):
+        C.tube("grain", [(-0.06, -0.041, z), (-0.02, -0.041, z + 0.004), (0.02, -0.041, z - 0.003), (0.06, -0.041, z)], 0.0025, gm, root)
+    return 0.06
+
+
+def boat_sticker(r, s, fam, root):
+    c, d = [_rich(x, 1.4, 0.95) for x in _cols(r, fam, 2)]
+    base = M((0.99, 0.98, 0.95), rough=0.4, coat=0.6)
+    if s == 0:
+        C.lathe("disc", [(0.0, 0.0), (0.0, 0.045), (0.003, 0.046), (0.003, 0.0)], base, root, segs=40)
+    elif s == 1:
+        C.rounded_box("disc", (0, 0, 0.0015), (0.09, 0.07, 0.003), 0.001, base, root)
+    else:
+        for k in range(6):
+            a = k * 6.2832 / 6
+            C.sphere("lobe", (math.cos(a) * 0.026, math.sin(a) * 0.026, 0.0015), (0.022, 0.022, 0.0015), base, root, 16)
+        C.sphere("mid", (0, 0, 0.0015), (0.03, 0.03, 0.0015), base, root, 16)
+    C.rounded_box("hull", (0, -0.012, 0.004), (0.05, 0.016, 0.002), 0.004, M(c, rough=0.4, coat=0.5), root)
+    C.tube("mast", [(0.0, -0.004, 0.0045), (0.0, 0.03, 0.0045)], 0.002, M((0.4, 0.3, 0.25), rough=0.5), root)
+    C.rounded_box("sail", (0.011, 0.014, 0.004), (0.018, 0.028, 0.002), 0.003, M(d, rough=0.4, coat=0.5), root)
+
 GEN = {k: v for k, v in globals().items() if k in REGISTRY}
 
 

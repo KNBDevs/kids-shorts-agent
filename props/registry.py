@@ -47,4 +47,6 @@ REGISTRY = {
     "time_clock": {"styles": 3, "envs": ["casa", "aula", "lab", "cocina"], "tags": ["tiempo", "reloj"], "decor": False},
     "water_tray": {"styles": 3, "envs": ["patio", "lab", "casa", "cocina", "aula"], "tags": ["agua", "ciencia"], "decor": False},
     "ring_fence": {"styles": 3, "envs": ["patio", "plaza", "casa"], "tags": ["juguete", "borde"], "decor": False},
+    "float_item": {"styles": 3, "envs": ["patio", "lab", "casa", "aula"], "tags": ["agua", "ciencia", "materiales"], "decor": False},
+    "boat_sticker": {"styles": 3, "envs": ["patio", "casa", "aula", "lab"], "tags": ["juguete", "barco"], "decor": False},
 }
