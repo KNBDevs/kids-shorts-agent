@@ -12,15 +12,19 @@ OUT = os.path.join(ROOT, "assets", "vo")
 TMP = os.path.join(ROOT, "_bake")
 os.makedirs(OUT, exist_ok=True); os.makedirs(TMP, exist_ok=True)
 from gvoices import ACC, VOICES, VERSION, digest
-from lock import conform, profiles, LOCK
+from lock import f0_file, profiles
+MAX_DEV = 5.0
 
 
-def reg(c):
-    if c not in profiles():
-        return "siempre con el mismo tono y el mismo timbre, sin cambiar de registro"
-    f = profiles()[c]["f0"]
-    r = "agudo" if f > 240 else ("medio" if f > 170 else "grave")
-    return f"siempre con el mismo tono {r} y el mismo timbre de su presentación, sin cambiar de registro"
+def deviation(path, c):
+    pr = profiles()
+    if c not in pr:
+        return 0.0
+    t = f0_file(path)
+    if len(t) < 12:
+        return 0.0
+    st = round(float(12 * np.log2(np.median(t) / pr[c]["f0"])), 2)
+    return st if st > 0 or len(t) >= 25 else 0.0
 
 
 BUDGET = [int(os.environ.get("MAX_REQ", "12"))]
@@ -147,8 +151,7 @@ def finish(seg, sr, key, e, asr):
     sc = min(sm_.ratio(), sum(n for _, _, n in sm_.get_matching_blocks()) / max(1, len(a_)) + 0.05)
     a0, a1 = (max(0, words[0].start - 0.08), words[-1].end + 0.25) if words else (0, len(seg) / sr)
     d = a1 - a0
-    tempo = min(max(d / e["max"], 1.0), 1.2)
-    af = (f"atrim={a0:.3f}:{a1:.3f},asetpts=PTS-STARTPTS,atempo={tempo:.3f},highpass=f=80,"
+    af = (f"atrim={a0:.3f}:{a1:.3f},asetpts=PTS-STARTPTS,highpass=f=80,"
           f"acompressor=threshold=-20dB:ratio=2:attack=5:release=90,afade=t=in:d=0.01,areverse,afade=t=in:d=0.05,areverse")
     final = os.path.join(TMP, f"{key}.final.wav")
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", raw, "-af", af, "-ar", "44100", "-ac", "1", final], check=True)
@@ -159,14 +162,12 @@ def finish(seg, sr, key, e, asr):
     if len(on):
         y = y[max(0, (on[0] - 5) * h):min(len(y), (on[-1] + 20) * h)]
         wavfile.write(final, sr2, y)
-    st = conform(final, e["char"])
-    if st is None:
-        print("pitch drift, reject", key, flush=True)
+    st = deviation(final, e["char"])
+    if abs(st) > MAX_DEV:
+        print("pitch drift, reject", key, st, flush=True)
         sc = 0.0
-    else:
-        sr2, y = wavfile.read(final)
     return {"hash": digest(e["char"], e["text"]), "dur": round(len(y) / sr2, 2), "text": e["text"], "asr": round(sc, 2),
-            "heard": heard.strip(), "engine": "gemini", "voice": VOICES[e["char"]][0], "lock": LOCK, "shift": st, "_path": final}
+            "heard": heard.strip(), "engine": "gemini", "voice": VOICES[e["char"]][0], "dev": st, "_path": final}
 
 
 PAIRS = [("pimo", "luma"), ("ruki", "moki"), ("tuki", "bolita"), ("bopi", "gruno")]
@@ -234,7 +235,7 @@ def run_group(cids, man, allL, asr):
             if a: order.append(a.pop(0))
             if b: order.append(b.pop(0))
         seq = order
-        styles = " ".join(f"{NAMES[c]}: {VOICES[c][1]}, {reg(c)}." for c in cids)
+        styles = " ".join(f"{NAMES[c]}: {VOICES[c][1]}." for c in cids)
         script = "\n".join(f"{NAMES[c]}: {e['text']}" for c, k, e in seq)
         prompt = (f"Lee este guion de un dibujo animado infantil. {styles} Cada frase con naturalidad y emoción, "
                   f"y una pausa de dos segundos entre frase y frase.\n\n{script}")
@@ -242,7 +243,7 @@ def run_group(cids, man, allL, asr):
     else:
         c = cids[0]
         script = "\n".join(f"{e['text']}" for _, k, e in seq)
-        prompt = (f"{VOICES[c][1]}, {reg(c)}. Lee las siguientes frases en orden, con naturalidad y emoción, "
+        prompt = (f"{VOICES[c][1]}. Lee las siguientes frases en orden, con naturalidad y emoción, "
                   f"haciendo una pausa de dos segundos entre cada frase.\n\n{script}")
         x, sr = tts(prompt, VOICES[c][0])
     parts = split(x, sr, len(seq))
@@ -275,6 +276,8 @@ def main(chars):
     mp = os.path.join(OUT, "manifest.json")
     man = json.load(open(mp)) if os.path.exists(mp) else {}
     allL = lines()
+    pub = json.load(open(os.path.join(ROOT, "state", "published.json")))
+    allL = {k: e for k, e in allL.items() if not any(k.startswith(f"ep_{i}_") for i in pub)}
     groups = [p for p in PAIRS if p[0] in chars and p[1] in chars]
     done = {c for p in groups for c in p}
     groups += [(c,) for c in chars if c not in done]
