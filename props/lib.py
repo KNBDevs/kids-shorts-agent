@@ -1221,6 +1221,67 @@ def time_clock(r, s, fam, root):
     C.sphere("pin", (0, fy - 0.02, z0), (0.016, 0.008, 0.016), dm, root, 12)
     return hm, hh
 
+
+def water_tray(r, s, fam, root):
+    c, d = [_rich(x, 1.25, 0.95) for x in _cols(r, fam, 2)]
+    wm = MA((0.3, 0.6, 1.0), 0.78, rough=0.06, emit=0.15)
+    ink = M(tuple(v * 0.45 for v in d), rough=0.4, coat=0.5)
+    piv = C.empty("water_pivot", root, (0, 0, 0.0))
+    if s == 0:
+        R, h, b = 0.3, 0.07, 0.012
+        C.lathe("dish", [(0.0, 0.0), (0.0, R * 0.85), (0.01, R * 0.95), (h, R), (h + 0.01, R - 0.008), (h, R - 0.02), (b, R * 0.85 - 0.015), (b, 0.0)], M(c, rough=0.35, coat=0.7), root, segs=64)
+        piv.location = (0, 0, b)
+        C.lathe("water", [(0.0, 0.0), (0.0, R * 0.86), (h - b - 0.012, R - 0.03), (h - b - 0.012, 0.0)], wm, piv, segs=56)
+        C.tube("mark", _ring(R - 0.024, h - 0.012, 64), 0.006, ink, root)
+        top = h - 0.012
+    elif s == 1:
+        W, D, h, t = 0.62, 0.36, 0.26, 0.012
+        glass = MA((0.9, 0.96, 1.0), 0.2)
+        for x in (-W / 2, W / 2):
+            C.rounded_box("wall", (x, 0, h / 2), (t, D, h), 0.005, glass, root)
+        for y in (-D / 2, D / 2):
+            C.rounded_box("wall", (0, y, h / 2), (W, t, h), 0.005, glass, root)
+        C.rounded_box("floor", (0, 0, t / 2), (W, D, t), 0.005, glass, root)
+        C.tube("frame", [(-W / 2, -D / 2, h), (W / 2, -D / 2, h), (W / 2, D / 2, h), (-W / 2, D / 2, h), (-W / 2, -D / 2, h)], 0.01, M(c, rough=0.4, coat=0.6), root)
+        C.rounded_box("base", (0, 0, -0.008), (W + 0.04, D + 0.04, 0.016), 0.006, M(d, rough=0.45, coat=0.5), root)
+        piv.location = (0, 0, t)
+        C.rounded_box("water", (0, 0, 0.5 * (h * 0.72)), (W - 2 * t - 0.004, D - 2 * t - 0.004, h * 0.72), 0.004, MA((0.35, 0.65, 1.0), 0.45, rough=0.05, emit=0.1), piv)
+        C.tube("mark", [(-W / 2 + 0.03, -D / 2 - 0.008, t + h * 0.72), (-W / 2 + 0.1, -D / 2 - 0.008, t + h * 0.72)], 0.004, ink, root)
+        top = t + h * 0.72
+    else:
+        R, h, b = 0.26, 0.08, 0.012
+        C.lathe("dish", [(0.0, 0.0), (0.0, R * 0.8), (0.015, R * 0.92), (h, R), (h + 0.01, R - 0.008), (h, R - 0.02), (b, R * 0.8 - 0.015), (b, 0.0)], M(c, rough=0.35, coat=0.7), root, segs=64, sy=0.7)
+        for sx in (-1, 1):
+            C.tube("handle", [(sx * (R - 0.01), 0, h * 0.7), (sx * (R + 0.05), 0, h * 0.8), (sx * (R + 0.05), 0, h * 0.6), (sx * (R - 0.005), 0, h * 0.4)], 0.012, M(d, rough=0.4, coat=0.6), root)
+        piv.location = (0, 0, b)
+        C.lathe("water", [(0.0, 0.0), (0.0, R * 0.81), (h - b - 0.012, R - 0.03), (h - b - 0.012, 0.0)], wm, piv, segs=56, sy=0.7)
+        C.tube("mark", _ring(R - 0.024, h - 0.012, 64, 0.7), 0.006, ink, root)
+        top = h - 0.012
+    return piv, top
+
+
+def ring_fence(r, s, fam, root):
+    c, d = [_rich(x, 1.3, 0.95) for x in _cols(r, fam, 2)]
+    pm = M(c, rough=0.45, coat=0.5)
+    rm = M(d, rough=0.45, coat=0.5)
+    R = 0.38
+    n = [14, 10, 18][s]
+    for i in range(n):
+        a = i * 6.2832 / n
+        x, y = math.cos(a) * R, math.sin(a) * R * 0.75
+        if s == 0:
+            C.rounded_box("pk", (x, y, 0.07), (0.035, 0.014, 0.14), 0.01, pm, root).rotation_euler = (0, 0, a + 1.5708)
+            C.sphere("tip", (x, y, 0.145), (0.018, 0.008, 0.016), pm, root, 10)
+        elif s == 1:
+            C.tube("post", [(x, y, 0.0), (x, y, 0.13)], 0.013, pm, root)
+            C.sphere("cap", (x, y, 0.138), (0.02, 0.02, 0.016), rm, root, 12)
+        else:
+            C.tube("bar", [(x, y, 0.0), (x, y, 0.11)], 0.008, pm, root)
+    hz = [(0.045, 0.11), (0.06, 0.11), (0.05, 0.1)][s]
+    for z in hz:
+        C.tube("rail", _ring(R, z, 64, 0.75), 0.008 if s != 1 else 0.006, rm, root)
+    return R
+
 GEN = {k: v for k, v in globals().items() if k in REGISTRY}
 
 

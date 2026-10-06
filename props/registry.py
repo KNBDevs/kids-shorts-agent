@@ -45,4 +45,6 @@ REGISTRY = {
     "explain_panel": {"styles": 3, "envs": ["lab", "aula", "casa", "patio", "plaza"], "tags": ["ilustracion", "ciencia"], "decor": False},
     "tiny_shoes": {"styles": 3, "envs": ["casa", "aula", "patio"], "tags": ["juguete", "ropa"], "decor": False},
     "time_clock": {"styles": 3, "envs": ["casa", "aula", "lab", "cocina"], "tags": ["tiempo", "reloj"], "decor": False},
+    "water_tray": {"styles": 3, "envs": ["patio", "lab", "casa", "cocina", "aula"], "tags": ["agua", "ciencia"], "decor": False},
+    "ring_fence": {"styles": 3, "envs": ["patio", "plaza", "casa"], "tags": ["juguete", "borde"], "decor": False},
 }
