@@ -1140,14 +1140,14 @@
   "dev": 0.05
  },
  "ep_maquina_silencio_b1": {
-  "hash": "rejected",
-  "dur": 2.6,
+  "hash": "45c00365e366",
+  "dur": 3.17,
   "text": "¡Bip! ¿Dónde están los sonidos?",
-  "asr": 0.8,
-  "heard": "VIP, ¿dónde están los sonidos?",
+  "asr": 1.0,
+  "heard": "¿Bip? ¿Dónde están los sonidos?",
   "engine": "gemini",
   "voice": "Iapetus",
-  "dev": 10.3
+  "dev": -1.3
  },
  "ep_maquina_silencio_b2": {
   "hash": "rejected",
@@ -1474,22 +1474,24 @@
   "voice": "Iapetus"
  },
  "ep_puerta_empuja_tira_b3": {
-  "hash": "rejected",
-  "dur": 1.51,
+  "hash": "001e09514a4c",
+  "dur": 1.56,
   "text": "¿Empujamos o tiramos?",
   "asr": 1.0,
   "heard": "Empujamos o tiramos.",
   "engine": "gemini",
-  "voice": "Iapetus"
+  "voice": "Iapetus",
+  "dev": 4.0
  },
  "ep_boton_mas_grande_g2": {
-  "hash": "rejected",
-  "dur": 2.12,
+  "hash": "4e3385072eb2",
+  "dur": 2.09,
   "text": "¡Uf! ¡No puedo levantarla!",
-  "asr": 0.75,
-  "heard": "¡Uff! No puedo levantarla.",
+  "asr": 1.0,
+  "heard": "¡Uf! No puedo levantarla.",
   "engine": "gemini",
-  "voice": "Algenib"
+  "voice": "Algenib",
+  "dev": 0.0
  },
  "ep_boton_mas_grande_g3": {
   "hash": "rejected",
