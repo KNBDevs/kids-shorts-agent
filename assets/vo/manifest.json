@@ -1150,24 +1150,24 @@
   "dev": -1.3
  },
  "ep_maquina_silencio_b2": {
-  "hash": "rejected",
-  "dur": 1.86,
+  "hash": "1223e137564a",
+  "dur": 1.82,
   "text": "Escucha. ¿Qué suena?",
   "asr": 1.0,
   "heard": "¡Escucha! ¡Qué suena!",
   "engine": "gemini",
   "voice": "Iapetus",
-  "dev": -10.6
+  "dev": 0.0
  },
  "ep_maquina_silencio_b3": {
-  "hash": "rejected",
+  "hash": "8e8df4e013b3",
   "dur": 1.2,
   "text": "¡Es la campana!",
   "asr": 1.0,
   "heard": "¡Es la campana!",
   "engine": "gemini",
   "voice": "Iapetus",
-  "dev": 8.8
+  "dev": 4.15
  },
  "ep_maquina_silencio_b5": {
   "hash": "ec76887a9d46",
@@ -1180,24 +1180,24 @@
   "dev": -4.0
  },
  "ep_maquina_silencio_g1": {
-  "hash": "rejected",
-  "dur": 1.88,
+  "hash": "5b4d36793ed7",
+  "dur": 1.99,
   "text": "¡Mi máquina de hacer silencio!",
   "asr": 1.0,
   "heard": "Mi máquina de hacer silencio.",
   "engine": "gemini",
   "voice": "Algenib",
-  "dev": 10.2
+  "dev": 4.85
  },
  "ep_maquina_silencio_g2": {
-  "hash": "rejected",
-  "dur": 1.35,
+  "hash": "9cde56baca94",
+  "dur": 1.69,
   "text": "¡Silencio atrapado!",
   "asr": 1.0,
-  "heard": "Silencio atrapado",
+  "heard": "Silencio atrapado.",
   "engine": "gemini",
   "voice": "Algenib",
-  "dev": 0.0
+  "dev": 0.65
  },
  "ep_maquina_silencio_g4": {
   "hash": "0f016d4f5f0f",
@@ -1447,31 +1447,34 @@
   "voice": "Leda"
  },
  "ep_boton_mas_grande_g1": {
-  "hash": "rejected",
-  "dur": 2.69,
+  "hash": "aaaf2cf9dc1b",
+  "dur": 3.13,
   "text": "¡Botón de más grande! ¡Toda para mí!",
-  "asr": 0.86,
-  "heard": "¡Votón de manera grande, toda para mí!",
+  "asr": 1.0,
+  "heard": "Botón de más grande. Toda para mí.",
   "engine": "gemini",
-  "voice": "Algenib"
+  "voice": "Algenib",
+  "dev": 2.5
  },
  "ep_puerta_empuja_tira_b1": {
-  "hash": "rejected",
-  "dur": 1.78,
+  "hash": "6aa769c16623",
+  "dur": 1.85,
   "text": "¡Bip! Mira la flecha.",
-  "asr": 0.75,
-  "heard": "Beep, mira la flecha.",
+  "asr": 1.0,
+  "heard": "¡Bip! Mira la flecha.",
   "engine": "gemini",
-  "voice": "Iapetus"
+  "voice": "Iapetus",
+  "dev": 2.6
  },
  "ep_puerta_empuja_tira_b2": {
-  "hash": "rejected",
-  "dur": 1.62,
+  "hash": "807e1892e47b",
+  "dur": 1.73,
   "text": "La flecha viene hacia ti.",
   "asr": 1.0,
   "heard": "La flecha viene hacia ti.",
   "engine": "gemini",
-  "voice": "Iapetus"
+  "voice": "Iapetus",
+  "dev": 2.4
  },
  "ep_puerta_empuja_tira_b3": {
   "hash": "001e09514a4c",
@@ -1503,13 +1506,14 @@
   "voice": "Algenib"
  },
  "ep_boton_mas_grande_g4": {
-  "hash": "rejected",
-  "dur": 1.34,
+  "hash": "d96e8d4faa27",
+  "dur": 1.63,
   "text": "¡Sigue siendo enorme!",
   "asr": 1.0,
   "heard": "¡Sigue siendo enorme!",
   "engine": "gemini",
-  "voice": "Algenib"
+  "voice": "Algenib",
+  "dev": -2.8
  },
  "ep_carrera_mas_lenta_g1": {
   "hash": "rejected",
@@ -1539,13 +1543,14 @@
   "voice": "Iapetus"
  },
  "ep_puerta_empuja_tira_b4": {
-  "hash": "rejected",
-  "dur": 0.64,
+  "hash": "67cc2e718f80",
+  "dur": 0.73,
   "text": "¡Tiramos!",
   "asr": 1.0,
   "heard": "Tiramos.",
   "engine": "gemini",
-  "voice": "Iapetus"
+  "voice": "Iapetus",
+  "dev": 0.0
  },
  "ep_puerta_empuja_tira_b5": {
   "hash": "rejected",
@@ -1899,5 +1904,15 @@
   "heard": "Mira, dejo quieto el abanico.",
   "engine": "gemini",
   "voice": "Leda"
+ },
+ "ep_sal_disuelta_b1": {
+  "hash": "0e28da584dd1",
+  "dur": 3.1,
+  "text": "¡Bip! ¿Dónde están los granitos de sal?",
+  "asr": 1.0,
+  "heard": "¿Bip? ¿Dónde están los granitos de sal?",
+  "engine": "gemini",
+  "voice": "Iapetus",
+  "dev": 0.1
  }
 }
