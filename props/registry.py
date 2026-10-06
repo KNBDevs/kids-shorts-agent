@@ -41,4 +41,6 @@ REGISTRY = {
     "toy_elephant": {"styles": 3, "envs": ["plaza", "casa", "patio", "aula"], "tags": ["juguete", "animal"], "decor": False},
     "net_swing": {"styles": 3, "envs": ["plaza", "patio", "casa"], "tags": ["juguete", "columpio"], "decor": False},
     "bridge_kit": {"styles": 3, "envs": ["patio", "casa", "aula"], "tags": ["construir", "juguete"], "decor": False},
+    "toy_torch": {"styles": 3, "envs": ["lab", "casa", "aula", "patio"], "tags": ["luz", "buscar"], "decor": False},
+    "explain_panel": {"styles": 3, "envs": ["lab", "aula", "casa", "patio", "plaza"], "tags": ["ilustracion", "ciencia"], "decor": False},
 }

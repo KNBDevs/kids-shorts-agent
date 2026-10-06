@@ -1096,6 +1096,70 @@ def net_swing(r, s, fam, root):
     return hang
 
 
+
+def toy_torch(r, s, fam, root):
+    c, d = [_rich(x, 1.3, 0.95) for x in _cols(r, fam, 2)]
+    bm_ = M(c, rough=0.4, coat=0.6)
+    tm = M(d, rough=0.45, coat=0.5)
+    lens = M((1.0, 0.95, 0.7), rough=0.1, coat=1.0, emit=2.5)
+    ax = C.empty("axis", root, (0, 0, 0), (0, math.radians(90), 0))
+    if s == 0:
+        C.lathe("body", [(-0.13, 0.0), (-0.13, 0.03), (-0.12, 0.036), (0.05, 0.036), (0.07, 0.04), (0.12, 0.062), (0.13, 0.062), (0.13, 0.0)], bm_, ax, segs=48)
+        C.tube("band", [(math.cos(k * 6.2832 / 40) * 0.038, math.sin(k * 6.2832 / 40) * 0.038, -0.06) for k in range(41)], 0.008, tm, ax)
+        C.sphere("btn", (-0.02, 0, 0.038), (0.016, 0.012, 0.01), tm, root, 12)
+        front, lr = 0.132, 0.052
+    elif s == 1:
+        C.rounded_box("body", (-0.04, 0, 0.0), (0.18, 0.1, 0.11), 0.03, bm_, root)
+        C.tube("handle", [(-0.11, 0, 0.05), (-0.1, 0, 0.11), (0.02, 0, 0.11), (0.03, 0, 0.05)], 0.014, tm, root)
+        C.lathe("bezel", [(0.04, 0.0), (0.04, 0.05), (0.055, 0.056), (0.07, 0.05), (0.07, 0.0)], tm, ax, segs=40)
+        front, lr = 0.071, 0.044
+    else:
+        C.lathe("body", [(-0.14, 0.0), (-0.14, 0.018), (-0.13, 0.022), (0.08, 0.022), (0.09, 0.028), (0.11, 0.028), (0.11, 0.0)], bm_, ax, segs=40)
+        for z in (-0.1, -0.08, -0.06):
+            C.tube("rib", [(math.cos(k * 6.2832 / 32) * 0.023, math.sin(k * 6.2832 / 32) * 0.023, z) for k in range(33)], 0.004, tm, ax)
+        C.tube("clip", [(-0.1, 0, 0.026), (0.0, 0, 0.034), (0.03, 0, 0.026)], 0.006, tm, root)
+        front, lr = 0.112, 0.024
+    C.sphere("lens", (front, 0, 0), (0.008, lr, lr), lens, root, 24)
+    beam = C.empty("beam", ax, (0, 0, front + 0.005))
+    C.lathe("cone", [(0.0, 0.0), (0.0, lr * 0.9), (0.7, 0.2), (0.7, 0.0)], MA((1.0, 0.95, 0.65), 0.22, emit=0.8), beam, segs=40)
+    beam.scale = (0.001, 0.001, 0.001)
+    return beam
+
+
+def explain_panel(r, s, fam, root):
+    c, d = [_rich(x, 1.3, 0.95) for x in _cols(r, fam, 2)]
+    fm = M(c, rough=0.4, coat=0.6)
+    sm = M(d, rough=0.45, coat=0.5)
+    face = M((0.97, 0.96, 0.92), rough=0.6, coat=0.1, emit=0.15)
+    if s == 0:
+        R, z0 = 0.34, 0.95
+        C.tube("rim", [(math.cos(k * 6.2832 / 64) * R, 0, z0 + math.sin(k * 6.2832 / 64) * R) for k in range(65)], 0.035, fm, root)
+        dk = C.empty("dk", root, (0, 0.012, z0), (math.radians(90), 0, 0))
+        C.lathe("face", [(-0.012, 0.0), (-0.012, R), (0.012, R), (0.012, 0.0)], face, dk, segs=64)
+        C.tube("stem", [(0, 0.02, z0 - R - 0.02), (0, 0.02, 0.05)], 0.03, sm, root)
+        C.lathe("foot", [(0, 0.0), (0, 0.2), (0.02, 0.21), (0.05, 0.18), (0.06, 0.0)], sm, root, segs=48, sy=0.7)
+        W, H = 2 * R * 0.8, 2 * R * 0.8
+    elif s == 1:
+        z0 = 0.95
+        C.rounded_box("board", (0, 0.02, z0), (0.82, 0.04, 0.62), 0.03, fm, root)
+        C.rounded_box("face", (0, -0.002, z0), (0.72, 0.01, 0.52), 0.01, face, root)
+        for x in (-0.32, 0.32):
+            C.tube("leg", [(x, 0.06, z0 + 0.2), (x * 1.15, 0.0, 0.0)], 0.02, sm, root)
+        C.tube("back", [(0, 0.07, z0 + 0.2), (0, 0.36, 0.0)], 0.02, sm, root)
+        C.rounded_box("tray", (0, -0.04, z0 - 0.34), (0.78, 0.08, 0.03), 0.012, sm, root)
+        W, H = 0.66, 0.46
+    else:
+        z0 = 1.05
+        C.rounded_box("face", (0, 0.0, z0), (0.74, 0.03, 0.5), 0.15, face, root)
+        for k in range(9):
+            a = k * 6.2832 / 9
+            C.sphere("puff", (math.cos(a) * 0.4, 0.02, z0 + math.sin(a) * 0.29), (0.12, 0.03, 0.1), fm, root, 20)
+        for k, (x, z, q) in enumerate(((0.05, z0 - 0.4, 0.06), (0.1, z0 - 0.52, 0.04), (0.14, z0 - 0.6, 0.028))):
+            C.sphere("tail", (x, 0.01, z), (q, q * 0.5, q), fm, root, 16)
+        W, H = 0.62, 0.4
+    scr = C.empty("screen", root, (0, -0.03, z0))
+    return scr, W, H
+
 GEN = {k: v for k, v in globals().items() if k in REGISTRY}
 
 
