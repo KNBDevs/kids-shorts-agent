@@ -6,7 +6,7 @@ LINES = [
     ('g1', 'gruno', '¡Mi máquina de hacer silencio!', 10, 2.0),
     ('g2', 'gruno', '¡Silencio atrapado!', 112, 1.6),
     ('b1', 'bopi', '¡Bip! ¿Dónde están los sonidos?', 160, 2.2),
-    ('g3', 'gruno', '¡Y ahora, el tambor!', 224, 1.6),
+    ('g3', 'gruno', '¡Y ahora, el tambor!', 242, 1.6),
     ('b2', 'bopi', 'Escucha. ¿Qué suena?', 340, 1.8),
     ('b3', 'bopi', '¡Es la campana!', 432, 1.4),
     ('b4', 'bopi', 'Y este, ¿qué será?', 480, 1.6),
