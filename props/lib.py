@@ -1160,6 +1160,67 @@ def explain_panel(r, s, fam, root):
     scr = C.empty("screen", root, (0, -0.03, z0))
     return scr, W, H
 
+
+def tiny_shoes(r, s, fam, root):
+    c, d = [_rich(x, 1.4, 0.95) for x in _cols(r, fam, 2)]
+    um = M(c, rough=0.45, coat=0.5)
+    sm = M((0.97, 0.95, 0.9), rough=0.55, coat=0.2)
+    lm = M(d, rough=0.5, coat=0.3)
+    for sx in (-1, 1):
+        o = C.empty("shoe", root, (sx * 0.045, 0, 0), (0, 0, math.radians(sx * 6)))
+        if s == 0:
+            C.rounded_box("sole", (0, 0, 0.008), (0.05, 0.1, 0.016), 0.007, sm, o)
+            C.sphere("toe", (0, -0.028, 0.022), (0.026, 0.035, 0.02), um, o, 20)
+            C.rounded_box("heel", (0, 0.018, 0.03), (0.048, 0.056, 0.036), 0.016, um, o)
+            for k in range(2):
+                C.tube("lace", [(-0.016, -0.01 + k * 0.014, 0.046), (0.016, -0.01 + k * 0.014, 0.046)], 0.003, lm, o)
+        elif s == 1:
+            C.rounded_box("sole", (0, 0, 0.008), (0.052, 0.1, 0.016), 0.007, lm, o)
+            C.sphere("toe", (0, -0.028, 0.024), (0.027, 0.034, 0.022), um, o, 20)
+            C.rounded_box("shaft", (0, 0.015, 0.05), (0.048, 0.052, 0.08), 0.02, um, o)
+            C.tube("cuff", [(math.cos(k * 6.2832 / 24) * 0.026, 0.015 + math.sin(k * 6.2832 / 24) * 0.028, 0.09) for k in range(25)], 0.006, sm, o)
+        else:
+            C.rounded_box("sole", (0, 0, 0.012), (0.05, 0.098, 0.024), 0.01, um, o)
+            C.tube("strap", [(-0.024, -0.02, 0.022), (-0.012, -0.02, 0.042), (0.012, -0.02, 0.042), (0.024, -0.02, 0.022)], 0.006, lm, o)
+            C.tube("band", [(-0.024, 0.03, 0.022), (0, 0.03, 0.04), (0.024, 0.03, 0.022)], 0.005, lm, o)
+            C.sphere("bead", (0, -0.02, 0.046), (0.008,) * 3, sm, o, 10)
+
+
+def time_clock(r, s, fam, root):
+    c, d = [_rich(x, 1.3, 0.95) for x in _cols(r, fam, 2)]
+    cm = M(c, rough=0.4, coat=0.6)
+    dm = M(d, rough=0.45, coat=0.5)
+    face = M((0.98, 0.97, 0.92), rough=0.5, coat=0.3, emit=0.12)
+    ink = M((0.15, 0.18, 0.3), rough=0.4, coat=0.5)
+    if s == 0:
+        R, z0, fy = 0.16, 0.2, 0.0
+        C.tube("rim", [(math.cos(k * 6.2832 / 56) * R, 0, z0 + math.sin(k * 6.2832 / 56) * R) for k in range(57)], 0.03, cm, root)
+        for sx in (-1, 1):
+            C.sphere("foot", (sx * 0.1, 0.0, 0.025), (0.035, 0.035, 0.03), dm, root, 16)
+        C.sphere("knob", (0, 0, z0 + R + 0.035), (0.03, 0.03, 0.025), dm, root, 16)
+    elif s == 1:
+        R, z0, fy = 0.13, 0.19, -0.03
+        C.rounded_box("case", (0, 0.03, 0.16), (0.36, 0.1, 0.32), 0.05, cm, root)
+        C.sphere("arch", (0, 0.03, 0.31), (0.18, 0.05, 0.08), cm, root, 32)
+        C.rounded_box("base", (0, 0.03, 0.015), (0.42, 0.14, 0.03), 0.012, dm, root)
+    else:
+        R, z0, fy = 0.17, 0.42, 0.0
+        C.tube("rim", [(math.cos(k * 6.2832 / 56) * R, 0, z0 + math.sin(k * 6.2832 / 56) * R) for k in range(57)], 0.022, cm, root)
+        C.tube("stem", [(0, 0.03, z0 - R), (0, 0.03, 0.03)], 0.02, dm, root)
+        C.lathe("foot", [(0, 0.0), (0, 0.12), (0.02, 0.13), (0.035, 0.1), (0.04, 0.0)], dm, root, segs=40)
+    dk = C.empty("dk", root, (0, fy + 0.006, z0), (math.radians(90), 0, 0))
+    C.lathe("face", [(-0.008, 0.0), (-0.008, R), (0.008, R), (0.008, 0.0)], face, dk, segs=56)
+    for k in range(12):
+        a = k * 6.2832 / 12
+        q = 0.012 if k % 3 == 0 else 0.007
+        C.sphere("tick", (math.cos(a) * R * 0.8, fy - 0.006, z0 + math.sin(a) * R * 0.8), (q, 0.004, q), ink, root, 10)
+    hm = C.empty("hand_m", root, (0, fy - 0.012, z0))
+    C.tube("hm", [(0, 0, 0), (0, 0, R * 0.7)], 0.008, ink, hm)
+    hh = C.empty("hand_h", root, (0, fy - 0.016, z0))
+    C.tube("hh", [(0, 0, 0), (0, 0, R * 0.45)], 0.011, M(d, rough=0.4, coat=0.6), hh)
+    C.sphere("pin", (0, fy - 0.02, z0), (0.016, 0.008, 0.016), dm, root, 12)
+    return hm, hh
+
 GEN = {k: v for k, v in globals().items() if k in REGISTRY}
 
 

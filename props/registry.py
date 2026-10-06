@@ -43,4 +43,6 @@ REGISTRY = {
     "bridge_kit": {"styles": 3, "envs": ["patio", "casa", "aula"], "tags": ["construir", "juguete"], "decor": False},
     "toy_torch": {"styles": 3, "envs": ["lab", "casa", "aula", "patio"], "tags": ["luz", "buscar"], "decor": False},
     "explain_panel": {"styles": 3, "envs": ["lab", "aula", "casa", "patio", "plaza"], "tags": ["ilustracion", "ciencia"], "decor": False},
+    "tiny_shoes": {"styles": 3, "envs": ["casa", "aula", "patio"], "tags": ["juguete", "ropa"], "decor": False},
+    "time_clock": {"styles": 3, "envs": ["casa", "aula", "lab", "cocina"], "tags": ["tiempo", "reloj"], "decor": False},
 }
