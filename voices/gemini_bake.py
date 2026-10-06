@@ -16,6 +16,15 @@ from lock import f0_file, profiles
 MAX_DEV = 5.0
 
 
+def reg(c):
+    pr = profiles()
+    if c not in pr:
+        return "siempre con el mismo tono y timbre"
+    f = pr[c]["f0"]
+    r = "agudo" if f > 240 else ("medio" if f > 150 else "grave")
+    return f"siempre con su tono {r} habitual y el mismo timbre"
+
+
 def deviation(path, c):
     pr = profiles()
     if c not in pr:
@@ -50,12 +59,12 @@ def tts(prompt, voice, speakers=None):
             time.sleep(21)
             return np.frombuffer(pcm, dtype=np.int16).astype(np.float64) / 32768, 24000
         except urllib.error.HTTPError as e:
-            body = e.read().decode("utf-8", "ignore")
-            print("http", e.code, body[:600], flush=True)
+            msg = e.read().decode("utf-8", "ignore")
+            print("http", e.code, msg[:600], flush=True)
             if e.code == 429:
-                if "PerDay" in body or attempt >= 2:
+                if "PerDay" in msg or attempt >= 2:
                     raise RuntimeError("quota")
-                m = re.search(r'"retryDelay":\s*"(\d+)', body)
+                m = re.search(r'"retryDelay":\s*"(\d+)', msg)
                 time.sleep((int(m.group(1)) if m else 60) + 3)
                 continue
             time.sleep(40 * (attempt + 1))
@@ -235,7 +244,7 @@ def run_group(cids, man, allL, asr):
             if a: order.append(a.pop(0))
             if b: order.append(b.pop(0))
         seq = order
-        styles = " ".join(f"{NAMES[c]}: {VOICES[c][1]}." for c in cids)
+        styles = " ".join(f"{NAMES[c]}: {VOICES[c][1]}, {reg(c)}." for c in cids)
         script = "\n".join(f"{NAMES[c]}: {e['text']}" for c, k, e in seq)
         prompt = (f"Lee este guion de un dibujo animado infantil. {styles} Cada frase con naturalidad y emoción, "
                   f"y una pausa de dos segundos entre frase y frase.\n\n{script}")
@@ -243,7 +252,7 @@ def run_group(cids, man, allL, asr):
     else:
         c = cids[0]
         script = "\n".join(f"{e['text']}" for _, k, e in seq)
-        prompt = (f"{VOICES[c][1]}. Lee las siguientes frases en orden, con naturalidad y emoción, "
+        prompt = (f"{VOICES[c][1]}, {reg(c)}. Lee las siguientes frases en orden, con naturalidad y emoción, "
                   f"haciendo una pausa de dos segundos entre cada frase.\n\n{script}")
         x, sr = tts(prompt, VOICES[c][0])
     parts = split(x, sr, len(seq))
