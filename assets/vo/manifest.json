@@ -1191,13 +1191,15 @@
   "shift": -1.18
  },
  "ep_maquina_silencio_b1": {
-  "hash": "rejected",
-  "dur": 2.6,
+  "hash": "45c00365e366",
+  "dur": 2.24,
   "text": "¡Bip! ¿Dónde están los sonidos?",
   "asr": 0.8,
-  "heard": "VIP, ¿dónde están los sonidos?",
+  "heard": "¿Bip? ¿Dónde están los somidos?",
   "engine": "gemini",
-  "voice": "Iapetus"
+  "voice": "Iapetus",
+  "lock": "L1",
+  "shift": 2.21
  },
  "ep_maquina_silencio_b2": {
   "hash": "1223e137564a",
@@ -1211,13 +1213,15 @@
   "shift": 3.16
  },
  "ep_maquina_silencio_b3": {
-  "hash": "rejected",
-  "dur": 1.2,
+  "hash": "8e8df4e013b3",
+  "dur": 1.19,
   "text": "¡Es la campana!",
   "asr": 1.0,
-  "heard": "¡Es la campana!",
+  "heard": "Es la campana.",
   "engine": "gemini",
-  "voice": "Iapetus"
+  "voice": "Iapetus",
+  "lock": "L1",
+  "shift": 5.58
  },
  "ep_maquina_silencio_b5": {
   "hash": "ec76887a9d46",
@@ -1264,13 +1268,15 @@
   "shift": -3.03
  },
  "ep_sombra_no_obedece_g1": {
-  "hash": "rejected",
-  "dur": 1.74,
+  "hash": "015e58975168",
+  "dur": 1.79,
   "text": "¡Mirad! ¡Soy gigante!",
   "asr": 1.0,
-  "heard": "¡Mirad! ¡Soy gigante!",
+  "heard": "¡Mirad! Soy gigante.",
   "engine": "gemini",
-  "voice": "Algenib"
+  "voice": "Algenib",
+  "lock": "L1",
+  "shift": 6.27
  },
  "ep_bolita_mezcla_verde_p3": {
   "hash": "11d21c8f8c4d",
@@ -1546,5 +1552,500 @@
   "voice": "Leda",
   "lock": "L1",
   "shift": -3.51
+ },
+ "ep_boton_mas_grande_g1": {
+  "hash": "aaaf2cf9dc1b",
+  "dur": 2.69,
+  "text": "¡Botón de más grande! ¡Toda para mí!",
+  "asr": 0.86,
+  "heard": "¡Votón de manera grande, toda para mí!",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "lock": "L1",
+  "shift": 4.85
+ },
+ "ep_puerta_empuja_tira_b1": {
+  "hash": "6aa769c16623",
+  "dur": 1.78,
+  "text": "¡Bip! Mira la flecha.",
+  "asr": 0.75,
+  "heard": "Beep, mira la flecha.",
+  "engine": "gemini",
+  "voice": "Iapetus",
+  "lock": "L1",
+  "shift": 5.67
+ },
+ "ep_puerta_empuja_tira_b2": {
+  "hash": "807e1892e47b",
+  "dur": 1.62,
+  "text": "La flecha viene hacia ti.",
+  "asr": 1.0,
+  "heard": "La flecha viene hacia ti.",
+  "engine": "gemini",
+  "voice": "Iapetus",
+  "lock": "L1",
+  "shift": 4.41
+ },
+ "ep_puerta_empuja_tira_b3": {
+  "hash": "001e09514a4c",
+  "dur": 1.51,
+  "text": "¿Empujamos o tiramos?",
+  "asr": 1.0,
+  "heard": "Empujamos o tiramos.",
+  "engine": "gemini",
+  "voice": "Iapetus",
+  "lock": "L1",
+  "shift": 4.16
+ },
+ "ep_boton_mas_grande_g2": {
+  "hash": "4e3385072eb2",
+  "dur": 2.12,
+  "text": "¡Uf! ¡No puedo levantarla!",
+  "asr": 0.75,
+  "heard": "¡Uff! No puedo levantarla.",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "lock": "L1",
+  "shift": -1.21
+ },
+ "ep_boton_mas_grande_g3": {
+  "hash": "ea2a13f163e4",
+  "dur": 2.38,
+  "text": "Bueno... ¡pero el trozo grande es mío!",
+  "asr": 1.0,
+  "heard": "Bueno, pero el trozo grande es mío.",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "lock": "L1",
+  "shift": -1.57
+ },
+ "ep_boton_mas_grande_g4": {
+  "hash": "d96e8d4faa27",
+  "dur": 1.34,
+  "text": "¡Sigue siendo enorme!",
+  "asr": 1.0,
+  "heard": "¡Sigue siendo enorme!",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "lock": "L1",
+  "shift": 6.69
+ },
+ "ep_carrera_mas_lenta_g1": {
+  "hash": "8cc7810db253",
+  "dur": 2.19,
+  "text": "¡Paso! ¡El más rápido soy yo!",
+  "asr": 1.0,
+  "heard": "Paso. El más rápido soy yo.",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "lock": "L1",
+  "shift": 5.24
+ },
+ "ep_iman_manzana_b1": {
+  "hash": "f4b513a0ad19",
+  "dur": 2.38,
+  "text": "¡Bip! Probamos a la misma distancia.",
+  "asr": 1.0,
+  "heard": "VIP, probamos a la misma distancia.",
+  "engine": "gemini",
+  "voice": "Iapetus",
+  "lock": "L1",
+  "shift": 5.86
+ },
+ "ep_iman_manzana_b2": {
+  "hash": "606b8eb0dde8",
+  "dur": 1.56,
+  "text": "La madera no se mueve.",
+  "asr": 1.0,
+  "heard": "La madera no se mueve.",
+  "engine": "gemini",
+  "voice": "Iapetus",
+  "lock": "L1",
+  "shift": 3.12
+ },
+ "ep_puerta_empuja_tira_b4": {
+  "hash": "67cc2e718f80",
+  "dur": 0.64,
+  "text": "¡Tiramos!",
+  "asr": 1.0,
+  "heard": "Tiramos.",
+  "engine": "gemini",
+  "voice": "Iapetus",
+  "lock": "L1",
+  "shift": 5.14
+ },
+ "ep_puerta_empuja_tira_b5": {
+  "hash": "c6c63bab2e9a",
+  "dur": 2.51,
+  "text": "Esta flecha va hacia dentro: empuja.",
+  "asr": 0.83,
+  "heard": "Esta flecha va hacia adentro. Empuja.",
+  "engine": "gemini",
+  "voice": "Iapetus",
+  "lock": "L1",
+  "shift": 3.8
+ },
+ "ep_puerta_empuja_tira_g1": {
+  "hash": "2a27da69a165",
+  "dur": 1.66,
+  "text": "¡Apartad, que paso yo!",
+  "asr": 1.0,
+  "heard": "¡Apartad! ¡Qué paso yo!",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "lock": "L1",
+  "shift": 5.28
+ },
+ "ep_puerta_empuja_tira_g2": {
+  "hash": "f6b28f6fb426",
+  "dur": 1.58,
+  "text": "¡Esta puerta está rota!",
+  "asr": 1.0,
+  "heard": "Esta puerta está rota.",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "lock": "L1",
+  "shift": 4.18
+ },
+ "ep_puerta_empuja_tira_g3": {
+  "hash": "8f60c25c2fe9",
+  "dur": 1.65,
+  "text": "¡Ja! ¡Esta la abro yo!",
+  "asr": 0.8,
+  "heard": "¡Ah! ¡Esta la abro yo!",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "lock": "L1",
+  "shift": 1.03
+ },
+ "ep_carrera_mas_lenta_t1": {
+  "hash": "dd2a44aa9053",
+  "dur": 1.39,
+  "text": "¡Corro con mi torre!",
+  "asr": 0.89,
+  "heard": "Corro con mi torre y...",
+  "engine": "gemini",
+  "voice": "Fenrir",
+  "lock": "L1",
+  "shift": 1.93
+ },
+ "ep_carrera_mas_lenta_t2": {
+  "hash": "1d99f5db069d",
+  "dur": 1.23,
+  "text": "¡Ay! ¡Se ha caído!",
+  "asr": 1.0,
+  "heard": "¡Ay! ¡Se ha caído!",
+  "engine": "gemini",
+  "voice": "Fenrir",
+  "lock": "L1",
+  "shift": 4.81
+ },
+ "ep_carrera_mas_lenta_t4": {
+  "hash": "ad7dc7ec5f43",
+  "dur": 1.54,
+  "text": "¡Ahora yo, despacito!",
+  "asr": 1.0,
+  "heard": "¡Ahora yo! ¡Despacito!",
+  "engine": "gemini",
+  "voice": "Fenrir",
+  "lock": "L1",
+  "shift": 0.83
+ },
+ "ep_bolita_mezcla_verde_b1": {
+  "hash": "3eea203ba2bd",
+  "dur": 1.49,
+  "text": "¡Quiero unos pies verdes!",
+  "asr": 1.0,
+  "heard": "Quiero unos pies verdes.",
+  "engine": "gemini",
+  "voice": "Zephyr",
+  "lock": "L1",
+  "shift": 0.12
+ },
+ "ep_bolita_mezcla_verde_b2": {
+  "hash": "9c1a06e0c2ad",
+  "dur": 1.98,
+  "text": "Pero solo tengo azul y amarillo...",
+  "asr": 1.0,
+  "heard": "Pero solo tengo azul y amarillo.",
+  "engine": "gemini",
+  "voice": "Zephyr",
+  "lock": "L1",
+  "shift": -5.4
+ },
+ "ep_bolita_mezcla_verde_b3": {
+  "hash": "8529c6e21a3c",
+  "dur": 0.65,
+  "text": "¡Verde!",
+  "asr": 1.0,
+  "heard": "Verde",
+  "engine": "gemini",
+  "voice": "Zephyr",
+  "lock": "L1",
+  "shift": 1.66
+ },
+ "ep_bolita_mezcla_verde_b4": {
+  "hash": "17608902573b",
+  "dur": 2.1,
+  "text": "¡Pies verdes! ¡Y el resto, rojo!",
+  "asr": 1.0,
+  "heard": "Pies verdes y el resto rojo.",
+  "engine": "gemini",
+  "voice": "Zephyr",
+  "lock": "L1",
+  "shift": 2.84
+ },
+ "ep_bolita_mezcla_verde_b5": {
+  "hash": "fa084bee8d05",
+  "dur": 1.12,
+  "text": "¡Mira mis huellas!",
+  "asr": 1.0,
+  "heard": "¡Mira mis huellas!",
+  "engine": "gemini",
+  "voice": "Zephyr",
+  "lock": "L1",
+  "shift": 2.07
+ },
+ "ep_luma_escucha_t1": {
+  "hash": "ab13074f80e9",
+  "dur": 1.3,
+  "text": "¡Mira cómo salto!",
+  "asr": 1.0,
+  "heard": "¡Mira cómo saltó!",
+  "engine": "gemini",
+  "voice": "Fenrir",
+  "lock": "L1",
+  "shift": -2.14
+ },
+ "ep_mitades_merienda_t1": {
+  "hash": "291177294f14",
+  "dur": 1.31,
+  "text": "¡No, mía!",
+  "asr": 1.0,
+  "heard": "¡No! ¡Mía!",
+  "engine": "gemini",
+  "voice": "Fenrir",
+  "lock": "L1",
+  "shift": -6.61
+ },
+ "ep_carrera_mas_lenta_t5": {
+  "hash": "cec65619ae5b",
+  "dur": 0.99,
+  "text": "¡Solo trae uno!",
+  "asr": 1.0,
+  "heard": "Solo trae uno.",
+  "engine": "gemini",
+  "voice": "Fenrir",
+  "lock": "L1",
+  "shift": -5.58
+ },
+ "ep_corcho_flota_b2": {
+  "hash": "ea6e91efe01d",
+  "dur": 1.32,
+  "text": "¡Oh! ¡Se ha hundido!",
+  "asr": 1.0,
+  "heard": "¡Oh, se ha hundido!",
+  "engine": "gemini",
+  "voice": "Zephyr",
+  "lock": "L1",
+  "shift": -6.61
+ },
+ "ep_luma_escucha_t2": {
+  "hash": "e04f718142d3",
+  "dur": 0.93,
+  "text": "¡Te escuchamos!",
+  "asr": 1.0,
+  "heard": "¡Te escuchamos!",
+  "engine": "gemini",
+  "voice": "Fenrir",
+  "lock": "L1",
+  "shift": -0.5
+ },
+ "ep_mitades_merienda_t2": {
+  "hash": "eb5c1f3ffd18",
+  "dur": 0.75,
+  "text": "¡Y la mía!",
+  "asr": 1.0,
+  "heard": "Y la mía",
+  "engine": "gemini",
+  "voice": "Fenrir",
+  "lock": "L1",
+  "shift": -2.49
+ },
+ "ep_mitades_merienda_t3": {
+  "hash": "bcbe940344d2",
+  "dur": 0.74,
+  "text": "¡Es igual!",
+  "asr": 1.0,
+  "heard": "Es igual.",
+  "engine": "gemini",
+  "voice": "Fenrir",
+  "lock": "L1",
+  "shift": 0.23
+ },
+ "ep_pelota_cae_t1": {
+  "hash": "a75dc59d99ce",
+  "dur": 1.31,
+  "text": "¡Sube, pelota! ¡Sube!",
+  "asr": 1.0,
+  "heard": "Sube pelota, sube.",
+  "engine": "gemini",
+  "voice": "Fenrir",
+  "lock": "L1",
+  "shift": 4.1
+ },
+ "ep_pelota_cae_t3": {
+  "hash": "642b82b5e1b5",
+  "dur": 1.29,
+  "text": "¡Uy! ¡Otra vez abajo!",
+  "asr": 1.0,
+  "heard": "¡Uy! ¡Otra vez abajo!",
+  "engine": "gemini",
+  "voice": "Fenrir",
+  "lock": "L1",
+  "shift": 0.51
+ },
+ "ep_pelota_cae_t4": {
+  "hash": "fbfdb56ff902",
+  "dur": 1.65,
+  "text": "¿Y si se lo pido por favor?",
+  "asr": 1.0,
+  "heard": "Y si se lo pido, por favor.",
+  "engine": "gemini",
+  "voice": "Fenrir",
+  "lock": "L1",
+  "shift": -5.5
+ },
+ "ep_carrera_mas_lenta_t3": {
+  "hash": "062119be1249",
+  "dur": 1.19,
+  "text": "¿Llegará entera?",
+  "asr": 1.0,
+  "heard": "¿Llegará entera?",
+  "engine": "gemini",
+  "voice": "Fenrir",
+  "lock": "L1",
+  "shift": -6.15
+ },
+ "ep_hielo_derrite_t2": {
+  "hash": "57f501c12a58",
+  "dur": 2.09,
+  "text": "¿Eh? ¿Dónde está? ¡Solo hay agua!",
+  "asr": 0.88,
+  "heard": "¿Dónde está? ¡Solo hay agua!",
+  "engine": "gemini",
+  "voice": "Fenrir",
+  "lock": "L1",
+  "shift": -2.1
+ },
+ "ep_pelota_cae_t2": {
+  "hash": "7e8f9d371df9",
+  "dur": 1.9,
+  "text": "¡Que subas! ¡Te lo ordeno!",
+  "asr": 1.0,
+  "heard": "¡Que subas! ¡Te lo ordeno!",
+  "engine": "gemini",
+  "voice": "Fenrir",
+  "lock": "L1",
+  "shift": -3.31
+ },
+ "ep_pelota_cae_t5": {
+  "hash": "ae8f879a2eb3",
+  "dur": 1.52,
+  "text": "¡Ahora sí! ¡Sube!",
+  "asr": 1.0,
+  "heard": "Ahora sí, sube.",
+  "engine": "gemini",
+  "voice": "Fenrir",
+  "lock": "L1",
+  "shift": -3.01
+ },
+ "ep_corcho_flota_b1": {
+  "hash": "09f3c5b51e84",
+  "dur": 2.66,
+  "text": "¡Mi piedra con pegatina de barco! ¡A navegar!",
+  "asr": 1.0,
+  "heard": "Mi piedra con pegatina de barco. A navegar.",
+  "engine": "gemini",
+  "voice": "Zephyr",
+  "lock": "L1",
+  "shift": -4.49
+ },
+ "ep_corcho_flota_b3": {
+  "hash": "4761234f782c",
+  "dur": 1.68,
+  "text": "¡Pues la pego en el corcho!",
+  "asr": 1.0,
+  "heard": "¡Pues la pego en el corcho!",
+  "engine": "gemini",
+  "voice": "Zephyr",
+  "lock": "L1",
+  "shift": -6.02
+ },
+ "ep_corcho_flota_b4": {
+  "hash": "0c0b9c3fa9a7",
+  "dur": 0.96,
+  "text": "¡Buen viaje!",
+  "asr": 1.0,
+  "heard": "Buen viaje",
+  "engine": "gemini",
+  "voice": "Zephyr",
+  "lock": "L1",
+  "shift": -2.6
+ },
+ "ep_luma_escucha_p1": {
+  "hash": "6484bd60549b",
+  "dur": 1.27,
+  "text": "¡Y yo hago una torre!",
+  "asr": 1.0,
+  "heard": "Y yo hago una torre.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "lock": "L1",
+  "shift": -2.89
+ },
+ "ep_luma_escucha_p2": {
+  "hash": "fcce79031694",
+  "dur": 1.52,
+  "text": "Uy... Luma está triste.",
+  "asr": 1.0,
+  "heard": "¡Uy, luma está triste!",
+  "engine": "gemini",
+  "voice": "Puck",
+  "lock": "L1",
+  "shift": -4.01
+ },
+ "ep_luma_escucha_p3": {
+  "hash": "7e9c65609feb",
+  "dur": 1.0,
+  "text": "¿Nos lo cuentas?",
+  "asr": 1.0,
+  "heard": "¿Nos lo cuentas?",
+  "engine": "gemini",
+  "voice": "Puck",
+  "lock": "L1",
+  "shift": -6.86
+ },
+ "ep_hielo_derrite_l4": {
+  "hash": "fd779a4dca90",
+  "dur": 1.54,
+  "text": "Ahora es agua líquida.",
+  "asr": 1.0,
+  "heard": "Ahora es agua líquida.",
+  "engine": "gemini",
+  "voice": "Leda",
+  "lock": "L1",
+  "shift": -4.01
+ },
+ "ep_bolita_mezcla_verde_p1": {
+  "hash": "c1cfd080dfd3",
+  "dur": 1.45,
+  "text": "¡Vamos a mezclarlos!",
+  "asr": 1.0,
+  "heard": "¡Vamos a mezclarlos!",
+  "engine": "gemini",
+  "voice": "Puck",
+  "lock": "L1",
+  "shift": -6.05
  }
 }
