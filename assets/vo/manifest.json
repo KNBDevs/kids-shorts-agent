@@ -780,64 +780,64 @@
   "dev": 6.7
  },
  "ep_moki_colador_lluvia_p1": {
-  "hash": "rejected",
-  "dur": 1.48,
+  "hash": "77703bedf09a",
+  "dur": 1.26,
   "text": "¡Tiene agujeritos!",
   "asr": 1.0,
   "heard": "¡Tiene agujeritos!",
   "engine": "gemini",
   "voice": "Puck",
-  "dev": -6.15
+  "dev": 0.0
  },
  "ep_moki_colador_lluvia_p2": {
-  "hash": "rejected",
-  "dur": 1.31,
+  "hash": "51d6214ac883",
+  "dur": 1.22,
   "text": "Prueba con mi taza.",
   "asr": 1.0,
   "heard": "¡Prueba con mi taza!",
   "engine": "gemini",
   "voice": "Puck",
-  "dev": -13.8
+  "dev": -0.1
  },
  "ep_moki_colador_lluvia_p3": {
-  "hash": "rejected",
-  "dur": 1.62,
+  "hash": "80c9cb77a585",
+  "dur": 1.39,
   "text": "¿Por dónde se escapa el agua?",
   "asr": 1.0,
   "heard": "¿Por dónde se escapa el agua?",
   "engine": "gemini",
   "voice": "Puck",
-  "dev": -11.95
+  "dev": 0.0
  },
  "ep_moki_colador_lluvia_p4": {
-  "hash": "rejected",
-  "dur": 1.22,
+  "hash": "dae6a0fd48d3",
+  "dur": 1.21,
   "text": "¡Por los agujeros!",
   "asr": 1.0,
-  "heard": "por los agujeros",
+  "heard": "¡Por los agujeros!",
   "engine": "gemini",
   "voice": "Puck",
-  "dev": -11.1
+  "dev": -3.5
  },
  "ep_sombra_no_obedece_p1": {
-  "hash": "rejected",
-  "dur": 1.14,
+  "hash": "bddded36f53f",
+  "dur": 1.22,
   "text": "¡Mira mi sombra!",
   "asr": 1.0,
   "heard": "¡Mira mi sombra!",
   "engine": "gemini",
   "voice": "Puck",
-  "dev": -8.62
+  "dev": -1.75
  },
  "ep_sombra_no_obedece_p2": {
-  "hash": "rejected",
+  "hash": "4eaad7e9d13e",
   "dur": 1.47,
   "text": "¿Dónde está mi sombra?",
   "asr": 1.0,
   "heard": "¿Dónde está mi sombra?",
   "engine": "gemini",
   "voice": "Puck",
-  "dev": -15.9
+  "dev": 0.0
  },
  "ep_sombra_no_obedece_p3": {
   "hash": "a2886caa36cb",
@@ -850,24 +850,24 @@
   "dev": 0.0
  },
  "ep_sombra_no_obedece_p4": {
-  "hash": "rejected",
-  "dur": 2.61,
+  "hash": "c1bb79a534cd",
+  "dur": 2.89,
   "text": "¡La luz va a un lado y la sombra al otro!",
-  "asr": 0.95,
-  "heard": "La luz va un lado y la sombra al otro.",
+  "asr": 1.0,
+  "heard": "La luz va a un lado y la sombra al otro.",
   "engine": "gemini",
   "voice": "Puck",
-  "dev": -12.0
+  "dev": 1.9
  },
  "ep_moki_colador_lluvia_m5": {
-  "hash": "rejected",
-  "dur": 1.35,
+  "hash": "ea099029c5d7",
+  "dur": 2.11,
   "text": "¡Ay! ¡Gota en la nariz!",
-  "asr": 0.89,
-  "heard": "Gota en la nariz.",
+  "asr": 1.0,
+  "heard": "¡Ay, gota en la nariz!",
   "engine": "gemini",
   "voice": "Enceladus",
-  "dev": 12.55
+  "dev": 2.1
  },
  "ep_tuki_cuenta_saltos_a1": {
   "hash": "611fa006ace0",
@@ -1000,14 +1000,14 @@
   "dev": 5.15
  },
  "ep_sombra_no_obedece_g2": {
-  "hash": "rejected",
-  "dur": 1.61,
+  "hash": "a948330334e8",
+  "dur": 2.51,
   "text": "Bah... ¡pues mediano!",
-  "asr": 0.67,
-  "heard": "Va, pues mediano.",
+  "asr": 1.0,
+  "heard": "¡Bah! Pues mediano.",
   "engine": "gemini",
   "voice": "Algenib",
-  "dev": 11.0
+  "dev": 0.0
  },
  "ep_tuki_cuenta_saltos_r1": {
   "hash": "5583210b2a7d",
@@ -1080,14 +1080,14 @@
   "dev": 0.0
  },
  "ep_moki_colador_lluvia_m3": {
-  "hash": "rejected",
-  "dur": 1.61,
+  "hash": "8a7fab870604",
+  "dur": 2.35,
   "text": "¡Mira! ¡El agua sube!",
   "asr": 1.0,
   "heard": "¡Mira, el agua sube!",
   "engine": "gemini",
   "voice": "Enceladus",
-  "dev": 0.0
+  "dev": -2.8
  },
  "ep_moki_colador_lluvia_m4": {
   "hash": "80037a1c992c",
@@ -1220,49 +1220,54 @@
   "dev": 0.0
  },
  "ep_bolita_mezcla_verde_p3": {
-  "hash": "rejected",
-  "dur": 1.17,
+  "hash": "11d21c8f8c4d",
+  "dur": 1.06,
   "text": "¿Qué color saldrá?",
   "asr": 1.0,
   "heard": "¿Qué color saldrá?",
   "engine": "gemini",
-  "voice": "Puck"
+  "voice": "Puck",
+  "dev": -5.0
  },
  "ep_bolita_mezcla_verde_p4": {
-  "hash": "rejected",
-  "dur": 2.19,
+  "hash": "0a92136282ec",
+  "dur": 2.0,
   "text": "¡Azul y amarillo hacen verde!",
   "asr": 1.0,
   "heard": "Azul y amarillo hacen verde.",
   "engine": "gemini",
-  "voice": "Puck"
+  "voice": "Puck",
+  "dev": 4.7
  },
  "ep_monstruo_caja_p1": {
-  "hash": "rejected",
-  "dur": 1.14,
+  "hash": "4aec576190cd",
+  "dur": 1.01,
   "text": "¿Qué ha sido eso?",
   "asr": 1.0,
   "heard": "¿Qué ha sido eso?",
   "engine": "gemini",
-  "voice": "Puck"
+  "voice": "Puck",
+  "dev": 0.0
  },
  "ep_monstruo_caja_p3": {
-  "hash": "rejected",
-  "dur": 0.98,
+  "hash": "7566b5e6badb",
+  "dur": 1.12,
   "text": "¡Es un altavoz!",
   "asr": 1.0,
-  "heard": "Es un altavoz.",
+  "heard": "¡Es un altavoz!",
   "engine": "gemini",
-  "voice": "Puck"
+  "voice": "Puck",
+  "dev": 0.0
  },
  "ep_monstruo_caja_p4": {
-  "hash": "rejected",
-  "dur": 1.26,
+  "hash": "7bc545575c97",
+  "dur": 1.75,
   "text": "¡Ahora es un gatito!",
   "asr": 1.0,
-  "heard": "Ahora es un gatito.",
+  "heard": "¡Ahora es un gatito!",
   "engine": "gemini",
-  "voice": "Puck"
+  "voice": "Puck",
+  "dev": 0.0
  },
  "ep_luma_escucha_l3": {
   "hash": "rejected",
@@ -1274,31 +1279,34 @@
   "voice": "Leda"
  },
  "ep_bolita_mezcla_verde_p2": {
-  "hash": "rejected",
-  "dur": 2.9,
+  "hash": "f292e3a767d0",
+  "dur": 2.56,
   "text": "Un poco de azul... y un poco de amarillo.",
   "asr": 1.0,
   "heard": "Un poco de azul y un poco de amarillo.",
   "engine": "gemini",
-  "voice": "Puck"
+  "voice": "Puck",
+  "dev": 4.5
  },
  "ep_boton_mas_grande_r1": {
-  "hash": "rejected",
-  "dur": 2.89,
+  "hash": "f961f4a563f3",
+  "dur": 4.18,
   "text": "Tu galleta es grande. La mía, pequeña.",
   "asr": 1.0,
   "heard": "Tu galleta es grande, la mía pequeña.",
   "engine": "gemini",
-  "voice": "Umbriel"
+  "voice": "Umbriel",
+  "dev": 1.46
  },
  "ep_esponja_absorbe_m1": {
-  "hash": "rejected",
-  "dur": 2.76,
+  "hash": "fc387f5e234f",
+  "dur": 3.1,
   "text": "¿Tienes sed, esponja? Aquí tienes agua.",
-  "asr": 0.83,
-  "heard": "¿Tienes sede esponja? Aquí tienes agua.",
+  "asr": 0.77,
+  "heard": "Tienes se de esponja, aquí tienes agua.",
   "engine": "gemini",
-  "voice": "Enceladus"
+  "voice": "Enceladus",
+  "dev": 0.55
  },
  "ep_boton_mas_grande_r2": {
   "hash": "rejected",
@@ -1310,13 +1318,14 @@
   "voice": "Umbriel"
  },
  "ep_boton_mas_grande_r3": {
-  "hash": "rejected",
-  "dur": 2.47,
+  "hash": "69f10f376fbf",
+  "dur": 3.29,
   "text": "¡La tuya! ¿La partimos para compartir?",
   "asr": 1.0,
-  "heard": "¿La tuya? ¿La partimos para compartir?",
+  "heard": "La tuya. La partimos para compartir.",
   "engine": "gemini",
-  "voice": "Umbriel"
+  "voice": "Umbriel",
+  "dev": -0.04
  },
  "ep_carrera_mas_lenta_r1": {
   "hash": "rejected",
@@ -1328,40 +1337,44 @@
   "voice": "Umbriel"
  },
  "ep_esponja_absorbe_m2": {
-  "hash": "rejected",
+  "hash": "271203eab8c9",
   "dur": 2.01,
   "text": "La cuchara no recoge nada.",
   "asr": 1.0,
   "heard": "La cuchara no recoge nada.",
   "engine": "gemini",
-  "voice": "Enceladus"
+  "voice": "Enceladus",
+  "dev": 0.3
  },
  "ep_esponja_absorbe_m3": {
-  "hash": "rejected",
-  "dur": 2.78,
+  "hash": "a57f197a0a79",
+  "dur": 2.97,
   "text": "¡Te has mojado! Toma, un pañuelo.",
   "asr": 1.0,
-  "heard": "¡Te has mojado! ¡Toma un pañuelo!",
+  "heard": "Te has mojado. Toma un pañuelo.",
   "engine": "gemini",
-  "voice": "Enceladus"
+  "voice": "Enceladus",
+  "dev": 3.1
  },
  "ep_boton_mas_grande_r4": {
-  "hash": "rejected",
-  "dur": 1.92,
+  "hash": "0168a42bab17",
+  "dur": 1.78,
   "text": "Un trozo para cada uno.",
   "asr": 1.0,
   "heard": "Un trozo para cada uno.",
   "engine": "gemini",
-  "voice": "Umbriel"
+  "voice": "Umbriel",
+  "dev": 4.06
  },
  "ep_carrera_mas_lenta_r2": {
-  "hash": "rejected",
-  "dur": 2.17,
+  "hash": "e8ecbbd3f4dc",
+  "dur": 2.64,
   "text": "Paso a paso... sin prisa.",
   "asr": 1.0,
-  "heard": "Paso a paso, sin prisa.",
+  "heard": "Paso a paso. Sin prisa.",
   "engine": "gemini",
-  "voice": "Umbriel"
+  "voice": "Umbriel",
+  "dev": 0.0
  },
  "ep_carrera_mas_lenta_r3": {
   "hash": "rejected",
@@ -1824,22 +1837,24 @@
   "voice": "Zephyr"
  },
  "ep_luma_escucha_p1": {
-  "hash": "rejected",
-  "dur": 1.27,
+  "hash": "6484bd60549b",
+  "dur": 1.46,
   "text": "¡Y yo hago una torre!",
   "asr": 1.0,
-  "heard": "Y yo hago una torre.",
+  "heard": "¡Y yo hago una torre!",
   "engine": "gemini",
-  "voice": "Puck"
+  "voice": "Puck",
+  "dev": 2.6
  },
  "ep_luma_escucha_p2": {
-  "hash": "rejected",
-  "dur": 1.52,
+  "hash": "fcce79031694",
+  "dur": 1.87,
   "text": "Uy... Luma está triste.",
   "asr": 1.0,
   "heard": "¡Uy, luma está triste!",
   "engine": "gemini",
-  "voice": "Puck"
+  "voice": "Puck",
+  "dev": 3.3
  },
  "ep_luma_escucha_p3": {
   "hash": "rejected",
@@ -1860,13 +1875,14 @@
   "voice": "Leda"
  },
  "ep_bolita_mezcla_verde_p1": {
-  "hash": "rejected",
-  "dur": 1.45,
+  "hash": "c1cfd080dfd3",
+  "dur": 1.22,
   "text": "¡Vamos a mezclarlos!",
   "asr": 1.0,
   "heard": "¡Vamos a mezclarlos!",
   "engine": "gemini",
-  "voice": "Puck"
+  "voice": "Puck",
+  "dev": 0.0
  },
  "ep_iman_manzana_b3": {
   "hash": "rejected",
@@ -1897,13 +1913,14 @@
   "voice": "Puck"
  },
  "ep_monstruo_caja_p2": {
-  "hash": "rejected",
-  "dur": 1.47,
+  "hash": "3208ceef4a86",
+  "dur": 1.46,
   "text": "¿Un monstruo en la caja?",
   "asr": 1.0,
-  "heard": "Un monstruo en la caja.",
+  "heard": "¿Un monstruo en la caja?",
   "engine": "gemini",
-  "voice": "Puck"
+  "voice": "Puck",
+  "dev": 0.0
  },
  "ep_viento_hoja_l1": {
   "hash": "rejected",
@@ -1933,5 +1950,115 @@
   "engine": "gemini",
   "voice": "Algenib",
   "dev": 2.4
+ },
+ "ep_donde_esta_tres_g2": {
+  "hash": "7648a11db834",
+  "dur": 1.66,
+  "text": "¡El más importante!",
+  "asr": 1.0,
+  "heard": "El más importante",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": 4.4
+ },
+ "ep_invento_error_util_g2": {
+  "hash": "d2ea58a4f19f",
+  "dur": 2.63,
+  "text": "¿Solo una? ¡Qué desastre!",
+  "asr": 1.0,
+  "heard": "¿Solo una? ¿Qué desastre?",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": 0.0
+ },
+ "ep_invento_error_util_g3": {
+  "hash": "6c06a888f271",
+  "dur": 2.34,
+  "text": "¡Mi transportador de pelotas!",
+  "asr": 1.0,
+  "heard": "Mi transportador de pelotas.",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": 2.8
+ },
+ "ep_invento_error_util_g4": {
+  "hash": "928c400c9673",
+  "dur": 1.67,
+  "text": "¡Eh! ¡Mi mando!",
+  "asr": 1.0,
+  "heard": "¡Eh, mi mando!",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": 4.31
+ },
+ "ep_donde_esta_tres_g1": {
+  "hash": "afe8a29a1efc",
+  "dur": 1.26,
+  "text": "¡Y aquí voy yo!",
+  "asr": 1.0,
+  "heard": "¡Y aquí voy yo!",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": 0.0
+ },
+ "ep_invento_error_util_g1": {
+  "hash": "c02584aad360",
+  "dur": 2.38,
+  "text": "¡Mi máquina de mil burbujas!",
+  "asr": 1.0,
+  "heard": "Mi máquina de mil burbujas",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": 4.1
+ },
+ "ep_puente_cooperacion_g1": {
+  "hash": "dbfbc62ac681",
+  "dur": 2.25,
+  "text": "¡Todas las piezas son mías!",
+  "asr": 1.0,
+  "heard": "Todas las piezas son mías.",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": 1.1
+ },
+ "ep_puente_cooperacion_g3": {
+  "hash": "5918f314de18",
+  "dur": 1.67,
+  "text": "¡Yo! ¡Yo la pongo!",
+  "asr": 1.0,
+  "heard": "Yo, yo la pongo.",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": 0.0
+ },
+ "ep_viento_hoja_m1": {
+  "hash": "44b7739cf95e",
+  "dur": 2.28,
+  "text": "¿Dónde tiene los pies esta hoja?",
+  "asr": 1.0,
+  "heard": "¿Dónde tiene los pies esta hoja?",
+  "engine": "gemini",
+  "voice": "Enceladus",
+  "dev": 2.0
+ },
+ "ep_viento_hoja_m2": {
+  "hash": "1f1e084a2ee7",
+  "dur": 2.26,
+  "text": "¡Se mueve sola! ¿Camina?",
+  "asr": 1.0,
+  "heard": "Se mueve sola, camina.",
+  "engine": "gemini",
+  "voice": "Enceladus",
+  "dev": 3.35
+ },
+ "ep_viento_hoja_m3": {
+  "hash": "e08978b58412",
+  "dur": 2.51,
+  "text": "El viento es aire en movimiento.",
+  "asr": 1.0,
+  "heard": "El viento es aire en movimiento.",
+  "engine": "gemini",
+  "voice": "Enceladus",
+  "dev": -0.55
  }
 }
