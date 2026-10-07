@@ -1309,13 +1309,14 @@
   "dev": 0.55
  },
  "ep_boton_mas_grande_r2": {
-  "hash": "rejected",
-  "dur": 1.21,
+  "hash": "8022811f6b7e",
+  "dur": 1.41,
   "text": "¿Cuál es más grande?",
   "asr": 1.0,
   "heard": "¿Cuál es más grande?",
   "engine": "gemini",
-  "voice": "Umbriel"
+  "voice": "Umbriel",
+  "dev": 2.56
  },
  "ep_boton_mas_grande_r3": {
   "hash": "69f10f376fbf",
@@ -1328,13 +1329,14 @@
   "dev": -0.04
  },
  "ep_carrera_mas_lenta_r1": {
-  "hash": "rejected",
-  "dur": 1.6,
+  "hash": "73ba3dfb3971",
+  "dur": 1.53,
   "text": "Yo voy despacito.",
   "asr": 1.0,
   "heard": "Yo voy despacito.",
   "engine": "gemini",
-  "voice": "Umbriel"
+  "voice": "Umbriel",
+  "dev": 4.76
  },
  "ep_esponja_absorbe_m2": {
   "hash": "271203eab8c9",
@@ -1377,13 +1379,14 @@
   "dev": 0.0
  },
  "ep_carrera_mas_lenta_r3": {
-  "hash": "rejected",
-  "dur": 1.93,
+  "hash": "d4ef5149988d",
+  "dur": 1.48,
   "text": "¡Despacio llegan todos!",
   "asr": 1.0,
   "heard": "Despacio llegan todos.",
   "engine": "gemini",
-  "voice": "Umbriel"
+  "voice": "Umbriel",
+  "dev": 3.16
  },
  "ep_monstruo_caja_r1": {
   "hash": "594610f69574",
@@ -1396,13 +1399,14 @@
   "dev": -0.04
  },
  "ep_monstruo_caja_r3": {
-  "hash": "rejected",
-  "dur": 0.93,
+  "hash": "652af95a7fbf",
+  "dur": 0.97,
   "text": "¿Qué habrá dentro?",
   "asr": 1.0,
   "heard": "¿Qué habrá dentro?",
   "engine": "gemini",
-  "voice": "Umbriel"
+  "voice": "Umbriel",
+  "dev": 1.86
  },
  "ep_monstruo_caja_r4": {
   "hash": "rejected",
@@ -2060,5 +2064,35 @@
   "engine": "gemini",
   "voice": "Enceladus",
   "dev": -0.55
+ },
+ "ep_mitades_merienda_r1": {
+  "hash": "12fa192bb343",
+  "dur": 2.97,
+  "text": "Tranquilos. Está partida en dos mitades.",
+  "asr": 1.0,
+  "heard": "Tranquilos, está partida en dos mitades.",
+  "engine": "gemini",
+  "voice": "Umbriel",
+  "dev": 3.56
+ },
+ "ep_mitades_merienda_r2": {
+  "hash": "a701657334c1",
+  "dur": 1.0,
+  "text": "¿Son iguales?",
+  "asr": 1.0,
+  "heard": "¿Son iguales?",
+  "engine": "gemini",
+  "voice": "Umbriel",
+  "dev": 0.0
+ },
+ "ep_monstruo_caja_r2": {
+  "hash": "2a14accd08de",
+  "dur": 1.5,
+  "text": "Mira, una lucecita.",
+  "asr": 1.0,
+  "heard": "¡Mira una lucecita!",
+  "engine": "gemini",
+  "voice": "Umbriel",
+  "dev": 1.91
  }
 }
