@@ -1630,13 +1630,14 @@
   "dev": -3.35
  },
  "ep_carrera_mas_lenta_t4": {
-  "hash": "rejected",
-  "dur": 1.54,
+  "hash": "ad7dc7ec5f43",
+  "dur": 1.71,
   "text": "¡Ahora yo, despacito!",
   "asr": 1.0,
-  "heard": "¡Ahora yo! ¡Despacito!",
+  "heard": "¡Ahora yo, despacito!",
   "engine": "gemini",
-  "voice": "Fenrir"
+  "voice": "Fenrir",
+  "dev": -0.9
  },
  "ep_bolita_mezcla_verde_b1": {
   "hash": "3eea203ba2bd",
@@ -1812,13 +1813,14 @@
   "voice": "Fenrir"
  },
  "ep_pelota_cae_t5": {
-  "hash": "rejected",
-  "dur": 1.52,
+  "hash": "ae8f879a2eb3",
+  "dur": 1.34,
   "text": "¡Ahora sí! ¡Sube!",
   "asr": 1.0,
   "heard": "Ahora sí, sube.",
   "engine": "gemini",
-  "voice": "Fenrir"
+  "voice": "Fenrir",
+  "dev": -4.4
  },
  "ep_corcho_flota_b1": {
   "hash": "09f3c5b51e84",
@@ -2102,5 +2104,15 @@
   "engine": "gemini",
   "voice": "Umbriel",
   "dev": 1.91
+ },
+ "ep_hielo_derrite_t1": {
+  "hash": "9b65c9e26fce",
+  "dur": 1.57,
+  "text": "¡Zapatitos para el cubito!",
+  "asr": 1.0,
+  "heard": "Zapatitos para el cubito",
+  "engine": "gemini",
+  "voice": "Fenrir",
+  "dev": -4.4
  }
 }
