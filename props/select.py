@@ -8,7 +8,7 @@ FAMILIES = {
     "fresh": [(0.35, 0.8, 0.75), (0.98, 0.6, 0.45), (0.98, 0.9, 0.55), (0.55, 0.7, 0.95), (0.95, 0.95, 0.9)],
     "candy": [(1.0, 0.45, 0.6), (0.45, 0.85, 0.95), (1.0, 0.8, 0.35), (0.7, 0.55, 1.0), (0.5, 0.9, 0.6)],
 }
-ENV_DEFAULT = {"plaza": "pastel", "patio": "fresh", "lab": "candy", "otono": "autumn", "casa": "pastel"}
+ENV_DEFAULT = {"plaza": "pastel", "patio": "fresh", "lab": "candy", "otono": "autumn", "casa": "pastel", "halloween": "autumn"}
 
 
 def tint(rgb, rng, amount=0.06):

@@ -49,4 +49,7 @@ REGISTRY = {
     "ring_fence": {"styles": 3, "envs": ["patio", "plaza", "casa"], "tags": ["juguete", "borde"], "decor": False},
     "float_item": {"styles": 3, "envs": ["patio", "lab", "casa", "aula"], "tags": ["agua", "ciencia", "materiales"], "decor": False},
     "boat_sticker": {"styles": 3, "envs": ["patio", "casa", "aula", "lab"], "tags": ["juguete", "barco"], "decor": False},
+    "gourd_trio": {"styles": 3, "envs": ["halloween", "otono", "plaza"], "tags": ["otoño", "calabaza"]},
+    "led_lantern": {"styles": 3, "envs": ["halloween", "otono", "plaza", "casa"], "tags": ["luz", "noche"]},
+    "hay_seat": {"styles": 3, "envs": ["halloween", "otono", "patio"], "tags": ["asiento", "otoño"]},
 }

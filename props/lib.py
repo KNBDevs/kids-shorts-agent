@@ -1325,6 +1325,68 @@ def boat_sticker(r, s, fam, root):
     C.tube("mast", [(0.0, -0.004, 0.0045), (0.0, 0.03, 0.0045)], 0.002, M((0.4, 0.3, 0.25), rough=0.5), root)
     C.rounded_box("sail", (0.011, 0.014, 0.004), (0.018, 0.028, 0.002), 0.003, M(d, rough=0.4, coat=0.5), root)
 
+
+def gourd_trio(r, s, fam, root):
+    cs = colors(r, "autumn", 3)
+    base = [(0.88, 0.45, 0.14), (0.96, 0.82, 0.55), (0.62, 0.7, 0.5)]
+    stem = M((0.33, 0.42, 0.22), rough=0.6, coat=0.1)
+    if s == 0:
+        spec = [(0.0, 0.0, 0.2, 0.75), (0.26, 0.06, 0.13, 0.85), (-0.24, 0.05, 0.11, 0.9)]
+    elif s == 1:
+        spec = [(0.0, 0.0, 0.15, 1.35), (0.2, -0.02, 0.12, 1.0)]
+    else:
+        spec = [(0.0, 0.0, 0.19, 0.62), (0.03, 0.01, 0.12, 0.75, 1), (0.25, -0.03, 0.09, 0.85)]
+    z0 = 0.0
+    for i, sp in enumerate(spec):
+        x, y, rad, sq = sp[:4]
+        z = z0 + rad * sq if len(sp) < 5 else spec[0][2] * spec[0][3] * 2 + rad * sq * 0.85
+        col = tuple(0.7 * a + 0.3 * b for a, b in zip(base[i % 3], cs[i % 3]))
+        for k in range(8):
+            a = k * 6.2832 / 8
+            C.sphere("rib", (x + math.cos(a) * rad * 0.42, y + math.sin(a) * rad * 0.42, z), (rad * 0.62, rad * 0.62, rad * sq), M(col, rough=0.45, coat=0.35), root, 20)
+        C.tube("stem", [(x, y, z + rad * sq * 0.85), (x + 0.012, y, z + rad * sq * 0.85 + 0.07)], 0.016, stem, root)
+
+
+def led_lantern(r, s, fam, root):
+    c, d = colors(r, "autumn", 2)
+    glow = M((1.0, 0.82, 0.45), rough=0.3, coat=0.2, emit=2.0)
+    frame = M(c, rough=0.4, coat=0.5)
+    if s == 0:
+        C.rounded_box("base", (0, 0, 0.02), (0.2, 0.2, 0.04), 0.012, frame, root)
+        C.rounded_box("glass", (0, 0, 0.15), (0.16, 0.16, 0.22), 0.03, MA((1.0, 0.9, 0.7), 0.35), root)
+        C.sphere("led", (0, 0, 0.14), (0.04, 0.04, 0.06), glow, root, 16)
+        C.rounded_box("roof", (0, 0, 0.28), (0.22, 0.22, 0.04), 0.015, frame, root)
+        C.lathe("cap", [(0.3, 0), (0.3, 0.06), (0.35, 0.0)], frame, root, segs=24)
+        C.tube("loop", [(-0.04, 0, 0.35), (0, 0, 0.39), (0.04, 0, 0.35)], 0.008, frame, root)
+    elif s == 1:
+        C.lathe("foot", [(0, 0), (0, 0.09), (0.03, 0.08), (0.03, 0)], frame, root, segs=32)
+        C.sphere("globe", (0, 0, 0.13), (0.11, 0.11, 0.1), MA((1.0, 0.92, 0.75), 0.4), root, 28)
+        C.sphere("led", (0, 0, 0.12), (0.035,) * 3, glow, root, 16)
+        C.lathe("top", [(0.22, 0), (0.22, 0.05), (0.25, 0.035), (0.255, 0)], M(d, rough=0.4, coat=0.5), root, segs=24)
+    else:
+        C.lathe("jar", [(0, 0), (0, 0.08), (0.12, 0.09), (0.2, 0.06), (0.2, 0)], MA((0.95, 0.92, 0.85), 0.3), root, segs=32)
+        for k in range(5):
+            a = k * 1.25
+            C.sphere("bead", (math.cos(a) * 0.045, math.sin(a) * 0.045, 0.05 + k * 0.025), (0.016,) * 3, glow, root, 10)
+        C.lathe("lid", [(0.2, 0), (0.2, 0.065), (0.23, 0.065), (0.23, 0)], frame, root, segs=32)
+
+
+def hay_seat(r, s, fam, root):
+    c = colors(r, "autumn", 2)[1]
+    hay = M(tuple(0.6 * a + 0.4 * b for a, b in zip((0.93, 0.78, 0.45), c)), rough=0.85, coat=0.05)
+    band = M((0.55, 0.32, 0.2), rough=0.6, coat=0.1)
+    if s == 0:
+        C.rounded_box("bale", (0, 0, 0.13), (0.5, 0.3, 0.26), 0.05, hay, root)
+        for x in (-0.13, 0.13):
+            C.rounded_box("band", (x, 0, 0.13), (0.025, 0.31, 0.27), 0.01, band, root)
+    elif s == 1:
+        C.lathe("roll", [(0, 0), (0, 0.2), (0.12, 0.22), (0.24, 0.2), (0.24, 0)], hay, root, segs=40)
+        C.lathe("ring", [(0.1, 0.215), (0.12, 0.225), (0.14, 0.215)], band, root, segs=40)
+    else:
+        C.rounded_box("low", (0, 0, 0.09), (0.56, 0.32, 0.18), 0.05, hay, root)
+        C.rounded_box("up", (0.06, 0.02, 0.26), (0.36, 0.26, 0.16), 0.05, hay, root)
+        C.rounded_box("band", (0, 0, 0.09), (0.57, 0.025, 0.19), 0.01, band, root)
+
 GEN = {k: v for k, v in globals().items() if k in REGISTRY}
 
 
