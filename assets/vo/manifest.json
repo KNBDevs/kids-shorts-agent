@@ -1784,13 +1784,14 @@
   "voice": "Fenrir"
  },
  "ep_carrera_mas_lenta_t3": {
-  "hash": "rejected",
-  "dur": 1.19,
+  "hash": "062119be1249",
+  "dur": 1.33,
   "text": "¿Llegará entera?",
   "asr": 1.0,
   "heard": "¿Llegará entera?",
   "engine": "gemini",
-  "voice": "Fenrir"
+  "voice": "Fenrir",
+  "dev": 0.0
  },
  "ep_hielo_derrite_t2": {
   "hash": "rejected",
