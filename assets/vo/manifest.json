@@ -1610,22 +1610,24 @@
   "dev": 0.0
  },
  "ep_carrera_mas_lenta_t1": {
-  "hash": "rejected",
-  "dur": 1.39,
+  "hash": "dd2a44aa9053",
+  "dur": 1.52,
   "text": "¡Corro con mi torre!",
-  "asr": 0.89,
-  "heard": "Corro con mi torre y...",
+  "asr": 1.0,
+  "heard": "Corró con mi torre.",
   "engine": "gemini",
-  "voice": "Fenrir"
+  "voice": "Fenrir",
+  "dev": -4.05
  },
  "ep_carrera_mas_lenta_t2": {
-  "hash": "rejected",
-  "dur": 1.23,
+  "hash": "1d99f5db069d",
+  "dur": 1.51,
   "text": "¡Ay! ¡Se ha caído!",
   "asr": 1.0,
-  "heard": "¡Ay! ¡Se ha caído!",
+  "heard": "¡Ay, se ha caído!",
   "engine": "gemini",
-  "voice": "Fenrir"
+  "voice": "Fenrir",
+  "dev": -3.35
  },
  "ep_carrera_mas_lenta_t4": {
   "hash": "rejected",
@@ -1685,31 +1687,34 @@
   "dev": -3.45
  },
  "ep_luma_escucha_t1": {
-  "hash": "rejected",
-  "dur": 1.3,
+  "hash": "ab13074f80e9",
+  "dur": 1.29,
   "text": "¡Mira cómo salto!",
   "asr": 1.0,
-  "heard": "¡Mira cómo saltó!",
+  "heard": "¡Mira como salto!",
   "engine": "gemini",
-  "voice": "Fenrir"
+  "voice": "Fenrir",
+  "dev": -1.0
  },
  "ep_mitades_merienda_t1": {
-  "hash": "rejected",
-  "dur": 1.31,
+  "hash": "291177294f14",
+  "dur": 1.01,
   "text": "¡No, mía!",
   "asr": 1.0,
-  "heard": "¡No! ¡Mía!",
+  "heard": "¡No mía!",
   "engine": "gemini",
-  "voice": "Fenrir"
+  "voice": "Fenrir",
+  "dev": -3.1
  },
  "ep_carrera_mas_lenta_t5": {
-  "hash": "rejected",
-  "dur": 0.99,
+  "hash": "cec65619ae5b",
+  "dur": 1.19,
   "text": "¡Solo trae uno!",
   "asr": 1.0,
-  "heard": "Solo trae uno.",
+  "heard": "¡Solo trae uno!",
   "engine": "gemini",
-  "voice": "Fenrir"
+  "voice": "Fenrir",
+  "dev": -0.9
  },
  "ep_corcho_flota_b2": {
   "hash": "ea6e91efe01d",
@@ -1722,13 +1727,14 @@
   "dev": 0.55
  },
  "ep_luma_escucha_t2": {
-  "hash": "rejected",
-  "dur": 0.93,
+  "hash": "e04f718142d3",
+  "dur": 0.96,
   "text": "¡Te escuchamos!",
   "asr": 1.0,
-  "heard": "¡Te escuchamos!",
+  "heard": "¿Te escuchamos?",
   "engine": "gemini",
-  "voice": "Fenrir"
+  "voice": "Fenrir",
+  "dev": 0.0
  },
  "ep_mitades_merienda_t2": {
   "hash": "rejected",
@@ -1750,13 +1756,14 @@
   "dev": 0.0
  },
  "ep_pelota_cae_t1": {
-  "hash": "rejected",
-  "dur": 1.31,
+  "hash": "a75dc59d99ce",
+  "dur": 1.79,
   "text": "¡Sube, pelota! ¡Sube!",
   "asr": 1.0,
-  "heard": "Sube pelota, sube.",
+  "heard": "Suve pelota, suve.",
   "engine": "gemini",
-  "voice": "Fenrir"
+  "voice": "Fenrir",
+  "dev": 2.8
  },
  "ep_pelota_cae_t3": {
   "hash": "rejected",
