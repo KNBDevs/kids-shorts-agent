@@ -1387,6 +1387,54 @@ def hay_seat(r, s, fam, root):
         C.rounded_box("up", (0.06, 0.02, 0.26), (0.36, 0.26, 0.16), 0.05, hay, root)
         C.rounded_box("band", (0, 0, 0.09), (0.57, 0.025, 0.19), 0.01, band, root)
 
+def date_card(r, s, fam, root, label=("31", "OCT")):
+    c, d, e = [_rich(x, 1.2, 0.95) for x in _cols(r, fam, 3)]
+    paper = M((0.97, 0.94, 0.88), rough=0.55, coat=0.3)
+    band = M(_rich(c, 1.5, 0.78), rough=0.4, coat=0.6)
+    trim = M(d, rough=0.45, coat=0.5)
+    ink = M((0.16, 0.18, 0.26), rough=0.35, coat=0.5)
+    face = C.empty("face", root, (0, 0, 0))
+    if s == 0:
+        C.rounded_box("foot", (0, 0.02, 0.025), (0.36, 0.2, 0.05), 0.02, trim, root)
+        C.rounded_box("pad", (0, 0, 0.24), (0.34, 0.06, 0.38), 0.03, paper, face)
+        C.rounded_box("head", (0, -0.002, 0.405), (0.345, 0.065, 0.08), 0.03, band, face)
+        for x in (-0.09, 0.0, 0.09):
+            C.tube("coil", [(x, -0.035, 0.43), (x, -0.045, 0.47), (x, 0.0, 0.49), (x, 0.035, 0.46)], 0.01, M((0.8, 0.8, 0.84), rough=0.3), face)
+        glyph(label[0], 0.19, 0.012, ink, face, (0, -0.034, 0.23))
+        glyph(label[1], 0.06, 0.008, M((0.97, 0.94, 0.88), rough=0.4), face, (0, -0.036, 0.4))
+    elif s == 1:
+        tent = C.empty("tent", face, (0, 0, 0))
+        for k, sy in enumerate((-1, 1)):
+            C.rounded_box(f"leaf{k}", (0, sy * 0.06, 0.17), (0.36, 0.018, 0.36), 0.04, paper if sy < 0 else band, tent).rotation_euler = (math.radians(sy * 14), 0, 0)
+        C.tube("ridge", [(-0.17, 0, 0.345), (0.17, 0, 0.345)], 0.016, trim, tent)
+        f = C.empty("front", tent, (0, -0.062, 0.17), (math.radians(-14), 0, 0))
+        C.rounded_box("strip", (0, -0.012, 0.11), (0.3, 0.004, 0.06), 0.012, band, f)
+        glyph(label[0], 0.15, 0.01, ink, f, (0, -0.016, -0.02))
+        glyph(label[1], 0.05, 0.007, M((0.97, 0.94, 0.88), rough=0.4), f, (0, -0.018, 0.11))
+    else:
+        C.lathe("base", [(0, 0.0), (0, 0.16), (0.012, 0.175), (0.035, 0.17), (0.045, 0.14), (0.045, 0.0)], trim, root, segs=48, sy=0.6)
+        arch = C.empty("arch", face, (0, 0, 0.045))
+        pts = [(-0.15, 0.0), (0.15, 0.0)] + [(0.15 * math.cos(math.pi * k / 16), 0.27 + 0.15 * math.sin(math.pi * k / 16)) for k in range(17)]
+        bm = bmesh.new()
+        vs = [bm.verts.new((x, 0.0, z)) for x, z in pts]
+        fc = bm.faces.new(vs)
+        ext = bmesh.ops.extrude_face_region(bm, geom=[fc])
+        for v in [x for x in ext["geom"] if isinstance(x, bmesh.types.BMVert)]:
+            v.co.y += 0.05
+        for v in bm.verts:
+            v.co.y -= 0.025
+        bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
+        o = C.mesh_obj("archb", bm, paper, arch, smooth=False)
+        b = o.modifiers.new("bev", "BEVEL")
+        b.width = 0.012
+        b.segments = 3
+        C.sphere("gem", (0, -0.03, 0.36), (0.03, 0.012, 0.03), M(e, coat=0.8), arch, 16)
+        C.tube("rim", [(0.15 * math.cos(math.pi * k / 24), -0.027, 0.27 + 0.15 * math.sin(math.pi * k / 24)) for k in range(25)], 0.01, band, arch)
+        glyph(label[0], 0.16, 0.01, ink, arch, (0, -0.03, 0.15))
+        glyph(label[1], 0.06, 0.008, M(tuple(v * 0.35 for v in _rich(c, 1.5, 0.8)), rough=0.4), arch, (0, -0.03, 0.285))
+    return face
+
+
 GEN = {k: v for k, v in globals().items() if k in REGISTRY}
 
 
