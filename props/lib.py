@@ -1435,6 +1435,70 @@ def date_card(r, s, fam, root, label=("31", "OCT")):
     return face
 
 
+def _slab(name, pts, depth, m, root, z=0.0, bev=0.02):
+    bm = bmesh.new()
+    vs = [bm.verts.new((x, y, z)) for x, y in pts]
+    fc = bm.faces.new(vs)
+    ext = bmesh.ops.extrude_face_region(bm, geom=[fc])
+    for v in [x for x in ext["geom"] if isinstance(x, bmesh.types.BMVert)]:
+        v.co.z += depth
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
+    o = C.mesh_obj(name, bm, m, root, smooth=False)
+    b = o.modifiers.new("bev", "BEVEL")
+    b.width = bev
+    b.segments = 4
+    b.limit_method = "ANGLE"
+    return o
+
+
+def leaf_pad(r, s, fam, root):
+    from props.select import tint
+    c = tint(r.choice([(0.86, 0.45, 0.16), (0.78, 0.32, 0.15), (0.92, 0.64, 0.22), (0.6, 0.62, 0.3)]), r, 0.03)
+    d = (0.45, 0.28, 0.18)
+    lm = M(c, rough=0.5, coat=0.5)
+    vm = M(tuple(min(1, v * 0.55 + 0.42) for v in c), rough=0.45, coat=0.5)
+    R = 0.5
+    n = 96
+    if s == 0:
+        pts = []
+        for k in range(n):
+            t = 2 * math.pi * k / n
+            rr = R * (0.8 + 0.2 * math.cos(5 * t)) * (1.0 + 0.12 * math.sin(t))
+            pts.append((rr * math.cos(t), rr * math.sin(t) * 0.9))
+        tip = (0.0, R * 1.0)
+    elif s == 1:
+        pts = []
+        for k in range(n):
+            t = 2 * math.pi * k / n
+            x = R * 0.62 * math.sin(t) * (1 - 0.25 * math.cos(t))
+            y = -R * 1.05 * math.cos(t)
+            pts.append((x, y))
+        pts = pts[::-1]
+        tip = (0.0, R * 1.05)
+    else:
+        pts = []
+        for k in range(n):
+            t = 0.22 + (2 * math.pi - 0.44) * k / (n - 1)
+            pts.append((R * math.sin(t), R * math.cos(t)))
+        pts.append((0.0, R * 0.35))
+        pts = pts[::-1]
+        tip = (0.0, -R)
+    o = _slab("pad", pts, 0.06, lm, root)
+    z = 0.065
+    if s == 2:
+        for k in range(7):
+            a = math.pi + (k - 3) * 0.42
+            C.tube("vein", [(0, R * 0.2, z), (R * 0.8 * math.sin(a), R * 0.2 + R * 0.8 * math.cos(a), z)], 0.008, vm, root)
+    else:
+        C.tube("mid", [(0, -tip[1] * 0.85, z), (0, tip[1] * 0.8, z)], 0.011, vm, root)
+        for k in range(3):
+            y0 = -tip[1] * 0.5 + k * tip[1] * 0.45
+            for sx in (-1, 1):
+                C.tube("vein", [(0, y0, z), (sx * R * 0.38, y0 + R * 0.25, z)], 0.008, vm, root)
+        C.tube("stem", [(0, -tip[1] * 0.85, 0.03), (0.03, -tip[1] * 1.12, 0.03), (0.08, -tip[1] * 1.22, 0.05)], 0.02, M(d, rough=0.5, coat=0.4), root)
+    return 0.065
+
+
 GEN = {k: v for k, v in globals().items() if k in REGISTRY}
 
 

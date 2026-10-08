@@ -52,5 +52,6 @@ REGISTRY = {
     "gourd_trio": {"styles": 3, "envs": ["halloween", "otono", "plaza"], "tags": ["otoño", "calabaza"]},
     "led_lantern": {"styles": 3, "envs": ["halloween", "otono", "plaza", "casa"], "tags": ["luz", "noche"]},
     "hay_seat": {"styles": 3, "envs": ["halloween", "otono", "patio"], "tags": ["asiento", "otoño"]},
+    "leaf_pad": {"styles": 3, "envs": ["halloween", "otono", "patio", "plaza"], "tags": ["hoja", "plataforma"], "decor": False},
     "date_card": {"styles": 3, "envs": ["halloween", "casa", "aula", "otono"], "tags": ["calendario", "fecha"], "decor": False},
 }
