@@ -1550,22 +1550,24 @@
   "dev": 1.2
  },
  "ep_iman_manzana_b1": {
-  "hash": "rejected",
-  "dur": 2.38,
+  "hash": "f4b513a0ad19",
+  "dur": 4.45,
   "text": "¡Bip! Probamos a la misma distancia.",
   "asr": 1.0,
   "heard": "VIP, probamos a la misma distancia.",
   "engine": "gemini",
-  "voice": "Iapetus"
+  "voice": "Iapetus",
+  "dev": -1.5
  },
  "ep_iman_manzana_b2": {
-  "hash": "rejected",
-  "dur": 1.56,
+  "hash": "606b8eb0dde8",
+  "dur": 3.23,
   "text": "La madera no se mueve.",
   "asr": 1.0,
   "heard": "La madera no se mueve.",
   "engine": "gemini",
-  "voice": "Iapetus"
+  "voice": "Iapetus",
+  "dev": -2.4
  },
  "ep_puerta_empuja_tira_b4": {
   "hash": "67cc2e718f80",
@@ -1578,22 +1580,24 @@
   "dev": 0.0
  },
  "ep_puerta_empuja_tira_b5": {
-  "hash": "rejected",
-  "dur": 2.51,
+  "hash": "c6c63bab2e9a",
+  "dur": 5.26,
   "text": "Esta flecha va hacia dentro: empuja.",
   "asr": 0.83,
-  "heard": "Esta flecha va hacia adentro. Empuja.",
+  "heard": "Esta flecha va hacia adentro, empuja.",
   "engine": "gemini",
-  "voice": "Iapetus"
+  "voice": "Iapetus",
+  "dev": -3.2
  },
  "ep_puerta_empuja_tira_g1": {
-  "hash": "rejected",
-  "dur": 1.66,
+  "hash": "2a27da69a165",
+  "dur": 2.01,
   "text": "¡Apartad, que paso yo!",
   "asr": 1.0,
-  "heard": "¡Apartad! ¡Qué paso yo!",
+  "heard": "¡Apartad que paso yo!",
   "engine": "gemini",
-  "voice": "Algenib"
+  "voice": "Algenib",
+  "dev": 0.0
  },
  "ep_puerta_empuja_tira_g2": {
   "hash": "f6b28f6fb426",
@@ -1911,13 +1915,14 @@
   "dev": 0.0
  },
  "ep_iman_manzana_b3": {
-  "hash": "rejected",
-  "dur": 2.39,
+  "hash": "8aa1ac1cefd4",
+  "dur": 3.37,
   "text": "Este hierro sí se acerca.",
   "asr": 1.0,
-  "heard": "Este hierro sí se acerca.",
+  "heard": "Este hierro, si se acerca.",
   "engine": "gemini",
-  "voice": "Iapetus"
+  "voice": "Iapetus",
+  "dev": -4.25
  },
  "ep_monstruo_caja_g1": {
   "hash": "0abe8de6da92",
@@ -2238,5 +2243,55 @@
   "engine": "gemini",
   "voice": "Puck",
   "dev": -5.0
+ },
+ "ep_sal_disuelta_b2": {
+  "hash": "4a47ed900225",
+  "dur": 3.49,
+  "text": "¿Se los ha comido la cuchara?",
+  "asr": 1.0,
+  "heard": "¿Se los ha comido la cuchara?",
+  "engine": "gemini",
+  "voice": "Iapetus",
+  "dev": -3.8
+ },
+ "ep_sal_disuelta_b3": {
+  "hash": "b06e7f30cecd",
+  "dur": 3.28,
+  "text": "La cuchara está vacía.",
+  "asr": 1.0,
+  "heard": "La cuchara está vacía.",
+  "engine": "gemini",
+  "voice": "Iapetus",
+  "dev": -2.4
+ },
+ "ep_sal_disuelta_b4": {
+  "hash": "9701e860fd1b",
+  "dur": 4.03,
+  "text": "¡Entonces le pongo una etiqueta!",
+  "asr": 1.0,
+  "heard": "Entonces le pongo una etiqueta.",
+  "engine": "gemini",
+  "voice": "Iapetus",
+  "dev": -0.6
+ },
+ "ep_elefante_limite_g1": {
+  "hash": "90f5e27a3aee",
+  "dur": 2.15,
+  "text": "¡El mejor columpio del mundo!",
+  "asr": 1.0,
+  "heard": "El mejor columpio del mundo.",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": 3.25
+ },
+ "ep_iman_manzana_g1": {
+  "hash": "64d7ccb9c9bc",
+  "dur": 1.97,
+  "text": "¡Ven aquí, manzana! ¡Ven!",
+  "asr": 1.0,
+  "heard": "Ven aquí manzana, ven.",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": 0.0
  }
 }
