@@ -6,7 +6,7 @@ LINES = [
     ('g1', 'gruno', '¡Botón de más grande! ¡Toda para mí!', 10, 2.6),
     ('g2', 'gruno', '¡Uf! ¡No puedo levantarla!', 130, 2.0),
     ('r1', 'ruki', 'Tu galleta es grande. La mía, pequeña.', 200, 2.8),
-    ('r2', 'ruki', '¿Cuál es más grande?', 304, 1.6),
+    ('r2', 'ruki', '¿Cuál es más grande?', 310, 1.6),
     ('r3', 'ruki', '¡La tuya! ¿La partimos para compartir?', 382, 2.8),
     ('g3', 'gruno', 'Bueno... ¡pero el trozo grande es mío!', 480, 2.6),
     ('r4', 'ruki', 'Un trozo para cada uno.', 580, 1.8),
