@@ -90,11 +90,13 @@ def _hat(name, parent, loc, rot, brim, h, base, mat, band=None, tip=0.0):
     return g
 
 
-def dress(ch, cid, mode='halloween'):
+def dress(ch, cid, mode='halloween', style=0):
     if mode != 'halloween':
         return None
     rig = ch['rig']
     g = C.empty(f'cos_{cid}', rig)
+    if style:
+        return _alt(g, cid, style % 3)
     if cid == 'pimo':
         fh = 0.1 * H
         _ring('cos_pimo.scarf', g, fh + 0.25 * H, 0.42 * H, 0.42 * H, 0.05 * H, m('plum'))
@@ -141,4 +143,102 @@ def dress(ch, cid, mode='halloween'):
     elif cid == 'gruno':
         fh = 0.1 * H
         pk = pumpkin('cos_gruno.pumpkin', g, (0.2 * H, -0.5 * H, fh + 0.34 * H), 0.085 * H)
+    return g
+
+
+def moon_pts(r, n=32):
+    return crescent_pts(r, n // 2)
+
+
+def disc_pts(r, n=32, sq=1.0):
+    out = []
+    for k in range(n):
+        a = -2 * math.pi * k / n
+        c, si = math.cos(a), math.sin(a)
+        if sq != 1.0:
+            c = math.copysign(abs(c) ** sq, c)
+            si = math.copysign(abs(si) ** sq, si)
+        out.append((r * c, r * si))
+    return out
+
+
+def _alt(g, cid, st):
+    if cid == 'pimo':
+        fh = 0.1 * H
+        z = fh + 0.25 * H
+        _ring('cos_pimo.scarf', g, z, 0.42 * H, 0.42 * H, (0.045 if st == 1 else 0.06) * H, m('plum' if st == 1 else 'sage'))
+        if st == 1:
+            for k, sx in enumerate((-1, 1)):
+                C.tube(f'cos_pimo.tail{k}', [(0.08 * H * sx, -0.43 * H, z), (0.12 * H * sx, -0.47 * H, z - 0.1 * H), (0.1 * H * sx, -0.46 * H, z - 0.2 * H)], 0.03 * H, m('plum'), g)
+            C.sphere('cos_pimo.knot', (0, -0.45 * H, z), (0.05 * H, 0.035 * H, 0.045 * H), m('plum_d'), g, 16)
+        else:
+            for k, sx in enumerate((-1, 1)):
+                C.sphere(f'cos_pimo.pom{k}', (0.16 * H * sx, -0.42 * H, z - 0.12 * H), (0.055 * H,) * 3, m('amber'), g, 16)
+                C.tube(f'cos_pimo.cord{k}', [(0.1 * H * sx, -0.41 * H, z), (0.16 * H * sx, -0.43 * H, z - 0.08 * H)], 0.012 * H, m('amber'), g)
+    elif cid == 'ruki':
+        fh = 0.08 * H
+        if st == 1:
+            hat = _hat('cos_ruki.hat', g, (0.04 * H, 0.02 * H, fh + 0.93 * H), (math.radians(-6), math.radians(-12), 0), 0.2 * H, 0.42 * H, 0.13 * H, m('plum'), band=m('amber'), tip=-14)
+            flat('cos_ruki.moon', moon_pts(0.05 * H), 0.012 * H, m('moon'), hat, loc=(0.0, -0.12 * H, 0.12 * H), rot=(math.radians(-25), 0, math.radians(15)))
+        else:
+            hat = _hat('cos_ruki.hat', g, (0.04 * H, 0.02 * H, fh + 0.93 * H), (math.radians(-4), math.radians(10), 0), 0.28 * H, 0.2 * H, 0.17 * H, m('sage'), band=m('amber'))
+            C.sphere('cos_ruki.pom', (0, 0, 0.21 * H), (0.035 * H,) * 3, m('amber'), hat, 16)
+    elif cid == 'luma':
+        fh = 0.08 * H
+        if st == 1:
+            flat('cos_luma.moon', moon_pts(0.08 * H), 0.02 * H, m('moon'), g, loc=(0.0, -0.205 * H, fh + 0.13 * H), rot=(math.radians(-15), 0, math.radians(20)))
+            _ring('cos_luma.ring', g, fh + 0.02 * H, 0.235 * H, 0.205 * H, 0.03 * H, m('sage'))
+        else:
+            flat('cos_luma.button', disc_pts(0.065 * H), 0.025 * H, m('plum'), g, loc=(0.0, -0.205 * H, fh + 0.13 * H), rot=(math.radians(-15), 0, 0))
+            flat('cos_luma.leaf', leaf_pts(0.045 * H), 0.012 * H, m('amber'), g, loc=(0.0, -0.225 * H, fh + 0.13 * H), rot=(math.radians(-15), 0, math.radians(-30)))
+    elif cid == 'tuki':
+        if st == 1:
+            flat('cos_tuki.cape', [(-0.2 * H, 0.0), (0.2 * H, 0.0), (0.26 * H, -0.3 * H), (0.0, -0.36 * H), (-0.26 * H, -0.3 * H)], 0.02 * H, m('sage'), g,
+                 loc=(0.0, 0.31 * H, 0.83 * H), rot=(math.radians(10), 0, 0))
+            C.sphere('cos_tuki.clasp', (0, 0.25 * H, 0.84 * H), (0.05 * H, 0.03 * H, 0.05 * H), m('moon'), g, 16)
+            _ring('cos_tuki.tie', g, 0.8 * H, 0.27 * H, 0.255 * H, 0.022 * H, m('sage'))
+        else:
+            for k, sx in enumerate((-1, 0, 1)):
+                flat(f'cos_tuki.cape{k}', [(-0.1 * H, 0.0), (0.1 * H, 0.0), (0.0, -0.22 * H)], 0.02 * H, m('plum'), g,
+                     loc=(sx * 0.15 * H, 0.31 * H - abs(sx) * 0.03 * H, 0.83 * H), rot=(math.radians(10), 0, math.radians(sx * -10)))
+            _ring('cos_tuki.tie', g, 0.8 * H, 0.27 * H, 0.255 * H, 0.026 * H, m('amber'))
+    elif cid == 'moki':
+        fh = 0.07 * H
+        if st == 1:
+            _hat('cos_moki.hat', g, (-0.2 * H, 0.04 * H, fh + 0.97 * H), (math.radians(-6), math.radians(-15), 0), 0.22 * H, 0.42 * H, 0.13 * H, m('sage'), band=m('plum'), tip=12)
+        else:
+            hat = _hat('cos_moki.hat', g, (0.22 * H, 0.06 * H, fh + 0.94 * H), (0, math.radians(20), 0), 0.27 * H, 0.3 * H, 0.15 * H, m('plum_d'), band=m('moon'))
+            flat('cos_moki.star', star_pts(0.04 * H), 0.012 * H, m('moon'), hat, loc=(0.0, -0.13 * H, 0.1 * H), rot=(math.radians(-25), 0, 0))
+    elif cid == 'bopi':
+        if st == 1:
+            flat('cos_bopi.plate', disc_pts(0.1 * H, 32, 0.45), 0.02 * H, m('sage'), g, loc=(0.0, -0.285 * H, 0.47 * H), rot=(math.radians(-10), 0, 0))
+            flat('cos_bopi.star', star_pts(0.065 * H), 0.02 * H, m('moon'), g, loc=(0.0, -0.302 * H, 0.47 * H), rot=(math.radians(-10), 0, 0))
+        else:
+            flat('cos_bopi.plate', disc_pts(0.1 * H), 0.02 * H, m('plum'), g, loc=(0.0, -0.285 * H, 0.47 * H), rot=(math.radians(-10), 0, 0))
+            for k, (dx, dz, r) in enumerate(((-0.03, 0.02, 0.045), (0.035, -0.025, 0.03), (0.04, 0.04, 0.018))):
+                flat(f'cos_bopi.dot{k}', disc_pts(r * H, 20), 0.02 * H, m('moon'), g, loc=(dx * H, -0.302 * H, 0.47 * H + dz * H), rot=(math.radians(-10), 0, 0))
+    elif cid == 'bolita':
+        fh = 0.08 * H
+        cz = fh + 0.45 * H
+        if st == 1:
+            for k, sx in enumerate((-1, 1)):
+                flat(f'cos_bolita.collar{k}', [(0.0, 0.0), (sx * 0.34 * H, 0.0), (sx * 0.36 * H, 0.2 * H), (sx * 0.06 * H, 0.26 * H)], 0.02 * H, m('plum_d'), g,
+                     loc=(sx * 0.05 * H, 0.28 * H, cz - 0.08 * H), rot=(math.radians(-12), 0, math.radians(sx * 22)))
+            C.sphere('cos_bolita.gem', (0, -0.4 * H, cz - 0.27 * H), (0.035 * H, 0.02 * H, 0.035 * H), m('moon'), g, 16)
+        else:
+            for k, sx in enumerate((-1, 1)):
+                flat(f'cos_bolita.collar{k}', [(0.0, 0.0), (sx * 0.24 * H, 0.0), (sx * 0.28 * H, 0.16 * H), (sx * 0.04 * H, 0.12 * H)], 0.02 * H, m('plum'), g,
+                     loc=(sx * 0.05 * H, 0.28 * H, cz - 0.08 * H), rot=(math.radians(-12), 0, math.radians(sx * 22)))
+            bt = C.empty('cos_bolita.bow', g, (0, -0.395 * H, cz - 0.27 * H), (math.radians(-35), 0, 0))
+            for sx in (-1, 1):
+                flat(f'cos_bolita.bow{sx}', [(0.0, 0.0), (sx * 0.13 * H, 0.07 * H), (sx * 0.13 * H, -0.07 * H)], 0.025 * H, m('sage'), bt)
+            C.sphere('cos_bolita.knot', (0, -0.01 * H, 0), (0.032 * H, 0.022 * H, 0.034 * H), m('amber'), bt, 16)
+    elif cid == 'gruno':
+        fh = 0.1 * H
+        if st == 1:
+            pk = pumpkin('cos_gruno.pumpkin', g, (0.2 * H, -0.5 * H, fh + 0.34 * H), 0.08 * H)
+            flat('cos_gruno.leaf', leaf_pts(0.04 * H), 0.01 * H, m('stem'), pk, loc=(0.05 * H, -0.03 * H, 0.08 * H), rot=(0, 0, math.radians(-50)))
+        else:
+            pumpkin('cos_gruno.pumpkin', g, (0.2 * H, -0.5 * H, fh + 0.3 * H), 0.075 * H)
+            pumpkin('cos_gruno.pumpkin2', g, (0.2 * H, -0.505 * H, fh + 0.4 * H), 0.05 * H)
     return g
