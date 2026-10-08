@@ -1270,13 +1270,14 @@
   "dev": 0.0
  },
  "ep_luma_escucha_l3": {
-  "hash": "rejected",
-  "dur": 2.45,
+  "hash": "b6a3159c4269",
+  "dur": 3.04,
   "text": "Había una vez una estrella pequeñita...",
   "asr": 1.0,
   "heard": "Había una vez una estrella pequeñita.",
   "engine": "gemini",
-  "voice": "Leda"
+  "voice": "Leda",
+  "dev": -4.4
  },
  "ep_bolita_mezcla_verde_p2": {
   "hash": "f292e3a767d0",
@@ -1409,13 +1410,14 @@
   "dev": 1.86
  },
  "ep_monstruo_caja_r4": {
-  "hash": "rejected",
-  "dur": 2.32,
+  "hash": "e5d0f83162f9",
+  "dur": 3.53,
   "text": "Primero miramos, luego pensamos.",
   "asr": 1.0,
   "heard": "Primero miramos, luego pensamos.",
   "engine": "gemini",
-  "voice": "Umbriel"
+  "voice": "Umbriel",
+  "dev": 1.91
  },
  "ep_hielo_derrite_l1": {
   "hash": "rejected",
@@ -1650,13 +1652,14 @@
   "dev": 1.05
  },
  "ep_bolita_mezcla_verde_b2": {
-  "hash": "rejected",
-  "dur": 1.98,
+  "hash": "9c1a06e0c2ad",
+  "dur": 2.23,
   "text": "Pero solo tengo azul y amarillo...",
   "asr": 1.0,
-  "heard": "Pero solo tengo azul y amarillo.",
+  "heard": "pero solo tengo azul y amarillo.",
   "engine": "gemini",
-  "voice": "Zephyr"
+  "voice": "Zephyr",
+  "dev": -4.25
  },
  "ep_bolita_mezcla_verde_b3": {
   "hash": "8529c6e21a3c",
@@ -1669,13 +1672,14 @@
   "dev": 0.35
  },
  "ep_bolita_mezcla_verde_b4": {
-  "hash": "rejected",
-  "dur": 2.1,
+  "hash": "17608902573b",
+  "dur": 2.23,
   "text": "¡Pies verdes! ¡Y el resto, rojo!",
-  "asr": 1.0,
-  "heard": "Pies verdes y el resto rojo.",
+  "asr": 0.88,
+  "heard": "verdes y el resto rojo.",
   "engine": "gemini",
-  "voice": "Zephyr"
+  "voice": "Zephyr",
+  "dev": -4.45
  },
  "ep_bolita_mezcla_verde_b5": {
   "hash": "fa084bee8d05",
@@ -1833,22 +1837,24 @@
   "dev": -4.35
  },
  "ep_corcho_flota_b3": {
-  "hash": "rejected",
-  "dur": 1.68,
+  "hash": "4761234f782c",
+  "dur": 1.52,
   "text": "¡Pues la pego en el corcho!",
   "asr": 1.0,
-  "heard": "¡Pues la pego en el corcho!",
+  "heard": "Pues la pego en el corcho.",
   "engine": "gemini",
-  "voice": "Zephyr"
+  "voice": "Zephyr",
+  "dev": -0.4
  },
  "ep_corcho_flota_b4": {
-  "hash": "rejected",
-  "dur": 0.96,
+  "hash": "0c0b9c3fa9a7",
+  "dur": 0.81,
   "text": "¡Buen viaje!",
   "asr": 1.0,
-  "heard": "Buen viaje",
+  "heard": "Buen viaje!",
   "engine": "gemini",
-  "voice": "Zephyr"
+  "voice": "Zephyr",
+  "dev": -0.65
  },
  "ep_luma_escucha_p1": {
   "hash": "6484bd60549b",
@@ -2114,5 +2120,65 @@
   "engine": "gemini",
   "voice": "Fenrir",
   "dev": -4.4
+ },
+ "ep_coche_preparado_o1": {
+  "hash": "9c0017731c93",
+  "dur": 1.66,
+  "text": "¡Mi sujeción está floja!",
+  "asr": 1.0,
+  "heard": "Mi sujeción está floja.",
+  "engine": "gemini",
+  "voice": "Zephyr",
+  "dev": -3.2
+ },
+ "ep_coche_preparado_s1": {
+  "hash": "86c32aac35cb",
+  "dur": 2.29,
+  "text": "Antes de salir, me voy a preparar,",
+  "asr": 1.0,
+  "heard": "Antes de salir, me voy a preparar.",
+  "engine": "gemini",
+  "voice": "Zephyr",
+  "dev": -4.75
+ },
+ "ep_coche_preparado_s3": {
+  "hash": "6bd9b7779357",
+  "dur": 1.8,
+  "text": "bien sujeto para comenzar,",
+  "asr": 1.0,
+  "heard": "¡Bien sujeto para comenzar!",
+  "engine": "gemini",
+  "voice": "Zephyr",
+  "dev": -1.5
+ },
+ "ep_mitades_merienda_r3": {
+  "hash": "b2e89251aa26",
+  "dur": 2.66,
+  "text": "¡Sí! Dos mitades iguales.",
+  "asr": 1.0,
+  "heard": "Sí, dos mitades iguales.",
+  "engine": "gemini",
+  "voice": "Umbriel",
+  "dev": 4.26
+ },
+ "ep_mitades_merienda_r4": {
+  "hash": "fc6e43a31683",
+  "dur": 3.02,
+  "text": "Una para ti... y una para ti.",
+  "asr": 1.0,
+  "heard": "Una para ti y una para ti.",
+  "engine": "gemini",
+  "voice": "Umbriel",
+  "dev": 2.46
+ },
+ "ep_puente_cooperacion_r2": {
+  "hash": "7c8b9b040a17",
+  "dur": 2.38,
+  "text": "Falta la última. ¿Quién la pone?",
+  "asr": 1.0,
+  "heard": "Falta la última, ¿quién la pone?",
+  "engine": "gemini",
+  "voice": "Umbriel",
+  "dev": -0.94
  }
 }
