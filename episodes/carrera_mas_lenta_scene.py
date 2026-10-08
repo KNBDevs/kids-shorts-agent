@@ -39,7 +39,7 @@ def top_of(ch):
 tuki = make('tuki', 1.4)
 ruki = make('ruki', 1.4)
 gruno = make('gruno', 1.55)
-TS = Vector((-1.2, -1.55, Z0))
+TS = Vector((-0.95, -1.55, Z0))
 TF = Vector((-0.2, -1.55, Z0))
 RS = Vector((-1.5, -0.55, Z0))
 RF = Vector((0.75, -0.55, Z0))
@@ -94,6 +94,17 @@ S(tuki, 100, (1.08, 1.08, 0.92))
 S(tuki, 108, (1, 1, 1))
 T.turn(tuki, 140, 150)
 T.turn(tuki, 148, -40)
+D = Vector((-0.85, 1.8, 0))
+for f0, a, b in ((152, Vector((0, 0, 0)), D), (448, D, Vector((0, 0, 0)))):
+    K(tuki['sq'], 'location', f0 - 1, tuple(a))
+    for t in range(0, 17, 2):
+        u = t / 16
+        p = a.lerp(b, u)
+        p.z += 0.25 * abs(math.sin(math.pi * 2 * u))
+        K(tuki['sq'], 'location', f0 + t, tuple(p))
+T.turn(tuki, 170, -40)
+T.turn(tuki, 176, 35)
+T.turn(tuki, 294, 35)
 
 steps = 10
 for k in range(steps + 1):
@@ -138,7 +149,7 @@ T.turn(ruki, 452, 60)
 T.turn(ruki, 460, 0)
 ruki['hold'].location = RF
 gesture(ruki, 'hops', 462)
-RB = Vector((-0.05, -0.25, Z0))
+RB = Vector((0.1, 0.45, Z0))
 T.turn(ruki, 496, 0)
 T.turn(ruki, 502, -110)
 hop_to(ruki, 504, RF, RB, 16, apex=0.35)
