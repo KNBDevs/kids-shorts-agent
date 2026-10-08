@@ -2403,5 +2403,55 @@
   "engine": "gemini",
   "voice": "Puck",
   "dev": 0.0
+ },
+ "ep_elefante_limite_p1": {
+  "hash": "4d529b9f0f70",
+  "dur": 2.57,
+  "text": "¡Espera! Ese sitio no es adecuado.",
+  "asr": 1.0,
+  "heard": "¡Espera! Ese sitio no es adecuado.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": 0.0
+ },
+ "ep_elefante_limite_p2": {
+  "hash": "68a7f6d9dc47",
+  "dur": 1.37,
+  "text": "Podemos elegir otro.",
+  "asr": 1.0,
+  "heard": "Podemos elegir otro.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": 0.0
+ },
+ "ep_elefante_limite_s1": {
+  "hash": "8cefbbab762e",
+  "dur": 1.86,
+  "text": "Miro el sitio antes de jugar,",
+  "asr": 1.0,
+  "heard": "Miro el sitio antes de jugar.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": -5.9
+ },
+ "ep_iman_manzana_p2": {
+  "hash": "95c79536f1d7",
+  "dur": 2.15,
+  "text": "El imán no elige lo más rico. Depende del material.",
+  "asr": 0.75,
+  "heard": "El imán no elige lo más rico.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": 0.0
+ },
+ "ep_puente_cooperacion_p1": {
+  "hash": "fe033303820c",
+  "dur": 1.86,
+  "text": "¡Y una pieza larga encima!",
+  "asr": 1.0,
+  "heard": "Y una pieza larga encima.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": 0.0
  }
 }
