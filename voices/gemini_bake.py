@@ -36,6 +36,14 @@ def deviation(path, c):
     return st if st > 0 or len(t) >= 25 else 0.0
 
 
+def in_range(st, c):
+    pr = profiles().get(c)
+    if not pr:
+        return True
+    hz = pr["f0"] * 2 ** (st / 12)
+    return pr["p10"] * 0.97 <= hz <= pr["p90"]
+
+
 BUDGET = [int(os.environ.get("MAX_REQ", "12"))]
 
 
@@ -172,7 +180,7 @@ def finish(seg, sr, key, e, asr):
         y = y[max(0, (on[0] - 5) * h):min(len(y), (on[-1] + 20) * h)]
         wavfile.write(final, sr2, y)
     st = deviation(final, e["char"])
-    if abs(st) > MAX_DEV:
+    if abs(st) > MAX_DEV and not in_range(st, e["char"]):
         print("pitch drift, reject", key, st, flush=True)
         sc = 0.0
     return {"hash": digest(e["char"], e["text"]), "dur": round(len(y) / sr2, 2), "text": e["text"], "asr": round(sc, 2),
