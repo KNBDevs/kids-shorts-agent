@@ -183,6 +183,13 @@ jobs:
           N="$(jq -r '.episode // .episode_id // .char // .template // "colors"' spec.json)-${{ github.run_id }}"
           gh release view preview -R "$R" >/dev/null 2>&1 || gh release create preview -R "$R" -t preview -n "" --prerelease
           cp out.mp4 "$N.mp4" && gh release upload preview "$N.mp4" -R "$R" --clobber
+          A="$(jq -r '.[]|select(.status=="approved")|.id' catalog/queue.json)"
+          gh api "repos/$R/releases/tags/preview" --jq '.assets[]|[.id,.name]|@tsv' | while IFS=$'\t' read -r i n; do
+            b="${n%-*}"
+            [ "$n" = "$N.mp4" ] && continue
+            [[ "$n" =~ -[0-9]+\.mp4$ ]] || continue
+            if grep -qx "$b" <<<"$A" || [ "$b" = "${N%-*}" ]; then gh api -X DELETE "repos/$R/releases/assets/$i" >/dev/null || true; fi
+          done
       - name: Deliver
         if: ${{ github.event_name == 'schedule' || inputs.deliver }}
         env:
