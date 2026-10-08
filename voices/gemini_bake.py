@@ -180,7 +180,7 @@ def finish(seg, sr, key, e, asr):
 
 
 PAIRS = []
-NAMES = {"pimo": "Pimo", "luma": "Luma", "ruki": "Ruki", "moki": "Moki", "tuki": "Tuki", "bolita": "Bolita", "bopi": "Bopi", "gruno": "Gruno", "narrador": "Narradora", "nubi": "Nubi"}
+NAMES = {"pimo": "Pimo", "luma": "Luma", "ruki": "Ruki", "moki": "Moki", "tuki": "Tuki", "bolita": "Bolita", "bopi": "Bopi", "gruno": "Gruno", "narrador": "Narradora", "nubi": "Nubi", "seda": "Seda", "velo": "Velo"}
 
 
 def pending(man, allL, cid):

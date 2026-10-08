@@ -11,6 +11,8 @@ VOICES = {
     "gruno": ("Algenib", "Voz de villano cómico de dibujos animados, presumido, teatral y pícaro, nunca aterrador, " + ACC),
     "narrador": ("Sulafat", "Voz de narradora adulta, cálida, serena y cercana, ritmo pausado y claro para niños pequeños, " + ACC),
     "nubi": ("Achernar", "Voz de fantasmita de cuento, suave, dulce y alegre, nada tenebrosa, " + ACC),
+    "seda": ("Despina", "Voz de arañita amable y tranquila, suave y curiosa, nada inquietante, " + ACC),
+    "velo": ("Laomedeia", "Voz de murcielaguito simpático y alegre, juguetón y amable, " + ACC),
 }
 VERSION = "g1"
 
