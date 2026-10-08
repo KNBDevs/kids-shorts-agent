@@ -140,5 +140,5 @@ def dress(ch, cid, mode='halloween'):
         C.sphere('cos_bolita.knot', (0, -0.01 * H, 0), (0.028 * H, 0.02 * H, 0.03 * H), m('amber'), bt, 16)
     elif cid == 'gruno':
         fh = 0.1 * H
-        pk = pumpkin('cos_gruno.pumpkin', g, (0.26 * H, -0.48 * H, fh + 0.3 * H), 0.07 * H)
+        pk = pumpkin('cos_gruno.pumpkin', g, (0.2 * H, -0.5 * H, fh + 0.34 * H), 0.085 * H)
     return g
