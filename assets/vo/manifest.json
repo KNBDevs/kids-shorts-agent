@@ -2293,5 +2293,115 @@
   "engine": "gemini",
   "voice": "Algenib",
   "dev": 0.0
+ },
+ "ep_donde_esta_tres_p1": {
+  "hash": "9eeedd522314",
+  "dur": 4.71,
+  "text": "Uno, dos... ¿y el tres?",
+  "asr": 1.0,
+  "heard": "1, 2 y el 3",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": 0.0
+ },
+ "ep_donde_esta_tres_p2": {
+  "hash": "bf533136a725",
+  "dur": 1.24,
+  "text": "¡Aquí hay un hueco!",
+  "asr": 1.0,
+  "heard": "Aquí hay un hueco.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": 0.0
+ },
+ "ep_donde_esta_tres_p3": {
+  "hash": "395e07493a0b",
+  "dur": 1.13,
+  "text": "¿Dónde está el tres?",
+  "asr": 1.0,
+  "heard": "¿Dónde está el 3?",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": 0.0
+ },
+ "ep_invento_error_util_p2": {
+  "hash": "8061c10baa7c",
+  "dur": 1.46,
+  "text": "¿Y si metemos la pelota?",
+  "asr": 1.0,
+  "heard": "Y si metemos la pelota.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": -2.85
+ },
+ "ep_mitades_merienda_p3": {
+  "hash": "39e6ac61492b",
+  "dur": 0.75,
+  "text": "¿Cambiamos?",
+  "asr": 1.0,
+  "heard": "¿Cambiamos?",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": 0.0
+ },
+ "ep_donde_esta_tres_p4": {
+  "hash": "14776e9caf39",
+  "dur": 1.81,
+  "text": "¡Ahí, detrás del arbusto!",
+  "asr": 1.0,
+  "heard": "Ahí, detrás del arbusto.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": 0.0
+ },
+ "ep_donde_esta_tres_p5": {
+  "hash": "4ce64cec6e17",
+  "dur": 2.14,
+  "text": "Está girado. Lo ponemos bien.",
+  "asr": 1.0,
+  "heard": "Está girado, lo ponemos bien.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": 0.0
+ },
+ "ep_donde_esta_tres_c1": {
+  "hash": "bc38bb6165a8",
+  "dur": 2.63,
+  "text": "Uno, dos, tres, cuatro.",
+  "asr": 1.0,
+  "heard": "1, 2, 3, 4",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": 0.0
+ },
+ "ep_donde_esta_tres_p6": {
+  "hash": "d84434e89e92",
+  "dur": 1.49,
+  "text": "Tú, aquí, al lado.",
+  "asr": 1.0,
+  "heard": "Tú, aquí al lado.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": 0.0
+ },
+ "ep_invento_error_util_p4": {
+  "hash": "9ebd00e224f9",
+  "dur": 2.36,
+  "text": "Ese error nos ha dado una idea.",
+  "asr": 1.0,
+  "heard": "Ese error nos ha dado una idea.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": 0.0
+ },
+ "ep_puente_cooperacion_p2": {
+  "hash": "12eac54fac58",
+  "dur": 1.52,
+  "text": "¡Juntos, sí llega!",
+  "asr": 1.0,
+  "heard": "¡Juntos si llega!",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": 0.0
  }
 }
