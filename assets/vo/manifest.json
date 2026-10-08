@@ -1420,22 +1420,24 @@
   "dev": 1.91
  },
  "ep_hielo_derrite_l1": {
-  "hash": "rejected",
-  "dur": 2.14,
+  "hash": "44dfa7d1c9f9",
+  "dur": 2.69,
   "text": "Vamos a mirar otro cubito, con calma.",
-  "asr": 1.0,
-  "heard": "Vamos a mirar otro cubito con calma.",
+  "asr": 0.86,
+  "heard": "Vamos a mirar otro cubito con palva.",
   "engine": "gemini",
-  "voice": "Leda"
+  "voice": "Leda",
+  "dev": -4.7
  },
  "ep_hielo_derrite_l2": {
-  "hash": "rejected",
-  "dur": 1.46,
+  "hash": "cefc3b0f8377",
+  "dur": 2.04,
   "text": "El hielo es agua sólida.",
   "asr": 1.0,
   "heard": "El hielo es agua sólida.",
   "engine": "gemini",
-  "voice": "Leda"
+  "voice": "Leda",
+  "dev": -3.6
  },
  "ep_luma_escucha_l1": {
   "hash": "551d594d5a06",
@@ -1448,22 +1450,24 @@
   "dev": -0.8
  },
  "ep_luma_escucha_l2": {
-  "hash": "rejected",
-  "dur": 0.97,
+  "hash": "d33b33aa6aa0",
+  "dur": 1.03,
   "text": "Había una vez...",
   "asr": 1.0,
-  "heard": "¿Había una vez?",
+  "heard": "¡Había una vez!",
   "engine": "gemini",
-  "voice": "Leda"
+  "voice": "Leda",
+  "dev": -2.2
  },
  "ep_luma_escucha_l4": {
-  "hash": "rejected",
-  "dur": 2.42,
+  "hash": "8da9d39897a4",
+  "dur": 2.76,
   "text": "...que tenía muchas ganas de contar su cuento.",
-  "asr": 1.0,
-  "heard": "que tenía muchas ganas de contar su cuento.",
+  "asr": 0.88,
+  "heard": "que tenían muchas ganas de contar su cuento.",
   "engine": "gemini",
-  "voice": "Leda"
+  "voice": "Leda",
+  "dev": -4.8
  },
  "ep_boton_mas_grande_g1": {
   "hash": "aaaf2cf9dc1b",
@@ -1877,22 +1881,24 @@
   "dev": 3.3
  },
  "ep_luma_escucha_p3": {
-  "hash": "rejected",
-  "dur": 1.0,
+  "hash": "7e9c65609feb",
+  "dur": 1.18,
   "text": "¿Nos lo cuentas?",
   "asr": 1.0,
   "heard": "¿Nos lo cuentas?",
   "engine": "gemini",
-  "voice": "Puck"
+  "voice": "Puck",
+  "dev": -8.0
  },
  "ep_hielo_derrite_l4": {
-  "hash": "rejected",
-  "dur": 1.54,
+  "hash": "fd779a4dca90",
+  "dur": 1.75,
   "text": "Ahora es agua líquida.",
   "asr": 1.0,
   "heard": "Ahora es agua líquida.",
   "engine": "gemini",
-  "voice": "Leda"
+  "voice": "Leda",
+  "dev": -3.1
  },
  "ep_bolita_mezcla_verde_p1": {
   "hash": "c1cfd080dfd3",
@@ -1924,13 +1930,14 @@
   "dev": -4.0
  },
  "ep_luma_escucha_p4": {
-  "hash": "rejected",
-  "dur": 1.27,
+  "hash": "efdcd466656f",
+  "dur": 1.45,
   "text": "¡Qué cuento tan bonito!",
   "asr": 1.0,
-  "heard": "¡Que cuento tan bonito!",
+  "heard": "¡Qué cuento tan bonito!",
   "engine": "gemini",
-  "voice": "Puck"
+  "voice": "Puck",
+  "dev": -5.23
  },
  "ep_monstruo_caja_p2": {
   "hash": "3208ceef4a86",
@@ -1943,13 +1950,14 @@
   "dev": 0.0
  },
  "ep_viento_hoja_l1": {
-  "hash": "rejected",
-  "dur": 1.94,
+  "hash": "bef1ac67a5ce",
+  "dur": 2.32,
   "text": "Mira. Dejo quieto el abanico.",
   "asr": 1.0,
   "heard": "Mira, dejo quieto el abanico.",
   "engine": "gemini",
-  "voice": "Leda"
+  "voice": "Leda",
+  "dev": -2.25
  },
  "ep_sal_disuelta_b1": {
   "hash": "0e28da584dd1",
@@ -2180,5 +2188,55 @@
   "engine": "gemini",
   "voice": "Umbriel",
   "dev": -0.94
+ },
+ "ep_hielo_derrite_l3": {
+  "hash": "72e9cca7b71d",
+  "dur": 2.07,
+  "text": "Al calentarse, se derrite.",
+  "asr": 1.0,
+  "heard": "Al calentarse, se derrite.",
+  "engine": "gemini",
+  "voice": "Leda",
+  "dev": -5.5
+ },
+ "ep_viento_hoja_l2": {
+  "hash": "c5733ff96552",
+  "dur": 2.09,
+  "text": "Y ahora lo muevo despacio.",
+  "asr": 1.0,
+  "heard": "Y ahora lo muevo despacio.",
+  "engine": "gemini",
+  "voice": "Leda",
+  "dev": -5.7
+ },
+ "ep_invento_error_util_p1": {
+  "hash": "5a8a121a643f",
+  "dur": 1.75,
+  "text": "Espera... es enorme.",
+  "asr": 1.0,
+  "heard": "¡Espera! ¡Es enorme!",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": 3.1
+ },
+ "ep_invento_error_util_p3": {
+  "hash": "e6897739070f",
+  "dur": 1.95,
+  "text": "¡Mira! ¡La lleva volando!",
+  "asr": 1.0,
+  "heard": "¡Mira! ¡La lleva volando!",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": 3.65
+ },
+ "ep_mitades_merienda_p1": {
+  "hash": "1a99094ef39f",
+  "dur": 1.59,
+  "text": "¡La manzana es mía!",
+  "asr": 1.0,
+  "heard": "La manzana es mía.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": -5.0
  }
 }
