@@ -9,7 +9,7 @@ on:
     inputs:
       chars:
         description: "Characters"
-        default: "pimo,ruki,luma,tuki,moki,bopi,bolita,gruno,narrador,nubi"
+        default: "pimo,ruki,luma,tuki,moki,bopi,bolita,gruno,narrador,nubi,seda,velo"
 permissions:
   contents: write
   actions: write
@@ -29,7 +29,7 @@ jobs:
       - run: pip install -q numpy scipy faster-whisper librosa
       - env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: python voices/gemini_bake.py "${{ inputs.chars || 'pimo,ruki,luma,tuki,moki,bopi,bolita,gruno,narrador,nubi' }}"
+        run: python voices/gemini_bake.py "${{ inputs.chars || 'pimo,ruki,luma,tuki,moki,bopi,bolita,gruno,narrador,nubi,seda,velo' }}"
       - if: always()
         run: |
           git config user.name "bot"; git config user.email "bot@users.noreply.github.com"
