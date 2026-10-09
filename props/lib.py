@@ -1742,6 +1742,56 @@ def farm_trough(r, s, fam, root, kind="water"):
     return fill
 
 
+def toy_car(r, s, fam, root):
+    c, d = [_rich(x, 1.3, 0.95) for x in _cols(r, fam, 2)]
+    bm_ = M(c, rough=0.35, coat=0.8)
+    tm = M(d, rough=0.4, coat=0.6)
+    seat = M((0.98, 0.94, 0.86), rough=0.6, coat=0.2)
+    tire = M((0.3, 0.3, 0.36), rough=0.6, coat=0.2)
+    hub = M((0.96, 0.94, 0.9), rough=0.3, coat=0.8)
+    lamp = M((1.0, 0.95, 0.7), rough=0.2, coat=1.0, emit=1.2)
+    L, W, R = 2.0, 1.25, 0.2
+    zf = 0.2
+    if s == 0:
+        C.rounded_box("floor", (0, 0, zf + 0.06), (L, W, 0.14), 0.07, bm_, root)
+        for y in (-1, 1):
+            C.rounded_box("side", (0, y * (W / 2 - 0.06), zf + 0.25), (L, 0.12, 0.42), 0.06, bm_, root)
+        C.rounded_box("nose", (L / 2 - 0.2, 0, zf + 0.25), (0.4, W, 0.42), 0.12, bm_, root)
+        C.rounded_box("tailb", (-L / 2 + 0.1, 0, zf + 0.3), (0.2, W, 0.52), 0.08, bm_, root)
+    elif s == 1:
+        C.rounded_box("floor", (0, 0, zf + 0.08), (L, W, 0.18), 0.04, bm_, root)
+        for y in (-1, 1):
+            C.rounded_box("side", (0, y * (W / 2 - 0.05), zf + 0.28), (L * 0.98, 0.1, 0.4), 0.03, bm_, root)
+            C.rounded_box("step", (0, y * (W / 2 + 0.06), zf + 0.06), (L * 0.6, 0.14, 0.05), 0.02, tm, root)
+        C.rounded_box("nose", (L / 2 - 0.18, 0, zf + 0.3), (0.36, W, 0.46), 0.04, bm_, root)
+        C.rounded_box("grill", (L / 2 + 0.005, 0, zf + 0.3), (0.02, W * 0.6, 0.24), 0.01, tm, root)
+        C.rounded_box("tailb", (-L / 2 + 0.08, 0, zf + 0.3), (0.16, W, 0.46), 0.04, bm_, root)
+    else:
+        C.rounded_box("tub", (0, 0, zf + 0.22), (L, W, 0.44), 0.21, bm_, root)
+        C.rounded_box("rim", (0, 0, zf + 0.42), (L * 0.84, W * 0.8, 0.08), 0.04, tm, root)
+        for y in (-1, 1):
+            C.tube("stripe", [(-L / 2 + 0.25, y * (W / 2 + 0.005), zf + 0.24), (L / 2 - 0.25, y * (W / 2 + 0.005), zf + 0.24)], 0.03, tm, root)
+    for y in (-1, 1):
+        C.sphere("lamp", (L / 2 + 0.01, y * (W / 2 - 0.2), zf + 0.32), (0.03, 0.09, 0.09), lamp, root, 20)
+    C.rounded_box("seatF", (0.1, 0, zf + 0.22), (0.5, W - 0.25, 0.14), 0.05, seat, root)
+    C.rounded_box("backF", (-0.17, 0, zf + 0.42), (0.12, W - 0.3, 0.36), 0.05, seat, root)
+    C.rounded_box("seatR", (-0.58, 0, zf + 0.34), (0.42, W - 0.25, 0.14), 0.05, seat, root)
+    C.rounded_box("backR", (-0.82, 0, zf + 0.56), (0.12, W - 0.3, 0.36), 0.05, seat, root)
+    C.rounded_box("dash", (0.62, 0, zf + 0.55), (0.18, W - 0.2, 0.16), 0.06, tm, root)
+    sw = C.empty("steer", root, (0.48, -0.3, zf + 0.68), (0, math.radians(-60), 0))
+    C.tube("ring", [(0.14 * math.cos(k * 6.2832 / 40), 0.14 * math.sin(k * 6.2832 / 40), 0) for k in range(41)], 0.025, tm, sw)
+    C.tube("spoke", [(-0.14, 0, 0), (0.14, 0, 0)], 0.018, tm, sw)
+    C.tube("col", [(0.0, 0, 0), (0.0, 0, -0.16)], 0.025, tm, sw)
+    wheels = []
+    for x in (L / 2 - 0.38, -L / 2 + 0.38):
+        for y in (-1, 1):
+            w = C.empty("wheel", root, (x, y * (W / 2 + 0.02), R), (math.radians(90), 0, 0))
+            C.lathe("tire", [(-0.09, 0.0), (-0.09, R - 0.05), (-0.07, R), (0.07, R), (0.09, R - 0.05), (0.09, 0.0)], tire, w, segs=40)
+            C.sphere("hub", (0, 0, y * 0.09), (0.09, 0.09, 0.03), hub, w, 20)
+            wheels.append(w)
+    return wheels
+
+
 GEN = {k: v for k, v in globals().items() if k in REGISTRY}
 
 

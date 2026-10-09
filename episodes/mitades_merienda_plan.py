@@ -9,7 +9,7 @@ LINES = [
     ('r2', 'ruki', '¿Son iguales?', 200, 1.2),
     ('r3', 'ruki', '¡Sí! Dos mitades iguales.', 290, 2.0),
     ('r4', 'ruki', 'Una para ti... y una para ti.', 360, 2.2),
-    ('p2', 'pimo', '¡Mi mitad!', 450, 1.0),
+    ('p2', 'pimo', '¡Mi mitad! ¡Gracias!', 448, 1.5),
     ('t2', 'tuki', '¡Y la mía!', 490, 1.0),
     ('p3', 'pimo', '¿Cambiamos?', 560, 1.0),
     ('t3', 'tuki', '¡Es igual!', 640, 1.0),
