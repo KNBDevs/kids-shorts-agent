@@ -2643,5 +2643,65 @@
   "engine": "gemini",
   "voice": "Puck",
   "dev": 4.2
+ },
+ "ep_silabas_mesa_p1": {
+  "hash": "174f972e69b0",
+  "dur": 2.43,
+  "text": "Escucha: me... sa.",
+  "asr": 1.0,
+  "heard": "escucha  me  sa",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": -6.5
+ },
+ "ep_silabas_mesa_p2": {
+  "hash": "492f46b9d90a",
+  "dur": 1.87,
+  "text": "Una palmada para cada parte.",
+  "asr": 1.0,
+  "heard": "Una palmada para cada parte.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": -7.2
+ },
+ "ep_silabas_mesa_p3": {
+  "hash": "e31a9314a0cc",
+  "dur": 2.45,
+  "text": "Estas partes se llaman sílabas.",
+  "asr": 1.0,
+  "heard": "Estas partes se llaman sílabas.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": -7.15
+ },
+ "ep_muneca_reparar_p1": {
+  "hash": "9ec853226055",
+  "dur": 1.37,
+  "text": "La cinta se ha soltado.",
+  "asr": 1.0,
+  "heard": "La cinta se ha soltado.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": 0.0
+ },
+ "ep_muneca_reparar_p2": {
+  "hash": "57fe38e19c87",
+  "dur": 1.67,
+  "text": "Podemos buscar cómo arreglarla.",
+  "asr": 1.0,
+  "heard": "Podemos buscar cómo arreglarla.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": 0.0
+ },
+ "ep_raices_agua_p4": {
+  "hash": "b56fa218c69c",
+  "dur": 1.67,
+  "text": "Las raíces absorben agua.",
+  "asr": 1.0,
+  "heard": "Las raíces absorben agua.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": 0.0
  }
 }
