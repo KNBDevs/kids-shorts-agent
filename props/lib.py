@@ -1936,6 +1936,40 @@ def cutaway_pot(r, s, fam, root):
     return {"front": front, "cut": cut, "roots": roots, "plant": plant, "top": H}
 
 
+def care_sign(r, s, fam, root):
+    c, d = [_rich(x, 1.3, 0.95) for x in _cols(r, fam, 2)]
+    fm = M(c, rough=0.4, coat=0.6)
+    wm = M((0.98, 0.96, 0.9), rough=0.5, coat=0.3)
+    hm = M((0.95, 0.45, 0.5), rough=0.4, coat=0.5)
+    gm = M((0.35, 0.72, 0.35), rough=0.45, coat=0.5)
+    if s == 0:
+        C.tube("stake", [(0, 0.01, 0), (0, 0.01, 0.42)], 0.018, M(d, rough=0.5), root)
+        C.rounded_box("board", (0, 0, 0.5), (0.3, 0.035, 0.22), 0.05, fm, root)
+        C.rounded_box("face", (0, -0.016, 0.5), (0.25, 0.01, 0.17), 0.03, wm, root)
+        z = 0.5
+    elif s == 1:
+        for sx in (-1, 1):
+            C.tube("leg", [(sx * 0.12, 0.06, 0), (sx * 0.1, 0.0, 0.42)], 0.016, M(d, rough=0.5), root)
+            C.tube("leg", [(sx * 0.12, -0.06, 0), (sx * 0.1, 0.0, 0.42)], 0.016, M(d, rough=0.5), root)
+        C.rounded_box("board", (0, -0.02, 0.36), (0.3, 0.03, 0.22), 0.04, fm, root)
+        C.rounded_box("face", (0, -0.037, 0.36), (0.25, 0.01, 0.17), 0.03, wm, root)
+        z = 0.36
+    else:
+        C.lathe("base", [(0, 0.0), (0, 0.1), (0.02, 0.11), (0.04, 0.08), (0.05, 0.0)], M(d, rough=0.5), root, segs=32)
+        C.tube("post", [(0, 0, 0.04), (0, 0, 0.36)], 0.014, M(d, rough=0.5), root)
+        dk = C.empty("dk", root, (0, 0, 0.48), (math.radians(90), 0, 0))
+        C.lathe("disc", [(-0.02, 0.0), (-0.02, 0.14), (0.02, 0.14), (0.02, 0.0)], fm, dk, segs=48)
+        C.lathe("face", [(-0.025, 0.0), (-0.025, 0.115), (-0.015, 0.115), (-0.015, 0.0)], wm, dk, segs=48)
+        z = 0.48
+    y = -0.03 if s != 1 else -0.045
+    C.sphere("hl", (-0.025, y, z - 0.005), (0.035, 0.01, 0.035), hm, root, 16)
+    C.sphere("hr", (0.025, y, z - 0.005), (0.035, 0.01, 0.035), hm, root, 16)
+    C.sphere("hb", (0.0, y, z - 0.035), (0.03, 0.01, 0.03), hm, root, 16, rot=(0, math.radians(45), 0))
+    C.tube("st", [(0.0, y - 0.004, z + 0.02), (0.0, y - 0.004, z + 0.07)], 0.007, gm, root)
+    C.sphere("lf", (0.025, y - 0.004, z + 0.07), (0.028, 0.008, 0.014), gm, root, 12)
+    return z
+
+
 GEN = {k: v for k, v in globals().items() if k in REGISTRY}
 
 

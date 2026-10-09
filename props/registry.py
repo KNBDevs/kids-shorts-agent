@@ -65,4 +65,5 @@ REGISTRY = {
     "observe_jar": {"styles": 3, "envs": ["casa", "lab", "aula", "patio"], "tags": ["ciencia", "plantas"], "decor": False},
     "watering_can": {"styles": 3, "envs": ["patio", "casa", "granja"], "tags": ["jardin", "agua"], "decor": False},
     "cutaway_pot": {"styles": 3, "envs": ["patio", "casa", "aula", "lab"], "tags": ["planta", "ilustracion"], "decor": False},
+    "care_sign": {"styles": 3, "envs": ["patio", "plaza", "casa", "aula"], "tags": ["cartel", "cuidado"], "decor": False},
 }
