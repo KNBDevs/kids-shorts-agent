@@ -2933,5 +2933,163 @@
    }
   ],
   "order": 35
+ },
+ "hw26_05_escocia": {
+  "env": "halloween",
+  "family": "autumn",
+  "decor": [
+   {
+    "prop": "hay_seat",
+    "style": 2,
+    "seed": 347,
+    "loc": [
+     3.63,
+     3.21,
+     0.0
+    ],
+    "scale": 1.17,
+    "rot": -30.1
+   },
+   {
+    "prop": "pebbles",
+    "style": 0,
+    "seed": 991773,
+    "loc": [
+     2.04,
+     1.98,
+     0.0
+    ],
+    "scale": 1.04,
+    "rot": 23.8
+   },
+   {
+    "prop": "bush",
+    "style": 0,
+    "seed": 906685,
+    "loc": [
+     0.85,
+     4.06,
+     0.0
+    ],
+    "scale": 1.21,
+    "rot": -14.5
+   },
+   {
+    "prop": "fence",
+    "style": 2,
+    "seed": 148430,
+    "loc": [
+     -2.28,
+     2.26,
+     0.0
+    ],
+    "scale": 0.96,
+    "rot": 22.3
+   },
+   {
+    "prop": "mushroom_stool",
+    "style": 0,
+    "seed": 309069,
+    "loc": [
+     -3.33,
+     3.27,
+     0.0
+    ],
+    "scale": 1.19,
+    "rot": -10.4
+   },
+   {
+    "prop": "leaf_pile",
+    "style": 0,
+    "seed": 127768,
+    "loc": [
+     -1.15,
+     2.64,
+     0.0
+    ],
+    "scale": 1.09,
+    "rot": 9.9
+   }
+  ],
+  "order": 36
+ },
+ "hw26_06_truco_trato": {
+  "env": "halloween",
+  "family": "autumn",
+  "decor": [
+   {
+    "prop": "fence",
+    "style": 1,
+    "seed": 85961,
+    "loc": [
+     4.51,
+     0.53,
+     0.0
+    ],
+    "scale": 1.18,
+    "rot": -19.5
+   },
+   {
+    "prop": "led_lantern",
+    "style": 2,
+    "seed": 3925,
+    "loc": [
+     -2.33,
+     3.2,
+     0.0
+    ],
+    "scale": 1.08,
+    "rot": -25.2
+   },
+   {
+    "prop": "mushroom_stool",
+    "style": 0,
+    "seed": 795377,
+    "loc": [
+     2.45,
+     2.88,
+     0.0
+    ],
+    "scale": 1.09,
+    "rot": -21.7
+   },
+   {
+    "prop": "pebbles",
+    "style": 1,
+    "seed": 342388,
+    "loc": [
+     3.43,
+     1.68,
+     0.0
+    ],
+    "scale": 1.15,
+    "rot": 23.5
+   },
+   {
+    "prop": "gourd_trio",
+    "style": 1,
+    "seed": 522326,
+    "loc": [
+     -3.51,
+     0.38,
+     0.0
+    ],
+    "scale": 0.89,
+    "rot": 13.9
+   },
+   {
+    "prop": "bush",
+    "style": 1,
+    "seed": 48156,
+    "loc": [
+     -4.54,
+     0.41,
+     0.0
+    ],
+    "scale": 1.14,
+    "rot": 9.9
+   }
+  ],
+  "order": 37
  }
 }
