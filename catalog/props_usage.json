@@ -2380,5 +2380,163 @@
     "seed": 707
    }
   ]
+ },
+ "semilla_brota": {
+  "env": "casa",
+  "family": "pastel",
+  "decor": [
+   {
+    "prop": "bunting",
+    "style": 1,
+    "seed": 335500,
+    "loc": [
+     -2.45,
+     4.19,
+     0.0
+    ],
+    "scale": 1.1,
+    "rot": -9.6
+   },
+   {
+    "prop": "pouf",
+    "style": 0,
+    "seed": 825793,
+    "loc": [
+     -4.34,
+     0.55,
+     0.0
+    ],
+    "scale": 1.04,
+    "rot": -21.6
+   },
+   {
+    "prop": "play_mat",
+    "style": 1,
+    "seed": 312197,
+    "loc": [
+     -1.32,
+     1.88,
+     0.0
+    ],
+    "scale": 0.9,
+    "rot": -24.8
+   },
+   {
+    "prop": "planter_box",
+    "style": 1,
+    "seed": 417423,
+    "loc": [
+     -3.27,
+     3.1,
+     0.0
+    ],
+    "scale": 1.18,
+    "rot": 4.7
+   },
+   {
+    "prop": "pebbles",
+    "style": 0,
+    "seed": 866260,
+    "loc": [
+     3.43,
+     1.46,
+     0.0
+    ],
+    "scale": 1.18,
+    "rot": 2.2
+   },
+   {
+    "prop": "toy_blocks",
+    "style": 1,
+    "seed": 622426,
+    "loc": [
+     2.48,
+     2.04,
+     0.0
+    ],
+    "scale": 1.18,
+    "rot": -24.1
+   }
+  ],
+  "order": 29
+ },
+ "raices_agua": {
+  "env": "patio",
+  "family": "fresh",
+  "decor": [
+   {
+    "prop": "flower_pot",
+    "style": 1,
+    "seed": 46232,
+    "loc": [
+     1.01,
+     1.76,
+     0.0
+    ],
+    "scale": 1.07,
+    "rot": -20.9
+   },
+   {
+    "prop": "mushroom_stool",
+    "style": 0,
+    "seed": 530378,
+    "loc": [
+     2.45,
+     3.61,
+     0.0
+    ],
+    "scale": 0.95,
+    "rot": 3.1
+   },
+   {
+    "prop": "fence",
+    "style": 1,
+    "seed": 218507,
+    "loc": [
+     -2.34,
+     1.96,
+     0.0
+    ],
+    "scale": 1.08,
+    "rot": -24.5
+   },
+   {
+    "prop": "planter_box",
+    "style": 2,
+    "seed": 645859,
+    "loc": [
+     -4.61,
+     0.99,
+     0.0
+    ],
+    "scale": 0.94,
+    "rot": 12.6
+   },
+   {
+    "prop": "bench",
+    "style": 1,
+    "seed": 316128,
+    "loc": [
+     3.59,
+     1.42,
+     0.0
+    ],
+    "scale": 1.14,
+    "rot": 11.1
+   },
+   {
+    "prop": "birdhouse",
+    "style": 0,
+    "seed": 229980,
+    "loc": [
+     -3.17,
+     3.17,
+     0.0
+    ],
+    "scale": 1.14,
+    "rot": -7.2
+   }
+  ],
+  "order": 30
  }
 }
