@@ -3091,5 +3091,321 @@
    }
   ],
   "order": 37
+ },
+ "patron_ab": {
+  "env": "casa",
+  "family": "pastel",
+  "decor": [
+   {
+    "prop": "play_mat",
+    "style": 0,
+    "seed": 261654,
+    "loc": [
+     0.86,
+     4.5,
+     0.0
+    ],
+    "scale": 1.04,
+    "rot": 17.7
+   },
+   {
+    "prop": "planter_box",
+    "style": 1,
+    "seed": 597173,
+    "loc": [
+     1.94,
+     3.41,
+     0.0
+    ],
+    "scale": 1.14,
+    "rot": -30.4
+   },
+   {
+    "prop": "floor_lamp",
+    "style": 2,
+    "seed": 886931,
+    "loc": [
+     4.9,
+     2.37,
+     0.0
+    ],
+    "scale": 1.24,
+    "rot": 16.3
+   },
+   {
+    "prop": "toy_blocks",
+    "style": 0,
+    "seed": 968513,
+    "loc": [
+     3.13,
+     1.64,
+     0.0
+    ],
+    "scale": 1.13,
+    "rot": -23.3
+   },
+   {
+    "prop": "ball_basket",
+    "style": 2,
+    "seed": 855825,
+    "loc": [
+     -1.03,
+     3.24,
+     0.0
+    ],
+    "scale": 1.08,
+    "rot": -5.8
+   },
+   {
+    "prop": "soft_token",
+    "style": 1,
+    "seed": 170584,
+    "loc": [
+     -3.34,
+     2.08,
+     0.0
+    ],
+    "scale": 0.94,
+    "rot": 30.3
+   }
+  ],
+  "order": 38
+ },
+ "silabas_mesa": {
+  "env": "casa",
+  "family": "pastel",
+  "decor": [
+   {
+    "prop": "ball_basket",
+    "style": 0,
+    "seed": 180047,
+    "loc": [
+     1.06,
+     2.51,
+     0.0
+    ],
+    "scale": 1.08,
+    "rot": 21.3
+   },
+   {
+    "prop": "flower_pot",
+    "style": 0,
+    "seed": 663846,
+    "loc": [
+     3.35,
+     1.27,
+     0.0
+    ],
+    "scale": 1.24,
+    "rot": -0.4
+   },
+   {
+    "prop": "planter_box",
+    "style": 2,
+    "seed": 683313,
+    "loc": [
+     -3.28,
+     1.16,
+     0.0
+    ],
+    "scale": 1.02,
+    "rot": -8.3
+   },
+   {
+    "prop": "pouf",
+    "style": 2,
+    "seed": 312063,
+    "loc": [
+     -4.36,
+     2.61,
+     0.0
+    ],
+    "scale": 0.94,
+    "rot": 9.6
+   },
+   {
+    "prop": "play_mat",
+    "style": 1,
+    "seed": 801653,
+    "loc": [
+     2.23,
+     3.23,
+     0.0
+    ],
+    "scale": 1.02,
+    "rot": 25.2
+   },
+   {
+    "prop": "toy_blocks",
+    "style": 1,
+    "seed": 345564,
+    "loc": [
+     -2.1,
+     3.93,
+     0.0
+    ],
+    "scale": 1.21,
+    "rot": 6.9
+   }
+  ],
+  "order": 39
+ },
+ "rima_gato": {
+  "env": "casa",
+  "family": "pastel",
+  "decor": [
+   {
+    "prop": "pouf",
+    "style": 1,
+    "seed": 417792,
+    "loc": [
+     1.98,
+     2.86,
+     0.0
+    ],
+    "scale": 1.1,
+    "rot": -28.9
+   },
+   {
+    "prop": "planter_box",
+    "style": 0,
+    "seed": 380099,
+    "loc": [
+     -1.28,
+     3.99,
+     0.0
+    ],
+    "scale": 0.93,
+    "rot": -14.8
+   },
+   {
+    "prop": "play_mat",
+    "style": 2,
+    "seed": 147332,
+    "loc": [
+     -2.17,
+     2.51,
+     0.0
+    ],
+    "scale": 1.24,
+    "rot": -16.3
+   },
+   {
+    "prop": "ball_basket",
+    "style": 1,
+    "seed": 217765,
+    "loc": [
+     -3.5,
+     2.94,
+     0.0
+    ],
+    "scale": 1.07,
+    "rot": 20.4
+   },
+   {
+    "prop": "flower_pot",
+    "style": 1,
+    "seed": 949701,
+    "loc": [
+     3.67,
+     1.2,
+     0.0
+    ],
+    "scale": 1.15,
+    "rot": 19.8
+   },
+   {
+    "prop": "floor_lamp",
+    "style": 0,
+    "seed": 383251,
+    "loc": [
+     -4.53,
+     1.81,
+     0.0
+    ],
+    "scale": 1.16,
+    "rot": -7.4
+   }
+  ],
+  "order": 40
+ },
+ "muneca_reparar": {
+  "env": "casa",
+  "family": "pastel",
+  "decor": [
+   {
+    "prop": "toy_blocks",
+    "style": 2,
+    "seed": 874578,
+    "loc": [
+     -1.92,
+     2.13,
+     0.0
+    ],
+    "scale": 1.08,
+    "rot": 32.4
+   },
+   {
+    "prop": "flower_pot",
+    "style": 2,
+    "seed": 751209,
+    "loc": [
+     1.1,
+     2.29,
+     0.0
+    ],
+    "scale": 1.24,
+    "rot": 4.1
+   },
+   {
+    "prop": "bunting",
+    "style": 2,
+    "seed": 726194,
+    "loc": [
+     4.5,
+     2.12,
+     0.0
+    ],
+    "scale": 0.85,
+    "rot": -23.4
+   },
+   {
+    "prop": "pouf",
+    "style": 0,
+    "seed": 557296,
+    "loc": [
+     -4.8,
+     3.35,
+     0.0
+    ],
+    "scale": 0.89,
+    "rot": 10.7
+   },
+   {
+    "prop": "soft_token",
+    "style": 0,
+    "seed": 732346,
+    "loc": [
+     2.09,
+     3.37,
+     0.0
+    ],
+    "scale": 1.13,
+    "rot": 4.4
+   },
+   {
+    "prop": "led_lantern",
+    "style": 1,
+    "seed": 162097,
+    "loc": [
+     -1.27,
+     2.37,
+     0.0
+    ],
+    "scale": 1.04,
+    "rot": -9.9
+   }
+  ],
+  "order": 41
  }
 }
