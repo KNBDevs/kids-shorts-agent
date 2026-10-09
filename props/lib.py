@@ -1792,6 +1792,67 @@ def toy_car(r, s, fam, root):
     return wheels
 
 
+def photo_album(r, s, fam, root, pages=4):
+    c, d = [_rich(x, 1.3, 0.95) for x in _cols(r, fam, 2)]
+    cm = M(c, rough=0.4, coat=0.6)
+    tm = M(d, rough=0.4, coat=0.6)
+    pm = M((0.99, 0.97, 0.92), rough=0.65, coat=0.1)
+    W, D = 0.34, 0.44
+    if s == 0:
+        for sx in (-1, 1):
+            C.rounded_box("cover", (sx * (W / 2 + 0.01), 0, 0.01), (W + 0.02, D + 0.03, 0.02), 0.008, cm, root)
+        for k in range(4):
+            y = -D / 2 + 0.07 + k * (D - 0.14) / 3
+            C.tube("ring", [(0.03 * math.cos(t * 6.2832 / 24), y, 0.03 + 0.03 * math.sin(t * 6.2832 / 24)) for t in range(25)], 0.006, tm, root)
+    elif s == 1:
+        for sx in (-1, 1):
+            C.rounded_box("cover", (sx * (W / 2 + 0.015), 0, 0.012), (W + 0.03, D + 0.04, 0.024), 0.004, cm, root)
+        C.rounded_box("spine", (0, 0, 0.012), (0.05, D + 0.04, 0.03), 0.01, tm, root)
+        C.tube("ribbon", [(0.02, D / 2 - 0.04, 0.045), (0.03, D / 2 + 0.04, 0.03), (0.05, D / 2 + 0.1, 0.005)], 0.008, tm, root)
+    else:
+        for sx in (-1, 1):
+            C.rounded_box("cover", (sx * (W / 2 + 0.01), 0, 0.014), (W + 0.04, D + 0.05, 0.028), 0.013, cm, root)
+        C.tube("strap", [(W + 0.02, -0.03, 0.03), (W + 0.06, -0.03, 0.015), (W + 0.06, 0.03, 0.015), (W + 0.02, 0.03, 0.03)], 0.012, tm, root)
+    C.rounded_box("blockL", (-W / 2, 0, 0.03), (W - 0.02, D - 0.02, 0.016), 0.004, pm, root)
+    C.rounded_box("blockR", (W / 2, 0, 0.03), (W - 0.02, D - 0.02, 0.016), 0.004, pm, root)
+    out = []
+    for k in range(pages):
+        pv = C.empty(f"page{k}", root, (0, 0, 0.04 + 0.002 * (pages - k)))
+        C.rounded_box("pg", (W / 2, 0, 0), (W - 0.03, D - 0.03, 0.004), 0.002, pm, pv)
+        out.append(pv)
+    return out
+
+
+def observe_jar(r, s, fam, root):
+    trim = _rich(_cols(r, fam, 1)[0], 1.3, 0.95)
+    glass = MA((0.9, 0.96, 1.0), 0.2)
+    cot = M((0.99, 0.99, 0.97), rough=0.9, coat=0.0)
+    wet = M((0.86, 0.9, 0.95), rough=0.7, coat=0.1)
+    if s == 0:
+        R, h = 0.12, 0.3
+        C.lathe("glass", [(0, 0.0), (0, R * 0.96), (0.012, R), (h, R), (h + 0.004, R - 0.004), (h, R - 0.008), (0.014, R - 0.008), (0.014, 0.0)], glass, root, segs=48)
+        C.tube("lip", _ring(R + 0.003, h - 0.015, 48), 0.012, M(trim, coat=0.7), root)
+        zc = 0.07
+    elif s == 1:
+        R, h = 0.15, 0.2
+        C.lathe("glass", [(0, 0.0), (0, R * 0.9), (0.02, R), (h * 0.8, R), (h, R * 0.8), (h + 0.004, R * 0.78), (h, R * 0.76), (h * 0.8, R - 0.008), (0.022, R - 0.008), (0.014, 0.0)], glass, root, segs=48)
+        C.tube("lip", _ring(R * 0.8, h - 0.006, 48), 0.014, M(trim, coat=0.7), root)
+        zc = 0.06
+    else:
+        R, h = 0.13, 0.26
+        for sx in (-1, 1):
+            C.rounded_box("wall", (sx * R, 0, h / 2), (0.012, 2 * R, h), 0.005, glass, root)
+            C.rounded_box("wall", (0, sx * R, h / 2), (2 * R, 0.012, h), 0.005, glass, root)
+        C.rounded_box("floor", (0, 0, 0.006), (2 * R, 2 * R, 0.012), 0.005, M(trim, coat=0.6), root)
+        C.tube("lip", [(-R, -R, h), (R, -R, h), (R, R, h), (-R, R, h), (-R, -R, h)], 0.01, M(trim, coat=0.7), root)
+        zc = 0.06
+    for k in range(9):
+        a = k * 2.4
+        rr = (R - 0.04) * (0.3 + 0.7 * ((k * 0.37) % 1))
+        C.sphere("cotton", (rr * math.cos(a), rr * math.sin(a), zc - 0.02), (0.05, 0.05, 0.035), cot if k % 3 else wet, root, 12)
+    return C.empty("seat", root, (0, -0.02, zc + 0.012))
+
+
 GEN = {k: v for k, v in globals().items() if k in REGISTRY}
 
 

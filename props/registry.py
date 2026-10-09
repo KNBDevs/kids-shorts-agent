@@ -61,4 +61,6 @@ REGISTRY = {
     "cow": {"styles": 3, "envs": ["granja", "patio"], "tags": ["animal", "granja"], "decor": False},
     "farm_trough": {"styles": 3, "envs": ["granja", "patio"], "tags": ["granja", "agua", "comida"], "decor": False},
     "toy_car": {"styles": 3, "envs": ["plaza", "patio", "casa"], "tags": ["juguete", "vehiculo"], "decor": False},
+    "photo_album": {"styles": 3, "envs": ["casa", "aula", "halloween", "patio"], "tags": ["album", "tiempo"], "decor": False},
+    "observe_jar": {"styles": 3, "envs": ["casa", "lab", "aula", "patio"], "tags": ["ciencia", "plantas"], "decor": False},
 }
