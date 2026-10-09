@@ -2453,5 +2453,105 @@
   "engine": "gemini",
   "voice": "Puck",
   "dev": 0.0
+ },
+ "ep_esponja_absorbe_p1": {
+  "hash": "aa2f9fa683d1",
+  "dur": 2.49,
+  "text": "Las esponjas no tienen boca, Moki.",
+  "asr": 0.83,
+  "heard": "Las esponjas no tienen boca moqui.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": 0.0
+ },
+ "ep_esponja_absorbe_p2": {
+  "hash": "d57519354e08",
+  "dur": 2.61,
+  "text": "Mira: una cuchara y una esponja.",
+  "asr": 1.0,
+  "heard": "¡Mira! ¡Una cuchara y una esponja!",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": -4.3
+ },
+ "ep_esponja_absorbe_p3": {
+  "hash": "fb6789edf6fc",
+  "dur": 1.73,
+  "text": "La esponja recoge el agua.",
+  "asr": 1.0,
+  "heard": "La esponja recoge el agua.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": 0.0
+ },
+ "ep_esponja_absorbe_p5": {
+  "hash": "aae571568985",
+  "dur": 1.66,
+  "text": "Y al apretarla... ¡sale!",
+  "asr": 1.0,
+  "heard": "y al apretarla, sale.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": 0.0
+ },
+ "ep_agua_evapora_p1": {
+  "hash": "9e40fe218094",
+  "dur": 1.73,
+  "text": "Volvemos dentro de un rato.",
+  "asr": 1.0,
+  "heard": "Volvemos dentro de un rato.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": 1.0
+ },
+ "ep_elefante_limite_s3": {
+  "hash": "bf4dad237686",
+  "dur": 1.46,
+  "text": "hay un lugar para bailar,",
+  "asr": 1.0,
+  "heard": "Hay un lugar para bailar.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": -7.8
+ },
+ "ep_elefante_limite_p3": {
+  "hash": "f520db1600ed",
+  "dur": 2.06,
+  "text": "Bailar también es divertido aquí.",
+  "asr": 1.0,
+  "heard": "Bailar también es divertido aquí.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": -3.7
+ },
+ "ep_esponja_absorbe_p4": {
+  "hash": "1731c35ab0b7",
+  "dur": 2.3,
+  "text": "El agua entra en sus pequeños huecos.",
+  "asr": 1.0,
+  "heard": "El agua entra en sus pequeños huecos.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": 1.8
+ },
+ "ep_esponja_absorbe_p6": {
+  "hash": "21132e65b81f",
+  "dur": 1.66,
+  "text": "La guardamos en su sitio.",
+  "asr": 1.0,
+  "heard": "La guardamos en su sitio.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": -4.55
+ },
+ "ep_iman_manzana_p3": {
+  "hash": "349ea9ffde37",
+  "dur": 2.09,
+  "text": "Escribirlo no cambia el material.",
+  "asr": 1.0,
+  "heard": "Escribirlo no cambia el material.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": -4.65
  }
 }
