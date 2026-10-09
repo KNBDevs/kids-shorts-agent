@@ -56,4 +56,6 @@ REGISTRY = {
     "date_card": {"styles": 3, "envs": ["halloween", "casa", "aula", "otono"], "tags": ["calendario", "fecha"], "decor": False},
     "hand_fan": {"styles": 3, "envs": ["casa", "patio", "aula", "plaza"], "tags": ["aire", "viento"], "decor": False},
     "pinwheel": {"styles": 3, "envs": ["patio", "plaza", "casa", "aula"], "tags": ["aire", "viento", "juguete"], "decor": False},
+    "test_lane": {"styles": 3, "envs": ["casa", "lab", "aula", "patio"], "tags": ["ciencia", "pista", "movimiento"], "decor": False},
+    "push_launcher": {"styles": 3, "envs": ["casa", "lab", "aula", "patio"], "tags": ["ciencia", "movimiento"], "decor": False},
 }

@@ -1584,6 +1584,75 @@ def pinwheel(r, s, fam, root):
     return hub
 
 
+def test_lane(r, s, fam, root, surface="smooth", length=2.0):
+    c, d = [_rich(x, 1.3, 0.95) for x in _cols(r, fam, 2)]
+    rm_ = M(c, rough=0.4, coat=0.6)
+    L, W = length, 0.3
+    if surface == "smooth":
+        top = M((0.55, 0.8, 0.98), rough=0.06, coat=1.0)
+    else:
+        top = M((0.86, 0.6, 0.4), rough=0.95, coat=0.0)
+    if s == 0:
+        z = 0.03
+        C.rounded_box("bed", (0, 0, z / 2), (L, W, z), 0.01, top, root)
+        for y in (-1, 1):
+            C.rounded_box("rail", (0, y * (W / 2 + 0.025), 0.035), (L + 0.05, 0.05, 0.07), 0.02, rm_, root)
+        C.rounded_box("stop", (L / 2 + 0.04, 0, 0.05), (0.05, W + 0.1, 0.1), 0.02, rm_, root)
+    elif s == 1:
+        z = 0.04
+        pts = []
+        for k in range(24):
+            t = math.pi / 2 - math.pi * k / 23
+            pts.append((L / 2 - W / 2 + W / 2 * math.cos(t), W / 2 * math.sin(t)))
+        for k in range(24):
+            t = -math.pi / 2 - math.pi * k / 23
+            pts.append((-L / 2 + W / 2 + W / 2 * math.cos(t), W / 2 * math.sin(t)))
+        _slab("bed", pts, z, top, root, bev=0.012)
+        for k in range(7):
+            x = -L / 2 + 0.3 + k * (L - 0.6) / 6
+            C.rounded_box("dash", (x, -W / 2 - 0.035, 0.008), (0.12, 0.03, 0.016), 0.006, rm_, root)
+    else:
+        z = 0.1
+        C.rounded_box("bed", (0, 0, z - 0.015), (L, W, 0.03), 0.01, top, root)
+        C.rounded_box("deck", (0, 0, z - 0.05), (L + 0.04, W + 0.06, 0.05), 0.02, rm_, root)
+        for x in (-L / 2 + 0.12, 0, L / 2 - 0.12):
+            for y in (-1, 1):
+                C.sphere("foot", (x, y * W * 0.4, 0.025), (0.04, 0.04, 0.028), M(d, rough=0.45, coat=0.5), root, 16)
+    if surface != "smooth":
+        tuft = M((0.78, 0.5, 0.32), rough=1.0, coat=0.0)
+        rows, cols = 4, int(L / 0.07)
+        for i in range(cols):
+            for j in range(rows):
+                x = -L / 2 + 0.08 + i * (L - 0.16) / (cols - 1) + r.uniform(-0.01, 0.01)
+                y = -W / 2 + 0.05 + j * (W - 0.1) / (rows - 1) + r.uniform(-0.01, 0.01)
+                C.sphere("tuft", (x, y, z + 0.004), (0.022, 0.022, 0.012), tuft, root, 8)
+    return z
+
+
+def push_launcher(r, s, fam, root):
+    c, d = [_rich(x, 1.3, 0.95) for x in _cols(r, fam, 2)]
+    bm_ = M(c, rough=0.4, coat=0.6)
+    pm = M(d, rough=0.4, coat=0.6)
+    km = M((0.96, 0.94, 0.9), rough=0.3, coat=0.8)
+    push = C.empty("pusher", root, (0, 0, 0))
+    if s == 0:
+        C.rounded_box("box", (-0.12, 0, 0.09), (0.2, 0.22, 0.18), 0.04, bm_, root)
+        C.tube("spring", [(0.0 + 0.012 * k, 0.03 * math.cos(k * 1.2), 0.07 + 0.03 * math.sin(k * 1.2)) for k in range(10)], 0.006, km, push)
+        C.rounded_box("pad", (0.13, 0, 0.07), (0.035, 0.16, 0.1), 0.015, pm, push)
+        C.sphere("knob", (-0.12, 0, 0.2), (0.04, 0.04, 0.03), pm, root, 16)
+    elif s == 1:
+        C.lathe("base", [(0, 0.0), (0, 0.11), (0.02, 0.12), (0.05, 0.1), (0.06, 0.0)], bm_, root, segs=40)
+        C.tube("arm", [(-0.02, 0, 0.06), (0.1, 0, 0.07)], 0.02, km, push)
+        C.rounded_box("pad", (0.13, 0, 0.07), (0.035, 0.16, 0.1), 0.015, pm, push)
+        C.sphere("hub", (0, 0, 0.07), (0.035, 0.035, 0.035), pm, root, 16)
+    else:
+        C.rounded_box("rail", (-0.08, 0, 0.03), (0.28, 0.12, 0.06), 0.02, bm_, root)
+        C.rounded_box("slider", (0.03, 0, 0.09), (0.12, 0.12, 0.08), 0.03, km, push)
+        C.rounded_box("pad", (0.11, 0, 0.07), (0.035, 0.16, 0.1), 0.015, pm, push)
+        C.tube("tab", [(-0.02, 0, 0.13), (-0.02, 0, 0.19)], 0.016, pm, push)
+    return push
+
+
 GEN = {k: v for k, v in globals().items() if k in REGISTRY}
 
 
