@@ -54,4 +54,6 @@ REGISTRY = {
     "hay_seat": {"styles": 3, "envs": ["halloween", "otono", "patio"], "tags": ["asiento", "otoño"]},
     "leaf_pad": {"styles": 3, "envs": ["halloween", "otono", "patio", "plaza"], "tags": ["hoja", "plataforma"], "decor": False},
     "date_card": {"styles": 3, "envs": ["halloween", "casa", "aula", "otono"], "tags": ["calendario", "fecha"], "decor": False},
+    "hand_fan": {"styles": 3, "envs": ["casa", "patio", "aula", "plaza"], "tags": ["aire", "viento"], "decor": False},
+    "pinwheel": {"styles": 3, "envs": ["patio", "plaza", "casa", "aula"], "tags": ["aire", "viento", "juguete"], "decor": False},
 }

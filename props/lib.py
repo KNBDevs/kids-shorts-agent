@@ -1499,6 +1499,91 @@ def leaf_pad(r, s, fam, root):
     return 0.065
 
 
+def _face(root):
+    return C.empty("face", root, (0, 0, 0), (math.radians(90), 0, 0))
+
+
+def hand_fan(r, s, fam, root):
+    c, d = [_rich(x, 1.3, 0.95) for x in _cols(r, fam, 2)]
+    fm = M(c, rough=0.45, coat=0.5)
+    sm = M(d, rough=0.4, coat=0.6)
+    lm = M(tuple(min(1, v * 0.5 + 0.5) for v in c), rough=0.5, coat=0.4)
+    C.tube("grip", [(0, 0, 0.0), (0, 0, 0.2)], 0.018, sm, root)
+    C.sphere("cap", (0, 0, 0.0), (0.024, 0.024, 0.02), sm, root, 16)
+    f = _face(root)
+    if s == 0:
+        n, R, a0 = 9, 0.3, math.radians(-70)
+        for k in range(n):
+            t0 = a0 + k * math.radians(140) / n
+            t1 = a0 + (k + 1) * math.radians(140) / n
+            pts = [(0.06 * math.sin(t0), 0.2 + 0.06 * math.cos(t0)), (R * math.sin(t0), 0.2 + R * math.cos(t0)),
+                   (R * math.sin(t1), 0.2 + R * math.cos(t1)), (0.06 * math.sin(t1), 0.2 + 0.06 * math.cos(t1))]
+            _slab("pleat", pts, 0.012, fm if k % 2 else lm, f, z=-0.006 + (0.004 if k % 2 else 0), bev=0.004)
+        for k in range(n + 1):
+            t = a0 + k * math.radians(140) / n
+            C.tube("rib", [(0.0, 0, 0.2), (R * 0.98 * math.sin(t), -0.012, 0.2 + R * 0.98 * math.cos(t))], 0.006, sm, root)
+        C.sphere("pin", (0, -0.016, 0.2), (0.022, 0.012, 0.022), sm, root, 16)
+    elif s == 1:
+        R = 0.17
+        pts = [(R * math.cos(2 * math.pi * k / 64), 0.4 + R * math.sin(2 * math.pi * k / 64)) for k in range(64)]
+        _slab("disc", pts, 0.022, fm, f, z=-0.011, bev=0.008)
+        C.tube("rim", [(R * math.cos(2 * math.pi * k / 64), -0.014, 0.4 + R * math.sin(2 * math.pi * k / 64)) for k in range(65)], 0.009, sm, root)
+        C.tube("stick", [(0, 0, 0.2), (0, 0, 0.26)], 0.02, sm, root)
+        for k in range(5):
+            a = 2 * math.pi * k / 5 + 0.3
+            C.sphere("dot", (0.09 * math.cos(a), -0.013, 0.4 + 0.09 * math.sin(a)), (0.022, 0.006, 0.022), lm, root, 16)
+    else:
+        pts = []
+        for k in range(96):
+            t = 2 * math.pi * k / 96
+            rr = 0.15 * (1 + 0.14 * math.cos(6 * t))
+            pts.append((rr * math.cos(t) * 1.15, 0.4 + rr * math.sin(t)))
+        _slab("cloud", pts, 0.024, fm, f, z=-0.012, bev=0.008)
+        C.tube("stick", [(0, 0, 0.2), (0, 0, 0.27)], 0.02, sm, root)
+        C.tube("vein", [(-0.1, -0.014, 0.4), (0.1, -0.014, 0.4)], 0.006, lm, root)
+        C.tube("vein", [(0, -0.014, 0.3), (0, -0.014, 0.5)], 0.006, lm, root)
+    return 0.4
+
+
+def pinwheel(r, s, fam, root):
+    cs = [_rich(x, 1.3, 0.95) for x in _cols(r, fam, 3)]
+    sm = M((0.96, 0.94, 0.9), rough=0.45, coat=0.4)
+    hm = M(cs[0], rough=0.35, coat=0.7)
+    H = 0.55
+    if s == 2:
+        C.lathe("base", [(0, 0.0), (0, 0.13), (0.03, 0.14), (0.06, 0.1), (0.07, 0.0)], M(cs[1], rough=0.45, coat=0.5), root, segs=40)
+        C.tube("post", [(0, 0, 0.06), (0, 0, H)], 0.022, M(cs[1], rough=0.45, coat=0.5), root)
+    else:
+        C.tube("stick", [(0, 0, 0), (0, 0, H)], 0.014, sm, root)
+    hub = C.empty("rotor", root, (0, -0.045, H), (math.radians(90), 0, 0))
+    if s == 0:
+        for k in range(4):
+            a = k * math.pi / 2
+            m = M(cs[k % 3], rough=0.45, coat=0.5)
+            bl = C.empty("bl", hub, (0, 0, 0), (0, 0, a))
+            _slab("blade", [(0.02, 0.0), (0.2, 0.0), (0.2, 0.2), (0.05, 0.05)], 0.01, m, bl, z=-0.005, bev=0.004)
+            bl.rotation_euler = (0, math.radians(14), a)
+    elif s == 1:
+        for k in range(6):
+            a = k * math.pi / 3
+            m = M(cs[k % 3], rough=0.45, coat=0.5)
+            bl = C.empty("bl", hub, (0, 0, 0), (0, math.radians(18), a))
+            pts = []
+            for j in range(40):
+                t = 2 * math.pi * j / 40
+                pts.append((0.1 + 0.085 * math.cos(t), 0.045 * math.sin(t)))
+            _slab("petal", pts, 0.012, m, bl, z=-0.006, bev=0.005)
+    else:
+        for k in range(3):
+            a = k * 2 * math.pi / 3
+            m = M(cs[k % 3], rough=0.45, coat=0.5)
+            bl = C.empty("bl", hub, (0, 0, 0), (math.radians(16), 0, a))
+            C.tube("arm", [(0.02, 0, 0), (0.08, 0, 0)], 0.01, sm, bl)
+            C.rounded_box("paddle", (0.15, 0, 0), (0.15, 0.08, 0.016), 0.006, m, bl)
+    C.sphere("cap", (0, 0, 0.012), (0.03, 0.03, 0.022), hm, hub, 20)
+    return hub
+
+
 GEN = {k: v for k, v in globals().items() if k in REGISTRY}
 
 
