@@ -2553,5 +2553,95 @@
   "engine": "gemini",
   "voice": "Puck",
   "dev": -4.65
+ },
+ "ep_agua_evapora_p2": {
+  "hash": "a2371de9df1d",
+  "dur": 2.94,
+  "text": "Nadie. Parte del agua ha pasado al aire.",
+  "asr": 0.88,
+  "heard": "Nadie, parte del agua ha basado al aire.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": -7.0
+ },
+ "ep_iman_manzana_p1": {
+  "hash": "f35009f9b77e",
+  "dur": 1.99,
+  "text": "La madera y la manzana, no.",
+  "asr": 1.0,
+  "heard": "La madera y la manzana no.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": -6.05
+ },
+ "ep_semilla_brota_p1": {
+  "hash": "cc8bfa6cdbb4",
+  "dur": 2.64,
+  "text": "¡Toma, semillita! ¡Ya tienes una hoja!",
+  "asr": 1.0,
+  "heard": "¡Toma semillita! ¡Ya tienes una hoja!",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": -6.65
+ },
+ "ep_semilla_brota_p3": {
+  "hash": "716a0fae9718",
+  "dur": 1.55,
+  "text": "¡Mira! ¡Una raíz!",
+  "asr": 1.0,
+  "heard": "¡Mira, una raíz!",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": 4.05
+ },
+ "ep_raices_agua_p1": {
+  "hash": "b9370e6b1839",
+  "dur": 2.11,
+  "text": "Las raíces están en la tierra.",
+  "asr": 1.0,
+  "heard": "Las raíces están en la tierra.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": -0.2
+ },
+ "ep_raices_agua_p2": {
+  "hash": "8e7dfdd329c9",
+  "dur": 3.27,
+  "text": "Echo un poco de agua sobre la tierra. No mucha.",
+  "asr": 0.86,
+  "heard": "He hecho un poco de agua sobre la tierra, no mucha.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": -0.8
+ },
+ "ep_semilla_brota_p2": {
+  "hash": "a6b049386ebb",
+  "dur": 2.39,
+  "text": "¿No crece? ¿Por qué no cambia?",
+  "asr": 1.0,
+  "heard": "¿No crece? ¿Por qué no cambia?",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": 0.0
+ },
+ "ep_semilla_brota_p4": {
+  "hash": "19703a397425",
+  "dur": 1.38,
+  "text": "¡Y ahora un brote!",
+  "asr": 1.0,
+  "heard": "Y ahora un brote.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": 0.6
+ },
+ "ep_semilla_brota_p5": {
+  "hash": "9803168d0c7d",
+  "dur": 2.33,
+  "text": "¡Pues con esta hoja voy a dibujarte!",
+  "asr": 1.0,
+  "heard": "Pues con esta hoja voy a dibujarte.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": 4.2
  }
 }
