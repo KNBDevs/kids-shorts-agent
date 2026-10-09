@@ -2538,5 +2538,163 @@
    }
   ],
   "order": 30
+ },
+ "patio_vecinos": {
+  "env": "patio",
+  "family": "fresh",
+  "decor": [
+   {
+    "prop": "ball_basket",
+    "style": 2,
+    "seed": 727124,
+    "loc": [
+     -4.32,
+     3.43,
+     0.0
+    ],
+    "scale": 1.1,
+    "rot": -2.1
+   },
+   {
+    "prop": "flower_pot",
+    "style": 0,
+    "seed": 278402,
+    "loc": [
+     -3.3,
+     0.35,
+     0.0
+    ],
+    "scale": 1.03,
+    "rot": 2.4
+   },
+   {
+    "prop": "play_mat",
+    "style": 2,
+    "seed": 596051,
+    "loc": [
+     -2.45,
+     4.47,
+     0.0
+    ],
+    "scale": 1.07,
+    "rot": -27.6
+   },
+   {
+    "prop": "bush",
+    "style": 2,
+    "seed": 561636,
+    "loc": [
+     1.94,
+     1.71,
+     0.0
+    ],
+    "scale": 0.95,
+    "rot": 8.4
+   },
+   {
+    "prop": "soft_token",
+    "style": 1,
+    "seed": 485166,
+    "loc": [
+     1.21,
+     3.34,
+     0.0
+    ],
+    "scale": 1.1,
+    "rot": 1.9
+   },
+   {
+    "prop": "fence",
+    "style": 0,
+    "seed": 49660,
+    "loc": [
+     3.16,
+     2.09,
+     0.0
+    ],
+    "scale": 0.93,
+    "rot": -33.0
+   }
+  ],
+  "order": 31
+ },
+ "barco_revision": {
+  "env": "patio",
+  "family": "fresh",
+  "decor": [
+   {
+    "prop": "bench",
+    "style": 0,
+    "seed": 17833,
+    "loc": [
+     4.52,
+     2.08,
+     0.0
+    ],
+    "scale": 1.04,
+    "rot": 21.9
+   },
+   {
+    "prop": "soft_token",
+    "style": 0,
+    "seed": 576119,
+    "loc": [
+     -3.12,
+     2.95,
+     0.0
+    ],
+    "scale": 1.13,
+    "rot": -18.6
+   },
+   {
+    "prop": "ball_basket",
+    "style": 0,
+    "seed": 640683,
+    "loc": [
+     0.83,
+     1.81,
+     0.0
+    ],
+    "scale": 1.08,
+    "rot": -7.0
+   },
+   {
+    "prop": "flower_pot",
+    "style": 2,
+    "seed": 354753,
+    "loc": [
+     -4.5,
+     0.47,
+     0.0
+    ],
+    "scale": 1.23,
+    "rot": 16.1
+   },
+   {
+    "prop": "birdhouse",
+    "style": 1,
+    "seed": 769012,
+    "loc": [
+     2.09,
+     1.97,
+     0.0
+    ],
+    "scale": 1.06,
+    "rot": -7.2
+   },
+   {
+    "prop": "hay_seat",
+    "style": 0,
+    "seed": 538024,
+    "loc": [
+     -2.41,
+     2.85,
+     0.0
+    ],
+    "scale": 1.14,
+    "rot": 16.9
+   }
+  ],
+  "order": 32
  }
 }
