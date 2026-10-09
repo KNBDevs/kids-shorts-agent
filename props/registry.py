@@ -58,4 +58,6 @@ REGISTRY = {
     "pinwheel": {"styles": 3, "envs": ["patio", "plaza", "casa", "aula"], "tags": ["aire", "viento", "juguete"], "decor": False},
     "test_lane": {"styles": 3, "envs": ["casa", "lab", "aula", "patio"], "tags": ["ciencia", "pista", "movimiento"], "decor": False},
     "push_launcher": {"styles": 3, "envs": ["casa", "lab", "aula", "patio"], "tags": ["ciencia", "movimiento"], "decor": False},
+    "cow": {"styles": 3, "envs": ["granja", "patio"], "tags": ["animal", "granja"], "decor": False},
+    "farm_trough": {"styles": 3, "envs": ["granja", "patio"], "tags": ["granja", "agua", "comida"], "decor": False},
 }

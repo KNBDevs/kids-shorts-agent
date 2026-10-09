@@ -1653,6 +1653,95 @@ def push_launcher(r, s, fam, root):
     return push
 
 
+def cow(r, s, fam, root):
+    from props.select import tint
+    base = tint([(0.93, 0.89, 0.83), (0.95, 0.9, 0.8), (0.84, 0.56, 0.34)][s], r, 0.02)
+    spot = tint([(0.32, 0.24, 0.22), (0.55, 0.34, 0.24), (0.98, 0.95, 0.9)][s], r, 0.02)
+    bm_ = M(base, rough=0.55, coat=0.3)
+    sm = M(spot, rough=0.55, coat=0.3)
+    mz = M((0.98, 0.72, 0.72), rough=0.5, coat=0.4)
+    hoof = M((0.4, 0.3, 0.28), rough=0.5, coat=0.4)
+    horn = M((0.98, 0.92, 0.75), rough=0.4, coat=0.6)
+    eye = M((0.12, 0.1, 0.12), rough=0.2, coat=1.0)
+    hi = M((1, 1, 1), rough=0.2, emit=1.0)
+    L, H = [(0.95, 0.3), (1.0, 0.36), (0.9, 0.28)][s]
+    zb = H + [0.22, 0.24, 0.24][s]
+    if s == 0:
+        C.sphere("body", (0, 0, zb), (L / 2, 0.3, 0.27), bm_, root, 40)
+        for (x, y, z, a) in ((0.12, -0.27, zb + 0.05, 0.13), (-0.22, -0.24, zb - 0.06, 0.1), (-0.05, 0.27, zb + 0.07, 0.12)):
+            C.sphere("spot", (x, y, z), (a, 0.04, a * 0.8), sm, root, 20)
+    elif s == 1:
+        C.rounded_box("body", (0, 0, zb), (L, 0.52, 0.46), 0.18, bm_, root)
+        for (x, y, z, a) in ((0.2, -0.262, zb + 0.06, 0.12), (-0.25, -0.262, zb - 0.04, 0.14), (0.0, 0.262, zb, 0.13)):
+            C.sphere("spot", (x, y, z), (a, 0.02, a * 0.85), sm, root, 20)
+    else:
+        ax = C.empty("bax", root, (0, 0, zb), (0, math.radians(90), 0))
+        C.lathe("body", [(-L / 2, 0.0), (-L / 2 + 0.05, 0.22), (-0.1, 0.32), (0.15, 0.3), (L / 2 - 0.05, 0.22), (L / 2, 0.0)], bm_, ax, segs=48, sy=0.95)
+        C.sphere("blaze", (L / 2 + 0.17, -0.0, zb + 0.18), (0.06, 0.13, 0.1), sm, root, 20)
+    legs = []
+    for i, (x, y) in enumerate(((L * 0.32, -0.16), (L * 0.32, 0.16), (-L * 0.32, -0.16), (-L * 0.32, 0.16))):
+        lp = C.empty(f"leg{i}", root, (x, y, zb - 0.1))
+        C.tube("lg", [(0, 0, 0), (0, 0, -(zb - 0.1) + 0.06)], 0.075, bm_, lp)
+        C.sphere("hf", (0, 0, -(zb - 0.1) + 0.045), (0.082, 0.082, 0.05), hoof, lp, 20)
+        legs.append(lp)
+    hd = C.empty("head", root, (L / 2 - 0.02, 0, zb + 0.1))
+    C.sphere("hd", (0.17, 0, 0.12), (0.17, 0.16, 0.17), bm_, hd, 32)
+    C.rounded_box("muzzle", (0.3, 0, 0.04), (0.14, 0.24, 0.13), 0.06, mz, hd)
+    for y in (-1, 1):
+        C.sphere("nos", (0.37, y * 0.05, 0.05), (0.012, 0.022, 0.026), M((0.75, 0.45, 0.45), rough=0.4), hd, 12)
+        C.sphere("ear", (0.12, y * 0.2, 0.2), (0.05, 0.1, 0.035), bm_ if s != 1 else sm, hd, 20)
+        C.tube("horn", [(0.14, y * 0.08, 0.27), (0.13, y * 0.1, 0.33)], 0.022, horn, hd)
+        C.sphere("eye", (0.27, y * 0.09, 0.17), (0.03, 0.03, 0.036), eye, hd, 16)
+        C.sphere("glint", (0.295, y * 0.085 - 0.006, 0.185), (0.008, 0.008, 0.009), hi, hd, 8)
+    tl = C.empty("tail", root, (-L / 2 + 0.02, 0, zb + 0.08))
+    C.tube("tl", [(0, 0, 0), (-0.06, 0, -0.12), (-0.07, 0, -0.3)], 0.016, bm_, tl)
+    C.sphere("tuft", (-0.07, 0, -0.33), (0.035, 0.035, 0.06), sm if s != 2 else hoof, tl, 16)
+    return hd
+
+
+def farm_trough(r, s, fam, root, kind="water"):
+    c, d = [_rich(x, 1.3, 0.95) for x in _cols(r, fam, 2)]
+    wm = M(c, rough=0.45, coat=0.5)
+    bm2 = M(d, rough=0.45, coat=0.5)
+    if s == 0:
+        Lx, Wy, z = 0.6, 0.3, 0.32
+        C.rounded_box("tub", (0, 0, z - 0.09), (Lx, Wy, 0.18), 0.05, wm, root)
+        for x in (-Lx / 2 + 0.06, Lx / 2 - 0.06):
+            for y in (-1, 1):
+                C.tube("leg", [(x, y * (Wy / 2 - 0.05), 0), (x, y * (Wy / 2 - 0.05), z - 0.15)], 0.022, bm2, root)
+        top = z - 0.02
+        sz = (Lx - 0.08, Wy - 0.08)
+    elif s == 1:
+        R = 0.22
+        C.lathe("tub", [(0, 0.0), (0, R), (0.03, R + 0.02), (0.2, R + 0.04), (0.22, R + 0.02), (0.22, R - 0.03), (0.04, R - 0.04)], wm, root, segs=48)
+        C.tube("band", [((R + 0.035) * math.cos(k * 6.2832 / 48), (R + 0.035) * math.sin(k * 6.2832 / 48), 0.11) for k in range(49)], 0.012, bm2, root)
+        top = 0.19
+        sz = (2 * R - 0.08, 2 * R - 0.08)
+    else:
+        Lx, Wy, z = 0.7, 0.26, 0.2
+        C.rounded_box("tub", (0, 0, z / 2), (Lx, Wy, z), 0.07, wm, root)
+        for x in (-0.2, 0.2):
+            C.tube("band", [(x, -Wy / 2 - 0.006, 0.02), (x, -Wy / 2 - 0.006, z - 0.01)], 0.012, bm2, root)
+            C.tube("band", [(x, Wy / 2 + 0.006, 0.02), (x, Wy / 2 + 0.006, z - 0.01)], 0.012, bm2, root)
+        top = z - 0.02
+        sz = (Lx - 0.1, Wy - 0.08)
+    fill = C.empty("fill", root, (0, 0, top))
+    if kind == "water":
+        if s == 1:
+            C.sphere("w", (0, 0, 0), (sz[0] / 2, sz[1] / 2, 0.01), MA((0.35, 0.65, 1.0), 0.85, rough=0.05, emit=0.15), fill, 32)
+        else:
+            C.rounded_box("w", (0, 0, 0), (sz[0], sz[1], 0.012), 0.005, MA((0.35, 0.65, 1.0), 0.85, rough=0.05, emit=0.15), fill)
+    else:
+        hm = M((0.86, 0.85, 0.45), rough=0.7, coat=0.1)
+        gm = M((0.45, 0.78, 0.38), rough=0.6, coat=0.2)
+        for k in range(26):
+            x = r.uniform(-sz[0] / 2 + 0.03, sz[0] / 2 - 0.03)
+            y = r.uniform(-sz[1] / 2 + 0.03, sz[1] / 2 - 0.03)
+            a = r.uniform(0, 6.28)
+            C.tube("blade", [(x, y, -0.02), (x + 0.03 * math.cos(a), y + 0.03 * math.sin(a), 0.06 + r.uniform(0, 0.04))], 0.008, gm if k % 3 else hm, fill)
+    return fill
+
+
 GEN = {k: v for k, v in globals().items() if k in REGISTRY}
 
 
