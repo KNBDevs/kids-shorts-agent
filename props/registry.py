@@ -63,4 +63,6 @@ REGISTRY = {
     "toy_car": {"styles": 3, "envs": ["plaza", "patio", "casa"], "tags": ["juguete", "vehiculo"], "decor": False},
     "photo_album": {"styles": 3, "envs": ["casa", "aula", "halloween", "patio"], "tags": ["album", "tiempo"], "decor": False},
     "observe_jar": {"styles": 3, "envs": ["casa", "lab", "aula", "patio"], "tags": ["ciencia", "plantas"], "decor": False},
+    "watering_can": {"styles": 3, "envs": ["patio", "casa", "granja"], "tags": ["jardin", "agua"], "decor": False},
+    "cutaway_pot": {"styles": 3, "envs": ["patio", "casa", "aula", "lab"], "tags": ["planta", "ilustracion"], "decor": False},
 }

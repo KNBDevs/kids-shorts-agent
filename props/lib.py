@@ -1853,6 +1853,89 @@ def observe_jar(r, s, fam, root):
     return C.empty("seat", root, (0, -0.02, zc + 0.012))
 
 
+def watering_can(r, s, fam, root):
+    c, d = [_rich(x, 1.3, 0.95) for x in _cols(r, fam, 2)]
+    bm_ = M(c, rough=0.35, coat=0.7)
+    tm = M(d, rough=0.4, coat=0.6)
+    if s == 0:
+        C.lathe("body", [(0, 0.0), (0, 0.1), (0.02, 0.11), (0.16, 0.11), (0.19, 0.09), (0.2, 0.05), (0.2, 0.0)], bm_, root, segs=40)
+        C.tube("handle", [(-0.08, 0, 0.18), (-0.04, 0, 0.27), (0.06, 0, 0.27), (0.09, 0, 0.18)], 0.016, tm, root)
+        tip = (0.3, 0, 0.24)
+        C.tube("spout", [(0.08, 0, 0.06), (0.2, 0, 0.14), tip], 0.018, bm_, root)
+    elif s == 1:
+        C.rounded_box("body", (0, 0, 0.09), (0.24, 0.14, 0.18), 0.05, bm_, root)
+        C.tube("handle", [(-0.12, 0, 0.12), (-0.17, 0, 0.17), (-0.12, 0, 0.22), (0.0, 0, 0.2)], 0.016, tm, root)
+        tip = (0.3, 0, 0.22)
+        C.tube("spout", [(0.1, 0, 0.05), (0.2, 0, 0.13), tip], 0.016, bm_, root)
+    else:
+        C.sphere("body", (0, 0, 0.1), (0.14, 0.12, 0.1), bm_, root, 32)
+        C.tube("handle", [(-0.09, 0, 0.17), (0.0, 0, 0.26), (0.09, 0, 0.17)], 0.016, tm, root)
+        tip = (0.27, 0, 0.2)
+        C.tube("spout", [(0.1, 0, 0.08), (0.2, 0, 0.14), tip], 0.016, bm_, root)
+    C.lathe("rose", [(0, 0.0), (0, 0.016), (0.03, 0.03), (0.035, 0.03), (0.035, 0.0)], tm, C.empty("rax", root, tip, (0, math.radians(60), 0)), segs=24)
+    return C.empty("tip", root, (tip[0] + 0.02, 0, tip[2] + 0.01))
+
+
+def cutaway_pot(r, s, fam, root):
+    c, d = [_rich(x, 1.3, 0.95) for x in _cols(r, fam, 2)]
+    pm = M(c, rough=0.45, coat=0.5)
+    rim = M(d, rough=0.45, coat=0.5)
+    soil = M((0.52, 0.36, 0.26), rough=0.9, coat=0.0)
+    soil_cut = M((0.62, 0.45, 0.33), rough=0.9, coat=0.0)
+    rootm = M((0.98, 0.9, 0.72), rough=0.5, coat=0.3)
+    stem = M((0.36, 0.7, 0.3), rough=0.45, coat=0.5)
+    leaf = M((0.3, 0.68, 0.32), rough=0.45, coat=0.5)
+    H, R0, R1 = [(0.36, 0.15, 0.2), (0.32, 0.18, 0.18), (0.38, 0.13, 0.19)][s]
+    prof = [(0, 0.0), (0, R0), (H, R1), (H + 0.01, R1 + 0.012), (H + 0.03, R1 + 0.012), (H + 0.03, R1 - 0.01), (0.02, R0 - 0.015), (0.02, 0.0)]
+    back = C.empty("back", root, (0, 0, 0))
+    front = C.empty("front", root, (0, 0, 0))
+    for half, sgn in ((back, 1), (front, -1)):
+        bm = bmesh.new()
+        segs = 24
+        pts = C.catmull(prof, 40) if hasattr(C, "catmull") else prof
+        rings = []
+        for i in range(segs + 1):
+            a = math.pi * i / segs
+            ca, sa = math.cos(a), sgn * math.sin(a)
+            rings.append([bm.verts.new((rr * ca, rr * sa, z)) for z, rr in pts])
+        for i in range(segs):
+            for j in range(len(pts) - 1):
+                v = [rings[i][j], rings[i + 1][j], rings[i + 1][j + 1], rings[i][j + 1]]
+                try:
+                    bm.faces.new(v if sgn > 0 else v[::-1])
+                except ValueError:
+                    pass
+        bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
+        C.mesh_obj("shell", bm, pm, half, smooth=True)
+    if s == 1:
+        for k in range(10):
+            a = math.pi * (k + 0.5) / 10
+            C.sphere("dot", (R1 * 0.97 * math.cos(a), R1 * 0.97 * math.sin(a), H * 0.7), (0.016, 0.016, 0.016), rim, back, 10)
+    elif s == 2:
+        C.tube("band", [(R0 * 1.02 * math.cos(math.pi * k / 24), R0 * 1.02 * math.sin(math.pi * k / 24) * 1, H * 0.2) for k in range(25)], 0.012, rim, back)
+    C.tube("rimb", [((R1 + 0.012) * math.cos(math.pi * k / 24), (R1 + 0.012) * math.sin(math.pi * k / 24), H + 0.02) for k in range(25)], 0.014, rim, back)
+    C.tube("rimf", [((R1 + 0.012) * math.cos(math.pi * k / 24), -(R1 + 0.012) * math.sin(math.pi * k / 24), H + 0.02) for k in range(25)], 0.014, rim, front)
+    C.sphere("soil", (0, 0, H - 0.03), (R1 - 0.01, R1 - 0.01, 0.025), soil, root, 32)
+    cut = C.empty("cut", root, (0, -0.002, 0))
+    pts = [(-R0 + 0.02, 0.025), (R0 - 0.02, 0.025), (R1 - 0.015, H - 0.02), (-R1 + 0.015, H - 0.02)]
+    bm = bmesh.new()
+    vs = [bm.verts.new((x, 0, z)) for x, z in pts]
+    bm.faces.new(vs)
+    C.mesh_obj("face", bm, soil_cut, cut, smooth=False)
+    roots = C.empty("roots", cut, (0, -0.004, H - 0.04))
+    for a, l in ((-0.9, 0.16), (-0.4, 0.22), (0.0, 0.26), (0.4, 0.21), (0.85, 0.15)):
+        x1 = math.sin(a) * l * 0.7
+        z1 = -math.cos(a) * l
+        C.tube("rt", [(0, 0, 0), (x1 * 0.5, 0, z1 * 0.55), (x1, 0, z1)], 0.007, rootm, roots)
+        C.tube("rt2", [(x1 * 0.6, 0, z1 * 0.6), (x1 * 0.6 + 0.03 * (1 if a >= 0 else -1), 0, z1 * 0.6 - 0.04)], 0.004, rootm, roots)
+    plant = C.empty("plant", root, (0, 0, H - 0.01))
+    C.tube("stem", [(0, 0, 0), (0.01, 0, 0.12), (0, 0, 0.24)], 0.014, stem, plant)
+    for k, (z, a) in enumerate(((0.12, 40), (0.18, -140), (0.24, 90))):
+        lf = C.empty("lf", plant, (0, 0, z), (0, math.radians(55), math.radians(a)))
+        C.sphere("l", (0, 0, 0.06), (0.04, 0.014, 0.07), leaf, lf, 16)
+    return {"front": front, "cut": cut, "roots": roots, "plant": plant, "top": H}
+
+
 GEN = {k: v for k, v in globals().items() if k in REGISTRY}
 
 
