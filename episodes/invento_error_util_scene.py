@@ -54,11 +54,11 @@ for k, f in enumerate(range(140, 330, 16)):
     K(big, 'location', f, tuple(B1 + Vector((0.03 * math.sin(k), 0, 0.04 * (1 if k % 2 else -1)))))
 K(big, 'location', 330, tuple(B1))
 
-ball = spawn('play_ball', 0, 8802, 'candy', (0, 0, 0), 1.3, 0)
-BALL_R = 0.11 * 1.3
+ball = spawn('play_ball', 1, 8802, (0.92, 0.2, 0.3), (0, 0, 0), 1.45, 0)
+BALL_R = 0.11 * 1.45
 P0 = Vector((1.0, -1.15, Z0))
 HAND = P0 + Vector((-0.42, -0.35, 0.55))
-T.pop_in(ball, 242, 1.3)
+T.pop_in(ball, 242, 1.45)
 K(ball, 'location', 0, tuple(HAND))
 K(ball, 'location', 312, tuple(HAND))
 IN = B1 + Vector((0, 0, -BALL_R))
