@@ -3167,5 +3167,35 @@
   "engine": "gemini",
   "voice": "Algenib",
   "dev": -5.75
+ },
+ "ep_hw26_03_faroles_g2": {
+  "hash": "d5a1ee39216d",
+  "dur": 1.66,
+  "text": "Me quedo con el pequeño.",
+  "asr": 1.0,
+  "heard": "Me quedo con el pequeño.",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": 1.6
+ },
+ "ep_muneca_reparar_g1": {
+  "hash": "a4dcc4b9d431",
+  "dur": 4.65,
+  "text": "Una medalla de «como nueva»... ¡y nadie se dará cuenta!",
+  "asr": 1.0,
+  "heard": "Una medalla de como nueva y nadie se dará cuenta.",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": 8.0
+ },
+ "ep_muneca_reparar_g2": {
+  "hash": "224a44239b23",
+  "dur": 5.65,
+  "text": "Sí... se soltó cuando la moví. Voy a decirlo, no a esconderlo.",
+  "asr": 1.0,
+  "heard": "Sí, se soltó cuando la moví, voy a decirlo, no a esconderlo.",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": 1.95
  }
 }
