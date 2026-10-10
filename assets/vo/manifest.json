@@ -1750,13 +1750,14 @@
   "dev": 0.0
  },
  "ep_mitades_merienda_t2": {
-  "hash": "rejected",
-  "dur": 0.75,
+  "hash": "eb5c1f3ffd18",
+  "dur": 0.97,
   "text": "¡Y la mía!",
   "asr": 1.0,
-  "heard": "Y la mía",
+  "heard": "¡Y la mía!",
   "engine": "gemini",
-  "voice": "Fenrir"
+  "voice": "Fenrir",
+  "dev": -0.7
  },
  "ep_mitades_merienda_t3": {
   "hash": "bcbe940344d2",
@@ -1779,13 +1780,14 @@
   "dev": 2.8
  },
  "ep_pelota_cae_t3": {
-  "hash": "rejected",
-  "dur": 1.29,
+  "hash": "642b82b5e1b5",
+  "dur": 1.74,
   "text": "¡Uy! ¡Otra vez abajo!",
-  "asr": 1.0,
-  "heard": "¡Uy! ¡Otra vez abajo!",
+  "asr": 0.75,
+  "heard": "¡Hoy, otra vez abajo!",
   "engine": "gemini",
-  "voice": "Fenrir"
+  "voice": "Fenrir",
+  "dev": -7.9
  },
  "ep_pelota_cae_t4": {
   "hash": "rejected",
@@ -1807,22 +1809,24 @@
   "dev": 0.0
  },
  "ep_hielo_derrite_t2": {
-  "hash": "rejected",
-  "dur": 2.09,
+  "hash": "57f501c12a58",
+  "dur": 2.39,
   "text": "¿Eh? ¿Dónde está? ¡Solo hay agua!",
-  "asr": 0.88,
-  "heard": "¿Dónde está? ¡Solo hay agua!",
+  "asr": 1.0,
+  "heard": "¿Eh? ¿Dónde está? Solo hay agua.",
   "engine": "gemini",
-  "voice": "Fenrir"
+  "voice": "Fenrir",
+  "dev": 1.7
  },
  "ep_pelota_cae_t2": {
-  "hash": "rejected",
-  "dur": 1.9,
+  "hash": "7e8f9d371df9",
+  "dur": 1.87,
   "text": "¡Que subas! ¡Te lo ordeno!",
   "asr": 1.0,
   "heard": "¡Que subas! ¡Te lo ordeno!",
   "engine": "gemini",
-  "voice": "Fenrir"
+  "voice": "Fenrir",
+  "dev": 1.4
  },
  "ep_pelota_cae_t5": {
   "hash": "ae8f879a2eb3",
@@ -2703,5 +2707,465 @@
   "engine": "gemini",
   "voice": "Puck",
   "dev": 0.0
+ },
+ "ep_agua_evapora_p3": {
+  "hash": "8e5d111f7dc4",
+  "dur": 1.45,
+  "text": "Se llama evaporación.",
+  "asr": 1.0,
+  "heard": "Se llama evaporación.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": 0.0
+ },
+ "ep_agua_evapora_p4": {
+  "hash": "79cf4e5816e1",
+  "dur": 2.24,
+  "text": "El vapor de agua normalmente no se ve.",
+  "asr": 1.0,
+  "heard": "El vapor de agua normalmente no se ve.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": -6.6
+ },
+ "ep_muneca_reparar_s1": {
+  "hash": "049521b7f0d3",
+  "dur": 2.14,
+  "text": "Si algo se rompe, lo voy a decir,",
+  "asr": 1.0,
+  "heard": "Si algo se rompe, lo voy a decir.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": -2.55
+ },
+ "ep_muneca_reparar_s3": {
+  "hash": "3d0472bf7a7e",
+  "dur": 1.56,
+  "text": "cuido mis cosas para seguir,",
+  "asr": 1.0,
+  "heard": "Cuido mis cosas para seguir.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": -7.6
+ },
+ "ep_hw26_02_samhain_p2": {
+  "hash": "8a81f4fde8c8",
+  "dur": 2.8,
+  "text": "Cambian las estaciones... y las costumbres.",
+  "asr": 1.0,
+  "heard": "cambian las estaciones y las costumbres.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": 0.0
+ },
+ "ep_mitades_merienda_p2": {
+  "hash": "6f770795bbae",
+  "dur": 1.86,
+  "text": "¡Mi mitad! ¡Gracias!",
+  "asr": 1.0,
+  "heard": "Mi mitad, gracias.",
+  "engine": "gemini",
+  "voice": "Puck",
+  "dev": 0.0
+ },
+ "ep_hielo_derrite_t3": {
+  "hash": "72370c70b84d",
+  "dur": 2.06,
+  "text": "¡No se escapó! ¡Se derritió!",
+  "asr": 1.0,
+  "heard": "¿No se escapó? ¿Se derritió?",
+  "engine": "gemini",
+  "voice": "Fenrir",
+  "dev": -2.6
+ },
+ "ep_hielo_derrite_t4": {
+  "hash": "a7fd1fbc350a",
+  "dur": 1.83,
+  "text": "¡El agua no necesita zapatos!",
+  "asr": 1.0,
+  "heard": "¿El agua no necesita zapatos?",
+  "engine": "gemini",
+  "voice": "Fenrir",
+  "dev": -5.9
+ },
+ "ep_patio_vecinos_t1": {
+  "hash": "60608d02b172",
+  "dur": 3.57,
+  "text": "¡Mirad! ¡Esta maceta tiene un hueco! ¡Es una portería!",
+  "asr": 1.0,
+  "heard": "¡Mirad! ¡Esta maceta tiene un hueco! ¡Es una portería!",
+  "engine": "gemini",
+  "voice": "Fenrir",
+  "dev": 0.2
+ },
+ "ep_elefante_limite_s2": {
+  "hash": "8b2503d62d3c",
+  "dur": 1.96,
+  "text": "si no encaja, puedo cambiar.",
+  "asr": 1.0,
+  "heard": "Si no encaja, puedo cambiar.",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": 0.0
+ },
+ "ep_elefante_limite_s4": {
+  "hash": "78799df55749",
+  "dur": 2.03,
+  "text": "sin tener nada que demostrar.",
+  "asr": 1.0,
+  "heard": "Sin tener nada que demostrar.",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": 6.85
+ },
+ "ep_iman_manzana_g2": {
+  "hash": "90cdcbac82a2",
+  "dur": 2.01,
+  "text": "¿Eh? ¡Yo quería la manzana!",
+  "asr": 0.8,
+  "heard": "¿Eh? Yo quería la mancena.",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": 0.0
+ },
+ "ep_agua_evapora_g1": {
+  "hash": "8a118e794e00",
+  "dur": 2.51,
+  "text": "¡Una valla para que el agua no se escape!",
+  "asr": 1.0,
+  "heard": "Una valla para que el agua no se escape.",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": 9.0
+ },
+ "ep_agua_evapora_g2": {
+  "hash": "c02b3c3c9657",
+  "dur": 2.62,
+  "text": "¡Hay menos agua! ¿Quién se la ha llevado?",
+  "asr": 1.0,
+  "heard": "¡Hay menos agua! ¿Quién se la ha llevado?",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": 6.1
+ },
+ "ep_agua_evapora_g3": {
+  "hash": "75069fd63eaa",
+  "dur": 1.85,
+  "text": "¡Esto no era una puerta!",
+  "asr": 1.0,
+  "heard": "Esto no era una puerta.",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": 0.0
+ },
+ "ep_iman_manzana_g3": {
+  "hash": "8befe24d7375",
+  "dur": 2.61,
+  "text": "¡Ja! ¡Ahora pone HIERRO!",
+  "asr": 0.8,
+  "heard": "¡Ahora pone hierro!",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": 0.0
+ },
+ "ep_puente_cooperacion_g4": {
+  "hash": "e2495f4eb20a",
+  "dur": 2.78,
+  "text": "Esperad... ¡traigo la merienda!",
+  "asr": 1.0,
+  "heard": "Esperad. Traigo la merienda.",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": 7.0
+ },
+ "ep_elefante_limite_g2": {
+  "hash": "76838c59399f",
+  "dur": 2.52,
+  "text": "Uy... sí, se estira mucho.",
+  "asr": 1.0,
+  "heard": "¡Uy, sí se estira mucho!",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": 0.0
+ },
+ "ep_elefante_limite_g3": {
+  "hash": "75dacb72abaa",
+  "dur": 2.72,
+  "text": "¿Y mi mando? ¡Ah, en su columpio!",
+  "asr": 0.91,
+  "heard": "y mi mando en su columpio.",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": -1.44
+ },
+ "ep_vaca_cuidado_g1": {
+  "hash": "2df0bf888129",
+  "dur": 3.0,
+  "text": "¡Pulsa el botón y empieza mi espectáculo!",
+  "asr": 1.0,
+  "heard": "Pulsa el botón y empieza mi espectáculo.",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": 7.6
+ },
+ "ep_vaca_cuidado_g3": {
+  "hash": "154708bf1759",
+  "dur": 2.45,
+  "text": "Ah... vas a beber agua.",
+  "asr": 1.0,
+  "heard": "¡Ah, vas a beber agua!",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": 0.0
+ },
+ "ep_vaca_cuidado_g4": {
+  "hash": "b0339be9c9fd",
+  "dur": 1.41,
+  "text": "No eres una máquina.",
+  "asr": 1.0,
+  "heard": "¡No eres una máquina!",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": 0.0
+ },
+ "ep_vaca_cuidado_g5": {
+  "hash": "6554b28c415a",
+  "dur": 3.46,
+  "text": "Necesitas agua, alimento y tranquilidad.",
+  "asr": 1.0,
+  "heard": "Necesitas agua, alimento y tranquilidad.",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": 1.5
+ },
+ "ep_vaca_cuidado_g6": {
+  "hash": "2a61021fb7a8",
+  "dur": 1.34,
+  "text": "Te doy tu espacio.",
+  "asr": 1.0,
+  "heard": "Te doy tu espacio.",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": 1.3
+ },
+ "ep_vaca_cuidado_g7": {
+  "hash": "5976bd88aa90",
+  "dur": 1.91,
+  "text": "El espectáculo puede esperar.",
+  "asr": 1.0,
+  "heard": "El espectáculo puede esperar.",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": 0.0
+ },
+ "ep_roce_suelo_g1": {
+  "hash": "2a23cfd7b39c",
+  "dur": 2.13,
+  "text": "¡Corre más! ¡Corre más!",
+  "asr": 1.0,
+  "heard": "¡Corre más! ¡Corre más!",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": 0.0
+ },
+ "ep_roce_suelo_g2": {
+  "hash": "ab7cf5f8ea0a",
+  "dur": 2.28,
+  "text": "No basta con decirle que corra...",
+  "asr": 1.0,
+  "heard": "No basta con decirle que corra.",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": -1.8
+ },
+ "ep_coche_preparado_g1": {
+  "hash": "aca8a3c58990",
+  "dur": 3.31,
+  "text": "¡Brum, brum! ¡Gafas de piloto puestas!",
+  "asr": 1.0,
+  "heard": "Brum Brum. Gafas de piloto puestas.",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": -1.15
+ },
+ "ep_roce_suelo_g3": {
+  "hash": "5553ee97e802",
+  "dur": 2.94,
+  "text": "¡Pues la peino! ¡Así, suavecita!",
+  "asr": 0.8,
+  "heard": "Pues la peindo, así suavecita.",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": -1.6
+ },
+ "ep_vaca_cuidado_g2": {
+  "hash": "be1157a660a7",
+  "dur": 3.42,
+  "text": "¡Botón! ¡Otra vez! ¿Por qué no funciona?",
+  "asr": 1.0,
+  "heard": "botón otra vez ¿por qué no funciona?",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": 1.5
+ },
+ "ep_vaca_cuidado_s1": {
+  "hash": "9c72ce78dd4a",
+  "dur": 2.43,
+  "text": "Agua limpia y buen lugar,",
+  "asr": 1.0,
+  "heard": "Agua limpia y buen lugar.",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": 4.25
+ },
+ "ep_vaca_cuidado_s2": {
+  "hash": "02dc037ca723",
+  "dur": 1.74,
+  "text": "tiempo para descansar,",
+  "asr": 1.0,
+  "heard": "tiempo para descansar",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": -3.9
+ },
+ "ep_vaca_cuidado_s3": {
+  "hash": "f13295821adb",
+  "dur": 1.58,
+  "text": "yo te cuido sin mandar,",
+  "asr": 1.0,
+  "heard": "Yo te cuido sin mandar.",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": 0.15
+ },
+ "ep_vaca_cuidado_s4": {
+  "hash": "70131da121af",
+  "dur": 1.56,
+  "text": "tú no tienes que actuar.",
+  "asr": 1.0,
+  "heard": "Tú no tienes que actuar.",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": -4.6
+ },
+ "ep_barco_revision_g1": {
+  "hash": "96ad32ae8b52",
+  "dur": 2.73,
+  "text": "¡Inauguro mi barco! ¡Ya, ya, ya!",
+  "asr": 1.0,
+  "heard": "inauguro mi barco ya ya ya",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": 5.6
+ },
+ "ep_barco_revision_g2": {
+  "hash": "d7d43c4a39e7",
+  "dur": 2.32,
+  "text": "Vale... la colocamos bien.",
+  "asr": 1.0,
+  "heard": "Vale. La colocamos bien.",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": -2.1
+ },
+ "ep_barco_revision_s2": {
+  "hash": "1b53c9af72f8",
+  "dur": 2.29,
+  "text": "si cada pieza está en su lugar,",
+  "asr": 1.0,
+  "heard": "Si cada pieza está en su lugar.",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": -2.3
+ },
+ "ep_barco_revision_s4": {
+  "hash": "76f583207ca3",
+  "dur": 2.57,
+  "text": "listo mi barco, listo para jugar.",
+  "asr": 1.0,
+  "heard": "¡Listo mi barco! ¡Listo para jugar!",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": 1.25
+ },
+ "ep_coche_preparado_g2": {
+  "hash": "494b5534b87a",
+  "dur": 2.98,
+  "text": "¿Y si me pongo otras gafas?",
+  "asr": 1.0,
+  "heard": "¿Y si me pongo otras gafas?",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": -3.7
+ },
+ "ep_coche_preparado_s4": {
+  "hash": "eade327b7098",
+  "dur": 2.2,
+  "text": "las prisas pueden esperar.",
+  "asr": 1.0,
+  "heard": "Las prisas pueden esperar.",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": -5.25
+ },
+ "ep_coche_preparado_g3": {
+  "hash": "a4ea7ad51cff",
+  "dur": 2.56,
+  "text": "¡Brum! ¿Mi mando no arranca?",
+  "asr": 1.0,
+  "heard": "Brum, ¿mi mando no arranca?",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": -1.6
+ },
+ "ep_barco_revision_g3": {
+  "hash": "b656bd376728",
+  "dur": 2.88,
+  "text": "¡Y este sombrero sí era para mi cabeza!",
+  "asr": 1.0,
+  "heard": "y este sombrero sí era para mi cabeza.",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": -2.2
+ },
+ "ep_hw26_03_faroles_g1": {
+  "hash": "eecb5e5728be",
+  "dur": 1.95,
+  "text": "¡Este farol es diminuto!",
+  "asr": 1.0,
+  "heard": "Este farol es diminuto.",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": -5.4
+ },
+ "ep_muneca_reparar_s2": {
+  "hash": "90e67c9aac02",
+  "dur": 1.95,
+  "text": "miro qué ayuda puedo pedir,",
+  "asr": 1.0,
+  "heard": "Miro qué ayuda puedo pedir.",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": 1.0
+ },
+ "ep_muneca_reparar_s4": {
+  "hash": "2d0e5e5abc1a",
+  "dur": 2.2,
+  "text": "jugar y cuidar pueden convivir.",
+  "asr": 1.0,
+  "heard": "Jugar y cuidar pueden convivir.",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": -4.0
+ },
+ "ep_muneca_reparar_g3": {
+  "hash": "675cfeb1684a",
+  "dur": 2.21,
+  "text": "Mejor cuidar que presumir.",
+  "asr": 1.0,
+  "heard": "mejor cuidar que presumir.",
+  "engine": "gemini",
+  "voice": "Algenib",
+  "dev": -5.75
  }
 }
